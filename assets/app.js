@@ -10,7 +10,6 @@
     links: "Links",
     "logical-solver": "U-Bahn Solver",
     "mtl-guide": "MTL Guide",
-    "ngu-idle-autopilot": "NGU Idle Dashboard",
     puzzles: "Puzzles",
   };
   const descriptions = {
@@ -20,7 +19,6 @@
     links: "A searchable, long-form collection of links and notes.",
     "logical-solver": "An interactive solver for U-Bahn logic puzzles.",
     "mtl-guide": "A reusable process for machine-assisted visual novel translation.",
-    "ngu-idle-autopilot": "A live local dashboard for an adaptive NGU Idle autopilot.",
     puzzles: "A searchable collection of original logic puzzles.",
   };
 
@@ -76,11 +74,8 @@
     })
     .then((repos) => {
       const projects = repos
-        .filter((repo) => repo.has_pages && !repo.archived && !hiddenRepos.has(repo.name.toLowerCase()));
-      if (!projects.some((repo) => repo.name === "ngu-idle-autopilot")) {
-        projects.push({ name: "ngu-idle-autopilot", description: descriptions["ngu-idle-autopilot"] });
-      }
-      projects.sort((a, b) => titleFor(a).localeCompare(titleFor(b)));
+        .filter((repo) => repo.has_pages && !repo.archived && !hiddenRepos.has(repo.name.toLowerCase()))
+        .sort((a, b) => titleFor(a).localeCompare(titleFor(b)));
       if (projects.length) render(projects);
       status.textContent = "";
     })
