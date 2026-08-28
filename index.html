@@ -3,47 +3,64 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Projects published by JWKNT.">
-    <meta name="theme-color" content="#ffffff">
-    <title>JWKNT</title>
-    <link rel="stylesheet" href="/site-theme/v1/base.css">
+    <meta name="description" content="Projects and data published at jehlp.net.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="jehlp.net">
+    <meta property="og:url" content="https://jehlp.net/">
+    <meta property="og:site_name" content="jehlp.net">
+    <meta name="theme-color" content="#f7f4ec">
+    <link rel="canonical" href="https://jehlp.net/">
+    <title>jehlp.net</title>
+    <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/home.png" type="image/png">
+    <script src="https://jehlp.net/site-theme/v2/theme.js"></script>
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css">
     <link rel="stylesheet" href="assets/styles.css">
-    <script src="/site-theme/v1/theme.js" defer></script>
     <script src="assets/app.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#projects">Skip to projects</a>
     <main>
-      <header>
-        <h1>JWKNT</h1>
-        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">◐</button>
+      <header class="home-header">
+        <h1>jehlp.net</h1>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button>
       </header>
-      <ul id="projects" aria-label="Projects">
-        <li data-project="albatross-koukairoku">
-          <a href="/albatross-koukairoku/">Albatross Koukairoku</a>
-          <span>A searchable Japanese and English script reader.</span>
-        </li>
-        <li data-project="bl2">
-          <a href="/bl2/">Borderlands 2 Armory</a>
-          <span>A searchable guide to legendary and unique items.</span>
-        </li>
-        <li data-project="black-sheep-town">
-          <a href="/black-sheep-town/">Black Sheep Town</a>
-          <span>A searchable Japanese and English script reader.</span>
-        </li>
-        <li data-project="logical-solver">
-          <a href="/logical-solver/">U-Bahn Solver</a>
-          <span>An interactive solver for U-Bahn logic puzzles.</span>
-        </li>
-        <li data-project="mtl-guide">
-          <a href="/mtl-guide/">MTL Guide</a>
-          <span>A reusable process for machine-assisted visual novel translation.</span>
-        </li>
-        <li data-project="puzzles">
-          <a href="/puzzles/">Puzzles</a>
-          <span>A searchable collection of original logic puzzles.</span>
-        </li>
-      </ul>
+      <div class="divider" aria-hidden="true"><span>✦</span></div>
+      <div id="projects">
+        <section class="project-group" aria-labelledby="reading">
+          <h2 id="reading">Reading</h2>
+          <ul>
+            <li data-project="albatross-koukairoku"><a href="/albatross-koukairoku/">Albatross Koukairoku</a><span>Parallel Japanese and English script.</span></li>
+            <li data-project="black-sheep-town"><a href="/black-sheep-town/">Black Sheep Town</a><span>Parallel script, glossary, and translation tools.</span></li>
+          </ul>
+        </section>
+        <section class="project-group" aria-labelledby="data">
+          <h2 id="data">Data</h2>
+          <ul>
+            <li data-project="profile"><a href="/profile/">Profile</a><span>Anonymized genetic ancestry and trait archive.</span></li>
+            <li data-project="bl2"><a href="/bl2/">Borderlands 2 Armory</a><span>Named-item sources, rates, and conditions.</span></li>
+            <li data-project="mystery-report"><a href="/mystery-report/">Mystery Consensus</a><span>Multi-agent rankings across media.</span></li>
+            <li data-project="ngu-idle-dashboard"><a href="/ngu-idle-dashboard/">NGU Idle Dashboard</a><span>Read-only progression telemetry.</span></li>
+          </ul>
+        </section>
+        <section class="project-group" aria-labelledby="tools">
+          <h2 id="tools">Tools</h2>
+          <ul>
+            <li data-project="logical-solver"><a href="/logical-solver/">Logical Solvers</a><span>U-Bahn, Japanese Sums, A38, and Cave.</span></li>
+            <li data-project="mtl-guide"><a href="/mtl-guide/">MTL Guide</a><span>Translation workflow, references, and templates.</span></li>
+          </ul>
+        </section>
+        <section class="project-group" aria-labelledby="writing">
+          <h2 id="writing">Writing</h2>
+          <ul>
+            <li data-project="links"><a href="/links/">Links</a><span>Long-form links and notes.</span></li>
+            <li data-project="puzzles"><a href="/puzzles/">Puzzles</a><span>Original logic puzzles.</span></li>
+          </ul>
+        </section>
+        <section class="project-group" id="other-projects" aria-labelledby="other" hidden>
+          <h2 id="other">Other</h2>
+          <ul id="other-project-list"></ul>
+        </section>
+      </div>
       <p class="status" id="project-status" role="status" aria-live="polite"></p>
     </main>
   </body>

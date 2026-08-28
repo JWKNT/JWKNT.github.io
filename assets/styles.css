@@ -1,53 +1,54 @@
 main {
-  width: min(40rem, calc(100% - 2rem));
-  margin: 12vh auto 4rem;
+  width: min(42rem, calc(100% - 2 * var(--gutter)));
+  margin: clamp(2.5rem, 8vh, 5.5rem) auto 5rem;
 }
 
-header {
+.home-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 2rem;
 }
 
-h1 {
+.home-header h1 {
   margin: 0;
-  font-size: clamp(1.5rem, 5vw, 2rem);
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: .01em;
+}
+
+.divider { margin: 1.5rem 0 1.7rem; }
+
+.project-group {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 1.2rem;
+  padding: .85rem 0 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.project-group h2 {
+  margin: .15rem 0 0;
+  color: var(--muted);
+  font: 600 .65rem/1.4 var(--sans);
+  letter-spacing: .06em;
+  text-transform: uppercase;
 }
 
 ul {
   display: grid;
-  gap: 1rem;
-  padding: 0;
+  gap: .85rem;
   margin: 0;
+  padding: 0;
   list-style: none;
 }
 
-li {
-  display: grid;
-  gap: 0.2rem;
-}
+li { display: grid; gap: .12rem; }
+li a { width: fit-content; font-weight: 600; }
+li span, .status { color: var(--muted); font-size: .82rem; line-height: 1.45; }
+.status { min-height: 1.3em; margin: 1.2rem 0 0 6.7rem; }
 
-li a {
-  width: fit-content;
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-
-li span,
-.status {
-  color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.45;
-}
-
-.status {
-  min-height: 1.3em;
-  margin: 1.5rem 0 0;
-}
-
-.theme-toggle {
-  flex: 0 0 auto;
+@media (max-width: 32rem) {
+  .project-group { grid-template-columns: 1fr; gap: .55rem; }
+  .status { margin-left: 0; }
 }
