@@ -17,7 +17,7 @@ main {
   letter-spacing: .01em;
 }
 
-.divider { margin: 1.5rem 0 1.7rem; }
+.site-divider { margin: 1.5rem auto 1.7rem; }
 
 .project-group {
   display: grid;
