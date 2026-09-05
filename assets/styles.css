@@ -20,6 +20,8 @@ main {
 .site-divider { width: min(30rem, 72%); margin: 1.5rem auto 1.7rem; }
 
 .project-group {
+  --directory-rule: 0;
+  --directory-space: .4rem;
   display: grid;
   grid-template-columns: 5.5rem minmax(0, 1fr);
   gap: 1.2rem;
@@ -32,22 +34,14 @@ main {
 .project-group h2 {
   margin: .15rem 0 0;
   color: var(--muted);
-  font: 600 .65rem/1.4 var(--sans);
+  font: 600 var(--text-meta, .75rem)/1.4 var(--sans);
   letter-spacing: .06em;
   text-transform: uppercase;
 }
 
-ul {
-  display: grid;
-  gap: .85rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
 li { display: grid; gap: .12rem; }
 li a { width: fit-content; font-weight: 600; }
-li span, .status { color: var(--muted); font-size: .82rem; line-height: 1.45; }
+li span, .status { color: var(--muted); font-size: 1rem; line-height: 1.45; }
 .status { min-height: 1.3em; margin: 1.2rem 0 0 6.7rem; }
 
 @media (max-width: 32rem) {
