@@ -31,7 +31,7 @@ Commit the generated `index.html` together with the authored data/source. Each
 category has a unique `id`, `label`, `mark`, `open`, and a `pages` array. Each page
 has a unique `id`, `label`, and root-relative `href` ending in `/`. IDs use lowercase
 letters, digits, and hyphens. Marks are `parentheses`, `constellation`, `asterisk`,
-or `section`; extend the named mark registry in `lib/directory.mjs` and the local
+`section`, or `chevrons`; extend the named mark registry in `lib/directory.mjs` and the local
 study CSS for a genuinely new motif. Categories can reuse existing marks.
 
 Add future categories with `open: false` when expansion would make the initial
@@ -48,6 +48,11 @@ and adds safe jehlp.net links under a closed Other category. Network failure or
 rate limiting leaves all authored links intact. Curate discovered pages into the
 JSON to choose their category and readable name; do not depend on discovery for
 the canonical directory.
+
+The current four groups preserve all thirteen destinations. Games includes the
+playable NDB Idle, authored Puzzles, and Baba Is You recordings; the latter's label
+distinguishes viewing from playing. Links belongs with Reading. Category metadata
+is generated from the labels, not a fixed list of the original categories.
 
 ## Verification and release
 

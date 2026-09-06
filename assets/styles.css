@@ -154,6 +154,10 @@ body { margin: 0; }
 .study-section .glyph-a { left: 16px; transform: rotate(-15deg); z-index: 1; }
 .study-section .glyph-b { left: 35.2px; color: var(--atlas-faint); transform: rotate(165deg); z-index: 0; }
 .study-section i { top: 6.8em; left: 5.8em; }
+.study-chevrons .glyph { font-size: 166px; top: -40px; }
+.study-chevrons .glyph-a { left: 0; transform: rotate(-12deg); }
+.study-chevrons .glyph-b { left: 39px; color: var(--atlas-faint); transform: rotate(-12deg); }
+.study-chevrons i { top: 6.3em; left: 4.9em; }
 .atlas-category:not([open]) { min-height: 7rem; }
 .atlas-category:not([open]) .type-study { transform: scale(.55); transform-origin: top left; opacity: .7; }
 .empty-result { font-size: 1rem; color: var(--muted); margin: 2rem 0; }

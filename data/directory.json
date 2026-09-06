@@ -3,7 +3,8 @@
     "id": "reading", "label": "Reading", "mark": "parentheses", "open": true,
     "pages": [
       { "id": "albatross-koukairoku", "label": "Albatross Koukairoku", "href": "/albatross-koukairoku/" },
-      { "id": "black-sheep-town", "label": "Black Sheep Town", "href": "/black-sheep-town/" }
+      { "id": "black-sheep-town", "label": "Black Sheep Town", "href": "/black-sheep-town/" },
+      { "id": "links", "label": "Links", "href": "/links/" }
     ]
   },
   {
@@ -12,8 +13,7 @@
       { "id": "profile", "label": "Profile", "href": "/profile/" },
       { "id": "mystery-report", "label": "Mystery Consensus", "href": "/mystery-report/" },
       { "id": "bl2", "label": "Borderlands 2 Armory", "href": "/bl2/" },
-      { "id": "ngu-idle-dashboard", "label": "NGU Idle", "href": "/ngu-idle-dashboard/" },
-      { "id": "ndb-idle", "label": "NDB Idle", "href": "/ndb-idle/" }
+      { "id": "ngu-idle-dashboard", "label": "NGU Idle", "href": "/ngu-idle-dashboard/" }
     ]
   },
   {
@@ -25,16 +25,11 @@
     ]
   },
   {
-    "id": "writing", "label": "Writing", "mark": "section", "open": true,
+    "id": "games", "label": "Games", "mark": "chevrons", "open": true,
     "pages": [
-      { "id": "links", "label": "Links", "href": "/links/" },
-      { "id": "puzzles", "label": "Puzzles", "href": "/puzzles/" }
-    ]
-  },
-  {
-    "id": "games", "label": "Games", "mark": "asterisk", "open": true,
-    "pages": [
-      { "id": "baba-is-you", "label": "Baba Is You", "href": "/baba-is-you/" }
+      { "id": "ndb-idle", "label": "NDB Idle", "href": "/ndb-idle/" },
+      { "id": "puzzles", "label": "Puzzles", "href": "/puzzles/" },
+      { "id": "baba-is-you", "label": "Baba Is You recordings", "href": "/baba-is-you/" }
     ]
   }
 ]

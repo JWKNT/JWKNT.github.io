@@ -17,11 +17,26 @@ test('all thirteen destinations are present in the static native-disclosure fall
   assert.deepEqual(categories.flatMap(category => category.pages.map(page => page.id)).sort(), [...destinations].sort());
   assert.equal([...index.matchAll(/<li data-project=/g)].length, destinations.length);
   for (const destination of destinations) assert.match(index, new RegExp(`<li data-project="${destination}"><a href="/${destination}/">`));
-  for (const category of categories) assert.match(index, new RegExp(`<details class="atlas-category" data-category="${category.id}" open>\\s*<summary>`));
+  for (const category of categories) assert.match(index, new RegExp(`<details class="atlas-category" data-category="${category.id}"${category.open ? ' open' : ''}>\\s*<summary>`));
   assert.match(index, /class="skip-link" href="#directory"/);
   assert.match(index, /site-theme\/v2\/base\.css/);
   assert.match(index, /favicons\/home\.png/);
   assert.match(index, /data-theme-toggle/);
+});
+
+test('games and recordings share a compact category without hiding destinations', () => {
+  const games = categories.find(category => category.id === 'games');
+  assert.deepEqual(games.pages.map(page => page.id), ['ndb-idle', 'puzzles', 'baba-is-you']);
+  assert.equal(games.pages.find(page => page.id === 'baba-is-you').label, 'Baba Is You recordings');
+});
+
+test('metadata and disclosure state follow the authored categories', () => {
+  const fixture = copy();
+  fixture[0].label = 'Future category';
+  fixture[0].open = false;
+  const html = renderDirectory(fixture);
+  assert.match(html, /name="description" content="Future category, Data, Tools, Games at jehlp.net\."/);
+  assert.match(html, /data-category="reading">\s*<summary>/);
 });
 
 test('the index has no visible site title, masthead or description', () => {
