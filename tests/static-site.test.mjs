@@ -6,14 +6,14 @@ import { marks, renderDirectory, validateDirectory } from '../lib/directory.mjs'
 const categories = JSON.parse(await readFile(new URL('../data/directory.json', import.meta.url), 'utf8'));
 const index = await readFile(new URL('../index.html', import.meta.url), 'utf8');
 const copy = () => structuredClone(categories);
-const destinations = ['albatross-koukairoku', 'black-sheep-town', 'profile', 'mystery-report', 'bl2', 'ngu-idle-dashboard', 'ndb-idle', 'box-puzzles', 'logical-solver', 'mtl-guide', 'links', 'puzzles'];
+const destinations = ['albatross-koukairoku', 'black-sheep-town', 'profile', 'mystery-report', 'bl2', 'ngu-idle-dashboard', 'ndb-idle', 'box-puzzles', 'logical-solver', 'mtl-guide', 'links', 'puzzles', 'baba-is-you'];
 
 test('checked-in homepage is the deterministic directory build', () => {
   assert.equal(index, renderDirectory(categories), 'Run node build.mjs after changing the directory or renderer.');
   assert.equal(renderDirectory(categories), renderDirectory(copy()));
 });
 
-test('all twelve destinations are present in the static native-disclosure fallback', () => {
+test('all thirteen destinations are present in the static native-disclosure fallback', () => {
   assert.deepEqual(categories.flatMap(category => category.pages.map(page => page.id)).sort(), [...destinations].sort());
   assert.equal([...index.matchAll(/<li data-project=/g)].length, destinations.length);
   for (const destination of destinations) assert.match(index, new RegExp(`<li data-project="${destination}"><a href="/${destination}/">`));

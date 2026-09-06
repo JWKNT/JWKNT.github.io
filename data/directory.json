@@ -30,5 +30,11 @@
       { "id": "links", "label": "Links", "href": "/links/" },
       { "id": "puzzles", "label": "Puzzles", "href": "/puzzles/" }
     ]
+  },
+  {
+    "id": "games", "label": "Games", "mark": "asterisk", "open": true,
+    "pages": [
+      { "id": "baba-is-you", "label": "Baba Is You", "href": "/baba-is-you/" }
+    ]
   }
 ]
