@@ -41,25 +41,19 @@ Search matches category and destination words, temporarily opens matching groups
 and restores earlier disclosure states when cleared. `/` opens search; Escape
 clears and closes it, returning focus to its button.
 
-`assets/discovery.mjs` supplements—not replaces—the authored directory with new,
-non-archived public GitHub Pages repositories. It paginates up to ten 100-repository
-batches, excludes the homepage/theme and known destinations case-insensitively,
-and adds safe jehlp.net links under a closed Other category. Network failure or
-rate limiting leaves all authored links intact. Curate discovered pages into the
-JSON to choose their category and readable name; do not depend on discovery for
-the canonical directory.
+The directory is authored only: no automatic GitHub discovery or Other category.
+Add new destinations explicitly to the JSON with their intended category and name.
 
 The current four groups preserve all thirteen destinations. Games includes the
-playable NDB Idle, authored Puzzles, and Baba Is You recordings; the latter's label
-distinguishes viewing from playing. Links belongs with Reading. Category metadata
+playable NDB Idle, authored Puzzles, and Baba Is You. Links belongs with Reading. Category metadata
 is generated from the labels, not a fixed list of the original categories.
 
 ## Verification and release
 
 Check 390px/1440px, light/dark, 200% text, native disclosure keyboard behavior,
 search and empty results, Escape/focus restoration, no-JS, print, and a much
-larger category fixture. Node tests cover rendering, schema rejection, and mocked
-discovery—not browser accessibility. Keep CNAME and canonical metadata intact.
+larger category fixture. Node tests cover rendering, schema rejection, and the
+absence of discovery—not browser accessibility. Keep CNAME and canonical metadata intact.
 Use explicit staging, publish `main`, and verify the actual homepage and its local
 assets after the Pages workflow completes. Shared skills and release evidence
 are maintained in `site-theme`.

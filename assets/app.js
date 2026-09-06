@@ -1,5 +1,3 @@
-import { discoverPages } from './discovery.mjs';
-
 const categories = () => [...document.querySelectorAll('.atlas-category')];
 const toggle = document.querySelector('.search-toggle');
 const search = document.querySelector('.page-search');
@@ -58,28 +56,4 @@ document.addEventListener('keydown', event => {
   } else if (event.key === 'Escape' && !search.hidden) {
     event.preventDefault(); closeSearch();
   }
-});
-
-const known = [...document.querySelectorAll('[data-project]')].map(page => page.dataset.project);
-discoverPages(fetch, known).then(pages => {
-  const other = document.querySelector('#other-projects');
-  const list = document.querySelector('#other-project-list');
-  for (const page of pages) {
-    const item = document.createElement('li');
-    item.dataset.project = page.id;
-    const link = document.createElement('a');
-    link.href = page.href;
-    link.textContent = page.label;
-    const point = document.createElement('span');
-    point.className = 'link-point';
-    point.setAttribute('aria-hidden', 'true');
-    point.textContent = '↗';
-    link.append(point);
-    item.append(link);
-    list.append(item);
-  }
-  other.hidden = pages.length === 0;
-  if (filtering) { priorOpen.set(other, other.open); filterPages(); }
-}).catch(() => {
-  // Offline or rate-limited: the authored directory remains fully usable.
 });

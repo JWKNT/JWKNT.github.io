@@ -27,7 +27,14 @@ test('all thirteen destinations are present in the static native-disclosure fall
 test('games and recordings share a compact category without hiding destinations', () => {
   const games = categories.find(category => category.id === 'games');
   assert.deepEqual(games.pages.map(page => page.id), ['ndb-idle', 'puzzles', 'baba-is-you']);
-  assert.equal(games.pages.find(page => page.id === 'baba-is-you').label, 'Baba Is You recordings');
+  assert.equal(games.pages.find(page => page.id === 'baba-is-you').label, 'Baba Is You');
+});
+
+test('only authored categories render; no Other section or repository discovery runs', async () => {
+  assert.equal([...index.matchAll(/<details class="atlas-category"/g)].length, categories.length);
+  assert.doesNotMatch(index, /other-projects|other-project-list|data-category="other"/);
+  const script = await readFile(new URL('../assets/app.js', import.meta.url), 'utf8');
+  assert.doesNotMatch(script, /discoverPages|discovery\.mjs|fetch\s*\(|other-project/);
 });
 
 test('metadata and disclosure state follow the authored categories', () => {
@@ -67,9 +74,9 @@ test('labels are escaped as text, including markup and attribute delimiters', ()
   assert.doesNotMatch(html, /<img src=x|<script>alert/);
 });
 
-test('invalid, duplicate and reserved category configurations are rejected', () => {
+test('invalid and duplicate category configurations are rejected', () => {
   for (const fixture of [null, {}, []]) assert.throws(() => validateDirectory(fixture));
-  for (const id of ['other', 'Reading', '', 'a" onclick="x', 'two words']) {
+  for (const id of ['Reading', '', 'a" onclick="x', 'two words']) {
     const fixture = copy(); fixture[0].id = id;
     assert.throws(() => renderDirectory(fixture));
   }
