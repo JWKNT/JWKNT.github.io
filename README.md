@@ -44,7 +44,7 @@ clears and closes it, returning focus to its button.
 The directory is authored only: no automatic GitHub discovery or Other category.
 Add new destinations explicitly to the JSON with their intended category and name.
 
-The current four groups preserve all thirteen destinations. Games includes the
+The current four groups preserve all fourteen destinations. Games includes the
 playable NDB Idle, authored Puzzles, and Baba Is You. Links belongs with Reading. Category metadata
 is generated from the labels, not a fixed list of the original categories.
 
