@@ -117,5 +117,6 @@ test('homepage keeps one native persistent Home route with accessible identity',
   assert.equal((index.match(/class="site-home-dock"/g) || []).length, 1);
   assert.match(index, /<body>\s*<nav class="site-home-dock" aria-label="Site">/);
   assert.match(index, /class="site-home" href="https:\/\/jehlp\.net\/" aria-label="Home · jehlp.net"/);
-  for (const asset of ['base.css', 'theme.js']) assert.ok(index.includes(`${asset}?v=20260930-home2`));
+  assert.ok(index.includes('base.css?v=20260930-home2'));
+  assert.ok(index.includes('theme.js?v=20260930-home3'));
 });
