@@ -37,9 +37,9 @@ study CSS for a genuinely new motif. Categories can reuse existing marks.
 Add future categories with `open: false` when expansion would make the initial
 view too long. There is no category or page-count limit in the generator. All
 links are present in static HTML; native disclosures still work without scripts.
-Search matches category and destination words, temporarily opens matching groups,
-and restores earlier disclosure states when cleared. `/` opens search; Escape
-clears and closes it, returning focus to its button.
+The slash control opens full-text search across the authored public sites. `/`
+opens search; Escape clears and closes it, returning focus to its button. Clearing
+a query restores the directory without changing its native disclosure states.
 
 The directory is authored only: no automatic GitHub discovery or Other category.
 Add new destinations explicitly to the JSON with their intended category and name.
@@ -57,3 +57,87 @@ absence of discovery—not browser accessibility. Keep CNAME and canonical metad
 Use explicit staging, publish `main`, and verify the actual homepage and its local
 assets after the Pages workflow completes. Shared skills and release evidence
 are maintained in `site-theme`.
+
+
+## Full-text site search
+
+Install build dependencies with `npm ci --ignore-scripts`. Run `npm test`, then
+`npm run build:site`. The build artifact is `_site/`: only the generated homepage,
+public assets, CNAME, robots.txt, coverage metadata and search indexes. Source,
+credentials, dependency files and fetch caches are never copied into it.
+
+The build fetches **only currently published jehlp.net inputs** under the 14
+explicit roots in `data/directory.json`. It does not use an authenticated API,
+discover account repositories, follow external references, or execute downloaded
+JavaScript. Linked HTML is followed under those roots. Adapters enumerate public
+Readers/VN manifests, generated Puzzle pages and rendered fields of catalogues.
+The React app adapter parses literal displayed JSX help/control copy from the
+published entry bundles; it does not evaluate code or capture game saves/states.
+Profile uses nested, explicit allowlists of fields the public UI actually renders.
+
+Readers passages link to real chapter/paragraph routes, VN passages to real
+chapter/line routes, and BL2 items to their existing item modal links. Annotations
+link to the relevant paragraph where their note can be opened. Apps without item
+routing use their supported section/dataset route. Static fallback editions and
+raw data/audit files are not separately indexed. Identical destination records
+are combined rather than inventing unsupported routes.
+
+Pagefind 1.5.2 builds compressed, content-addressed shards. The homepage loads no
+search corpus on ordinary visits; it imports the engine after a query and loads
+only needed index chunks and 12 result excerpts at a time. English and Japanese
+copy use separate language indexes selected by query script, so Japanese words inside
+sentences work without changing their display text. Query matching is case- and
+accent-insensitive, with title weighting and optional site filters. Search runs
+entirely in the browser; query text is not sent to an external search provider.
+
+`lib/search-runtime.mjs` applies a version-checked, small compatibility patch to
+the generated Pagefind runtime: propagate HTTP/chunk failures instead of silently
+returning zero results. Tests exercise the real generated engine and recovery.
+Retry creates a fresh engine with fresh metadata, avoiding cached rejected
+fragments and handling an open tab across a new deployment. Re-review this patch
+before changing the pinned Pagefind version.
+
+### Refresh and failure policy
+
+This repository publishes the complete generated `pagefind/`, `pagefind-ja/`
+and `search-coverage.json` snapshot through its existing main/root Pages setup.
+**Refresh is manual**: after a subsite content update, run:
+
+```sh
+npm ci --ignore-scripts
+npm test
+npm run refresh:search
+# Review the coverage timestamp and representative results, then commit the
+# generated pagefind/ and pagefind-ja/ directories plus search-coverage.json
+# together with any authored homepage changes. Push main when authorized.
+```
+
+The refresh command fetches sources afresh. A failed fetch, changed schema,
+broken expected anchor or missing corpus fails the build before the published
+snapshot is replaced locally. GitHub Pages deploys the complete commit; until
+then the previous complete snapshot stays live. This avoids a silently partial
+index. Run a refresh after urgent subsite edits or removals. The public
+`search-coverage.json` records generation time, counts, coverage and limitations.
+
+Automatic scheduled rebuilding is not configured: the existing publishing token
+can update site assets but cannot create GitHub Actions workflows. No additional
+OAuth access is required for the manual static workflow.
+
+For offline iteration, `node tools/build-search.mjs --cached` reuses successful
+responses in ignored `.search-cache/`. The public refresh command never uses that option.
+Delete that directory to discard local snapshots. The index intentionally omits
+image/video/audio transcription, downloads, external linked websites, transient
+telemetry, private data and runtime game state. NDB story datasets and arbitrary
+generated puzzle permutations are outside the published interface-copy adapter.
+
+### Search checks
+
+`npm test` includes schema/extraction/XSS checks, real Pagefind body/phrase/accent/
+ranking/network-failure checks, and DOM interaction tests for slash/Escape/focus,
+filters, loading/no-results/errors/retry, query races and bounded pagination.
+Mixed-language queries search the Japanese field when they contain Japanese characters;
+they do not intersect separate Japanese and English translations. These checks
+do not replace a live browser review at desktop/mobile widths in both
+color modes. Useful published-body checks include `choralcelo`,
+`narcotherapeutic`, `"transcendent mass"`, `"ripening cherry tomatoes"`,
+`"traveler must alternately obtain"`, and Japanese `学校` / `日本`.

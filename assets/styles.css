@@ -226,3 +226,25 @@ body { margin: 0; }
   .atlas-category summary { outline: none; }
   .fold, .link-point { display: none; }
 }
+
+/* Site-wide search keeps the ordinary page flow and fetches result excerpts only
+   as needed. No overlay, independent scrollport, or directory layout changes. */
+.page-search { min-width: 0; }
+.search-panel { max-width: 58rem; margin: 0 auto 2rem; }
+.search-options { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.search-options label { font-size: .875rem; color: var(--muted); }
+.search-options select { max-width: 100%; min-height: 2.75rem; font: .875rem/1.5 var(--ui, var(--serif)); }
+.search-hint, .search-status { font-size: .95rem; color: var(--muted); }
+.search-status:empty { display: none; }
+.search-results { list-style: none; margin: 1.5rem 0; padding: 0; }
+.search-results li { padding: 1rem 0; border-top: 1px solid var(--atlas-faint); }
+.search-result-site { margin: 0 0 .2rem; color: var(--muted); font-size: .8rem; }
+.search-result-link { font: 700 1.2rem/1.4 var(--display); overflow-wrap: anywhere; }
+.search-excerpt { margin: .5rem 0 0; font-size: 1rem; line-height: 1.65; overflow-wrap: anywhere; }
+.search-excerpt mark { color: var(--ink); background: transparent; font-weight: bold; text-decoration: underline; text-decoration-color: var(--atlas-accent); text-underline-offset: .15em; }
+#search-more, #search-retry { min-height: 2.75rem; }
+@media (max-width: 38rem) {
+  .search-result-link { font-size: 1.1rem; }
+  .search-options { gap: .4rem; }
+  .search-options select { flex: 1; min-width: 0; }
+}

@@ -60,8 +60,8 @@ test('typographic studies and link glyphs are decorative; controls have textual 
     assert.match(index, new RegExp(`<span class="category-label">${category.label}</span><span class="fold" aria-hidden="true">`));
   }
   assert.equal([...index.matchAll(/class="link-point" aria-hidden="true"/g)].length, destinations.length);
-  assert.match(index, /class="search-toggle icon-button"[^>]*aria-label="Find a page"[^>]*hidden/);
-  assert.match(index, /id="page-status" role="status" aria-live="polite"/);
+  assert.match(index, /class="search-toggle icon-button"[^>]*aria-label="Search all sites"[^>]*hidden/);
+  assert.match(index, /id="page-status"[^>]*role="status" aria-live="polite"/);
 });
 
 test('labels are escaped as text, including markup and attribute delimiters', () => {
