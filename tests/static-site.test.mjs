@@ -117,7 +117,8 @@ test('homepage keeps native Home beside the theme control in its existing tools'
   assert.equal((index.match(/class="site-home"/g) || []).length, 1);
   assert.doesNotMatch(index, /site-home-dock/);
   assert.match(index, /<div class="index-tools">[\s\S]*?<span class="site-utility-pair"><a class="site-home"[^>]*aria-label="Home — jehlp.net"[\s\S]*?<\/a><button[^>]*data-theme-toggle/);
-  for (const asset of ['base.css', 'theme.js']) assert.ok(index.includes(`${asset}?v=20260930-header-home`));
+  assert.ok(index.includes('base.css?v=20260930-mobile-header'));
+  assert.ok(index.includes('theme.js?v=20260930-header-home'));
   const css = await readFile(new URL('../assets/styles.css', import.meta.url), 'utf8');
   assert.match(css, /\.page-search \{[^}]*min-width: 0;[^}]*flex: 0 1 24rem;/);
   assert.match(css, /\.page-search input \{[^}]*min-width: 0;/);
