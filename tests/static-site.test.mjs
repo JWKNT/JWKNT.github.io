@@ -47,7 +47,7 @@ test('metadata and disclosure state follow the authored categories', () => {
 });
 
 test('the index has no visible site title, masthead or description', () => {
-  const body = index.split('<body>')[1].split('</body>')[0];
+  const body = index.split('<body>')[1].split('</body>')[0].replace(/<nav class="site-home-dock"[^>]*>[\s\S]*?<\/nav>/, '');
   assert.doesNotMatch(body, /<h[1-6]\b|<header\b|masthead|jehlp\.net|jwknt\.github\.io/i);
   assert.doesNotMatch(body, /class="(?:project-description|category-description|intro|hero)"/);
   assert.match(index, /<title>jehlp\.net<\/title>/);
@@ -111,4 +111,11 @@ test('24 categories and 480 destinations use the same renderer without a fixed c
   assert.equal([...html.matchAll(/data-category="category-\d+" open>/g)].length, 4);
   assert.match(html, /data-category="category-23">\s*<summary>/);
   assert.match(html, /data-project="page-23-19"><a href="\/page-23-19\/">Page 23 \/ 19/);
+});
+
+test('homepage keeps one native persistent Home route with accessible identity', () => {
+  assert.equal((index.match(/class="site-home-dock"/g) || []).length, 1);
+  assert.match(index, /<body>\s*<nav class="site-home-dock" aria-label="Site">/);
+  assert.match(index, /class="site-home" href="https:\/\/jehlp\.net\/" aria-label="Home · jehlp.net"/);
+  for (const asset of ['base.css', 'theme.js']) assert.ok(index.includes(`${asset}?v=20260930-home`));
 });
