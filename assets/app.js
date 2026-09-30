@@ -26,6 +26,16 @@ function loadEngine(query) {
   }
   return enginePromises.get(language);
 }
+function rememberSearch(open = true) {
+  // This history entry survives a cold Back navigation without putting queries
+  // in a URL, local storage, a server request, or an extra browser-history entry.
+  try {
+    const state = history.state && typeof history.state === 'object' ? { ...history.state } : {};
+    if (open) state.jehlpSearch = { open, query: input.value, site: siteSelect.value };
+    else delete state.jehlpSearch;
+    history.replaceState(state, '');
+  } catch { /* Search remains usable if history state is unavailable. */ }
+}
 function setBusy(value) {
   busy = value;
   panel.setAttribute('aria-busy', String(value));
@@ -39,16 +49,19 @@ function idle() {
   status.textContent = ''; setBusy(false);
   directory.hidden = false;
   hint.hidden = false;
+  if (!form.hidden) rememberSearch();
 }
 function openSearch() {
   form.hidden = false; panel.hidden = false;
   toggle.setAttribute('aria-expanded', 'true');
   input.focus();
+  rememberSearch();
 }
 function closeSearch() {
   input.value = ''; siteSelect.value = ''; idle();
   form.hidden = true; panel.hidden = true;
   toggle.setAttribute('aria-expanded', 'false'); toggle.focus();
+  rememberSearch(false);
 }
 function excerpt(html) {
   const p = document.createElement('p'); p.className = 'search-excerpt';
@@ -96,6 +109,7 @@ async function runSearch() {
   clearTimeout(timer);
   const query = normalizeQuery(input.value);
   if (!query) { idle(); return; }
+  rememberSearch();
   const token = ++sequence;
   matches = []; shown = 0;
   list.replaceChildren(); more.hidden = true; retry.hidden = true; hint.hidden = true;
@@ -154,3 +168,12 @@ document.addEventListener('keydown', event => {
     event.preventDefault(); list.querySelector('a')?.focus();
   }
 });
+
+const previousSearch = history.state?.jehlpSearch;
+if (previousSearch?.open) {
+  input.value = typeof previousSearch.query === 'string' ? previousSearch.query : '';
+  siteSelect.value = typeof previousSearch.site === 'string' ? previousSearch.site : '';
+  if (siteSelect.selectedIndex < 0) siteSelect.value = '';
+  openSearch();
+  if (normalizeQuery(input.value)) runSearch();
+}

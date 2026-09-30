@@ -86,8 +86,9 @@ Pagefind 1.5.2 builds compressed, content-addressed shards. The homepage loads n
 search corpus on ordinary visits; it imports the engine after a query and loads
 only needed index chunks and 12 result excerpts at a time. English and Japanese
 copy use separate language indexes selected by query script, so Japanese words inside
-sentences work without changing their display text. Query matching is case- and
-accent-insensitive, with title weighting and optional site filters. Search runs
+sentences work without changing their display text. The current history entry preserves the query/filter across Back navigation;
+closing search clears it. Queries are not put in the URL or local storage.
+Query matching is case- and accent-insensitive, with title weighting and optional site filters. Search runs
 entirely in the browser; query text is not sent to an external search provider.
 
 `lib/search-runtime.mjs` applies a version-checked, small compatibility patch to

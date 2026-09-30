@@ -11,11 +11,12 @@ const settle = () => new Promise(resolve => setTimeout(resolve, 25));
 const result = (title = 'Rare result', url = '/readers/the-cat/#story/p-021') => ({
   data: async () => ({ url, meta: { title, site: 'Readers' }, excerpt: 'A <mark>rare</mark> body passage &amp; a safe &lt;img onerror=evil&gt;.' }),
 });
-function setup(search) {
+function setup(search, savedState) {
   const dom = new JSDOM(html, { url: 'https://jehlp.net/', runScripts: 'outside-only' });
   const window = dom.window;
   Object.assign(window, { normalizeQuery, safeResultURL, excerptParts });
   window.loadTestModule = async () => ({ createInstance: () => ({ init: async () => {}, destroy: async () => {}, mergeIndex: async () => {}, search }) });
+  if (savedState) window.history.replaceState(savedState, '');
   window.eval(source);
   const document = window.document;
   const $ = selector => document.querySelector(selector);
@@ -104,4 +105,20 @@ test('pagination bounds rendered results and moves keyboard focus to newly loade
     assert.equal(t.document.activeElement.textContent, 'Result 12');
     assert.equal(t.$('#search-more').hidden, true);
   } finally { t.dom.window.close(); }
+});
+
+test('a cold Back navigation restores the search without exposing query text in the URL', async () => {
+  const first = setup(async () => ({ results: [result()] }));
+  let second;
+  try {
+    first.$('.search-toggle').click(); first.$('#search-site').value = 'Readers'; first.submit('rare'); await settle();
+    assert.equal(first.window.location.href, 'https://jehlp.net/');
+    second = setup(async () => ({ results: [result()] }), first.window.history.state); await settle();
+    assert.equal(second.$('#page-query').value, 'rare');
+    assert.equal(second.$('#search-site').value, 'Readers');
+    assert.equal(second.$('#search-panel').hidden, false);
+    assert.equal(second.$('#search-results').children.length, 1);
+    second.$('.search-toggle').click();
+    assert.equal(second.window.history.state.jehlpSearch, undefined);
+  } finally { first.dom.window.close(); second?.dom.window.close(); }
 });
