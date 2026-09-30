@@ -110,9 +110,39 @@ body { margin: 0; }
   text-decoration: none;
   overflow-wrap: anywhere;
 }
-.link-point { margin-left: auto; flex: none; color: var(--atlas-accent); font: 1rem/1.5 var(--ui, var(--serif)); opacity: 0; }
+/* Draw the direction mark: Unicode arrows become colored emoji on iOS. */
+.link-point {
+  position: relative;
+  align-self: center;
+  width: 1rem;
+  height: 1rem;
+  margin-left: auto;
+  flex: none;
+  color: var(--muted);
+  opacity: 0;
+}
+.link-point::before, .link-point::after {
+  content: '';
+  position: absolute;
+}
+.link-point::before {
+  inset: .25rem .25rem auto auto;
+  width: .5rem;
+  height: .5rem;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+}
+.link-point::after {
+  top: .25rem;
+  right: .25rem;
+  width: .7071rem;
+  height: 1px;
+  background: currentColor;
+  transform: rotate(-45deg);
+  transform-origin: right center;
+}
 .page-links a:hover, .page-links a:focus-visible { color: var(--atlas-accent); }
-.page-links a:hover .link-point, .page-links a:focus-visible .link-point { opacity: 1; }
+.page-links a:hover .link-point, .page-links a:focus-visible .link-point { color: currentColor; opacity: 1; }
 .atlas-category summary:hover .category-label, .atlas-category summary:focus-visible .category-label { color: var(--atlas-accent); }
 .atlas-category summary:focus-visible { outline-offset: .25rem; }
 
