@@ -132,7 +132,7 @@ async function runSearch() {
   }
 }
 
-// Native links/disclosures remain usable if scripts or the search index fail.
+// Native links remain usable if scripts or the search index fail.
 toggle.hidden = false;
 toggle.addEventListener('click', () => form.hidden ? openSearch() : closeSearch());
 input.addEventListener('input', () => {

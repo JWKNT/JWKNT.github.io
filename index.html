@@ -13,8 +13,8 @@
     <title>jehlp.net</title>
     <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/home.png" type="image/png">
     <script src="https://jehlp.net/site-theme/v2/theme.js?v=20260930-header-home"></script>
-    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20260930-mobile-header">
-    <link rel="stylesheet" href="assets/styles.css?v=20260930-header-home">
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261001-utilities">
+    <link rel="stylesheet" href="assets/styles.css?v=20261001-utilities">
     <script src="assets/app.js?v=20260930-search-back" type="module"></script>
   </head>
   <body>
@@ -25,8 +25,7 @@
           <label class="sr-only" for="page-query">Search all sites</label>
           <input id="page-query" type="search" autocomplete="off" placeholder="Search all sites" aria-controls="search-results" aria-describedby="search-hint" enterkeyhint="search">
         </form>
-        <button class="search-toggle icon-button" type="button" aria-label="Search all sites" aria-expanded="false" aria-controls="page-query search-panel" title="Search all sites (/)" hidden><span aria-hidden="true">/</span></button>
-        <span class="site-utility-pair"><a class="site-home" href="https://jehlp.net/" aria-label="Home — jehlp.net" title="Home — jehlp.net"><span aria-hidden="true">✳</span></a><button class="theme-toggle icon-button" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button></span>
+        <span class="site-utility-pair"><button class="search-toggle site-search" type="button" aria-label="Search all sites" aria-expanded="false" aria-controls="page-query search-panel" title="Search all sites (/)" hidden><span aria-hidden="true">/</span></button><a class="site-home" href="https://jehlp.net/" aria-label="Home — jehlp.net" title="Home — jehlp.net"><span aria-hidden="true">✳</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button></span>
       </div>
       <section id="search-panel" class="search-panel" aria-label="Site search results" aria-busy="false" hidden>
         <div class="search-options">
@@ -40,52 +39,52 @@
         <button id="search-retry" type="button" hidden>Try again</button>
       </section>
       <nav class="directory" id="directory" aria-label="Pages" tabindex="-1">
-        <details class="atlas-category" data-category="reading" open>
-          <summary>
+        <section class="atlas-category" data-category="reading" aria-labelledby="category-reading">
+          <h2 id="category-reading" class="category-heading">
             <span class="type-study study-parentheses" aria-hidden="true"><span class="glyph glyph-a">(</span><span class="glyph glyph-b">)</span><span class="glyph glyph-c">)</span><i></i></span>
-            <span class="category-label">Reading</span><span class="fold" aria-hidden="true"></span>
-          </summary>
+            <span class="category-label">Reading</span>
+          </h2>
           <ul class="page-links">
             <li data-project="albatross-koukairoku"><a href="/albatross-koukairoku/">Albatross Koukairoku<span class="link-point" aria-hidden="true"></span></a></li>
             <li data-project="black-sheep-town"><a href="/black-sheep-town/">Black Sheep Town<span class="link-point" aria-hidden="true"></span></a></li>
             <li data-project="readers"><a href="/readers/">Readers<span class="link-point" aria-hidden="true"></span></a></li>
             <li data-project="links"><a href="/links/">Links<span class="link-point" aria-hidden="true"></span></a></li>
           </ul>
-        </details>
-        <details class="atlas-category" data-category="data" open>
-          <summary>
+        </section>
+        <section class="atlas-category" data-category="data" aria-labelledby="category-data">
+          <h2 id="category-data" class="category-heading">
             <span class="type-study study-constellation" aria-hidden="true"><span class="glyph glyph-a">∴</span><span class="glyph glyph-b">∴</span><i></i></span>
-            <span class="category-label">Data</span><span class="fold" aria-hidden="true"></span>
-          </summary>
+            <span class="category-label">Data</span>
+          </h2>
           <ul class="page-links">
             <li data-project="profile"><a href="/profile/">Profile<span class="link-point" aria-hidden="true"></span></a></li>
             <li data-project="mystery-report"><a href="/mystery-report/">Mystery Consensus<span class="link-point" aria-hidden="true"></span></a></li>
             <li data-project="bl2"><a href="/bl2/">Borderlands 2 Armory<span class="link-point" aria-hidden="true"></span></a></li>
             <li data-project="ngu-idle-dashboard"><a href="/ngu-idle-dashboard/">NGU Idle<span class="link-point" aria-hidden="true"></span></a></li>
           </ul>
-        </details>
-        <details class="atlas-category" data-category="tools" open>
-          <summary>
+        </section>
+        <section class="atlas-category" data-category="tools" aria-labelledby="category-tools">
+          <h2 id="category-tools" class="category-heading">
             <span class="type-study study-asterisk" aria-hidden="true"><span class="glyph glyph-a">[</span><span class="glyph glyph-b">*</span><span class="glyph glyph-c">]</span><i></i></span>
-            <span class="category-label">Tools</span><span class="fold" aria-hidden="true"></span>
-          </summary>
+            <span class="category-label">Tools</span>
+          </h2>
           <ul class="page-links">
             <li data-project="box-puzzles"><a href="/box-puzzles/">Box Logic<span class="link-point" aria-hidden="true"></span></a></li>
             <li data-project="logical-solver"><a href="/logical-solver/">Logical Solvers<span class="link-point" aria-hidden="true"></span></a></li>
             <li data-project="mtl-guide"><a href="/mtl-guide/">MTL Guide<span class="link-point" aria-hidden="true"></span></a></li>
           </ul>
-        </details>
-        <details class="atlas-category" data-category="games" open>
-          <summary>
+        </section>
+        <section class="atlas-category" data-category="games" aria-labelledby="category-games">
+          <h2 id="category-games" class="category-heading">
             <span class="type-study study-chevrons" aria-hidden="true"><span class="glyph glyph-a">›</span><span class="glyph glyph-b">›</span><i></i></span>
-            <span class="category-label">Games</span><span class="fold" aria-hidden="true"></span>
-          </summary>
+            <span class="category-label">Games</span>
+          </h2>
           <ul class="page-links">
             <li data-project="ndb-idle"><a href="/ndb-idle/">NDB Idle<span class="link-point" aria-hidden="true"></span></a></li>
             <li data-project="puzzles"><a href="/puzzles/">Puzzles<span class="link-point" aria-hidden="true"></span></a></li>
             <li data-project="baba-is-you"><a href="/baba-is-you/">Baba Is You<span class="link-point" aria-hidden="true"></span></a></li>
           </ul>
-        </details>
+        </section>
       </nav>
     </main>
   </body>

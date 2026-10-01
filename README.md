@@ -28,18 +28,17 @@ node --test tests/*.test.mjs
 ```
 
 Commit the generated `index.html` together with the authored data/source. Each
-category has a unique `id`, `label`, `mark`, `open`, and a `pages` array. Each page
+category has a unique `id`, `label`, `mark`, and a `pages` array. Each page
 has a unique `id`, `label`, and root-relative `href` ending in `/`. IDs use lowercase
 letters, digits, and hyphens. Marks are `parentheses`, `constellation`, `asterisk`,
 `section`, or `chevrons`; extend the named mark registry in `lib/directory.mjs` and the local
 study CSS for a genuinely new motif. Categories can reuse existing marks.
 
-Add future categories with `open: false` when expansion would make the initial
-view too long. There is no category or page-count limit in the generator. All
-links are present in static HTML; native disclosures still work without scripts.
-The slash control opens full-text search across the authored public sites. `/`
-opens search; Escape clears and closes it, returning focus to its button. Clearing
-a query restores the directory without changing its native disclosure states.
+All categories are permanent, labeled sections. Their destination links stay visible
+without scripts; do not restore disclosures or collapse controls. There is no
+category or page-count limit in the generator. The slash control opens full-text
+search across the authored public sites. `/` opens search; Escape clears and closes
+it, returning focus to its button. Clearing a query restores the full directory.
 
 The directory is authored only: no automatic GitHub discovery or Other category.
 Add new destinations explicitly to the JSON with their intended category and name.
@@ -50,7 +49,7 @@ is generated from the labels, not a fixed list of the original categories.
 
 ## Verification and release
 
-Check 390px/1440px, light/dark, 200% text, native disclosure keyboard behavior,
+Check 390px/1440px, light/dark, 200% text, heading/link keyboard behavior,
 search and empty results, Escape/focus restoration, no-JS, print, and a much
 larger category fixture. Node tests cover rendering, schema rejection, and the
 absence of discovery—not browser accessibility. Keep CNAME and canonical metadata intact.
