@@ -9,7 +9,7 @@
     ]
   },
   {
-    "id": "mathematics", "label": "Mathematics", "mark": "graph",
+    "id": "mathematics", "label": "Mathematics", "mark": "continuum",
     "pages": [
       { "id": "erdos1016", "label": "Erdős 1016", "href": "/erdos1016/" }
     ]

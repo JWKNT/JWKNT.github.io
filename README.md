@@ -32,7 +32,7 @@ corpus into one artifact; the checked-in homepage is a branch-mode fallback. Eac
 category has a unique `id`, `label`, `mark`, and a `pages` array. Each page
 has a unique `id`, `label`, and root-relative `href` ending in `/`. IDs use lowercase
 letters, digits, and hyphens. Marks are `parentheses`, `constellation`, `asterisk`,
-`section`, `graph`, or `chevrons`; extend the named mark registry in `lib/directory.mjs` and the local
+`section`, `continuum`, or `chevrons`; extend the named mark registry in `lib/directory.mjs` and the local
 study CSS for a genuinely new motif. Categories can reuse existing marks.
 
 All categories are permanent, labeled sections. Their destination links stay visible
@@ -173,4 +173,4 @@ color modes. Useful published-body checks include `choralcelo`,
 `narcotherapeutic`, `"transcendent mass"`, `"ripening cherry tomatoes"`,
 `"traveler must alternately obtain"`, and Japanese `学校` / `日本`.
 
-The Erdős 1016 entry under Reading has a decorative monochrome cycle-graph symbol. Optional destination symbols are selected from the renderer’s closed symbol map and do not alter accessible link names.
+Mathematics has an abstract continuous-loop category mark, distinct from the Erdős guide’s graph icon. Its destination links remain plain text, as in the other categories.
