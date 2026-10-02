@@ -149,3 +149,14 @@ test('long VN chapters are divided into bounded, line-addressable passages', asy
   assert.ok(passages.every(record => record.content.split(/\s+/).length <= 350));
   for (let line = 1; line <= 50; line += 1) assert.ok(passages.some(record => record.content.includes(`Unique line ${line}.`)));
 });
+
+test('adapter selection follows authored roots, including one VN without the other', async () => {
+  const sources = fixture();
+  const requests = [], records = [];
+  const read = async path => { requests.push(path); return sources.get(path); };
+  const result = await collectDynamicRecords({ paths: ['/albatross-koukairoku/'], getJSON: read, getText: read, addRecord: async record => records.push(record) });
+  assert.deepEqual(Object.keys(result.coverage), ['albatross-koukairoku']);
+  assert.ok(requests.every(path => path.startsWith('/albatross-koukairoku/')));
+  assert.ok(records.length > 0);
+  assert.deepEqual(result.htmlPaths, []);
+});

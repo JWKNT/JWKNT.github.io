@@ -3,7 +3,9 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import * as pagefind from 'pagefind';
-import { ORIGIN, extractPage, collectReaders, splitSearchLanguages } from '../lib/search-content.mjs';
+import { ORIGIN, collectReaders, splitSearchLanguages } from '../lib/search-content.mjs';
+import { crawlPublishedPages } from '../lib/search-crawl.mjs';
+import { validateSearchCoverage } from '../lib/search-coverage.mjs';
 import { hardenPagefind } from '../lib/search-runtime.mjs';
 import { collectAppCopy } from '../lib/search-app-copy.mjs';
 import { collectDynamicRecords } from '../lib/search-adapters.mjs';
@@ -51,14 +53,16 @@ const { index, errors } = await pagefind.createIndex({ writePlayground: false })
 const { index: japanese } = await pagefind.createIndex({ writePlayground: false });
 if (errors?.length || !index) throw new Error(errors?.join('\n') || 'Pagefind did not initialize');
 const counts = {};
+const languages = {};
+const languageInputs = { en: 0, ja: 0 };
 const records = new Map();
 const seenRecords = new Set();
 let words = 0;
 async function addRecord(record) {
-  record.site = projects.find(project => project.id === record.site)?.label || record.site;
   if (!record.content?.trim() || !record.title || !record.site) throw new Error(`Invalid record: ${record.url}`);
   const url = new URL(record.url, ORIGIN);
   if (url.origin !== ORIGIN || !paths.some(path => url.pathname.startsWith(path))) throw new Error(`Invalid result URL: ${record.url}`);
+  record.site = projects.filter(project => url.pathname.startsWith(project.href)).sort((a, b) => b.href.length - a.href.length)[0].label;
   // Some apps expose data in-place rather than giving every item a route.
   // Merge those records at their real target instead of inventing deep links.
   const prior = records.get(record.url);
@@ -67,40 +71,20 @@ async function addRecord(record) {
 }
 
 try {
-  // Each root is authored in the homepage, not discovered from the account.
-  // Traverse only linked HTML beneath those roots; never outbound references.
-  const queue = projects.map(p => p.href), visited = new Set();
-  while (queue.length) {
-    const batch = queue.splice(0, 6).filter(path => !visited.has(path));
-    batch.forEach(path => visited.add(path));
-    if (visited.size > 4000) throw new Error('Public-page crawl exceeded its safety limit');
-    const pages = await Promise.all(batch.map(async path => {
-      const project = projects.find(p => path.startsWith(p.href));
-      return extractPage(await getText(path), path, project, paths);
-    }));
-    for (const page of pages) {
-      await addRecord(page.record);
-      for (const path of page.links) if (!visited.has(path) && !queue.includes(path)) queue.push(path);
-    }
-  }
+  const visited = await crawlPublishedPages({ projects, getText, addRecord });
   console.log(`Indexed ${visited.size} published HTML pages`);
-  const readers = await collectReaders({ getJSON, addRecord });
+  const readers = paths.includes('/readers/') ? await collectReaders({ getJSON, addRecord }) : { books: 0, chapters: 0, annotations: 0 };
   console.log(`Indexed ${readers.books} Readers books / ${readers.chapters} chapters`);
-  const dynamic = await collectDynamicRecords({ getJSON, getText, addRecord });
-  for (let start = 0; start < dynamic.htmlPaths.length; start += 6) {
-    const pages = await Promise.all(dynamic.htmlPaths.slice(start, start + 6).filter(path => !visited.has(path)).map(async path => {
-      visited.add(path);
-      return extractPage(await getText(path), path, projects.find(p => path.startsWith(p.href)), paths);
-    }));
-    for (const page of pages) await addRecord(page.record);
-  }
-  const apps = await collectAppCopy({ getText, addRecord });
+  const dynamic = await collectDynamicRecords({ getJSON, getText, addRecord, paths });
+  await crawlPublishedPages({ projects, getText, addRecord, seeds: dynamic.htmlPaths, visited });
+  const apps = await collectAppCopy({ getText, addRecord, paths });
   for (const record of records.values()) {
     const content = splitSearchLanguages(record);
     for (const [engine, language, text] of [[index, 'en', content.english], [japanese, 'ja', content.japanese]]) {
       if (!text.trim()) continue;
       const result = await engine.addCustomRecord({ url: record.url, content: text, language, meta: { title: record.title, site: record.site }, filters: { site: [record.site] } });
       if (result.errors?.length) throw new Error(result.errors.join('\n'));
+      languageInputs[language]++;
     }
     seenRecords.add(record.url);
     counts[record.site] = (counts[record.site] || 0) + 1;
@@ -109,15 +93,21 @@ try {
   for (const [engine, folder] of [[index, 'pagefind'], [japanese, 'pagefind-ja']]) {
     const result = await engine.writeFiles({ outputPath: resolve(temporary, folder) });
     if (result.errors?.length) throw new Error(result.errors.join('\n'));
+    // Pagefind may omit records without indexable tokens. Record the emitted
+    // count, not the number submitted, so legitimate empty languages validate.
+    const language = folder === 'pagefind' ? 'en' : 'ja';
+    const entry = JSON.parse(await readFile(resolve(temporary, folder, 'pagefind-entry.json'), 'utf8'));
+    languages[language] = entry.languages?.[language]?.page_count || 0;
     for (const file of ['pagefind-ui.js', 'pagefind-ui.css', 'pagefind-modular-ui.js', 'pagefind-modular-ui.css', 'pagefind-component-ui.js', 'pagefind-component-ui.css', 'pagefind-highlight.js']) await rm(resolve(temporary, folder, file), { force: true });
     for (const runtime of ['pagefind.js', 'pagefind-worker.js']) {
       const runtimePath = resolve(temporary, folder, runtime);
       await writeFile(runtimePath, hardenPagefind(await readFile(runtimePath, 'utf8')));
     }
   }
-  const coverage = { generatedAt: new Date().toISOString(), origin: ORIGIN, records: seenRecords.size, indexedWords: words, htmlPages: visited.size, readers, dynamic, apps, sites: counts,
+  const coverage = { sourceCommit: process.env.GITHUB_SHA || null, refresh: { mode: 'fresh-public-crawl', cached: useCache }, generatedAt: new Date().toISOString(), origin: ORIGIN, records: seenRecords.size, languages, languageInputs, indexedWords: words, htmlPages: visited.size, readers, dynamic, apps, sites: counts,
     limits: ['Published text and public catalogue data only; images, video/audio contents and downloads are not transcribed.', 'Live telemetry, personal game saves, private material and external linked sites are not indexed.'],
   };
+  validateSearchCoverage(coverage, directory);
   await writeFile(resolve(temporary, 'search-coverage.json'), JSON.stringify(coverage, null, 2) + '\n');
   await rm(output, { recursive: true, force: true });
   await rename(temporary, output);

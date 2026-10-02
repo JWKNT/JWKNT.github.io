@@ -19,7 +19,15 @@ function loadEngine(query) {
   if (!enginePromises.has(language)) {
     const promise = import('../pagefind/pagefind.js').then(async module => {
       const engine = module.createInstance({ basePath: language === 'ja' ? '/pagefind-ja/' : '/pagefind/', baseUrl: '/', excerptLength: 38, metaCacheTag: String(Date.now()), ranking: { metaWeights: { title: 5, site: 2 } } });
-      await engine.init();
+      try { await engine.init(); }
+      catch (error) {
+        // A valid fresh corpus may contain no text in this language after roots
+        // are retired. Only this exact pinned-engine condition means no results;
+        // network, metadata and shard failures must still offer Retry.
+        if (error?.message !== 'Pagefind Error: No language indexes found.') throw error;
+        await engine.destroy();
+        return { search: async () => ({ results: [] }) };
+      }
       return engine;
     }).catch(error => { enginePromises.delete(language); throw error; });
     enginePromises.set(language, promise);

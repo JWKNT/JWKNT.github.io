@@ -1,22 +1,33 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
-import { marks, renderDirectory, validateDirectory } from '../lib/directory.mjs';
+import { marks, renderDirectory, validateDirectory, escapeHtml } from '../lib/directory.mjs';
 
 const categories = JSON.parse(await readFile(new URL('../data/directory.json', import.meta.url), 'utf8'));
 const index = await readFile(new URL('../index.html', import.meta.url), 'utf8');
-const copy = () => structuredClone(categories);
-const destinations = ['albatross-koukairoku', 'black-sheep-town', 'profile', 'mystery-report', 'bl2', 'ngu-idle-dashboard', 'ndb-idle', 'box-puzzles', 'logical-solver', 'mtl-guide', 'links', 'puzzles', 'baba-is-you', 'readers'];
+// Fixed fixtures exercise layout/schema independently of the changing public
+// directory. New or retired sites must not require editing the test registry.
+const fixtureCategories = [
+  { id: 'reading', label: 'Reading', mark: 'parentheses', pages: [{ id: 'example', label: 'Example', href: '/example/' }] },
+  { id: 'data', label: 'Data', mark: 'constellation', pages: [{ id: 'data-page', label: 'Data page', href: '/data-page/' }] },
+  { id: 'tools', label: 'Tools', mark: 'asterisk', pages: [{ id: 'tool', label: 'Tool', href: '/tool/' }] },
+  { id: 'games', label: 'Games', mark: 'chevrons', pages: [
+    { id: 'ndb-idle', label: 'NDB Idle', href: '/ndb-idle/' },
+    { id: 'puzzles', label: 'Puzzles', href: '/puzzles/' },
+    { id: 'baba-is-you', label: 'Baba Is You', href: '/baba-is-you/' },
+  ] },
+];
+const copy = () => structuredClone(fixtureCategories);
+const destinations = categories.flatMap(category => category.pages);
 
-test('checked-in homepage is the deterministic directory build', () => {
+test('generated homepage is the deterministic directory build', () => {
   assert.equal(index, renderDirectory(categories), 'Run node build.mjs after changing the directory or renderer.');
-  assert.equal(renderDirectory(categories), renderDirectory(copy()));
+  assert.equal(renderDirectory(fixtureCategories), renderDirectory(copy()));
 });
 
 test('all authored destinations are present in the always-visible semantic sections', () => {
-  assert.deepEqual(categories.flatMap(category => category.pages.map(page => page.id)).sort(), [...destinations].sort());
   assert.equal([...index.matchAll(/<li data-project=/g)].length, destinations.length);
-  for (const destination of destinations) assert.match(index, new RegExp(`<li data-project="${destination}"><a href="/${destination}/">`));
+  for (const destination of destinations) assert.ok(index.includes(`<li data-project="${destination.id}"><a href="${destination.href}">`));
   for (const category of categories) assert.match(index, new RegExp(`<section class="atlas-category" data-category="${category.id}" aria-labelledby="category-${category.id}">\\s*<h2 id="category-${category.id}" class="category-heading">`));
   assert.match(index, /class="skip-link" href="#directory"/);
   assert.match(index, /site-theme\/v2\/base\.css/);
@@ -25,7 +36,7 @@ test('all authored destinations are present in the always-visible semantic secti
 });
 
 test('games and recordings share a compact category without hiding destinations', () => {
-  const games = categories.find(category => category.id === 'games');
+  const games = fixtureCategories.find(category => category.id === 'games');
   assert.deepEqual(games.pages.map(page => page.id), ['ndb-idle', 'puzzles', 'baba-is-you']);
   assert.equal(games.pages.find(page => page.id === 'baba-is-you').label, 'Baba Is You');
 });
@@ -57,7 +68,7 @@ test('the index has no visible site title, masthead or description', () => {
 test('typographic studies and link glyphs are decorative; controls have textual names', () => {
   for (const category of categories) {
     assert.match(index, new RegExp(`class="type-study study-${category.mark}" aria-hidden="true"`));
-    assert.match(index, new RegExp(`<span class="category-label">${category.label}</span>`));
+    assert.ok(index.includes(`<span class="category-label">${escapeHtml(category.label)}</span>`));
   }
   assert.equal([...index.matchAll(/class="link-point" aria-hidden="true"/g)].length, destinations.length);
   assert.match(index, /class="search-toggle site-search"[^>]*aria-label="Search all sites"[^>]*hidden/);
@@ -131,4 +142,13 @@ test('homepage sections have no collapse semantics, handlers, or collapsed style
   assert.doesNotMatch(css, /\[open\]|details-content|summary|\.fold/);
   assert.doesNotMatch(css, /\.icon-button|\.search-toggle \{/);
   assert.equal((index.match(/<h2 id="category-/g) || []).length, categories.length);
+});
+
+test('optional graph symbols remain decorative without changing destination names', () => {
+  const fixture = copy();
+  fixture[0].pages.push({ id: 'erdos1016', label: 'Erdős 1016', href: '/erdos1016/', symbol: 'graph' });
+  const html = renderDirectory(fixture);
+  assert.match(html, /<li data-project="erdos1016"><a href="\/erdos1016\/">Erdős 1016<svg class="destination-symbol" aria-hidden="true" focusable="false"/);
+  fixture[0].pages[0].symbol = 'unrecognized';
+  assert.throws(() => validateDirectory(fixture), /Invalid destination symbol/);
 });

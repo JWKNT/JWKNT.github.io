@@ -3,7 +3,9 @@ import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import { JSDOM } from 'jsdom';
 import { normalizeQuery, safeResultURL, excerptParts } from '../assets/search-view.mjs';
-const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+import { renderDirectory } from '../lib/directory.mjs';
+// Stable UI fixture; public directory additions/removals must not change tests.
+const html = renderDirectory([{ id: 'reading', label: 'Reading', mark: 'parentheses', pages: [{ id: 'readers', label: 'Readers', href: '/readers/' }] }]);
 const source = (await readFile(new URL('../assets/app.js', import.meta.url), 'utf8'))
   .replace(/^import[^\n]+\n/, '')
   .replace("import('../pagefind/pagefind.js')", 'window.loadTestModule()');
@@ -121,4 +123,17 @@ test('a cold Back navigation restores the search without exposing query text in 
     second.$('.search-toggle').click();
     assert.equal(second.window.history.state.jehlpSearch, undefined);
   } finally { first.dom.window.close(); second?.dom.window.close(); }
+});
+
+
+test('a deliberately empty language is no results, while network errors remain retryable', async () => {
+  const t = setup(async () => ({ results: [] }));
+  try {
+    t.window.loadTestModule = async () => ({ createInstance: () => ({
+      init: async () => { throw new Error('Pagefind Error: No language indexes found.'); }, destroy: async () => {},
+    }) });
+    t.$('.search-toggle').click(); t.submit('学校'); await settle();
+    assert.match(t.$('#page-status').textContent, /No results/);
+    assert.equal(t.$('#search-retry').hidden, true);
+  } finally { t.dom.window.close(); }
 });

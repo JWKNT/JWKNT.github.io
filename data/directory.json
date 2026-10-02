@@ -5,7 +5,8 @@
       { "id": "albatross-koukairoku", "label": "Albatross Koukairoku", "href": "/albatross-koukairoku/" },
       { "id": "black-sheep-town", "label": "Black Sheep Town", "href": "/black-sheep-town/" },
       { "id": "readers", "label": "Readers", "href": "/readers/" },
-      { "id": "links", "label": "Links", "href": "/links/" }
+      { "id": "links", "label": "Links", "href": "/links/" },
+      { "id": "erdos1016", "label": "Erdős 1016", "href": "/erdos1016/", "symbol": "graph" }
     ]
   },
   {

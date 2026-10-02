@@ -1,0 +1,75 @@
+name: Refresh search and publish homepage
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Offset from the top-of-hour rush. Subsites deploy independently; this
+    # discovers their new public pages without per-repository hooks or secrets.
+    - cron: '23 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Never overlap homepage deployments. A failed crawl leaves the last complete
+# deployment live, and the next hourly run retries from fresh public inputs.
+concurrency:
+  group: homepage-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    outputs:
+      artifact-name: ${{ steps.artifact.outputs.name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm test
+      - name: Build homepage and fresh public search corpus
+        run: npm run build:site
+      - name: Validate complete artifact and source revision
+        run: node tools/verify-search-artifact.mjs
+      - name: Name this build artifact
+        id: artifact
+        run: echo "name=github-pages-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+          name: ${{ steps.artifact.outputs.name }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Require the Actions publishing source
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          source=$(gh api "repos/$REPOSITORY/pages" --jq .build_type)
+          if [ "$source" != workflow ]; then
+            echo '::error::Choose Settings > Pages > Source > GitHub Actions once before enabling automated homepage publishing. Branch publishing can overwrite this artifact.'
+            exit 1
+          fi
+      - uses: actions/configure-pages@v5
+      - name: Deploy complete homepage and search snapshot
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: ${{ needs.build.outputs.artifact-name }}

@@ -7,7 +7,8 @@
     "build:search": "node tools/build-search.mjs",
     "build:site": "node build.mjs && node tools/build-search.mjs",
     "test": "node --test tests/*.test.mjs",
-    "refresh:search": "node build.mjs && node tools/build-search.mjs && node tools/publish-search.mjs"
+    "refresh:search": "node build.mjs && node tools/build-search.mjs && node tools/publish-search.mjs",
+    "pretest": "node build.mjs"
   },
   "devDependencies": {
     "acorn": "8.18.0",
