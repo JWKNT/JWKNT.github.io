@@ -144,11 +144,12 @@ test('homepage sections have no collapse semantics, handlers, or collapsed style
   assert.equal((index.match(/<h2 id="category-/g) || []).length, categories.length);
 });
 
-test('optional graph symbols remain decorative without changing destination names', () => {
-  const fixture = copy();
-  fixture[0].pages.push({ id: 'erdos1016', label: 'Erdős 1016', href: '/erdos1016/', symbol: 'graph' });
-  const html = renderDirectory(fixture);
-  assert.match(html, /<li data-project="erdos1016"><a href="\/erdos1016\/">Erdős 1016<svg class="destination-symbol" aria-hidden="true" focusable="false"/);
-  fixture[0].pages[0].symbol = 'unrecognized';
-  assert.throws(() => validateDirectory(fixture), /Invalid destination symbol/);
+test('Mathematics has a category graph mark and a plain Erdős destination', () => {
+  const mathematics = categories.find(category => category.id === 'mathematics');
+  assert.equal(mathematics.mark, 'graph');
+  assert.deepEqual(mathematics.pages, [{ id: 'erdos1016', label: 'Erdős 1016', href: '/erdos1016/' }]);
+  assert.ok(!categories.find(category => category.id === 'reading').pages.some(page => page.id === 'erdos1016'));
+  assert.match(index, /class="type-study study-graph" aria-hidden="true"><svg class="graph-study" aria-hidden="true" focusable="false"/);
+  assert.match(index, /<li data-project="erdos1016"><a href="\/erdos1016\/">Erdős 1016<span class="link-point"/);
+  assert.doesNotMatch(index, /destination-symbol/);
 });

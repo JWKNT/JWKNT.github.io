@@ -32,7 +32,7 @@ corpus into one artifact; the checked-in homepage is a branch-mode fallback. Eac
 category has a unique `id`, `label`, `mark`, and a `pages` array. Each page
 has a unique `id`, `label`, and root-relative `href` ending in `/`. IDs use lowercase
 letters, digits, and hyphens. Marks are `parentheses`, `constellation`, `asterisk`,
-`section`, or `chevrons`; extend the named mark registry in `lib/directory.mjs` and the local
+`section`, `graph`, or `chevrons`; extend the named mark registry in `lib/directory.mjs` and the local
 study CSS for a genuinely new motif. Categories can reuse existing marks.
 
 All categories are permanent, labeled sections. Their destination links stay visible
