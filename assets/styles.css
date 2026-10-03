@@ -84,37 +84,7 @@ body { margin: 0; }
   text-decoration: none;
   overflow-wrap: anywhere;
 }
-/* Draw the direction mark: Unicode arrows become colored emoji on iOS. */
-.link-point {
-  position: relative;
-  align-self: center;
-  width: 1rem;
-  height: 1rem;
-  margin-left: auto;
-  flex: none;
-  color: var(--muted);
-  opacity: 0;
-}
-.link-point::before, .link-point::after {
-  content: '';
-  position: absolute;
-}
-.link-point::before {
-  inset: .25rem .25rem auto auto;
-  width: .5rem;
-  height: .5rem;
-  border-top: 1px solid currentColor;
-  border-right: 1px solid currentColor;
-}
-.link-point::after {
-  top: .25rem;
-  right: .25rem;
-  width: .7071rem;
-  height: 1px;
-  background: currentColor;
-  transform: rotate(-45deg);
-  transform-origin: right center;
-}
+.link-point { align-self: center; margin-left: auto; color: var(--muted); opacity: 0; }
 .page-links a:hover, .page-links a:focus-visible { color: var(--atlas-accent); }
 .page-links a:hover .link-point, .page-links a:focus-visible .link-point { color: currentColor; opacity: 1; }
 
@@ -203,7 +173,8 @@ body { margin: 0; }
 .search-panel { max-width: 58rem; margin: 0 auto 2rem; }
 .search-options { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
 .search-options label { font-size: .875rem; color: var(--muted); }
-.search-options select { max-width: 100%; min-height: 2.75rem; font: .875rem/1.5 var(--ui, var(--serif)); }
+.search-options select, .search-options .ui-select { width: min(100%, 18rem); min-width: 0; }
+.search-options select { min-height: var(--control-size, 2.25rem); font: var(--text-ui, .875rem)/1.4 var(--ui, var(--serif)); }
 .search-hint, .search-status { font-size: .95rem; color: var(--muted); }
 .search-status:empty { display: none; }
 .search-results { list-style: none; margin: 1.5rem 0; padding: 0; }
@@ -216,5 +187,5 @@ body { margin: 0; }
 @media (max-width: 38rem) {
   .search-result-link { font-size: 1.1rem; }
   .search-options { gap: .4rem; }
-  .search-options select { flex: 1; min-width: 0; }
+  .search-options select, .search-options .ui-select { flex: 1; min-width: 0; }
 }

@@ -137,3 +137,17 @@ test('a deliberately empty language is no results, while network errors remain r
     assert.equal(t.$('#search-retry').hidden, true);
   } finally { t.dom.window.close(); }
 });
+
+test('Escape consumed by an inner dropdown leaves search open', () => {
+  const t = setup(async () => ({ results: [] }));
+  try {
+    t.$('.search-toggle').click();
+    const control = t.$('#search-site');
+    control.addEventListener('keydown', event => event.preventDefault(), { once: true });
+    control.dispatchEvent(new t.window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }));
+    assert.equal(t.$('#search-panel').hidden, false);
+    control.dispatchEvent(new t.window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }));
+    assert.equal(t.$('#search-panel').hidden, true);
+    assert.equal(t.document.activeElement, t.$('.search-toggle'));
+  } finally { t.dom.window.close(); }
+});

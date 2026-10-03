@@ -70,7 +70,7 @@ test('typographic studies and link glyphs are decorative; controls have textual 
     assert.match(index, new RegExp(`class="type-study study-${category.mark}" aria-hidden="true"`));
     assert.ok(index.includes(`<span class="category-label">${escapeHtml(category.label)}</span>`));
   }
-  assert.equal([...index.matchAll(/class="link-point" aria-hidden="true"/g)].length, destinations.length);
+  assert.equal([...index.matchAll(/class="link-point ui-link-arrow" aria-hidden="true"/g)].length, destinations.length);
   assert.match(index, /class="search-toggle site-search"[^>]*aria-label="Search all sites"[^>]*hidden/);
   assert.match(index, /id="page-status"[^>]*role="status" aria-live="polite"/);
 });
@@ -128,7 +128,7 @@ test('homepage keeps native Home beside the theme control in its existing tools'
   assert.equal((index.match(/class="site-home"/g) || []).length, 1);
   assert.doesNotMatch(index, /site-home-dock/);
   assert.match(index, /<div class="index-tools">[\s\S]*?<span class="site-utility-pair"><button class="search-toggle site-search"[\s\S]*?<\/button><a class="site-home"[^>]*aria-label="Home — jehlp.net"[\s\S]*?<\/a><button[^>]*data-theme-toggle/);
-  assert.ok(index.includes('base.css?v=20261001-utilities'));
+  assert.ok(index.includes('base.css?v=20261003-controls'));
   assert.ok(index.includes('theme.js?v=20260930-header-home'));
   const css = await readFile(new URL('../assets/styles.css', import.meta.url), 'utf8');
   assert.match(css, /\.page-search \{[^}]*min-width: 0;[^}]*flex: 0 1 24rem;/);
@@ -150,6 +150,6 @@ test('Mathematics has an abstract category mark and a plain Erdős destination',
   assert.deepEqual(mathematics.pages, [{ id: 'erdos1016', label: 'Erdős 1016', href: '/erdos1016/' }]);
   assert.ok(!categories.find(category => category.id === 'reading').pages.some(page => page.id === 'erdos1016'));
   assert.match(index, /class="type-study study-continuum" aria-hidden="true"><svg class="continuum-study" aria-hidden="true" focusable="false"/);
-  assert.match(index, /<li data-project="erdos1016"><a href="\/erdos1016\/">Erdős 1016<span class="link-point"/);
+  assert.match(index, /<li data-project="erdos1016"><a href="\/erdos1016\/">Erdős 1016<span class="link-point ui-link-arrow"/);
   assert.doesNotMatch(index, /destination-symbol|graph-study|<circle/);
 });

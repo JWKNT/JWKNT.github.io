@@ -13,9 +13,11 @@
     <title>jehlp.net</title>
     <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/home.png" type="image/png">
     <script src="https://jehlp.net/site-theme/v2/theme.js?v=20260930-header-home"></script>
-    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261001-utilities">
-    <link rel="stylesheet" href="assets/styles.css?v=20261002-continuum">
-    <script src="assets/app.js?v=20260930-search-back" type="module"></script>
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261003-controls">
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css">
+    <script src="https://jehlp.net/site-theme/v2/components.js" defer></script>
+    <link rel="stylesheet" href="assets/styles.css?v=20261003-controls">
+    <script src="assets/app.js?v=20261003-controls" type="module"></script>
   </head>
   <body>
     <a class="skip-link" href="#directory">Skip to pages</a>
@@ -30,7 +32,7 @@
       <section id="search-panel" class="search-panel" aria-label="Site search results" aria-busy="false" hidden>
         <div class="search-options">
           <label for="search-site">Search in</label>
-          <select id="search-site"><option value="">All sites</option><option value="Albatross Koukairoku">Albatross Koukairoku</option><option value="Black Sheep Town">Black Sheep Town</option><option value="Readers">Readers</option><option value="Links">Links</option><option value="Erdős 1016">Erdős 1016</option><option value="Profile">Profile</option><option value="Mystery Consensus">Mystery Consensus</option><option value="Borderlands 2 Armory">Borderlands 2 Armory</option><option value="NGU Idle">NGU Idle</option><option value="Box Logic">Box Logic</option><option value="Logical Solvers">Logical Solvers</option><option value="MTL Guide">MTL Guide</option><option value="NDB Idle">NDB Idle</option><option value="Puzzles">Puzzles</option><option value="Baba Is You">Baba Is You</option></select>
+          <select id="search-site" data-ui-select><option value="">All sites</option><option value="Albatross Koukairoku">Albatross Koukairoku</option><option value="Black Sheep Town">Black Sheep Town</option><option value="Readers">Readers</option><option value="Links">Links</option><option value="Erdős 1016">Erdős 1016</option><option value="Profile">Profile</option><option value="Mystery Consensus">Mystery Consensus</option><option value="Borderlands 2 Armory">Borderlands 2 Armory</option><option value="NGU Idle">NGU Idle</option><option value="Box Logic">Box Logic</option><option value="Logical Solvers">Logical Solvers</option><option value="MTL Guide">MTL Guide</option><option value="NDB Idle">NDB Idle</option><option value="Puzzles">Puzzles</option><option value="Baba Is You">Baba Is You</option></select>
         </div>
         <p id="search-hint" class="search-hint">Search pages, chapters and text across the sites. Put a phrase in quotes for an exact match.</p>
         <p id="page-status" class="search-status" role="status" aria-live="polite" aria-atomic="true"></p>
@@ -45,10 +47,10 @@
             <span class="category-label">Reading</span>
           </h2>
           <ul class="page-links">
-            <li data-project="albatross-koukairoku"><a href="/albatross-koukairoku/">Albatross Koukairoku<span class="link-point" aria-hidden="true"></span></a></li>
-            <li data-project="black-sheep-town"><a href="/black-sheep-town/">Black Sheep Town<span class="link-point" aria-hidden="true"></span></a></li>
-            <li data-project="readers"><a href="/readers/">Readers<span class="link-point" aria-hidden="true"></span></a></li>
-            <li data-project="links"><a href="/links/">Links<span class="link-point" aria-hidden="true"></span></a></li>
+            <li data-project="albatross-koukairoku"><a href="/albatross-koukairoku/">Albatross Koukairoku<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
+            <li data-project="black-sheep-town"><a href="/black-sheep-town/">Black Sheep Town<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
+            <li data-project="readers"><a href="/readers/">Readers<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
+            <li data-project="links"><a href="/links/">Links<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
           </ul>
         </section>
         <section class="atlas-category" data-category="mathematics" aria-labelledby="category-mathematics">
@@ -57,7 +59,7 @@
             <span class="category-label">Mathematics</span>
           </h2>
           <ul class="page-links">
-            <li data-project="erdos1016"><a href="/erdos1016/">Erdős 1016<span class="link-point" aria-hidden="true"></span></a></li>
+            <li data-project="erdos1016"><a href="/erdos1016/">Erdős 1016<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
           </ul>
         </section>
         <section class="atlas-category" data-category="data" aria-labelledby="category-data">
@@ -66,10 +68,10 @@
             <span class="category-label">Data</span>
           </h2>
           <ul class="page-links">
-            <li data-project="profile"><a href="/profile/">Profile<span class="link-point" aria-hidden="true"></span></a></li>
-            <li data-project="mystery-report"><a href="/mystery-report/">Mystery Consensus<span class="link-point" aria-hidden="true"></span></a></li>
-            <li data-project="bl2"><a href="/bl2/">Borderlands 2 Armory<span class="link-point" aria-hidden="true"></span></a></li>
-            <li data-project="ngu-idle-dashboard"><a href="/ngu-idle-dashboard/">NGU Idle<span class="link-point" aria-hidden="true"></span></a></li>
+            <li data-project="profile"><a href="/profile/">Profile<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
+            <li data-project="mystery-report"><a href="/mystery-report/">Mystery Consensus<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
+            <li data-project="bl2"><a href="/bl2/">Borderlands 2 Armory<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
+            <li data-project="ngu-idle-dashboard"><a href="/ngu-idle-dashboard/">NGU Idle<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
           </ul>
         </section>
         <section class="atlas-category" data-category="tools" aria-labelledby="category-tools">
@@ -78,9 +80,9 @@
             <span class="category-label">Tools</span>
           </h2>
           <ul class="page-links">
-            <li data-project="box-puzzles"><a href="/box-puzzles/">Box Logic<span class="link-point" aria-hidden="true"></span></a></li>
-            <li data-project="logical-solver"><a href="/logical-solver/">Logical Solvers<span class="link-point" aria-hidden="true"></span></a></li>
-            <li data-project="mtl-guide"><a href="/mtl-guide/">MTL Guide<span class="link-point" aria-hidden="true"></span></a></li>
+            <li data-project="box-puzzles"><a href="/box-puzzles/">Box Logic<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
+            <li data-project="logical-solver"><a href="/logical-solver/">Logical Solvers<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
+            <li data-project="mtl-guide"><a href="/mtl-guide/">MTL Guide<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
           </ul>
         </section>
         <section class="atlas-category" data-category="games" aria-labelledby="category-games">
@@ -89,9 +91,9 @@
             <span class="category-label">Games</span>
           </h2>
           <ul class="page-links">
-            <li data-project="ndb-idle"><a href="/ndb-idle/">NDB Idle<span class="link-point" aria-hidden="true"></span></a></li>
-            <li data-project="puzzles"><a href="/puzzles/">Puzzles<span class="link-point" aria-hidden="true"></span></a></li>
-            <li data-project="baba-is-you"><a href="/baba-is-you/">Baba Is You<span class="link-point" aria-hidden="true"></span></a></li>
+            <li data-project="ndb-idle"><a href="/ndb-idle/">NDB Idle<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
+            <li data-project="puzzles"><a href="/puzzles/">Puzzles<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
+            <li data-project="baba-is-you"><a href="/baba-is-you/">Baba Is You<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
           </ul>
         </section>
       </nav>

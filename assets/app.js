@@ -166,7 +166,7 @@ retry.addEventListener('click', () => {
   runSearch();
 });
 document.addEventListener('keydown', event => {
-  if (event.isComposing) return;
+  if (event.defaultPrevented || event.isComposing) return;
   const editing = event.target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"])');
   if (event.key === '/' && !editing && !event.ctrlKey && !event.metaKey && !event.altKey) {
     event.preventDefault(); openSearch();
@@ -182,6 +182,7 @@ if (previousSearch?.open) {
   input.value = typeof previousSearch.query === 'string' ? previousSearch.query : '';
   siteSelect.value = typeof previousSearch.site === 'string' ? previousSearch.site : '';
   if (siteSelect.selectedIndex < 0) siteSelect.value = '';
+  window.JehlpUI?.enhance(siteSelect);
   openSearch();
   if (normalizeQuery(input.value)) runSearch();
 }
