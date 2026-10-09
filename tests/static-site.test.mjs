@@ -124,12 +124,12 @@ test('24 categories and 480 destinations use the same renderer without a fixed c
   assert.match(html, /data-project="page-23-19"><a href="\/page-23-19\/">Page 23 \/ 19/);
 });
 
-test('homepage keeps native Home beside the theme control in its existing tools', async () => {
-  assert.equal((index.match(/class="site-home"/g) || []).length, 1);
+test('homepage omits the redundant Home link and retains search and theme controls', async () => {
+  assert.equal((index.match(/class="site-home"/g) || []).length, 0);
   assert.doesNotMatch(index, /site-home-dock/);
-  assert.match(index, /<div class="index-tools">[\s\S]*?<span class="site-utility-pair"><button class="search-toggle site-search"[\s\S]*?<\/button><a class="site-home"[^>]*aria-label="Home — jehlp.net"[\s\S]*?<\/a><button[^>]*data-theme-toggle/);
+  assert.match(index, /<div class="index-tools">[\s\S]*?<span class="site-utility-pair"><button class="search-toggle site-search"[\s\S]*?<\/button><button[^>]*data-theme-toggle/);
   assert.ok(index.includes('base.css?v=20261003-controls'));
-  assert.ok(index.includes('theme.js?v=20260930-header-home'));
+  assert.ok(index.includes('theme.js?v=20261009-navigation'));
   const css = await readFile(new URL('../assets/styles.css', import.meta.url), 'utf8');
   assert.match(css, /\.page-search \{[^}]*min-width: 0;[^}]*flex: 0 1 24rem;/);
   assert.match(css, /\.page-search input \{[^}]*min-width: 0;/);
