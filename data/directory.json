@@ -28,7 +28,8 @@
     "pages": [
       { "id": "box-puzzles", "label": "Box Logic", "href": "/box-puzzles/" },
       { "id": "logical-solver", "label": "Logical Solvers", "href": "/logical-solver/" },
-      { "id": "mtl-guide", "label": "MTL Guide", "href": "/mtl-guide/" }
+      { "id": "mtl-guide", "label": "MTL Guide", "href": "/mtl-guide/" },
+      { "id": "style-library", "label": "Style Library", "href": "/style-library/" }
     ]
   },
   {
