@@ -102,7 +102,7 @@ body { margin: 0; }
   isolation: isolate;
   font-size: 16px;
 }
-.glyph { position: absolute; font-family: 'Baskerville', 'Times New Roman', serif; font-weight: 400; line-height: 1; }
+.glyph { position: absolute; font-family: var(--serif); font-weight: 400; line-height: 1; }
 .type-study i { position: absolute; width: .3em; height: .3em; background: var(--atlas-accent); border-radius: 50%; }
 /* em offsets use the study's fixed art canvas; glyph font sizes use px so
    text enlargement expands destination names without enlarging decoration. */

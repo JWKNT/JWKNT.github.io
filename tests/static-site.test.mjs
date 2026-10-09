@@ -128,8 +128,8 @@ test('homepage omits the redundant Home link and retains search and theme contro
   assert.equal((index.match(/class="site-home"/g) || []).length, 0);
   assert.doesNotMatch(index, /site-home-dock/);
   assert.match(index, /<div class="index-tools">[\s\S]*?<span class="site-utility-pair"><button class="search-toggle site-search"[\s\S]*?<\/button><button[^>]*data-theme-toggle/);
-  assert.ok(index.includes('base.css?v=20261003-controls'));
-  assert.ok(index.includes('theme.js?v=20261009-navigation'));
+  assert.ok(index.includes('base.css?v=20261009-folio-wrenfold'));
+  assert.ok(index.includes('theme.js?v=20261009-folio-wrenfold'));
   const css = await readFile(new URL('../assets/styles.css', import.meta.url), 'utf8');
   assert.match(css, /\.page-search \{[^}]*min-width: 0;[^}]*flex: 0 1 24rem;/);
   assert.match(css, /\.page-search input \{[^}]*min-width: 0;/);
@@ -152,4 +152,14 @@ test('Mathematics has an abstract category mark and a plain Erdős destination',
   assert.match(index, /class="type-study study-continuum" aria-hidden="true"><svg class="continuum-study" aria-hidden="true" focusable="false"/);
   assert.match(index, /<li data-project="erdos1016"><a href="\/erdos1016\/">Erdős 1016<span class="link-point ui-link-arrow"/);
   assert.doesNotMatch(index, /destination-symbol|graph-study|<circle/);
+});
+
+
+test('decorative studies share the reading font without changing their fixed geometry', async () => {
+  const css = await readFile(new URL('../assets/styles.css', import.meta.url), 'utf8');
+  assert.match(css, /\.glyph \{[^}]*font-family: var\(--serif\);/);
+  assert.doesNotMatch(css, /Baskerville|Palatino|Georgia/);
+  assert.match(css, /\.type-study \{[^}]*font-size: 16px;/);
+  assert.match(css, /\.study-parentheses \.glyph \{ font-size: 128px;/);
+  assert.match(index, /assets\/styles\.css\?v=20261009-folio-wrenfold/);
 });
