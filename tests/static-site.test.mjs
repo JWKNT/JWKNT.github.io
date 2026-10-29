@@ -144,13 +144,17 @@ test('homepage sections have no collapse semantics, handlers, or collapsed style
   assert.equal((index.match(/<h2 id="category-/g) || []).length, categories.length);
 });
 
-test('Mathematics has an abstract category mark and a plain Erdős destination', () => {
+test('Mathematics has an abstract category mark and plain Erdős and Cookie Clicker destinations', () => {
   const mathematics = categories.find(category => category.id === 'mathematics');
   assert.equal(mathematics.mark, 'continuum');
-  assert.deepEqual(mathematics.pages, [{ id: 'erdos1016', label: 'Erdős 1016', href: '/erdos1016/' }]);
+  assert.deepEqual(mathematics.pages, [
+    { id: 'erdos1016', label: 'Erdős 1016', href: '/erdos1016/' },
+    { id: 'cookie-clicker', label: 'Cookie Clicker', href: '/cookie-clicker/' },
+  ]);
   assert.ok(!categories.find(category => category.id === 'reading').pages.some(page => page.id === 'erdos1016'));
   assert.match(index, /class="type-study study-continuum" aria-hidden="true"><svg class="continuum-study" aria-hidden="true" focusable="false"/);
   assert.match(index, /<li data-project="erdos1016"><a href="\/erdos1016\/">Erdős 1016<span class="link-point ui-link-arrow"/);
+  assert.match(index, /<li data-project="cookie-clicker"><a href="\/cookie-clicker\/">Cookie Clicker<span class="link-point ui-link-arrow"/);
   assert.doesNotMatch(index, /destination-symbol|graph-study|<circle/);
 });
 
