@@ -21,7 +21,8 @@
       { "id": "profile", "label": "Profile", "href": "/profile/" },
       { "id": "mystery-report", "label": "Mystery Consensus", "href": "/mystery-report/" },
       { "id": "bl2", "label": "Borderlands 2 Armory", "href": "/bl2/" },
-      { "id": "ngu-idle-dashboard", "label": "NGU Idle", "href": "/ngu-idle-dashboard/" }
+      { "id": "ngu-idle-dashboard", "label": "NGU Idle", "href": "/ngu-idle-dashboard/" },
+      { "id": "gazetteer", "label": "Gazetteer", "href": "/gazetteer/" }
     ]
   },
   {
