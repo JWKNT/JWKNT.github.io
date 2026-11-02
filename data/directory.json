@@ -46,7 +46,8 @@
     "pages": [
       { "id": "ndb-idle", "label": "NDB Idle", "href": "/ndb-idle/" },
       { "id": "puzzles", "label": "Puzzles", "href": "/puzzles/" },
-      { "id": "baba-is-you", "label": "Baba Is You", "href": "/baba-is-you/" }
+      { "id": "baba-is-you", "label": "Baba Is You", "href": "/baba-is-you/" },
+      { "id": "pokemon-reborn", "label": "Pokémon Reborn", "href": "/pokemon-reborn/" }
     ]
   }
 ]

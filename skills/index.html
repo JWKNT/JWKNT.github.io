@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="8 skills for agents that work on jehlp.net pages.">
+    <meta name="description" content="9 skills for agents that work on jehlp.net pages.">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Skills">
     <meta property="og:url" content="https://jehlp.net/skills/">
@@ -25,11 +25,11 @@
     <main id="skills" class="skills-shell" tabindex="-1">
       <div class="skills-intro">
         <p class="lede">Agents use these skills for work on jehlp.net pages.</p>
-        <p class="skills-meta">8 skills · <a href="https://jehlp.net/site-theme/SKILLS.md">Catalog and installation<span class="ui-link-arrow" aria-hidden="true"></span></a></p>
+        <p class="skills-meta">9 skills · <a href="https://jehlp.net/site-theme/SKILLS.md">Catalog and installation<span class="ui-link-arrow" aria-hidden="true"></span></a></p>
       </div>
       <nav class="skills-index" aria-labelledby="skills-index-title">
           <h2 class="skills-index-label" id="skills-index-title">Contents</h2>
-          <ol><li><a href="#jehlp-technical-writing"><span class="skill-prefix">jehlp-</span>technical-writing</a></li><li><a href="#jehlp-site-design"><span class="skill-prefix">jehlp-</span>site-design</a></li><li><a href="#jehlp-shared-theme"><span class="skill-prefix">jehlp-</span>shared-theme</a></li><li><a href="#jehlp-components"><span class="skill-prefix">jehlp-</span>components</a></li><li><a href="#jehlp-data-ui"><span class="skill-prefix">jehlp-</span>data-ui</a></li><li><a href="#jehlp-site-qa"><span class="skill-prefix">jehlp-</span>site-qa</a></li><li><a href="#jehlp-pages-release"><span class="skill-prefix">jehlp-</span>pages-release</a></li><li><a href="#jehlp-change-record"><span class="skill-prefix">jehlp-</span>change-record</a></li></ol>
+          <ol><li><a href="#jehlp-technical-writing"><span class="skill-prefix">jehlp-</span>technical-writing</a></li><li><a href="#jehlp-site-design"><span class="skill-prefix">jehlp-</span>site-design</a></li><li><a href="#jehlp-shared-theme"><span class="skill-prefix">jehlp-</span>shared-theme</a></li><li><a href="#jehlp-components"><span class="skill-prefix">jehlp-</span>components</a></li><li><a href="#jehlp-code-highlighting"><span class="skill-prefix">jehlp-</span>code-highlighting</a></li><li><a href="#jehlp-data-ui"><span class="skill-prefix">jehlp-</span>data-ui</a></li><li><a href="#jehlp-site-qa"><span class="skill-prefix">jehlp-</span>site-qa</a></li><li><a href="#jehlp-pages-release"><span class="skill-prefix">jehlp-</span>pages-release</a></li><li><a href="#jehlp-change-record"><span class="skill-prefix">jehlp-</span>change-record</a></li></ol>
           <h3 class="skills-index-label">Shared</h3>
           <ul><li><a href="#shared-original-technical-writing">Original technical writing</a></li></ul>
       </nav>
@@ -87,10 +87,26 @@
             <p class="skill-description">Extract, extend, or adopt reusable jehlp.net interface components across static pages and generators, with explicit markup contracts and native fallbacks.</p>
             <div class="skill-body prose">
 <p>Locate the canonical site-theme checkout and read its <code>PHILOSOPHY.md</code> and <code>docs/COMPONENTS.md</code>. Inspect <code>components.html</code> for working examples and the owning page's load order and generator. Optional components live in <code>v2/components.css</code> and <code>v2/components.js</code>; base tokens and theme preferences remain in their existing foundation files.</p>
-<p>Choose the smallest pattern that serves the material. Existing contracts cover directories, grouped fields, single-choice selects, segmented selections, responsive disclosures, section indexes, overflow regions, native dialog shells, and copyable code. Extract a new behavior when real consumers share its semantics, not merely similar class names. Prove it in a representative page before spreading it. Keep intentional local differences explicit.</p>
+<p>Choose the smallest pattern that serves the material. Existing contracts cover directories, grouped fields, single-choice selects, segmented selections, responsive disclosures, section indexes, overflow regions, native dialog shells, copyable code and highlighted code listings (<code>jehlp-code-highlighting</code>). Extract a new behavior when real consumers share its semantics, not merely similar class names. Prove it in a representative page before spreading it. Keep intentional local differences explicit.</p>
 <p>Use classes for appearance and data attributes for behavior. Native HTML remains useful if the optional script fails. Shared components do not own application data, filtering policy, API calls, or puzzle logic. <code>JehlpUI.enhance(root)</code> is idempotent; use it for newly inserted components and remove superseded local listeners. Geometry, content, and dataset rendering stay local.</p>
 <p>Adopt <code>data-ui-select</code> for ordinary native single-choice dropdowns. Preserve the native label, options, form name/value and change handlers; call <code>JehlpUI.enhance(select)</code> after programmatic value changes or option population. Do not layer it over the richer VN chapter browser or flatten meaningful chapter groups to obtain matching styling. Use the shared reader-like control scale. Keep one navigation model per table: natural-flow pagination with record detail, or named matrix overflow without pagination. Consult the current contract rather than copying superseded local selectors or listeners.</p>
 <p>Edit authored templates before regenerating output. Publish new assets before their consumers. Check focus, keyboard, breakpoint transitions, empty/populated, and no-script behavior as relevant, plus existing consumer tests. Record contracts and adopters in <code>docs/COMPONENTS.md</code>; add a working gallery example when it helps future adoption. Do not add an abstraction or dependency solely to increase the component count.</p>
+<p class="skill-shared-ref">Shared section: <a href="#shared-original-technical-writing">Original technical writing</a></p>
+            </div>
+          </article>
+          <article class="skill" id="jehlp-code-highlighting" aria-labelledby="jehlp-code-highlighting-name">
+            <header class="skill-header">
+              <h2 class="skill-name" id="jehlp-code-highlighting-name"><span class="skill-prefix">jehlp-</span>code-highlighting</h2>
+              <a class="skill-source" href="https://jehlp.net/site-theme/skills/jehlp-code-highlighting/SKILL.md" aria-label="Markdown source of jehlp-code-highlighting">Markdown<span class="ui-link-arrow" aria-hidden="true"></span></a>
+            </header>
+            <p class="skill-description">Show source code and structured data on jehlp.net pages with build-time syntax highlighting, the shared code palette and native disclosures.</p>
+            <div class="skill-body prose">
+<p>Read the owning repository's AGENTS.md, the theme's PHILOSOPHY.md and the code contract in docs/COMPONENTS.md. Locate site-theme beside the current repository, or resolve this skill's real path to its owning site-theme checkout.</p>
+<p>Highlight code during the build. Use highlight.js at a pinned version as a development dependency. Do not load a highlighter or a highlight.js theme in the browser. Choose the language from the file extension, and use plain text when the language is unknown. Highlighting adds spans only: compare the text content with the source after a change.</p>
+<p>Use the shared markup: <code>&lt;pre class=&quot;ui-code&quot; tabindex=&quot;0&quot; aria-label=&quot;Source of name.py&quot;&gt;&lt;code class=&quot;hljs language-python&quot;&gt;…&lt;/code&gt;&lt;/pre&gt;</code>. Load <code>v2/components.css</code> after base.css. The <code>--code-*</code> tokens in base.css follow the theme tones, so dark mode and print need no second palette. Do not add token backgrounds, line shading, bold keywords or a page-specific syntax theme. Long lines scroll inside the named code block. Use <code>.ui-code--wrap</code> for data whose values are prose, such as pretty-printed JSON notes.</p>
+<p>Render one or two listings in the page. For a large collection, put each listing in a native <code>details</code> element with the file name in its summary. Generate one static fragment per listing and fetch it on the first open. Keep a plain-text source link in the closed panel, so the listing remains available without JavaScript. Link fragments for search only when their text is useful search content.</p>
+<p>Format JSON with two-space indentation before you highlight it. Render Markdown and prose notes as prose, not as code. Add <code>data-copy-code</code> when readers will copy the listing. Do not reduce the type size to fit long lines.</p>
+<p>Check both color modes, print, keyboard focus on the code block, a narrow screen and the largest listing. Record new adopters in docs/COMPONENTS.md.</p>
 <p class="skill-shared-ref">Shared section: <a href="#shared-original-technical-writing">Original technical writing</a></p>
             </div>
           </article>
@@ -121,6 +137,7 @@
 <p>For the MTL contents disclosure, check hidden links, Escape, heading selection, resize and no-JS. For data dialogs, check naming, focus and close. For solver export, disable network. For the dashboard, preserve read-only behavior and truthful offline/stale state.</p>
 <p>For select changes, exercise keyboard/typeahead, Escape without selection, reset, disabled options, dynamic option population, programmatic value synchronization and native fallback. Compare equal-role reader controls for matching size; check that chapter groups survive and redundant glossary controls do not return. Check PNG masthead loading at its actual small size in both modes. Review the first useful viewport for empty hero space or unexplained number gutters. A paginated table must not also need internal two-axis scrolling; inspect first/last rows, details and sort direction. For a true matrix, test connected headers in each scroll direction. For puzzle dividers, inspect the complete rules/examples and the main puzzle's lead-in, solve links and grids on both sides of the boundary. An ornament before the first image is not sufficient: examples stay above, while the complete main puzzle unit stays below. Check the reviewed lead-in/paired-grid exceptions in docs/COMPONENTS.md and verify exact source text, link and diagram preservation; image counts alone cannot establish a correct semantic boundary.</p>
 <p>For puzzle sheets, verify a distinct transition ornament, one top edge, and the complete main unit inside the frame, including paired grids and reference charts. Only a verified leading solver-only run may become an action row; post-grid links stay in source order. Check narrow/enlarged-text control wrapping, unchanged bitmap colors and proportions, and print's normal top border without the ornament.</p>
+<p>For code listings, check token contrast in both modes and print, keyboard focus and scrolling in a long listing, the first open of a lazily loaded listing and its no-script source link.</p>
 <p>Fix demonstrated failures at the responsible layer. Stop optional testing when concrete risks are covered. Leave an honest checklist of unavailable gates; never treat a DOM stub or source regex as proof of browser accessibility.</p>
 <p class="skill-shared-ref">Shared section: <a href="#shared-original-technical-writing">Original technical writing</a></p>
             </div>
@@ -158,7 +175,7 @@
             <header class="skill-header">
               <h2 class="skill-name" id="shared-original-technical-writing-name">Original technical writing</h2>
             </header>
-            <p class="skill-description">Shared section in 7 of 8 skills.</p>
+            <p class="skill-description">Shared section in 8 of 9 skills.</p>
             <div class="skill-body prose">
 <p>For original prose, use <code>jehlp-technical-writing</code> and <code>docs/WRITING-STYLE.md</code>. Apply ASD-STE100 Issue 9 to explanations, instructions, help, and interface text. Preserve translated and reader text, quotations, NDB fiction and item descriptions, and exact technical meaning. Review generated outputs and accessible names after a text change.</p>
             </div>
