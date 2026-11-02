@@ -48,6 +48,21 @@ The current four groups preserve all fifteen destinations. Games includes the
 playable NDB Idle, authored Puzzles, and Baba Is You. Links belongs with Reading. Category metadata
 is generated from the labels, not a fixed list of the original categories.
 
+## Skills page
+
+`/skills/` shows the agent skills that `site-theme` maintains. This repository keeps
+no copy of the skill files. `npm run build:skills` reads the published catalog,
+`https://jehlp.net/site-theme/SKILLS.md`, and each `SKILL.md` that the catalog links.
+It writes `skills/index.html` in catalog order. `build:site` runs the same step, so
+each push and hourly refresh publishes the current skills. A failed read stops the
+release, and the previous deployment stays live.
+
+A section that several skills repeat word for word appears once, after the skills.
+Each of those skills links to it. Layout rules are in `assets/skills.css`. The page
+uses the site-theme mark and favicon because site-theme owns the skills. To preview
+unpublished skill edits, run `node tools/build-skills.mjs --from ../site-theme`.
+The checked-in page is the branch-mode fallback and the input for `npm test`.
+
 ## Verification and release
 
 Check 390px/1440px, light/dark, 200% text, heading/link keyboard behavior,
@@ -63,8 +78,8 @@ are maintained in `site-theme`.
 
 Install build dependencies with `npm ci --ignore-scripts`. Run `npm test`, then
 `npm run build:site`. The `npm test` pretest regenerates the homepage before checking it.
-The build artifact is `_site/`: only the generated homepage,
-public assets, CNAME, robots.txt, coverage metadata and search indexes. Source,
+The build artifact is `_site/`: only the generated homepage and
+skills page, public assets, CNAME, robots.txt, coverage metadata and search indexes. Source,
 credentials, dependency files and fetch caches are never copied into it.
 
 The build fetches **only currently published jehlp.net inputs** under the

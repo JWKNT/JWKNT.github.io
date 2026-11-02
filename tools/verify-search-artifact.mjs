@@ -15,4 +15,6 @@ for (const [folder, language] of [['pagefind', 'en'], ['pagefind-ja', 'ja']]) {
   if (!Number.isInteger(expected) || expected < 0 || actual !== expected) throw new Error(`Incomplete language index: ${folder}`);
 }
 if ((await readFile(resolve(root, '_site/CNAME'), 'utf8')).trim() !== 'jehlp.net') throw new Error('Custom domain changed');
+const skills = await readFile(resolve(root, '_site/skills/index.html'), 'utf8');
+if (!skills.includes('<link rel="canonical" href="https://jehlp.net/skills/">') || !skills.includes('<article class="skill"')) throw new Error('Incomplete skills page');
 console.log(`Verified ${coverage.records} search targets in ${Object.keys(coverage.sites).length} sites at ${coverage.generatedAt}`);

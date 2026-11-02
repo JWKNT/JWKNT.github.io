@@ -21,7 +21,7 @@ await mkdir(cache, { recursive: true });
 await rm(temporary, { recursive: true, force: true });
 await mkdir(temporary, { recursive: true });
 // The release artifact is an explicit public-file list, never a copy of the repo.
-for (const file of ['index.html', 'CNAME', '.nojekyll', 'robots.txt', 'assets']) await cp(resolve(root, file), resolve(temporary, file), { recursive: true });
+for (const file of ['index.html', 'CNAME', '.nojekyll', 'robots.txt', 'assets', 'skills']) await cp(resolve(root, file), resolve(temporary, file), { recursive: true });
 
 const useCache = process.argv.includes('--cached');
 let fetched = 0;

@@ -1,0 +1,90 @@
+/* Skills: complete skill texts beside a compact contents margin. The shared
+   theme owns tokens, type roles, the header, links and focus. */
+.skills-shell {
+  display: grid;
+  grid-template-columns: 13.5rem minmax(0, var(--measure, 43rem));
+  grid-template-rows: auto 1fr;
+  column-gap: clamp(2rem, 4vw, 3.5rem);
+  justify-content: center;
+  width: var(--site-frame-width, min(74rem, calc(100% - 5rem)));
+  margin: 0 auto;
+  padding: clamp(1.75rem, 4vw, 3rem) 0 4rem;
+}
+
+.skills-intro { grid-column: 2; grid-row: 1; padding-bottom: 1.75rem; }
+.skills-intro .lede { margin: 0; }
+.skills-meta { margin: .4rem 0 0; color: var(--muted); font: var(--text-ui)/1.5 var(--ui, var(--serif)); }
+.skills-meta a { color: var(--muted-strong); }
+
+.skills-index {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: start;
+  position: sticky;
+  top: 1rem;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  padding: .2rem 0 1rem;
+  scrollbar-width: thin;
+}
+.skills-index-label { margin: 0 0 .45rem; color: var(--muted); font: 600 var(--text-ui)/1.4 var(--ui, var(--serif)); }
+h3.skills-index-label { margin-top: 1.4rem; }
+.skills-index ol, .skills-index ul { margin: 0; padding: 0; list-style: none; }
+.skills-index a {
+  display: block;
+  padding: .32rem 0 .32rem .7rem;
+  border-left: 1px solid var(--line);
+  color: var(--muted-strong);
+  font: var(--text-ui)/1.35 var(--mono);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.skills-index ul a { font-family: var(--ui, var(--serif)); }
+.skills-index a:hover { border-left-color: var(--ink); color: var(--ink); }
+
+.skills-list { grid-column: 2; grid-row: 2; min-width: 0; }
+.skill { padding: 1.5rem 0 2.25rem; border-top: 1px solid var(--line); scroll-margin-top: 1rem; }
+.skill:target { border-top-color: var(--blue); }
+.skills-list .site-divider { width: 100%; margin-block: 1rem 2.5rem; }
+.site-divider + .skill { padding-top: 0; border-top: 0; }
+.skill-header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .25rem 1.25rem; }
+.skill-name { margin: 0; font: 600 1.2rem/1.3 var(--mono); letter-spacing: -.02em; overflow-wrap: anywhere; }
+.skill--shared .skill-name { font: 700 1.3rem/1.25 var(--display); letter-spacing: -.015em; }
+.skill-prefix { color: var(--muted); font-weight: 400; }
+.skill-source { display: inline-flex; align-items: center; gap: .15rem; color: var(--muted); font: var(--text-ui)/1.4 var(--ui, var(--serif)); white-space: nowrap; }
+.skill-source:hover { color: var(--ink); }
+.skill-description { max-width: var(--measure, 43rem); margin: .45rem 0 1.1rem; color: var(--muted-strong); font: 1.0625rem/1.55 var(--ui, var(--serif)); text-wrap: pretty; }
+
+.skill-body { font-size: 1.0625rem; line-height: 1.65; }
+.skill-body > :first-child { margin-top: 0; }
+.skill-body > :last-child { margin-bottom: 0; }
+.skill-body h3, .skill-body h4, .skill-body h5, .skill-body h6 { margin: 1.75rem 0 .35rem; font-size: 1.1rem; font-weight: 700; line-height: 1.3; }
+.skill-body code { padding: 0 .15em; background: var(--surface); font-size: .84em; overflow-wrap: anywhere; }
+.skill-body pre { overflow-x: auto; padding: .8rem 1rem; border: 1px solid var(--line); background: var(--surface); font-size: var(--text-ui); line-height: 1.5; }
+.skill-body pre code { padding: 0; background: none; font-size: inherit; overflow-wrap: normal; }
+.skill-body ul, .skill-body ol { padding-left: 1.25rem; }
+.skill-body li + li { margin-top: .35rem; }
+.skill-shared-ref { color: var(--muted); font: var(--text-ui)/1.5 var(--ui, var(--serif)); }
+.prose .skill-shared-ref { margin: 1.4rem 0 0; }
+.skill-shared-ref a { color: var(--muted-strong); }
+
+/* One column: intro, contents, then the skills, at a reading measure. */
+@media (max-width: 50rem) {
+  .skills-shell { display: block; width: min(var(--measure, 43rem), var(--site-frame-width, calc(100% - 2rem))); }
+  .skills-intro { padding-bottom: 0; }
+  .skills-index { position: static; max-height: none; overflow: visible; margin: 1.5rem 0 0; padding: 0 0 1.25rem; }
+  .skills-index ol, .skills-index ul { display: flex; flex-wrap: wrap; gap: 0 1.1rem; }
+  .skills-index a { padding: .3rem 0; border-left: 0; }
+  .skills-index a:hover { text-decoration: underline; }
+  h3.skills-index-label { margin-top: .6rem; }
+}
+
+@media (pointer: coarse) {
+  .skills-index a, .skill-source, .skills-meta a, .skill-shared-ref a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+}
+
+@media print {
+  .skills-shell { display: block; width: auto; padding: 0; }
+  .skills-index, .skill-source { display: none; }
+  .skill-header { break-after: avoid; }
+}
