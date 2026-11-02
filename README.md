@@ -32,7 +32,7 @@ corpus into one artifact; the checked-in homepage is a branch-mode fallback. Eac
 category has a unique `id`, `label`, `mark`, and a `pages` array. Each page
 has a unique `id`, `label`, and root-relative `href` ending in `/`. IDs use lowercase
 letters, digits, and hyphens. Marks are `parentheses`, `constellation`, `asterisk`,
-`section`, `continuum`, or `chevrons`; extend the named mark registry in `lib/directory.mjs` and the local
+`section`, `continuum`, `chevrons`, or `spiral`; extend the named mark registry in `lib/directory.mjs` and the local
 study CSS for a genuinely new motif. Categories can reuse existing marks.
 
 All categories are permanent, labeled sections. Their destination links stay visible
@@ -44,9 +44,10 @@ it, returning focus to its button. Clearing a query restores the full directory.
 The directory is authored only: no automatic GitHub discovery or Other category.
 Add new destinations explicitly to the JSON with their intended category and name.
 
-The current four groups preserve all fifteen destinations. Games includes the
-playable NDB Idle, authored Puzzles, and Baba Is You. Links belongs with Reading. Category metadata
-is generated from the labels, not a fixed list of the original categories.
+The current six groups hold twenty destinations. Games includes the
+playable NDB Idle, authored Puzzles, and Baba Is You. Links belongs with Reading. Agents holds
+the guidance for agent work: MTL Guide, Style Library, Skills, and Site Theme. Tools keeps the
+solvers. Category metadata is generated from the labels, not a fixed list of the original categories.
 
 ## Skills page
 
@@ -189,3 +190,5 @@ color modes. Useful published-body checks include `choralcelo`,
 `"traveler must alternately obtain"`, and Japanese `学校` / `日本`.
 
 Mathematics has an abstract continuous-loop category mark, distinct from the Erdős guide’s graph icon. Its destination links remain plain text, as in the other categories.
+
+Agents has an abstract open-spiral mark. The loop resolves into one straight stroke, with a faint echo of its outer turn. A change to the homepage stylesheet also changes its `?v=` value in `lib/directory.mjs` and the static test.

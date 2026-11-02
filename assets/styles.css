@@ -132,6 +132,10 @@ body { margin: 0; }
 .study-chevrons .glyph-a { left: 0; transform: rotate(-12deg); }
 .study-chevrons .glyph-b { left: 39px; color: var(--atlas-faint); transform: rotate(-12deg); }
 .study-chevrons i { top: 6.3em; left: 4.9em; }
+/* An open loop resolves into one straight stroke; the point marks its end. */
+.study-spiral .spiral-study { position: absolute; width: 7em; height: 7em; top: .1em; left: .2em; }
+.spiral-echo { color: var(--atlas-faint); }
+.study-spiral i { top: 1.28em; left: 6.89em; }
 .empty-result { font-size: 1rem; color: var(--muted); margin: 2rem 0; }
 [hidden] { display: none !important; }
 

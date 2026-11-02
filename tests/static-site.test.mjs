@@ -158,6 +158,16 @@ test('Mathematics has an abstract category mark and plain Erdős and Cookie Clic
   assert.doesNotMatch(index, /destination-symbol|graph-study|<circle/);
 });
 
+test('Agents groups agent guidance under an abstract spiral mark, apart from Tools', () => {
+  const agents = categories.find(category => category.id === 'agents');
+  assert.equal(agents.mark, 'spiral');
+  const guidance = ['mtl-guide', 'style-library', 'skills', 'site-theme'];
+  for (const id of guidance) assert.ok(agents.pages.some(page => page.id === id), `${id} is in Agents`);
+  assert.ok(!categories.find(category => category.id === 'tools').pages.some(page => guidance.includes(page.id)));
+  assert.match(index, /class="type-study study-spiral" aria-hidden="true"><svg class="spiral-study" aria-hidden="true" focusable="false"/);
+  assert.match(index, /<span class="category-label">Agents<\/span>/);
+});
+
 
 test('decorative studies keep their original font and fixed geometry', async () => {
   const css = await readFile(new URL('../assets/styles.css', import.meta.url), 'utf8');
@@ -165,5 +175,5 @@ test('decorative studies keep their original font and fixed geometry', async () 
   assert.doesNotMatch(css, /--reading|Wrenfold/);
   assert.match(css, /\.type-study \{[^}]*font-size: 16px;/);
   assert.match(css, /\.study-parentheses \.glyph \{ font-size: 128px;/);
-  assert.match(index, /assets\/styles\.css\?v=20261009-reading-folio/);
+  assert.match(index, /assets\/styles\.css\?v=20261102-agents/);
 });
