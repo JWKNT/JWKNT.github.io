@@ -64,6 +64,13 @@ uses the site-theme mark and favicon because site-theme owns the skills. To prev
 unpublished skill edits, run `node tools/build-skills.mjs --from ../site-theme`.
 The checked-in page is the branch-mode fallback and the input for `npm test`.
 
+## Accounts page
+
+`/accounts/` links profiles on other sites. To add one, append an entry to `data/accounts.json`
+with `site`, `href` and an optional `handle` and `kind`. Links must use HTTPS. Then run
+`node build.mjs` and `npm test`, and commit the data and `accounts/index.html` together.
+Every link has `rel="me"`. Layout rules are in `assets/accounts.css`.
+
 ## Verification and release
 
 Check 390px/1440px, light/dark, 200% text, heading/link keyboard behavior,
@@ -79,8 +86,8 @@ are maintained in `site-theme`.
 
 Install build dependencies with `npm ci --ignore-scripts`. Run `npm test`, then
 `npm run build:site`. The `npm test` pretest regenerates the homepage before checking it.
-The build artifact is `_site/`: only the generated homepage and
-skills page, public assets, CNAME, robots.txt, coverage metadata and search indexes. Source,
+The build artifact is `_site/`: only the generated homepage,
+skills and accounts pages, public assets, CNAME, robots.txt, coverage metadata and search indexes. Source,
 credentials, dependency files and fetch caches are never copied into it.
 
 The build fetches **only currently published jehlp.net inputs** under the

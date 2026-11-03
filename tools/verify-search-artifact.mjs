@@ -17,4 +17,6 @@ for (const [folder, language] of [['pagefind', 'en'], ['pagefind-ja', 'ja']]) {
 if ((await readFile(resolve(root, '_site/CNAME'), 'utf8')).trim() !== 'jehlp.net') throw new Error('Custom domain changed');
 const skills = await readFile(resolve(root, '_site/skills/index.html'), 'utf8');
 if (!skills.includes('<link rel="canonical" href="https://jehlp.net/skills/">') || !skills.includes('<article class="skill"')) throw new Error('Incomplete skills page');
+const accounts = await readFile(resolve(root, '_site/accounts/index.html'), 'utf8');
+if (!accounts.includes('<link rel="canonical" href="https://jehlp.net/accounts/">') || !accounts.includes('rel="me"')) throw new Error('Incomplete accounts page');
 console.log(`Verified ${coverage.records} search targets in ${Object.keys(coverage.sites).length} sites at ${coverage.generatedAt}`);

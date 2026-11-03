@@ -1,6 +1,10 @@
-import { readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { renderDirectory } from './lib/directory.mjs';
+import { renderAccountsPage } from './lib/accounts.mjs';
 const root = new URL('./', import.meta.url);
 const categories = JSON.parse(await readFile(new URL('data/directory.json', root), 'utf8'));
 await writeFile(new URL('index.html', root), renderDirectory(categories));
-console.log(`Built ${categories.length} categories and ${categories.reduce((n, c) => n + c.pages.length, 0)} pages.`);
+const accounts = JSON.parse(await readFile(new URL('data/accounts.json', root), 'utf8'));
+await mkdir(new URL('accounts/', root), { recursive: true });
+await writeFile(new URL('accounts/index.html', root), renderAccountsPage(accounts));
+console.log(`Built ${categories.length} categories and ${categories.reduce((n, c) => n + c.pages.length, 0)} pages, and ${accounts.length} accounts.`);

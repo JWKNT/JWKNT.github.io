@@ -1,0 +1,21 @@
+/* Accounts: one quiet row per profile on another site. Fixed handle and kind
+   columns keep every row aligned. The shared theme owns tokens, type, links and focus. */
+.accounts-shell { width: min(46rem, calc(100% - 2 * var(--gutter, 1.5rem))); margin: 0 auto; padding: clamp(1.75rem, 4vw, 3rem) 0 4rem; }
+.accounts-shell .lede { margin: 0; }
+.accounts { margin: 1.5rem 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line-strong); }
+.accounts li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 11rem) minmax(0, 9.5rem); gap: .15rem 1.5rem; align-items: baseline; padding: .7rem 0; border-bottom: 1px solid var(--line); }
+.account-site { grid-column: 1; justify-self: start; display: inline-flex; align-items: baseline; gap: .45rem; color: var(--ink); font: 1.24rem/1.45 var(--display); text-decoration: none; overflow-wrap: anywhere; }
+.account-site .ui-link-arrow { color: var(--muted); }
+.account-site:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
+.account-site:hover .ui-link-arrow { color: currentColor; }
+.account-handle { grid-column: 2; color: var(--muted-strong); font: var(--text-ui)/1.4 var(--mono); overflow-wrap: anywhere; }
+.account-kind { grid-column: 3; color: var(--muted); font: var(--text-ui)/1.4 var(--ui, var(--serif)); text-align: right; }
+
+@media (max-width: 38rem) {
+  .accounts li { grid-template-columns: minmax(0, 1fr) auto; gap: .1rem 1rem; }
+  .account-handle { grid-column: 1; grid-row: 2; }
+  .account-kind { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+}
+@media (pointer: coarse) {
+  .account-site { align-items: center; min-height: 2.75rem; }
+}

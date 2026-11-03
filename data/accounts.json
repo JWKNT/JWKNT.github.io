@@ -1,0 +1,11 @@
+[
+  { "site": "MyAnimeList", "handle": "jehlp", "kind": "Anime and manga", "href": "https://myanimelist.net/profile/jehlp" },
+  { "site": "VNDB", "handle": "jehlp", "kind": "Visual novels", "href": "https://vndb.org/u165084" },
+  { "site": "AniList", "handle": "Eruruu", "kind": "Anime and manga", "href": "https://anilist.co/user/Eruruu/" },
+  { "site": "Logic Masters", "handle": "KNT", "kind": "Solved puzzles", "href": "https://logic-masters.de/Raetselportal/Benutzer/geloest.php?name=KNT" },
+  { "site": "osu!", "handle": "jehlp", "kind": "Rhythm game", "href": "https://osu.ppy.sh/users/7568542" },
+  { "site": "YouTube", "handle": "@jwknt", "kind": "Videos", "href": "https://www.youtube.com/@jwknt" },
+  { "site": "GitHub", "handle": "JWKNT", "kind": "Code", "href": "https://github.com/JWKNT" },
+  { "site": "LessWrong", "handle": "KNT", "kind": "Writing", "href": "https://www.lesswrong.com/users/knt" },
+  { "site": "Substack", "handle": "@jehlpxyz", "kind": "Newsletter", "href": "https://substack.com/@jehlpxyz" }
+]
