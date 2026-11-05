@@ -73,18 +73,17 @@ Every link has `rel="me"`. Layout rules are in `assets/accounts.css`.
 
 ## AI math results
 
-`/ai-math/` explains what each AI mathematics result answers, without the proof. To add
-a result, append an entry to `data/ai-math.json` and write its body in
+`/ai-math/` says what each AI mathematics result means, in two minutes, without the proof.
+To add a result, append an entry to `data/ai-math.json` and write its body in
 `content/ai-math/<slug>.html`. Follow the `jehlp-math-explainer` skill in `site-theme`.
+A body is plain paragraphs and one `ai-math-side` figure or table for the margin. It has
+no headings, status, history or source list. Link a source on the words that state the result.
 Write math between `\(` and `\)` or between `\[` and `\]`. The build typesets it to native
 MathML with the pinned `temml` development dependency, so the pages load no typesetter.
-`{{facts}}`, `{{divider}}` and `{{fig:name}}` insert the status strip, the ornament and a
-figure from `lib/ai-math-figures.mjs`. Run `node build.mjs` and `npm test`, and commit the
-data, body and `ai-math/` output together. Layout rules are in `assets/ai-math.css`.
-
-Each status line records public sources on the `checked` date in the data file. When a
-status changes, update its entry, its page text and that date. `tests/ai-math.test.mjs`
-checks the quoted calculations in exact arithmetic and screens prose against the writing limits.
+`{{fig:name}}` inserts a figure from `lib/ai-math-figures.mjs`. Run `node build.mjs` and
+`npm test`, and commit the data, body and `ai-math/` output together. Layout rules are in
+`assets/ai-math.css`. `tests/ai-math.test.mjs` limits each page to 300 words and checks the
+quoted calculations in exact arithmetic.
 
 ## Verification and release
 

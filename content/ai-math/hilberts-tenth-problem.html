@@ -1,71 +1,17 @@
-<p class="lede">David Hilbert asked for a procedure that decides if a polynomial equation has a solution. For solutions in integers, the answer has been "no such procedure exists" since 1970. OpenAI reports the same answer for solutions in fractions.</p>
-{{facts}}
-
-<h2 id="question">The question</h2>
-<p>A <dfn>Diophantine equation</dfn> is a polynomial equation with integer coefficients, such as \(x^2 + y^2 = 3\). In 1900, Hilbert asked for a general process that accepts any such equation. In a finite number of steps, it must decide if the equation has a solution in integers. This was the tenth problem on his list.</p>
-<p>The same question applies to other number systems. The result on this page asks about solutions in the rational numbers \(\mathbb{Q}\), which are the fractions.</p>
-<p>An <dfn>algorithm</dfn> here means one fixed program. It must accept every equation as input. It must always stop, and it must then give the correct answer. A problem with no such program is <dfn>undecidable</dfn>.</p>
-
-<h2 id="examples">Examples</h2>
-<p>The number system changes the answer. In this table, "none" means that no solution exists in that number system.</p>
-<div class="table-scroll" data-scroll-region aria-label="Example equations and their integer and rational solutions">
+<p>Hilbert asked for an algorithm that takes any polynomial equation with integer coefficients and decides if it has a solution. His question asks for solutions in integers. The new result concerns solutions in fractions.</p>
+<p>A search can find a solution if one exists, but it can never answer "no", because it would have to test infinitely many candidates. Solutions can also be enormous, as the table shows. So the question is whether a better method always gives the right answer.</p>
+<figure class="ai-math-side">
+<div class="table-scroll" data-scroll-region aria-label="Example equations and their rational solutions">
 <table class="ui-table">
-<thead><tr><th scope="col">Equation</th><th scope="col">Integer solutions</th><th scope="col">Rational solutions</th></tr></thead>
+<thead><tr><th scope="col">Equation</th><th scope="col">Rational solution</th></tr></thead>
 <tbody>
-<tr><td>\(2x = 1\)</td><td>None</td><td>\(x = 1/2\)</td></tr>
-<tr><td>\(x^2 = 2\)</td><td>None</td><td>None</td></tr>
-<tr><td>\(x^2 + y^2 = 1\)</td><td>Four: \((\pm 1, 0)\) and \((0, \pm 1)\)</td><td>Infinitely many, such as \((3/5, 4/5)\)</td></tr>
-<tr><td>\(x^2 + y^2 = 3\)</td><td>None</td><td>None</td></tr>
-<tr><td>\(x^3 + y^3 = 6\)</td><td>None</td><td>\(x = 17/21\), \(y = 37/21\)</td></tr>
+<tr><td>\(x^2 + y^2 = 1\)</td><td>\((3/5,\; 4/5)\)</td></tr>
+<tr><td>\(x^2 + y^2 = 3\)</td><td>None</td></tr>
+<tr><td>\(x^3 + y^3 = 6\)</td><td>\((17/21,\; 37/21)\)</td></tr>
+<tr><td>\(y^2 = x^3 + 877x\)</td><td>The simplest \(x \ne 0\) has a 42-digit numerator</td></tr>
 </tbody>
 </table>
 </div>
-<p>To find a solution, a program can search. It lists all fractions by size and tests them in the equation. If a solution exists, the search finds it after finitely many tests.</p>
-<p>The search has two limits. First, a solution can be enormous. The equation \(y^2 = x^3 + 877x\) has the trivial solution \(x = y = 0\). Its simplest other solution, which Bremner and Cassels gave in 1984, has this value of \(x\):</p>
-\[ x = \frac{375494528127162193105504069942092792346201}{6215987776871505425463220780697238044100} \]
-<p>Second, a search can never answer "no". If an equation has no solution, the search continues without end. A "no" answer needs an argument.</p>
-<p>For \(x^2 + y^2 = 3\), this argument works. A rational solution gives integers with \(a^2 + b^2 = 3c^2\) and no common factor. Squares leave remainder 0 or 1 when divided by 3. So 3 must divide both \(a\) and \(b\). Then 3 also divides \(c\), which contradicts "no common factor".</p>
-<p>That argument works for one equation. Hilbert's question asks for one method that works for all equations.</p>
-
-<h2 id="integers">The answer for integers</h2>
-<p>Alan Turing proved in 1936 that no algorithm decides if a program stops. This is the <dfn>halting problem</dfn>.</p>
-<p>Martin Davis, Hilary Putnam and Julia Robinson did the main work of 1961, and Yuri Matiyasevich completed it in 1970. Their theorem says that polynomial equations can encode programs. For each program, there is a polynomial equation that has an integer solution exactly when the program stops.</p>
-<p>So an algorithm for integer equations would solve the halting problem, and no such algorithm exists.</p>
-<p>This argument does not transfer directly to fractions. The direct route needs a polynomial test for "this fraction is an integer". That test is the subject of a separate page, <a href="../z-diophantine-in-q/">\(\mathbb{Z}\) is Diophantine in \(\mathbb{Q}\)</a>, and a conjecture of Barry Mazur made it appear unlikely.</p>
-
-{{divider}}
-
-<h2 id="result">The result</h2>
-<p>The OpenAI preprint states this theorem. The number of variables is part of the input.</p>
-<p class="ai-math-statement">No algorithm decides, for every polynomial \(f\) with integer coefficients, if \(f\) has a zero in \(\mathbb{Q}^n\).</p>
-<p>The preprint gives two stronger forms of this statement. Each keeps the same difficulty as the halting problem.</p>
-<ul>
-<li>The problem stays undecidable for polynomials of total degree at most 4, with any number of variables.</li>
-<li>The problem stays undecidable for a sum of squares of polynomials of degree at most 2.</li>
-</ul>
-<p>The preprint does not build a polynomial test for integers. Its route differs from the route for integers. A follow-up by Zhi-Wei Sun states that the problem stays undecidable with at most 86 unknowns.</p>
-
-<h2 id="not">What the result does not say</h2>
-<ul>
-<li><strong>It does not say that a single equation is impossible to solve.</strong> Each equation has a definite answer. The result says that no single program gets all equations right.</li>
-<li><strong>It does not end the study of special families.</strong> Algorithms exist for equations of degree 1 and for one equation of degree 2. Hasse and Minkowski's theorem gives the degree 2 case.</li>
-<li><strong>It does not cover degree 3.</strong> The preprint's limit is degree 4. Equations such as \(y^2 = x^3 + 877x\) have degree 3, and this result does not decide them.</li>
-<li><strong>It does not supply a practical method or a limit on a known computer.</strong> It concerns what any program can do, with unlimited time and memory.</li>
-</ul>
-
-<h2 id="matters">Why the result matters</h2>
-<p>The integer case was closed in 1970, and the rational case stayed open for decades. Many central questions in number theory ask for rational solutions, for example on elliptic curves. So the rational case is close to many working questions of the field.</p>
-<p>The strategy also surprised specialists. Hector Pasten told Scientific American that the proof connects two of his ideas from different areas, and that the connection surprised him.</p>
-
-<h2 id="checked">How far the result has been checked</h2>
-<p>OpenAI released the preprint on 6 October 2026, as raw output of an internal model. It has no Lean proof in OpenAI's status list. OpenAI warns that results without a Lean proof can contain errors.</p>
-<p>Two later works use the preprint: Sun's paper on 86 unknowns and Glazer's manuscript on the integers. Use of a preprint is not the same as a check of it. A search on 5 November 2026 found no published independent check of the argument. Read the theorem on this page as a report, not as an established result.</p>
-
-<h2 id="sources">Sources</h2>
-<ul class="ai-math-sources">
-<li><a href="https://github.com/openai/math/blob/main/preprints/Hilberts-tenth-problem-over-the-rational-numbers-October-6-2026/main.pdf">Hilbert's tenth problem over the rational numbers</a>, OpenAI, 6 October 2026.</li>
-<li><a href="https://arxiv.org/abs/2610.20691">86 unknowns for Hilbert's tenth problem over the rationals</a>, Zhi-Wei Sun.</li>
-<li><a href="https://www.scientificamerican.com/article/the-most-exciting-claims-from-openais-heap-of-new-proofs/">The most exciting claims from OpenAI's heap of new proofs</a>, Scientific American.</li>
-<li><a href="https://en.wikipedia.org/wiki/Hilbert%27s_tenth_problem">Hilbert's tenth problem</a>, Wikipedia, for the integer case.</li>
-<li><a href="https://doi.org/10.1090/S0025-5718-1984-0726003-4">On the equation Y² = X(X² + p)</a>, Bremner and Cassels, for the curve with 877.</li>
-</ul>
+</figure>
+<p>For integers, the answer has been no since 1970. Polynomial equations can encode programs: each program has an equation with an integer solution exactly when the program stops. An algorithm for equations would then solve the halting problem, which is impossible.</p>
+<p>For fractions, that argument does not transfer. <a href="https://github.com/openai/math/blob/main/preprints/Hilberts-tenth-problem-over-the-rational-numbers-October-6-2026/main.pdf">An OpenAI preprint</a> reports that the answer is still no: no algorithm decides if every integer polynomial has a rational zero. This holds even for polynomials of degree at most 4. Each single equation still has a definite answer, but no single program gets all of them right. A <a href="../z-diophantine-in-q/">later manuscript</a> reports a more direct route.</p>

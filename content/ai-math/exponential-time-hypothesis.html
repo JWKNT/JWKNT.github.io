@@ -1,89 +1,19 @@
-<p class="lede">The Exponential Time Hypothesis says that 3-SAT, a basic logic problem, needs exponential time in its worst cases. OpenAI and Anthropic each report an algorithm that is faster than every exponential for large inputs. The algorithms give no practical speed gain.</p>
-{{facts}}
-
-<h2 id="question">The question</h2>
-<p>A <dfn>Boolean variable</dfn> has the value true or false. A <dfn>clause</dfn> joins variables or their negations with "or". A <dfn>3-SAT formula</dfn> joins clauses of at most three items with "and". An <dfn>assignment</dfn> gives a value to each variable. A <dfn>solution</dfn> is an assignment that makes every clause true.</p>
-<p>The 3-SAT problem asks if a formula has a solution. Many scheduling, design and verification problems can be written as 3-SAT. The question for this result is how fast an algorithm can answer for the worst formulas.</p>
-
-<h2 id="examples">Examples</h2>
-<p>This formula has three variables, so it has eight assignments. The symbol \(\lor\) means "or", \(\land\) means "and" and \(\lnot\) means "not".</p>
-\[ \begin{aligned} &amp; (a \lor b \lor c) \land (\lnot a \lor \lnot b \lor c) \\ \land\; &amp; (a \lor \lnot b \lor \lnot c) \land (\lnot a \lor b \lor \lnot c) \end{aligned} \]
-<div class="table-scroll" data-scroll-region aria-label="All eight assignments of the example formula">
+<p><dfn>3-SAT</dfn> asks if a logical formula can be made true, where each bracket has at most three items:</p>
+\[ (a \lor b \lor \lnot c) \land (\lnot a \lor c \lor d) \land \cdots \]
+<p>With \(n\) variables, testing every assignment takes \(2^n\) steps. Better algorithms reach about \(1.308^n\), but the time stays exponential.</p>
+<figure class="ai-math-side">
+<div class="table-scroll" data-scroll-region aria-label="Time to solve 3-SAT with n variables">
 <table class="ui-table">
-<thead><tr><th scope="col">\(a\)</th><th scope="col">\(b\)</th><th scope="col">\(c\)</th><th scope="col">Outcome</th></tr></thead>
+<thead><tr><th scope="col">3-SAT with \(n\) variables</th><th scope="col">Steps</th></tr></thead>
 <tbody>
-<tr><td>false</td><td>false</td><td>false</td><td>Clause 1 fails</td></tr>
-<tr><td>false</td><td>false</td><td>true</td><td><strong>Solution</strong></td></tr>
-<tr><td>false</td><td>true</td><td>false</td><td><strong>Solution</strong></td></tr>
-<tr><td>false</td><td>true</td><td>true</td><td>Clause 3 fails</td></tr>
-<tr><td>true</td><td>false</td><td>false</td><td><strong>Solution</strong></td></tr>
-<tr><td>true</td><td>false</td><td>true</td><td>Clause 4 fails</td></tr>
-<tr><td>true</td><td>true</td><td>false</td><td>Clause 2 fails</td></tr>
-<tr><td>true</td><td>true</td><td>true</td><td><strong>Solution</strong></td></tr>
+<tr><td>Test every assignment</td><td>\(2^n\)</td></tr>
+<tr><td>Best before 2026</td><td>\(1.308^n\)</td></tr>
+<tr><td>The hypothesis</td><td>At least \(c^n\), for some \(c &gt; 1\)</td></tr>
+<tr><td>New algorithms</td><td>\(2^{O(n \log\log n / \sqrt{\log n})}\)</td></tr>
 </tbody>
 </table>
 </div>
-<p>The formula has a solution, and it has exactly four solutions. To answer "is there a solution" and to answer "how many solutions" are different tasks. Counting is at least as hard.</p>
-<p>Exhaustive search tests every assignment. A formula with \(n\) variables has \(2^n\) assignments, so each extra variable doubles the work. With 100 variables there are about \(1.27 \times 10^{30}\) assignments. A computer that tests \(10^{18}\) assignments each second needs about 40,000 years.</p>
-<p>Better algorithms exist. Before October 2026, the fastest known randomized algorithm used about \(1.308^n\) steps. The fastest known deterministic algorithm used about \(1.328^n\) steps.</p>
-<div class="table-scroll" data-scroll-region aria-label="Growth of exhaustive search and of the earlier best algorithm">
-<table class="ui-table ai-math-numbers">
-<thead><tr><th scope="col">Variables \(n\)</th><th scope="col">\(2^n\)</th><th scope="col">\(1.308^n\)</th></tr></thead>
-<tbody>
-<tr><td>20</td><td>\(1.05 \times 10^{6}\)</td><td>215</td></tr>
-<tr><td>50</td><td>\(1.13 \times 10^{15}\)</td><td>\(6.77 \times 10^{5}\)</td></tr>
-<tr><td>100</td><td>\(1.27 \times 10^{30}\)</td><td>\(4.58 \times 10^{11}\)</td></tr>
-<tr><td>300</td><td>\(2.04 \times 10^{90}\)</td><td>\(9.60 \times 10^{34}\)</td></tr>
-<tr><td>1000</td><td>\(1.07 \times 10^{301}\)</td><td>\(4.05 \times 10^{116}\)</td></tr>
-</tbody>
-</table>
-</div>
-<p>The base 1.308 is smaller than 2, but this time is still exponential. Its exponent grows in proportion to \(n\).</p>
-
-<h2 id="hypothesis">The hypothesis</h2>
-<p>Russell Impagliazzo and Ramamohan Paturi stated the Exponential Time Hypothesis, and a paper of 2001 gives its usual form. It says that a number \(\delta &gt; 0\) exists such that no algorithm solves every 3-SAT formula in \(2^{\delta n}\) steps. Thus the base of an exponential time cannot come arbitrarily near 1.</p>
-<p>The hypothesis was a working assumption and not a theorem. In a 2012 lecture, Impagliazzo said that he and Paturi gave it about even odds of being true.</p>
-<p>Researchers used the hypothesis to explain why other problems appear hard. If a fast algorithm for problem \(X\) gives a fast algorithm for 3-SAT, then the hypothesis limits the speed of any algorithm for \(X\).</p>
-
-{{divider}}
-
-<h2 id="result">The result</h2>
-<p>A <dfn>k-CNF formula</dfn> is the same as a 3-SAT formula, except that each clause has at most \(k\) items. The OpenAI paper states a deterministic algorithm that counts the solutions of a k-CNF formula with \(n\) variables and \(m\) clauses. For each fixed \(k\), it uses polynomial space and this time:</p>
-\[ (n + m)^{O_k(1)} \cdot 2^{\,O_k\left(n \log\log n \,/\, \sqrt{\log n}\right)} \]
-<p>The notation \(O_k(x)\) means at most a constant times \(x\), where the constant depends only on \(k\). The Anthropic paper states a time with the same main term. Its constant is explicit in \(k\), and it also gives a bound in terms of \(m\).</p>
-<p>The exponent is \(n\) times a factor \(c(n) = \log\log n / \sqrt{\log n}\). This factor goes to zero as \(n\) grows. So for each \(\delta &gt; 0\), the time is below \(2^{\delta n}\) when \(n\) is large enough, and the hypothesis is false.</p>
-<div class="table-scroll" data-scroll-region aria-label="The factor c(n) for growing n, without the hidden constant">
-<table class="ui-table ai-math-numbers">
-<thead><tr><th scope="col">\(n\)</th><th scope="col">\(10^{3}\)</th><th scope="col">\(10^{12}\)</th><th scope="col">\(10^{100}\)</th><th scope="col">\(10^{1000}\)</th><th scope="col">\(10^{10\,000}\)</th><th scope="col">\(10^{1\,000\,000}\)</th></tr></thead>
-<tbody><tr><th scope="row">\(c(n)\)</th><td>0.735</td><td>0.631</td><td>0.358</td><td>0.161</td><td>0.066</td><td>0.010</td></tr></tbody>
-</table>
-</div>
-<p>This table uses natural logarithms and omits the hidden constant. It shows only how slowly the factor falls.</p>
-
-<h2 id="not">What the result does not say</h2>
-<ul>
-<li><strong>It does not settle P versus NP.</strong> The new time is still far above any polynomial. Both groups say that their result does not settle that question.</li>
-<li><strong>It does not speed up every NP problem.</strong> A general reduction to 3-SAT can raise the variable count from \(n\) to \(n^2\) or more. A time of \(2^{o(n)}\) in the old variable count does not stay subexponential after that change.</li>
-<li><strong>It does not help with real formulas.</strong> Anthropic calculates that its bound for formulas with \(m = 5n\) beats exhaustive search only for \(n &gt; 10^{10\,000}\). Its bound in \(n\) alone needs \(n &gt; 10^{10^{8}}\). Exhaustive search is already impractical at \(n = 100\).</li>
-<li><strong>It does not remove all related lower bounds.</strong> Many of them also follow from the Orthogonal Vectors hypothesis, and this result does not refute that hypothesis.</li>
-</ul>
-
-<h2 id="matters">Why the result matters</h2>
-<p>Many hardness results rest on this hypothesis. Anthropic searched the literature with Claude and found more than 800 papers. Each has a result that holds only under this hypothesis or a stronger one. If the proofs hold, those results lose that support. They do not automatically become false.</p>
-<p>The Strong Exponential Time Hypothesis and Gap-ETH imply this hypothesis, so the same proofs refute them. The OpenAI paper also refutes the nondeterministic form of the strong hypothesis.</p>
-<p>The result also gives new subexponential algorithms in theory. They count independent sets, proper colorings and perfect matchings in a graph. They also solve Independent Set, Clique, Vertex Cover and Dominating Set in \(2^{\delta n}\) steps for every \(\delta &gt; 0\).</p>
-
-<h2 id="checked">How far the result has been checked</h2>
-<p>OpenAI states that its model found the argument on 16 October 2026 and that the Lean proof followed on 17 October. Its Lean proof gives a slightly weaker exponent, with \((\log\log n)^2\) in place of \(\log\log n\). That weaker exponent still refutes the hypothesis.</p>
-<p>Anthropic states that an internal Claude model found its core algorithm on 16 October, with no human input and independently of OpenAI. Its repository holds a Lean proof, checked by a second, independently written proof kernel. The repository warns that no machine checks whether the Lean file says what the paper says. It keeps the file short for human readers.</p>
-<p>OpenAI states that a group led by Impagliazzo, Paturi and Ryan Williams will verify and explain its result. The reviewers state that their part in this examination is not a certification. No source reports a finished journal review on this date.</p>
-
-<h2 id="sources">Sources</h2>
-<ul class="ai-math-sources">
-<li><a href="https://github.com/openai/math/blob/main/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/paper.pdf">The Exponential Time Hypothesis is False</a>, OpenAI, revised 25 October 2026.</li>
-<li><a href="https://github.com/anthropics/formal-math/blob/main/eth/paper.pdf">A 2<sup>o(n)</sup> Time Algorithm for 3-SAT</a>, Claude, Anthropic, 26 October 2026, with its <a href="https://github.com/anthropics/formal-math/tree/main/eth">Lean project</a>.</li>
-<li><a href="https://openai.com/index/building-scientific-understanding-with-academic-communities/">OpenAI's announcement</a>, 26 October 2026.</li>
-<li><a href="https://doi.org/10.1006/jcss.2000.1727">On the Complexity of k-SAT</a>, Impagliazzo and Paturi, 2001.</li>
-<li><a href="https://en.wikipedia.org/wiki/Exponential_time_hypothesis">Exponential time hypothesis</a>, Wikipedia, for the 2012 lecture remark.</li>
-<li><a href="https://dataconomy.com/2026/11/04/openai-and-anthropic-claim-ai-disproved-the-exponential/">Dataconomy's report</a> on the reviewers' letter and the two papers, 4 November 2026.</li>
-</ul>
+</figure>
+<p>The <dfn>Exponential Time Hypothesis</dfn> says that this cannot be avoided. Some constant \(c &gt; 1\) exists such that every algorithm needs at least \(c^n\) steps on the worst formulas. This is stronger than \(\mathrm{P} \ne \mathrm{NP}\), which only excludes polynomial time. Researchers use the hypothesis to show that many other problems are hard.</p>
+<p><a href="https://github.com/openai/math/blob/main/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/paper.pdf">OpenAI</a> and <a href="https://github.com/anthropics/formal-math/blob/main/eth/paper.pdf">Anthropic</a> each report that it is false. Each gives an algorithm that counts the solutions in the time on the last row of the table. The factor \(\log\log n / \sqrt{\log n}\) falls to zero as \(n\) grows. So the exponent eventually falls below \(\delta n\) for every \(\delta &gt; 0\), and no constant \(c\) can work.</p>
+<p>The gain exists only for enormous inputs. Anthropic calculates that its bound beats \(2^n\) only above \(n = 10^{10\,000}\), on formulas with \(5n\) clauses. P versus NP stays open, because this time is still far above any polynomial.</p>

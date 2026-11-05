@@ -1,88 +1,11 @@
-<p class="lede">The Navier–Stokes equations describe how fluids move. OpenAI reports a proof that a smooth force on a smooth fluid at rest can produce infinite speed in finite time. The case with no force remains open, and aircraft and weather models do not change.</p>
-{{facts}}
-
-<h2 id="question">The question</h2>
-<p>The <dfn>Navier–Stokes equations</dfn> apply Newton's second law, force equals mass times acceleration, to each small parcel of a fluid. Engineers use them for aircraft, weather and blood flow. They treat a fluid as a continuous material and not as separate molecules.</p>
-<p>In three dimensions, for a fluid of constant density, the equations have this form:</p>
+<p>The <dfn>Navier–Stokes equations</dfn> are Newton's second law for a fluid. Here \(u\) is velocity, \(p\) is pressure, \(\nu &gt; 0\) is viscosity and \(f\) is an external force:</p>
 \[ \begin{aligned} \frac{\partial u}{\partial t} + (u \cdot \nabla) u &amp;= -\nabla p + \nu \Delta u + f \\ \nabla \cdot u &amp;= 0 \end{aligned} \]
-<div class="table-scroll" data-scroll-region aria-label="The terms of the Navier–Stokes equations">
-<table class="ui-table">
-<thead><tr><th scope="col">Term</th><th scope="col">Meaning</th></tr></thead>
-<tbody>
-<tr><td>\(u\)</td><td>The velocity of the fluid at each point and time</td></tr>
-<tr><td>\(\partial u / \partial t + (u \cdot \nabla) u\)</td><td>The acceleration of a parcel. The fluid carries its own velocity along, so this term contains \(u\) twice</td></tr>
-<tr><td>\(-\nabla p\)</td><td>The force from differences in pressure</td></tr>
-<tr><td>\(\nu \Delta u\)</td><td>Viscosity, with strength \(\nu &gt; 0\). It smooths differences in velocity</td></tr>
-<tr><td>\(f\)</td><td>An external force, such as a stirring force</td></tr>
-<tr><td>\(\nabla \cdot u = 0\)</td><td>The fluid does not compress</td></tr>
-</tbody>
-</table>
-</div>
-<p>A function is <dfn>smooth</dfn> if all its derivatives exist. The question is whether a solution that starts smooth stays smooth for all time. It can fail if the speed grows without limit in finite time. This event is a <dfn>singularity</dfn>, or <dfn>blow-up</dfn>.</p>
-
-<h2 id="examples">Examples</h2>
-<p>A simple equation can blow up, even though it contains nothing infinite. Compare two equations that start at \(y(0) = 1\).</p>
-<div class="table-scroll" data-scroll-region aria-label="Values of the two example solutions">
-<table class="ui-table ai-math-numbers">
-<thead><tr><th scope="col">Time \(t\)</th><th scope="col">0</th><th scope="col">0.5</th><th scope="col">0.9</th><th scope="col">0.99</th><th scope="col">0.999</th><th scope="col">1</th></tr></thead>
-<tbody>
-<tr><th scope="row">\(dy/dt = y\), so \(y = e^t\)</th><td>1</td><td>1.65</td><td>2.46</td><td>2.69</td><td>2.72</td><td>2.72</td></tr>
-<tr><th scope="row">\(dy/dt = y^2\), so \(y = 1/(1-t)\)</th><td>1</td><td>2</td><td>10</td><td>100</td><td>1000</td><td>No value</td></tr>
-</tbody>
-</table>
-</div>
-<figure class="ai-math-figure">
+<p>The question is whether a fluid that starts smooth stays smooth, or if its speed can become infinite in finite time. This event is a <dfn>blow-up</dfn>.</p>
+<figure class="ai-math-side">
 {{fig:blowup}}
-<figcaption>The solution of \(dy/dt = y^2\) reaches infinity at \(t = 1\). The solution of \(dy/dt = y\) grows fast but stays finite at every time.</figcaption>
+<figcaption>The equation \(dy/dt = y^2\) reaches infinity at \(t = 1\). The equation \(dy/dt = y\) grows fast but stays finite.</figcaption>
 </figure>
-<p>The square makes the difference. As \(y\) grows, its rate of growth grows faster. The term \((u \cdot \nabla) u\) in the Navier–Stokes equations also contains the unknown twice.</p>
-<p>A damping term can stop this growth, but only for small values. The equation \(dy/dt = y^2 - y\) is a simple model of this effect. If \(y(0) = 1/2\), then \(y = 1/(1 + e^t)\) falls toward zero. If \(y(0) = 2\), then \(y = 1/(1 - e^t/2)\) blows up at \(t = \ln 2 \approx 0.693\). Viscosity has a similar role in the fluid equations. It is known that small smooth initial velocities stay smooth.</p>
-<p>These equations are simple models. They show what blow-up means. They do not show that the fluid equations behave in the same way.</p>
-
-<h2 id="problem">The Millennium Prize problem</h2>
-<p>The Clay Mathematics Institute named this question one of seven Millennium Prize Problems in 2000. The official statement by Charles Fefferman gives four alternatives, and it asks for a proof of one of them.</p>
-<div class="table-scroll" data-scroll-region aria-label="The four official alternatives of the Navier–Stokes problem">
-<table class="ui-table">
-<thead><tr><th scope="col">Statement</th><th scope="col">Space</th><th scope="col">Force</th><th scope="col">Claim</th></tr></thead>
-<tbody>
-<tr><td>A</td><td>All of space</td><td>None</td><td>Each smooth start stays smooth</td></tr>
-<tr><td>B</td><td>A periodic box</td><td>None</td><td>Each smooth start stays smooth</td></tr>
-<tr><td><strong>C</strong></td><td>All of space</td><td>Smooth force permitted</td><td>Some smooth start and force break down</td></tr>
-<tr><td><strong>D</strong></td><td>A periodic box</td><td>Smooth force permitted</td><td>Some smooth start and force break down</td></tr>
-</tbody>
-</table>
-</div>
-
-{{divider}}
-
-<h2 id="result">The result</h2>
-<p>OpenAI reports proofs of statements C and D. For every viscosity \(\nu &gt; 0\), there are a smooth start and a smooth force with no smooth solution for all time. In all of space, the statement also requires bounded energy.</p>
-<p>In the construction, the fluid starts at rest. A smooth force acts on it, and the energy stays finite. A vortex spirals inward and stretches. Its center shrinks and speeds up, until the speed has no limit at a finite time.</p>
-<p>The force itself stays smooth. So the infinite speed comes from the motion of the fluid, and not from an infinite force. Communications Physics notes that the force is adjusted at each moment to drive the shrinking vortex.</p>
-
-<h2 id="not">What the result does not say</h2>
-<ul>
-<li><strong>It does not settle a fluid with no force.</strong> Statements A and B concern that case. Communications Physics wrote on 14 October 2026 that the case is still unknown, and many mathematicians regard it as the main question.</li>
-<li><strong>It does not change aircraft or weather models.</strong> This is one special solution, built with a designed force. It says little about typical flows, and the equations remain well tested.</li>
-<li><strong>It does not say that real water reaches infinite speed.</strong> Real fluids are made of molecules. George Karniadakis told Nature that, in air, the singularity appears at a vortex about 70 nanometers wide, where the continuous model no longer applies.</li>
-<li><strong>It does not mean that the prize has been awarded.</strong> OpenAI says that it does not intend to claim the prize.</li>
-</ul>
-
-<h2 id="matters">Why the result matters</h2>
-<p>Jean Leray proved in 1934 that weak solutions exist. Whether they stay smooth remained open for about 90 years. If the proof holds, the equations with a smooth force do not guarantee a smooth solution.</p>
-<p>A related OpenAI paper reports a singularity for the Euler equations, which have no viscosity, with no external force. So the two reports together cover a fluid with no viscosity and no force, and a fluid with viscosity and a smooth force. A fluid with viscosity and no force remains open.</p>
-
-<h2 id="checked">How far the result has been checked</h2>
-<p>OpenAI states that about 10,000 AI agents reached the result in about 88 hours. It states that GPT-6 Astra then produced the Lean proof in 17 more hours. The Lean repository states the results for all of space and for a periodic box.</p>
-<p>On 11 September 2026, the Clay Mathematics Institute wrote that the problem has "apparently been settled". It also wrote that its process is deliberately unhurried, and it has announced no prize decision. Communications Physics wrote that experts believe that the proof is correct, but that nobody yet understands it well.</p>
-<p>The credit history is disputed. Tristan Buckmaster and Levent Alpöge posted related results on the Euler equations with a force just before the announcement. OpenAI recognizes their priority on that case. Buckmaster says that OpenAI followed their route after it learned of their work. OpenAI says that a rumor prompted its effort, but it denies that their work influenced its system. All of these results use methods from Diego Córdoba and Luis Martínez-Zoroa.</p>
-
-<h2 id="sources">Sources</h2>
-<ul class="ai-math-sources">
-<li><a href="https://openai.com/index/navier-stokes-solution/">On the Navier–Stokes Millennium Prize Problem</a>, OpenAI, 8 September 2026.</li>
-<li><a href="https://github.com/openai/NavierStokesAndEuler">The Lean repository</a>, with links to the Navier–Stokes and Euler papers.</li>
-<li><a href="https://www.claymath.org/news/navier-stokes-announcement/">Navier-Stokes Announcement</a>, Clay Mathematics Institute, 11 September 2026.</li>
-<li><a href="https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf">The official problem description</a>, Charles Fefferman.</li>
-<li><a href="https://www.nature.com/articles/s42005-026-02930-y">The Navier-Stokes equations blow up, and planes still fly</a>, Communications Physics.</li>
-<li><a href="https://www.implicator.ai/clay-institute-navier-stokes-openai-proof-claim/">Implicator's report</a> on the credit dispute.</li>
-</ul>
+<p>Blow-up can occur even when nothing in an equation is infinite. The equation \(dy/dt = y^2\) with \(y(0) = 1\) has the solution \(y = 1/(1-t)\), which reaches infinity at \(t = 1\). The fluid equations have a similar squared term, \((u \cdot \nabla) u\), and viscosity acts against it.</p>
+<p>The <a href="https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf">Clay Millennium problem</a> accepts either of two outcomes. With no force, every smooth start stays smooth. Or with some smooth force, some smooth start breaks down.</p>
+<p><a href="https://openai.com/index/navier-stokes-solution/">OpenAI reports</a> a proof of the second outcome. A fluid at rest, driven by a smooth force, forms a vortex that spirals inward and stretches. Its speed has no limit at a finite time. The force stays smooth, so the infinity comes from the fluid itself.</p>
+<p>A fluid with no force remains open, and many mathematicians regard that as the main question. The result concerns the equations and not real water, which is made of molecules. Aircraft and weather models do not change.</p>

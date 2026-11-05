@@ -1,80 +1,19 @@
-<p class="lede">A polynomial map with a constant nonzero Jacobian determinant was expected to be reversible. A map in three variables with determinant −2 sends three different points to one point. So the conjecture is false for three or more variables. The case of two variables remains open.</p>
-{{facts}}
-
-<h2 id="question">The question</h2>
-<p>A derivative is a local scale factor. For \(f(x) = x^3\), the derivative at \(x = 2\) is 12. A small step of 0.01 near 2 becomes a step of about 0.12, because \(2.01^3 - 2^3 \approx 0.1206\). At \(x = 0\) the derivative is 0, and the map flattens small steps.</p>
-<p>A map from \(n\) variables to \(n\) variables has a matrix of partial derivatives, the <dfn>Jacobian matrix</dfn>. Its determinant is the <dfn>Jacobian determinant</dfn>. It is the local scale factor for area or volume. If it is not zero at a point, a theorem gives a local inverse near that point.</p>
-<p>A local inverse is not a global inverse. A map can be reversible near each point and still send two distant points to one point. The question is whether this can happen for polynomials with a constant determinant.</p>
-
-<h2 id="examples">Examples</h2>
-<div class="table-scroll" data-scroll-region aria-label="Example maps, their determinants and whether they are reversible">
+<p>A map \(F\) from \(\mathbb{C}^n\) to \(\mathbb{C}^n\) has a matrix of partial derivatives. Its determinant, the <dfn>Jacobian determinant</dfn>, is the local scale factor for volume. Where it is not zero, \(F\) can be reversed locally.</p>
+<figure class="ai-math-side">
+<div class="table-scroll" data-scroll-region aria-label="Three maps and their determinants">
 <table class="ui-table">
-<thead><tr><th scope="col">Map</th><th scope="col">Determinant</th><th scope="col">Outcome</th></tr></thead>
+<thead><tr><th scope="col">Map</th><th scope="col">Determinant</th><th scope="col">Reversible</th></tr></thead>
 <tbody>
-<tr><td>\((x + y^2,\; y)\)</td><td>1, a constant</td><td>Reversible. The inverse is \((u - v^2,\; v)\), also a polynomial</td></tr>
-<tr><td>\((x^2,\; y)\)</td><td>\(2x\), zero on a line</td><td>Not reversible. The points \((1, y)\) and \((-1, y)\) have one output</td></tr>
-<tr><td>\((e^{x} \cos y,\; e^{x} \sin y)\)</td><td>\(e^{2x}\), never zero</td><td>Not reversible. The output repeats when \(y\) grows by \(2\pi\). The map is not a polynomial</td></tr>
+<tr><td>\((x + y^2,\; y)\)</td><td>\(1\)</td><td>Yes</td></tr>
+<tr><td>\((x^2,\; y)\)</td><td>\(2x\)</td><td>No: \(\pm x\) collide</td></tr>
+<tr><td>\((e^{x} \cos y,\; e^{x} \sin y)\)</td><td>\(e^{2x}\)</td><td>No: it repeats</td></tr>
 </tbody>
 </table>
 </div>
-<figure class="ai-math-figure ai-math-figure--wide">
-{{fig:shear}}
-<figcaption>The map \((x + y^2, y)\) on a grid. It bends the grid, but each small cell keeps its area, because the determinant is 1. The shaded cell has the same area in both panels.</figcaption>
 </figure>
-<p>The third row shows why the conjecture needs polynomials. A function such as \(e^{x}\) can repeat its values. A polynomial grows in a more controlled way, so a stronger rule looked possible.</p>
-<p>The <dfn>Jacobian conjecture</dfn> states this rule. Let \(F\) be a polynomial map from \(\mathbb{C}^n\) to \(\mathbb{C}^n\). If the Jacobian determinant of \(F\) is a nonzero constant, then \(F\) has an inverse that is also a polynomial map.</p>
-<p>With one variable the rule is true and easy. A polynomial with a constant nonzero derivative has the form \(cx + d\). Ludwig Kraus stated the two-variable case in 1884 with a flawed proof. Ott-Heinrich Keller stated the general form in 1939. Stephen Smale put it on his 1998 list of problems for the next century.</p>
-
-{{divider}}
-
-<h2 id="result">The result</h2>
-<p>On 19 July 2026, Levent Alpöge posted the map \(F = (F_1, F_2, F_3)\) and credited the AI model Claude Fable 5. Akhil Mathew had asked about the problem.</p>
+<p>A local inverse does not give a global inverse. The last map in the table has a nonzero determinant everywhere, yet it repeats its values. The <dfn>Jacobian conjecture</dfn> said that polynomials behave better: if \(F\) is a polynomial map with a constant nonzero determinant, then \(F\) has a polynomial inverse.</p>
+<p>The conjecture is false for \(n \ge 3\). <a href="https://x.com/__alpoge__/status/2079028340955197566">Levent Alpöge posted this counterexample</a> and credited the AI model Claude Fable 5:</p>
 \[ \begin{aligned} F_1 &amp;= (1 + xy)^3 z + y^2 (1 + xy)(4 + 3xy) \\ F_2 &amp;= y + 3x(1 + xy)^2 z + 3xy^2(4 + 3xy) \\ F_3 &amp;= 2x - 3x^2 y - x^3 z \end{aligned} \]
-<p>The Jacobian determinant of \(F\) is \(-2\) at every point. These three different points have one output:</p>
+<p>The determinant is \(-2\) at every point, yet three points have one output:</p>
 \[ \begin{aligned} F(0, 0, -\tfrac14) &amp;= (-\tfrac14, 0, 0) \\ F(1, -\tfrac32, \tfrac{13}{2}) &amp;= (-\tfrac14, 0, 0) \\ F(-1, \tfrac32, \tfrac{13}{2}) &amp;= (-\tfrac14, 0, 0) \end{aligned} \]
-<p>You can check the second point by hand. There, \(xy = -3/2\), so \(1 + xy = -1/2\) and \(4 + 3xy = -1/2\). The three lines of the formula then give these values:</p>
-\[ \begin{aligned} -\tfrac18 \cdot \tfrac{13}{2} + \tfrac94 \cdot (-\tfrac12)(-\tfrac12) &amp;= -\tfrac{13}{16} + \tfrac{9}{16} = -\tfrac14 \\ -\tfrac32 + 3 \cdot \tfrac14 \cdot \tfrac{13}{2} + 3 \cdot \tfrac94 \cdot (-\tfrac12) &amp;= -\tfrac32 + \tfrac{39}{8} - \tfrac{27}{8} = 0 \\ 2 + \tfrac92 - \tfrac{13}{2} &amp;= 0 \end{aligned} \]
-<p>The determinant at the first point is also short. The Jacobian matrix at \((0, 0, -\tfrac14)\) is this matrix, and its determinant is \(-2\):</p>
-\[ \begin{pmatrix} 0 &amp; 0 &amp; 1 \\ -\tfrac34 &amp; 1 &amp; 0 \\ 2 &amp; 0 &amp; 0 \end{pmatrix} \]
-<p>A map with three inputs for one output has no inverse, so the conjecture is false for \(n = 3\). To get an example for \(n = 4\), add a fourth coordinate \(w\) that the map keeps unchanged. The determinant stays \(-2\), and the three points stay distinct. The same step works for each larger \(n\).</p>
-
-<h2 id="fibres">How many inputs each output has</h2>
-<p>A calculation for this page gives a closed form. An output \((a, b, c)\) has inputs whose \(x\) coordinates solve one cubic equation:</p>
-\[ \begin{aligned} D\, x^3 + (4 - 3bc)\, x - 2c &amp;= 0, \text{ where} \\ D &amp;= 27a^2c^2 - 18abc + 16a + b^3c - b^2 \end{aligned} \]
-<p>Most outputs therefore have exactly three inputs, counted over the complex numbers. When \(D = 0\), the cubic loses roots. For example, \((0, 0, 1)\) has one input and \((\tfrac{1}{27}, \tfrac23, 2)\) has none.</p>
-<p>The lost roots go to infinity. This table follows the output \((a, 0, 0)\) as \(a\) approaches 0. The input with \(x = 0\) stays near the origin, and the other two inputs move away without limit.</p>
-<div class="table-scroll" data-scroll-region aria-label="Inputs of the output (a, 0, 0) as a approaches zero">
-<table class="ui-table ai-math-numbers">
-<thead><tr><th scope="col">Output \((a, 0, 0)\)</th><th scope="col">First input</th><th scope="col">Second and third inputs</th></tr></thead>
-<tbody>
-<tr><td>\(a = -1/4\)</td><td>\((0, 0, -1/4)\)</td><td>\((\pm 1,\; \mp 3/2,\; 13/2)\)</td></tr>
-<tr><td>\(a = -1/16\)</td><td>\((0, 0, -1/16)\)</td><td>\((\pm 2,\; \mp 3/4,\; 13/8)\)</td></tr>
-<tr><td>\(a = -1/100\)</td><td>\((0, 0, -1/100)\)</td><td>\((\pm 5,\; \mp 3/10,\; 13/50)\)</td></tr>
-<tr><td>\(a = -1/10\,000\)</td><td>\((0, 0, -1/10\,000)\)</td><td>\((\pm 50,\; \mp 3/100,\; 13/5000)\)</td></tr>
-<tr><td>\(a = 0\)</td><td>\((0, 0, 0)\)</td><td>None</td></tr>
-</tbody>
-</table>
-</div>
-
-<h2 id="not">What the result does not say</h2>
-<ul>
-<li><strong>It does not settle two variables.</strong> The case \(n = 2\) remains open. Computer work reported in sources shows no counterexample of degree up to 100.</li>
-<li><strong>It does not say that such maps are never reversible.</strong> The map \((x + y^2, y)\) has determinant 1 and a polynomial inverse.</li>
-<li><strong>It does not give a general theory.</strong> A counterexample shows that a statement is false. It does not by itself explain why. Sources report that the method of discovery has not been revealed.</li>
-</ul>
-
-<h2 id="matters">Why the result matters</h2>
-<p>The conjecture is easy to state, and it had a long record of mistaken proofs. Sources name published attempts by Beniamino Segre and Wolfgang Gröbner among them. Mathematicians knew that any counterexample must avoid many special cases. For example, Stuart Wang proved the statement for degree 2. The new map has degree 7.</p>
-<p>The result also reaches other conjectures. The Dixmier conjecture concerns an algebra of differential operators. For each \(n\), the \(n\)-variable Dixmier conjecture implies the \(n\)-variable Jacobian conjecture. So the Dixmier conjecture is also false for each \(n \ge 3\).</p>
-
-<h2 id="checked">How far the result has been checked</h2>
-<p>This result needs no long proof. The whole claim is one calculation, and any computer algebra system can do it. The tests for this site confirm in exact arithmetic that the determinant is \(-2\) as a polynomial identity. They also check the three outputs with exact fractions.</p>
-<p>OpenAI researcher Aaron Lou said that an internal model found essentially the same example. Timothy Gowers called the result amazing. Andrew Blumberg said that it did not change his view, because a search through polynomials is what he expects machines to do well. Alpöge said that a full write-up would follow.</p>
-
-<h2 id="sources">Sources</h2>
-<ul class="ai-math-sources">
-<li><a href="https://x.com/__alpoge__/status/2079028340955197566">Levent Alpöge's announcement on X</a>, July 2026.</li>
-<li><a href="https://en.wikipedia.org/wiki/Jacobian_conjecture">Jacobian conjecture</a>, Wikipedia, for the history and the reductions.</li>
-<li><a href="https://www.sciencedaily.com/releases/2026/08/260804034634.htm">ScienceDaily's report</a>, August 2026.</li>
-<li><a href="https://thenextweb.com/news/jacobian-conjecture-disproved-ai-fable-5">The Next Web's report</a>, July 2026.</li>
-</ul>
+<p>Direct calculation confirms both facts. Extra coordinates that the map leaves unchanged give examples for each larger \(n\). The case \(n = 2\) remains open.</p>

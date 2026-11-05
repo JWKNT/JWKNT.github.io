@@ -1,68 +1,47 @@
-{
-  "checked": "2026-11-05",
-  "results": [
-    {
-      "slug": "z-diophantine-in-q",
-      "title": "ℤ is Diophantine in ℚ",
-      "summary": "A new manuscript reports one polynomial equation that separates the integers from all other fractions.",
-      "status": "Posted 5 November 2026. AI reviews only. The Lean proof is incomplete.",
-      "facts": [["Posted", "2026-11-05"], ["Lean proof", "Incomplete"], ["Human review", "None found"]]
-    },
-    {
-      "slug": "exponential-time-hypothesis",
-      "title": "The Exponential Time Hypothesis",
-      "summary": "Two groups report an algorithm that solves 3-SAT faster than every exponential time, but only for enormous inputs.",
-      "status": "Posted 26 October 2026 by two groups. Two separate Lean proofs. Expert review continues.",
-      "facts": [["Posted", "2026-10-26"], ["Lean proof", "Complete"], ["Human review", "In progress"]]
-    },
-    {
-      "slug": "quasi-riemann-hypothesis",
-      "title": "The quasi-Riemann hypothesis",
-      "summary": "OpenAI reports that no zero of the Riemann zeta function has real part above 7/8. This limit controls the error in prime counts.",
-      "status": "Posted 6 October 2026. Lean proof of the 7/8 bound. Experts who studied the proof largely agree that it is correct.",
-      "facts": [["Posted", "2026-10-06"], ["Lean proof", "Complete"], ["Human review", "Largely positive"]]
-    },
-    {
-      "slug": "kakeya-conjecture",
-      "title": "The Kakeya conjecture in every dimension",
-      "summary": "OpenAI reports that a set with a unit segment in every direction always has full dimension, even when its volume is zero.",
-      "status": "Posted 26 October 2026. Lean proof. No published human check found.",
-      "facts": [["Posted", "2026-10-26"], ["Lean proof", "Complete"], ["Human review", "None found"]]
-    },
-    {
-      "slug": "jacobian-conjecture",
-      "title": "The Jacobian conjecture is false",
-      "summary": "A polynomial map in three variables can preserve volume at every point and still send three points to one.",
-      "status": "Posted 19 July 2026. Anyone can check the example by direct calculation. The two-variable case remains open.",
-      "facts": [["Posted", "2026-07-19"], ["Check", "Calculation"], ["Two variables", "Open"]]
-    },
-    {
-      "slug": "unit-distance-problem",
-      "title": "Erdős's unit distance problem",
-      "summary": "The number of pairs at distance 1 among n points can exceed what Erdős expected. A later report also lowers the upper limit.",
-      "status": "Lower bound, May 2026: checked by outside mathematicians. Upper bound, October 2026: Lean proof.",
-      "facts": [["Posted", "2026-05-20"], ["Lower bound", "Expert checked"], ["Upper bound", "Lean proof"]]
-    },
-    {
-      "slug": "hilberts-tenth-problem",
-      "title": "Hilbert's tenth problem over ℚ",
-      "summary": "OpenAI reports that no algorithm can decide if every polynomial equation has a solution in fractions.",
-      "status": "Posted 6 October 2026. No Lean proof. Later papers build on it. No published independent check found.",
-      "facts": [["Posted", "2026-10-06"], ["Lean proof", "None"], ["Human review", "None found"]]
-    },
-    {
-      "slug": "unique-games",
-      "title": "The Unique Games Conjecture",
-      "summary": "OpenAI reports a proof that some systems of two-variable equations are hard to satisfy even approximately. Many approximation algorithms are then the best possible unless P = NP.",
-      "status": "Posted 6 October 2026. Lean proof. Experts are studying the proof and giving talks on it.",
-      "facts": [["Posted", "2026-10-06"], ["Lean proof", "Complete"], ["Human review", "In progress"]]
-    },
-    {
-      "slug": "navier-stokes",
-      "title": "Navier–Stokes blow-up",
-      "summary": "OpenAI reports that a smooth force on a fluid at rest can produce infinite speed in finite time. The case with no force remains open.",
-      "status": "Posted 8 September 2026. Lean proof. The Clay Mathematics Institute calls the problem apparently settled, and its review continues.",
-      "facts": [["Posted", "2026-09-08"], ["Lean proof", "Complete"], ["Clay review", "In progress"]]
-    }
-  ]
-}
+[
+  {
+    "slug": "z-diophantine-in-q",
+    "title": "ℤ is Diophantine in ℚ",
+    "description": "What it means for the integers to be Diophantine in the rational numbers."
+  },
+  {
+    "slug": "exponential-time-hypothesis",
+    "title": "Exponential Time Hypothesis",
+    "description": "What the Exponential Time Hypothesis says, and what an algorithm that refutes it means."
+  },
+  {
+    "slug": "quasi-riemann-hypothesis",
+    "title": "Quasi-Riemann Hypothesis",
+    "description": "What the quasi-Riemann hypothesis says about the zeros of the zeta function and the primes."
+  },
+  {
+    "slug": "kakeya-conjecture",
+    "title": "Kakeya Conjecture in All Dimensions",
+    "description": "What the Kakeya conjecture says about sets with a segment in every direction."
+  },
+  {
+    "slug": "jacobian-conjecture",
+    "title": "Jacobian Conjecture",
+    "description": "What the Jacobian conjecture said, and the three-variable map that disproves it."
+  },
+  {
+    "slug": "unit-distance-problem",
+    "title": "Unit Distance Problem",
+    "description": "How many pairs among n points in the plane can be exactly distance 1 apart."
+  },
+  {
+    "slug": "hilberts-tenth-problem",
+    "title": "Hilbert's Tenth Problem",
+    "description": "Whether an algorithm can decide if a polynomial equation has a solution in integers or in fractions."
+  },
+  {
+    "slug": "unique-games",
+    "title": "Unique Games Conjecture",
+    "description": "What the Unique Games Conjecture says about systems of simple equations that are hard to satisfy even approximately."
+  },
+  {
+    "slug": "navier-stokes",
+    "title": "Navier–Stokes",
+    "description": "Whether the equations of fluid motion can produce infinite speed in finite time."
+  }
+]

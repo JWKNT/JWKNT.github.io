@@ -1,64 +1,44 @@
-/* AI Math Results: a list of questions and one reading page for each. The shared
-   theme owns tokens, type, tables, focus and the math face. */
-.ai-math-shell { width: min(var(--measure, 43rem), calc(100% - 2 * var(--gutter, 1.5rem))); margin: 0 auto; padding: clamp(1.75rem, 4vw, 3rem) 0 4rem; }
-.ai-math-shell > .lede { margin: 0; }
+/* AI Math Results: a list of titles and one short page for each. The content uses
+   the same frame as the masthead. On a wide screen each page has a text column and
+   a margin column for its one figure. The shared theme owns tokens, type and math. */
+.ai-math-shell { width: var(--site-frame-width, min(74rem, calc(100% - 5rem))); margin: 0 auto; padding: clamp(1.25rem, 3vw, 2rem) 0 3.5rem; }
 
 /* Landing list. */
-.ai-math-list { margin: 1.75rem 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line-strong); }
-.ai-math-list li { padding: 1rem 0 1.05rem; border-bottom: 1px solid var(--line); }
-.ai-math-result { display: inline-flex; align-items: baseline; gap: .45rem; color: var(--ink); font: 700 1.28rem/1.3 var(--display); letter-spacing: -.01em; text-decoration: none; }
+.ai-math-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 21rem), 1fr)); gap: 0 2.5rem; margin: 0; padding: 0; list-style: none; }
+.ai-math-list li { border-bottom: 1px solid var(--line); }
+.ai-math-result { display: flex; align-items: baseline; justify-content: space-between; gap: .75rem; padding: .85rem 0; color: var(--ink); font: 700 1.2rem/1.3 var(--display); letter-spacing: -.01em; text-decoration: none; }
 .ai-math-result .ui-link-arrow { color: var(--muted); }
 .ai-math-result:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
 .ai-math-result:hover .ui-link-arrow { color: currentColor; }
-.ai-math-summary { margin: .3rem 0 0; font-family: var(--reading); line-height: 1.55; }
-.ai-math-status { margin: .3rem 0 0; color: var(--muted); font: var(--text-ui)/1.5 var(--ui, var(--serif)); }
-.ai-math-key { margin-top: 2.5rem; }
-.ai-math-key h2 { margin: 0 0 .5rem; font-size: 1.15rem; }
-.ai-math-key p { margin: 0 0 .75rem; color: var(--muted-strong); font-size: var(--text-ui); }
-.ai-math-key dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: .4rem 1.1rem; margin: 0; font-size: var(--text-ui); line-height: 1.5; }
-.ai-math-key dt { color: var(--ink); font-weight: 600; }
-.ai-math-key dd { margin: 0; color: var(--muted-strong); }
 
 /* Explainer. */
-.ai-math-article h1 { margin: 0 0 .85rem; font-size: clamp(1.75rem, 4.2vw, 2.35rem); font-weight: 400; line-height: 1.15; letter-spacing: -.01em; }
+.ai-math-article { --side: 22rem; --side-gap: 3rem; max-width: none; font-size: 1.0625rem; line-height: 1.6; }
+.ai-math-article h1 { margin: 0 0 1rem; font-size: clamp(1.75rem, 3.4vw, 2.3rem); font-weight: 400; line-height: 1.15; letter-spacing: -.01em; }
 .ai-math-article h1 .ui-math-char { font-size: 1.04em; }
-.ai-math-article h2 { margin: 2.4rem 0 .6rem; font-size: clamp(1.3rem, 2.6vw, 1.5rem); font-weight: 400; }
-.ai-math-article .lede { margin: 0 0 1.25rem; font-size: 1.08rem; }
-.ai-math-article ul { margin: .7rem 0 1.1rem; padding-left: 1.2rem; }
-.ai-math-article li { margin: .45rem 0; }
-/* Wrenfold Text has one weight, and synthetic bold on it is faint. A run-in label uses the interface bold. */
-.ai-math-article strong { font-family: var(--ui, var(--serif)); font-size: .95em; font-weight: 600; }
+.ai-math-article p { margin: 0 0 .95rem; }
 .ai-math-article dfn { font-style: italic; }
-.ai-math-article .table-scroll, .ai-math-article .ui-table { font-family: var(--ui, var(--serif)); }
-.ai-math-article .table-scroll { margin: 1.1rem 0 1.3rem; border-top: 1px solid var(--line-strong); }
-.ai-math-article .ui-table { width: 100%; }
-.ai-math-numbers td, .ai-math-numbers tbody th { white-space: nowrap; }
-.ai-math-numbers tbody th { font-weight: 500; }
-.ai-math-numbers td { font-variant-numeric: tabular-nums; }
 .ai-math-nobreak { white-space: nowrap; }
-.ai-math-statement { margin: 1.1rem 0 1.3rem !important; padding: .1rem 0 .1rem 1rem; border-left: 2px solid var(--line-strong); }
-.ai-math-divider { width: 100%; margin: 2.6rem 0 0; }
-.ai-math-divider + h2 { margin-top: 1.4rem; }
-.ai-math-sources { padding-left: 0 !important; list-style: none; font-size: var(--text-ui); line-height: 1.55; }
-.ai-math-sources li { margin: .4rem 0; }
-.ai-math-back { margin: 2.25rem 0 0; padding-top: .9rem; border-top: 1px solid var(--line); font: var(--text-ui)/1.5 var(--ui, var(--serif)); }
 
-/* Key facts: short labels, so the strip stays on one or two rows. */
-.ai-math-facts { font-family: var(--ui, var(--serif)); }
-.ai-math-facts > div { min-width: 0; padding: .55rem .7rem; }
-.ai-math-facts > div:first-child { padding-left: 0; }
-.ai-math-facts dd { font-size: .86rem; font-weight: 500; overflow-wrap: anywhere; }
+/* The margin figure sits in the text flow on a narrow screen. */
+.ai-math-side { margin: 1.25rem 0 1.4rem; font-size: 1rem; }
+.ai-math-side svg { display: block; width: 100%; max-width: 24rem; height: auto; max-height: 19rem; }
+.ai-math-side figcaption { margin-top: .5rem; color: var(--muted-strong); font: var(--text-ui)/1.5 var(--ui, var(--serif)); }
+.ai-math-side .table-scroll { border-top: 1px solid var(--line-strong); }
+.ai-math-side .ui-table { width: 100%; font-family: var(--ui, var(--serif)); }
 
-/* Figures: calculated SVG on theme tokens. The caption states what each one shows. */
-.ai-math-figure { margin: 1.5rem 0; }
-.ai-math-figure svg { display: block; width: 100%; max-width: 30.6rem; height: auto; }
-.ai-math-figure--wide svg { max-width: 35rem; }
-.ai-math-figure--small svg { max-width: 21rem; }
-.ai-math-figure figcaption, .ai-math-panel figcaption { margin-top: .55rem; color: var(--muted-strong); font: var(--text-ui)/1.5 var(--ui, var(--serif)); }
-.ai-math-panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(7.25rem, 1fr)); gap: 1rem 1.25rem; margin: 1.25rem 0; }
-.ai-math-panel { margin: 0; }
-.ai-math-panel svg { display: block; width: 100%; max-width: 11rem; height: auto; }
-.ai-math-panel figcaption strong { color: var(--ink); font-weight: 600; }
+/* On a wide screen the title spans both columns and the figure starts beside the first
+   paragraph. Text stays in the first column, whatever its position in the source. */
+@media (min-width: 60rem) {
+  .ai-math-article { display: grid; grid-template-columns: minmax(0, 1fr) var(--side); column-gap: var(--side-gap); }
+  .ai-math-article > * { grid-column: 1; min-width: 0; }
+  .ai-math-article > h1 { grid-column: 1 / -1; }
+  .ai-math-article > .ai-math-side { grid-column: 2; grid-row: 2 / span 12; align-self: start; margin: .3rem 0 1rem; }
+}
+@media (min-width: 76rem) {
+  .ai-math-article { --side: 24rem; }
+}
+
+/* Figures: calculated SVG on theme tokens. */
 .fig-line, .fig-line-closed { fill: none; stroke: var(--ink); stroke-width: 1.25; }
 .fig-guide { fill: none; stroke: var(--line-strong); stroke-width: 1; }
 .fig-guide-strong { fill: none; stroke: var(--muted); stroke-width: 1.2; }
@@ -77,15 +57,11 @@
 .fig-node-label { fill: var(--ink); font: 11.5px var(--mono); }
 .fig-math { fill: var(--ink); font: italic 14px var(--math, var(--serif)); }
 
-@media (max-width: 38rem) {
-  .ai-math-key dl { grid-template-columns: minmax(0, 1fr); gap: .1rem; }
-  .ai-math-key dd { margin-bottom: .5rem; }
-  .ai-math-facts > div:first-child, .ai-math-facts > div:nth-child(odd) { padding-left: 0; }
-}
 @media (pointer: coarse) {
   .ai-math-result { align-items: center; min-height: 2.75rem; }
 }
 @media print {
-  .ai-math-back { display: none; }
-  .ai-math-figure svg, .ai-math-panel svg { max-width: 22rem; }
+  .ai-math-article { display: block; }
+  .ai-math-side { margin: 1rem 0; }
+  .ai-math-side svg { max-width: 22rem; }
 }

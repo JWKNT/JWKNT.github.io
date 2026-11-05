@@ -3,20 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="OpenAI reports that a smooth force on a fluid at rest can produce infinite speed in finite time. The case with no force remains open.">
+    <meta name="description" content="Whether the equations of fluid motion can produce infinite speed in finite time.">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Navier–Stokes blow-up">
-    <meta property="og:description" content="OpenAI reports that a smooth force on a fluid at rest can produce infinite speed in finite time. The case with no force remains open.">
+    <meta property="og:title" content="Navier–Stokes">
+    <meta property="og:description" content="Whether the equations of fluid motion can produce infinite speed in finite time.">
     <meta property="og:url" content="https://jehlp.net/ai-math/navier-stokes/">
     <meta property="og:site_name" content="jehlp.net">
     <meta name="theme-color" content="#fbfaf7">
     <link rel="canonical" href="https://jehlp.net/ai-math/navier-stokes/">
-    <title>Navier–Stokes blow-up · AI Math Results · jehlp.net</title>
+    <title>Navier–Stokes · AI Math Results · jehlp.net</title>
     <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/ai-math.png" type="image/png">
     <script src="https://jehlp.net/site-theme/v2/theme.js?v=20261009-reading-folio"></script>
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261009-reading-folio">
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css?v=20261105-math3">
-    <link rel="stylesheet" href="../../assets/ai-math.css?v=20261105-math5">
+    <link rel="stylesheet" href="../../assets/ai-math.css?v=20261105-brief2">
     <script src="https://jehlp.net/site-theme/v2/components.js?v=20261105-math3" defer></script>
   </head>
   <body data-site-tone="blue">
@@ -27,97 +27,19 @@
     </header>
     <main id="explainer" class="ai-math-shell" tabindex="-1">
       <article class="prose ai-math-article">
-        <h1>Navier–Stokes blow-up</h1>
-<p class="lede">The Navier–Stokes equations describe how fluids move. OpenAI reports a proof that a smooth force on a smooth fluid at rest can produce infinite speed in finite time. The case with no force remains open, and aircraft and weather models do not change.</p>
-<dl class="data-strip ai-math-facts"><div><dt>Posted</dt><dd>2026-09-08</dd></div><div><dt>Lean proof</dt><dd>Complete</dd></div><div><dt>Clay review</dt><dd>In progress</dd></div><div><dt>Status date</dt><dd>2026-11-05</dd></div></dl>
-
-<h2 id="question">The question</h2>
-<p>The <dfn>Navier–Stokes equations</dfn> apply Newton's second law, force equals mass times acceleration, to each small parcel of a fluid. Engineers use them for aircraft, weather and blood flow. They treat a fluid as a continuous material and not as separate molecules.</p>
-<p>In three dimensions, for a fluid of constant density, the equations have this form:</p>
+        <h1>Navier–Stokes</h1>
+<p>The <dfn>Navier–Stokes equations</dfn> are Newton's second law for a fluid. Here <math><mi>u</mi></math> is velocity, <math><mi>p</mi></math> is pressure, <math><mrow><mi>ν</mi><mo>&gt;</mo><mn>0</mn></mrow></math> is viscosity and <math><mi>f</mi></math> is an external force:</p>
 <div class="ui-equation" data-scroll-region data-scroll-noun="of the formula" aria-label="Formula"><math display="block" class="tml-display" style="display:block math;"><mtable displaystyle="true" class="tml-jot"><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mrow><mfrac><mrow><mi>∂</mi><mi>u</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo>+</mo><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>u</mi><mo>⋅</mo><mo form="prefix" stretchy="false">∇</mo><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mi>u</mi></mrow></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mo>=</mo><mo form="prefix" stretchy="false">−</mo><mo form="prefix" stretchy="false">∇</mo><mi>p</mi><mo>+</mo><mi>ν</mi><mrow><mi mathvariant="normal">Δ</mi><mspace></mspace></mrow><mi>u</mi><mo>+</mo><mi>f</mi></mrow></mtd></mtr><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mrow><mo form="prefix" stretchy="false">∇</mo><mo form="prefix" stretchy="false">⋅</mo><mi>u</mi></mrow></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mo>=</mo><mn>0</mn></mrow></mtd></mtr></mtable></math></div>
-<div class="table-scroll" data-scroll-region aria-label="The terms of the Navier–Stokes equations">
-<table class="ui-table">
-<thead><tr><th scope="col">Term</th><th scope="col">Meaning</th></tr></thead>
-<tbody>
-<tr><td><math><mi>u</mi></math></td><td>The velocity of the fluid at each point and time</td></tr>
-<tr><td><math><mrow><mi>∂</mi><mi>u</mi><mi>/</mi><mi>∂</mi><mi>t</mi><mo>+</mo><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>u</mi><mo>⋅</mo><mo form="prefix" stretchy="false">∇</mo><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mi>u</mi></mrow></math></td><td>The acceleration of a parcel. The fluid carries its own velocity along, so this term contains <math><mi>u</mi></math> twice</td></tr>
-<tr><td><math><mrow><mo form="prefix" stretchy="false">−</mo><mo form="prefix" stretchy="false">∇</mo><mi>p</mi></mrow></math></td><td>The force from differences in pressure</td></tr>
-<tr><td><math><mrow><mi>ν</mi><mrow><mi mathvariant="normal">Δ</mi><mspace></mspace></mrow><mi>u</mi></mrow></math></td><td>Viscosity, with strength <span class="ai-math-nobreak"><math><mrow><mi>ν</mi><mo>&gt;</mo><mn>0</mn></mrow></math>.</span> It smooths differences in velocity</td></tr>
-<tr><td><math><mi>f</mi></math></td><td>An external force, such as a stirring force</td></tr>
-<tr><td><math><mrow><mo form="prefix" stretchy="false">∇</mo><mo form="prefix" stretchy="false">⋅</mo><mi>u</mi><mo>=</mo><mn>0</mn></mrow></math></td><td>The fluid does not compress</td></tr>
-</tbody>
-</table>
-</div>
-<p>A function is <dfn>smooth</dfn> if all its derivatives exist. The question is whether a solution that starts smooth stays smooth for all time. It can fail if the speed grows without limit in finite time. This event is a <dfn>singularity</dfn>, or <dfn>blow-up</dfn>.</p>
-
-<h2 id="examples">Examples</h2>
-<p>A simple equation can blow up, even though it contains nothing infinite. Compare two equations that start at <span class="ai-math-nobreak"><math><mrow><mi>y</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>0</mn><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>=</mo><mn>1</mn></mrow></math>.</span></p>
-<div class="table-scroll" data-scroll-region aria-label="Values of the two example solutions">
-<table class="ui-table ai-math-numbers">
-<thead><tr><th scope="col">Time <math><mi>t</mi></math></th><th scope="col">0</th><th scope="col">0.5</th><th scope="col">0.9</th><th scope="col">0.99</th><th scope="col">0.999</th><th scope="col">1</th></tr></thead>
-<tbody>
-<tr><th scope="row"><span class="ai-math-nobreak"><math><mrow><mi>d</mi><mi>y</mi><mi>/</mi><mi>d</mi><mi>t</mi><mo>=</mo><mi>y</mi></mrow></math>,</span> so <math><mrow><mi>y</mi><mo>=</mo><msup><mi>e</mi><mi class="tml-sml-pad">t</mi></msup></mrow></math></th><td>1</td><td>1.65</td><td>2.46</td><td>2.69</td><td>2.72</td><td>2.72</td></tr>
-<tr><th scope="row"><span class="ai-math-nobreak"><math><mrow><mi>d</mi><mi>y</mi><mi>/</mi><mi>d</mi><mi>t</mi><mo>=</mo><msup><mi>y</mi><mn class="tml-sml-pad">2</mn></msup></mrow></math>,</span> so <math><mrow><mi>y</mi><mo>=</mo><mn>1</mn><mi>/</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>t</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math></th><td>1</td><td>2</td><td>10</td><td>100</td><td>1000</td><td>No value</td></tr>
-</tbody>
-</table>
-</div>
-<figure class="ai-math-figure">
-<svg viewBox="0 0 490 296" role="img" aria-label="Two curves from one: y equals one over one minus t rises without limit at t equals one, and y equals e to the t stays finite"><line class="fig-line" x1="44" y1="262" x2="476" y2="262"/><line class="fig-line" x1="44" y1="262" x2="44" y2="18.4"/><line class="fig-line" x1="44" y1="262" x2="44" y2="268"/><text class="fig-label" x="44" y="284" text-anchor="middle">0</text><line class="fig-line" x1="179" y1="262" x2="179" y2="268"/><text class="fig-label" x="179" y="284" text-anchor="middle">0.5</text><line class="fig-line" x1="314" y1="262" x2="314" y2="268"/><text class="fig-label" x="314" y="284" text-anchor="middle">1</text><line class="fig-line" x1="449" y1="262" x2="449" y2="268"/><text class="fig-label" x="449" y="284" text-anchor="middle">1.5</text><line class="fig-line" x1="38" y1="262" x2="44" y2="262"/><text class="fig-label" x="33" y="267" text-anchor="end">0</text><line class="fig-line" x1="38" y1="157" x2="44" y2="157"/><text class="fig-label" x="33" y="162" text-anchor="end">5</text><line class="fig-line" x1="38" y1="52" x2="44" y2="52"/><text class="fig-label" x="33" y="57" text-anchor="end">10</text><line class="fig-dash" x1="314" y1="262" x2="314" y2="18.4"/><polyline class="fig-line" points="44,241 51.2,240.43 58.4,239.85 65.6,239.25 72.8,238.64 80,238 87.2,237.36 94.4,236.69 101.6,236.01 108.8,235.3 116,234.58 123.2,233.84 130.4,233.08 137.6,232.3 144.8,231.5 152,230.67 159.2,229.83 166.4,228.96 173.6,228.06 180.8,227.15 188,226.2 195.2,225.24 202.4,224.24 209.6,223.22 216.8,222.17 224,221.1 231.2,219.99 238.4,218.86 245.6,217.69 252.8,216.49 260,215.26 267.2,214 274.4,212.7 281.6,211.37 288.8,210 296,208.6 303.2,207.15 310.4,205.67 317.6,204.15 324.8,202.59 332,200.98 339.2,199.33 346.4,197.64 353.6,195.9 360.8,194.11 368,192.28 375.2,190.39 382.4,188.46 389.6,186.47 396.8,184.43 404,182.33 411.2,180.18 418.4,177.97 425.6,175.7 432.8,173.37 440,170.97 447.2,168.51 454.4,165.98 461.6,163.39 468.8,160.72 476,157.99"/><polyline class="fig-accent" points="44,241 47.08,240.76 50.16,240.51 53.24,240.26 56.32,240 59.39,239.73 62.47,239.46 65.55,239.18 68.63,238.89 71.71,238.6 74.79,238.3 77.87,237.99 80.95,237.67 84.03,237.35 87.11,237.01 90.18,236.67 93.26,236.31 96.34,235.95 99.42,235.58 102.5,235.19 105.58,234.8 108.66,234.39 111.74,233.97 114.82,233.53 117.89,233.09 120.97,232.63 124.05,232.15 127.13,231.66 130.21,231.15 133.29,230.62 136.37,230.08 139.45,229.52 142.53,228.93 145.61,228.33 148.68,227.7 151.76,227.05 154.84,226.38 157.92,225.67 161,224.94 164.08,224.18 167.16,223.39 170.24,222.56 173.32,221.7 176.39,220.8 179.47,219.85 182.55,218.86 185.63,217.83 188.71,216.74 191.79,215.6 194.87,214.41 197.95,213.14 201.03,211.81 204.11,210.41 207.18,208.92 210.26,207.34 213.34,205.67 216.42,203.89 219.5,202 222.58,199.98 225.66,197.82 228.74,195.5 231.82,193.01 234.89,190.32 237.97,187.42 241.05,184.27 244.13,180.85 247.21,177.11 250.29,173 253.37,168.48 256.45,163.48 259.53,157.91 262.61,151.68 265.68,144.65 268.76,136.66 271.84,127.51 274.92,116.91 278,104.5 281.08,89.77 284.16,72 287.24,50.14 290.32,22.6"/><text class="fig-note-accent" x="275" y="73" text-anchor="end">dy/dt = y²</text><text class="fig-note" x="476" y="149.99" text-anchor="end">dy/dt = y</text><text class="fig-note" x="320" y="31">t = 1</text><text class="fig-math" x="476" y="254" text-anchor="end">t</text></svg>
-<figcaption>The solution of <math><mrow><mi>d</mi><mi>y</mi><mi>/</mi><mi>d</mi><mi>t</mi><mo>=</mo><msup><mi>y</mi><mn class="tml-sml-pad">2</mn></msup></mrow></math> reaches infinity at <span class="ai-math-nobreak"><math><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow></math>.</span> The solution of <math><mrow><mi>d</mi><mi>y</mi><mi>/</mi><mi>d</mi><mi>t</mi><mo>=</mo><mi>y</mi></mrow></math> grows fast but stays finite at every time.</figcaption>
+<p>The question is whether a fluid that starts smooth stays smooth, or if its speed can become infinite in finite time. This event is a <dfn>blow-up</dfn>.</p>
+<figure class="ai-math-side">
+<svg viewBox="0 0 380 236" role="img" aria-label="Two curves from one: y equals one over one minus t rises without limit at t equals one, and y equals e to the t stays finite" preserveAspectRatio="xMinYMin meet"><line class="fig-line" x1="34" y1="206" x2="362" y2="206"/><line class="fig-line" x1="34" y1="206" x2="34" y2="14.6"/><line class="fig-line" x1="34" y1="206" x2="34" y2="211"/><text class="fig-label" x="34" y="226" text-anchor="middle">0</text><line class="fig-line" x1="136.5" y1="206" x2="136.5" y2="211"/><text class="fig-label" x="136.5" y="226" text-anchor="middle">0.5</text><line class="fig-line" x1="239" y1="206" x2="239" y2="211"/><text class="fig-label" x="239" y="226" text-anchor="middle">1</text><line class="fig-line" x1="341.5" y1="206" x2="341.5" y2="211"/><text class="fig-label" x="341.5" y="226" text-anchor="middle">1.5</text><line class="fig-line" x1="29" y1="206" x2="34" y2="206"/><text class="fig-label" x="25" y="210" text-anchor="end">0</text><line class="fig-line" x1="29" y1="123.5" x2="34" y2="123.5"/><text class="fig-label" x="25" y="127.5" text-anchor="end">5</text><line class="fig-line" x1="29" y1="41" x2="34" y2="41"/><text class="fig-label" x="25" y="45" text-anchor="end">10</text><line class="fig-dash" x1="239" y1="206" x2="239" y2="14.6"/><polyline class="fig-line" points="34,189.5 39.47,189.05 44.93,188.6 50.4,188.13 55.87,187.64 61.33,187.15 66.8,186.64 72.27,186.11 77.73,185.58 83.2,185.02 88.67,184.46 94.13,183.88 99.6,183.28 105.07,182.66 110.53,182.03 116,181.38 121.47,180.72 126.93,180.04 132.4,179.33 137.87,178.61 143.33,177.87 148.8,177.11 154.27,176.33 159.73,175.53 165.2,174.71 170.67,173.86 176.13,172.99 181.6,172.1 187.07,171.19 192.53,170.24 198,169.28 203.47,168.29 208.93,167.27 214.4,166.22 219.87,165.15 225.33,164.04 230.8,162.91 236.27,161.74 241.73,160.55 247.2,159.32 252.67,158.06 258.13,156.76 263.6,155.43 269.07,154.06 274.53,152.66 280,151.22 285.47,149.74 290.93,148.22 296.4,146.66 301.87,145.05 307.33,143.4 312.8,141.71 318.27,139.98 323.73,138.19 329.2,136.36 334.67,134.48 340.13,132.54 345.6,130.56 351.07,128.52 356.53,126.43 362,124.27"/><polyline class="fig-accent" points="34,189.5 36.34,189.31 38.68,189.11 41.01,188.92 43.35,188.71 45.69,188.5 48.03,188.29 50.36,188.07 52.7,187.84 55.04,187.61 57.38,187.38 59.71,187.13 62.05,186.88 64.39,186.63 66.73,186.37 69.07,186.1 71.4,185.82 73.74,185.53 76.08,185.24 78.42,184.94 80.75,184.63 83.09,184.3 85.43,183.97 87.77,183.63 90.11,183.28 92.44,182.92 94.78,182.55 97.12,182.16 99.46,181.76 101.79,181.35 104.13,180.92 106.47,180.48 108.81,180.02 111.14,179.54 113.48,179.05 115.82,178.54 118.16,178.01 120.5,177.46 122.83,176.88 125.17,176.28 127.51,175.66 129.85,175.01 132.18,174.33 134.52,173.62 136.86,172.88 139.2,172.11 141.54,171.3 143.87,170.44 146.21,169.55 148.55,168.6 150.89,167.61 153.22,166.57 155.56,165.46 157.9,164.29 160.24,163.05 162.57,161.74 164.91,160.34 167.25,158.86 169.59,157.27 171.93,155.57 174.26,153.75 176.6,151.79 178.94,149.68 181.28,147.4 183.61,144.93 185.95,142.24 188.29,139.3 190.63,136.07 192.96,132.52 195.3,128.59 197.64,124.22 199.98,119.32 202.32,113.79 204.65,107.52 206.99,100.33 209.33,92 211.67,82.25 214,70.68 216.34,56.71 218.68,39.54 221.02,17.9"/><text class="fig-note-accent" x="204.4" y="57.5" text-anchor="end">dy/dt = y²</text><text class="fig-note" x="362" y="116.27" text-anchor="end">dy/dt = y</text><text class="fig-note" x="245" y="24.5">t = 1</text><text class="fig-math" x="362" y="199" text-anchor="end">t</text></svg>
+<figcaption>The equation <math><mrow><mi>d</mi><mi>y</mi><mi>/</mi><mi>d</mi><mi>t</mi><mo>=</mo><msup><mi>y</mi><mn class="tml-sml-pad">2</mn></msup></mrow></math> reaches infinity at <span class="ai-math-nobreak"><math><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow></math>.</span> The equation <math><mrow><mi>d</mi><mi>y</mi><mi>/</mi><mi>d</mi><mi>t</mi><mo>=</mo><mi>y</mi></mrow></math> grows fast but stays finite.</figcaption>
 </figure>
-<p>The square makes the difference. As <math><mi>y</mi></math> grows, its rate of growth grows faster. The term <math><mrow><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>u</mi><mo>⋅</mo><mo form="prefix" stretchy="false">∇</mo><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mi>u</mi></mrow></math> in the Navier–Stokes equations also contains the unknown twice.</p>
-<p>A damping term can stop this growth, but only for small values. The equation <math><mrow><mi>d</mi><mi>y</mi><mi>/</mi><mi>d</mi><mi>t</mi><mo>=</mo><msup><mi>y</mi><mn class="tml-sml-pad">2</mn></msup><mo>−</mo><mi>y</mi></mrow></math> is a simple model of this effect. If <span class="ai-math-nobreak"><math><mrow><mi>y</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>0</mn><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>=</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow></math>,</span> then <math><mrow><mi>y</mi><mo>=</mo><mn>1</mn><mi>/</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><msup><mi>e</mi><mi class="tml-sml-pad">t</mi></msup><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math> falls toward zero. If <span class="ai-math-nobreak"><math><mrow><mi>y</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>0</mn><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>=</mo><mn>2</mn></mrow></math>,</span> then <math><mrow><mi>y</mi><mo>=</mo><mn>1</mn><mi>/</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><msup><mi>e</mi><mi class="tml-sml-pad">t</mi></msup><mi>/</mi><mn>2</mn><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math> blows up at <span class="ai-math-nobreak"><math><mrow><mi>t</mi><mo>=</mo><mrow><mi>ln</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mn>2</mn><mo>≈</mo><mn>0.693</mn></mrow></math>.</span> Viscosity has a similar role in the fluid equations. It is known that small smooth initial velocities stay smooth.</p>
-<p>These equations are simple models. They show what blow-up means. They do not show that the fluid equations behave in the same way.</p>
-
-<h2 id="problem">The Millennium Prize problem</h2>
-<p>The Clay Mathematics Institute named this question one of seven Millennium Prize Problems in 2000. The official statement by Charles Fefferman gives four alternatives, and it asks for a proof of one of them.</p>
-<div class="table-scroll" data-scroll-region aria-label="The four official alternatives of the Navier–Stokes problem">
-<table class="ui-table">
-<thead><tr><th scope="col">Statement</th><th scope="col">Space</th><th scope="col">Force</th><th scope="col">Claim</th></tr></thead>
-<tbody>
-<tr><td>A</td><td>All of space</td><td>None</td><td>Each smooth start stays smooth</td></tr>
-<tr><td>B</td><td>A periodic box</td><td>None</td><td>Each smooth start stays smooth</td></tr>
-<tr><td><strong>C</strong></td><td>All of space</td><td>Smooth force permitted</td><td>Some smooth start and force break down</td></tr>
-<tr><td><strong>D</strong></td><td>A periodic box</td><td>Smooth force permitted</td><td>Some smooth start and force break down</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="site-divider ai-math-divider" data-ornament="folio" aria-hidden="true"><span></span></div>
-
-<h2 id="result">The result</h2>
-<p>OpenAI reports proofs of statements C and D. For every viscosity <span class="ai-math-nobreak"><math><mrow><mi>ν</mi><mo>&gt;</mo><mn>0</mn></mrow></math>,</span> there are a smooth start and a smooth force with no smooth solution for all time. In all of space, the statement also requires bounded energy.</p>
-<p>In the construction, the fluid starts at rest. A smooth force acts on it, and the energy stays finite. A vortex spirals inward and stretches. Its center shrinks and speeds up, until the speed has no limit at a finite time.</p>
-<p>The force itself stays smooth. So the infinite speed comes from the motion of the fluid, and not from an infinite force. Communications Physics notes that the force is adjusted at each moment to drive the shrinking vortex.</p>
-
-<h2 id="not">What the result does not say</h2>
-<ul>
-<li><strong>It does not settle a fluid with no force.</strong> Statements A and B concern that case. Communications Physics wrote on 14 October 2026 that the case is still unknown, and many mathematicians regard it as the main question.</li>
-<li><strong>It does not change aircraft or weather models.</strong> This is one special solution, built with a designed force. It says little about typical flows, and the equations remain well tested.</li>
-<li><strong>It does not say that real water reaches infinite speed.</strong> Real fluids are made of molecules. George Karniadakis told Nature that, in air, the singularity appears at a vortex about 70 nanometers wide, where the continuous model no longer applies.</li>
-<li><strong>It does not mean that the prize has been awarded.</strong> OpenAI says that it does not intend to claim the prize.</li>
-</ul>
-
-<h2 id="matters">Why the result matters</h2>
-<p>Jean Leray proved in 1934 that weak solutions exist. Whether they stay smooth remained open for about 90 years. If the proof holds, the equations with a smooth force do not guarantee a smooth solution.</p>
-<p>A related OpenAI paper reports a singularity for the Euler equations, which have no viscosity, with no external force. So the two reports together cover a fluid with no viscosity and no force, and a fluid with viscosity and a smooth force. A fluid with viscosity and no force remains open.</p>
-
-<h2 id="checked">How far the result has been checked</h2>
-<p>OpenAI states that about 10,000 AI agents reached the result in about 88 hours. It states that GPT-6 Astra then produced the Lean proof in 17 more hours. The Lean repository states the results for all of space and for a periodic box.</p>
-<p>On 11 September 2026, the Clay Mathematics Institute wrote that the problem has "apparently been settled". It also wrote that its process is deliberately unhurried, and it has announced no prize decision. Communications Physics wrote that experts believe that the proof is correct, but that nobody yet understands it well.</p>
-<p>The credit history is disputed. Tristan Buckmaster and Levent Alpöge posted related results on the Euler equations with a force just before the announcement. OpenAI recognizes their priority on that case. Buckmaster says that OpenAI followed their route after it learned of their work. OpenAI says that a rumor prompted its effort, but it denies that their work influenced its system. All of these results use methods from Diego Córdoba and Luis Martínez-Zoroa.</p>
-
-<h2 id="sources">Sources</h2>
-<ul class="ai-math-sources">
-<li><a href="https://openai.com/index/navier-stokes-solution/">On the Navier–Stokes Millennium Prize Problem</a>, OpenAI, 8 September 2026.</li>
-<li><a href="https://github.com/openai/NavierStokesAndEuler">The Lean repository</a>, with links to the Navier–Stokes and Euler papers.</li>
-<li><a href="https://www.claymath.org/news/navier-stokes-announcement/">Navier-Stokes Announcement</a>, Clay Mathematics Institute, 11 September 2026.</li>
-<li><a href="https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf">The official problem description</a>, Charles Fefferman.</li>
-<li><a href="https://www.nature.com/articles/s42005-026-02930-y">The Navier-Stokes equations blow up, and planes still fly</a>, Communications Physics.</li>
-<li><a href="https://www.implicator.ai/clay-institute-navier-stokes-openai-proof-claim/">Implicator's report</a> on the credit dispute.</li>
-</ul>
+<p>Blow-up can occur even when nothing in an equation is infinite. The equation <math><mrow><mi>d</mi><mi>y</mi><mi>/</mi><mi>d</mi><mi>t</mi><mo>=</mo><msup><mi>y</mi><mn class="tml-sml-pad">2</mn></msup></mrow></math> with <math><mrow><mi>y</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>0</mn><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>=</mo><mn>1</mn></mrow></math> has the solution <span class="ai-math-nobreak"><math><mrow><mi>y</mi><mo>=</mo><mn>1</mn><mi>/</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>t</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math>,</span> which reaches infinity at <span class="ai-math-nobreak"><math><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow></math>.</span> The fluid equations have a similar squared term, <span class="ai-math-nobreak"><math><mrow><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>u</mi><mo>⋅</mo><mo form="prefix" stretchy="false">∇</mo><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mi>u</mi></mrow></math>,</span> and viscosity acts against it.</p>
+<p>The <a href="https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf">Clay Millennium problem</a> accepts either of two outcomes. With no force, every smooth start stays smooth. Or with some smooth force, some smooth start breaks down.</p>
+<p><a href="https://openai.com/index/navier-stokes-solution/">OpenAI reports</a> a proof of the second outcome. A fluid at rest, driven by a smooth force, forms a vortex that spirals inward and stretches. Its speed has no limit at a finite time. The force stays smooth, so the infinity comes from the fluid itself.</p>
+<p>A fluid with no force remains open, and many mathematicians regard that as the main question. The result concerns the equations and not real water, which is made of molecules. Aircraft and weather models do not change.</p>
       </article>
-      <p class="ai-math-back"><a href="../">All results</a></p>
     </main>
   </body>
 </html>

@@ -1,79 +1,10 @@
-<p class="lede">The Riemann hypothesis says where the zeros of the zeta function lie, and those zeros control the errors in prime counts. OpenAI reports a weaker statement: no zero has real part above 7/8. Before this result, no fixed limit below 1 was known.</p>
-{{facts}}
-
-<h2 id="question">The question</h2>
-<p>A <dfn>prime</dfn> is a whole number above 1 with no divisors except 1 and itself. Primes become less common as numbers grow. Near a large number \(x\), about one number in \(\ln x\) is prime.</p>
-<p>Write \(\pi(x)\) for the number of primes up to \(x\). The <dfn>logarithmic integral</dfn> \(\operatorname{li}(x) = \int_0^x dt / \ln t\) adds up that density, and it estimates \(\pi(x)\). The question is how large the error \(\operatorname{li}(x) - \pi(x)\) can become.</p>
-
-<h2 id="examples">Examples</h2>
-<div class="table-scroll" data-scroll-region aria-label="Prime counts, the error of the logarithmic integral, and two growth rates">
-<table class="ui-table ai-math-numbers">
-<thead><tr><th scope="col">\(x\)</th><th scope="col">\(\pi(x)\)</th><th scope="col">\(\operatorname{li}(x) - \pi(x)\)</th><th scope="col">\(x^{1/2}\)</th><th scope="col">\(x^{7/8}\)</th></tr></thead>
-<tbody>
-<tr><td>\(10^{6}\)</td><td>78,498</td><td>130</td><td>\(1.00 \times 10^{3}\)</td><td>\(1.78 \times 10^{5}\)</td></tr>
-<tr><td>\(10^{9}\)</td><td>50,847,534</td><td>1,701</td><td>\(3.16 \times 10^{4}\)</td><td>\(7.50 \times 10^{7}\)</td></tr>
-<tr><td>\(10^{12}\)</td><td>37,607,912,018</td><td>38,263</td><td>\(1.00 \times 10^{6}\)</td><td>\(3.16 \times 10^{10}\)</td></tr>
-<tr><td>\(10^{18}\)</td><td>\(2.47 \times 10^{16}\)</td><td>\(2.19 \times 10^{7}\)</td><td>\(1.00 \times 10^{9}\)</td><td>\(5.62 \times 10^{15}\)</td></tr>
-<tr><td>\(10^{24}\)</td><td>\(1.84 \times 10^{22}\)</td><td>\(1.71 \times 10^{10}\)</td><td>\(1.00 \times 10^{12}\)</td><td>\(1.00 \times 10^{21}\)</td></tr>
-</tbody>
-</table>
-</div>
-<p>In this range the error stays below \(x^{1/2}\). A table cannot show what happens for all \(x\). A proof must control the error for numbers far beyond any computation.</p>
-
-<h2 id="zeta">The zeta function and its zeros</h2>
-<p>The <dfn>Riemann zeta function</dfn> starts as this sum:</p>
-\[ \zeta(s) = 1 + \frac{1}{2^s} + \frac{1}{3^s} + \frac{1}{4^s} + \cdots \]
-<p>For \(s = 2\), the sum approaches \(\pi^2 / 6 \approx 1.6449\). The first 10 terms give 1.5498, and the first 1000 terms give 1.6439. For \(s = 1\), the sum grows without limit.</p>
-<p>The sum converges only when the real part of \(s\) is above 1. A standard method extends \(\zeta\) to all complex numbers except \(s = 1\). A complex number \(s = \sigma + it\) has <dfn>real part</dfn> \(\sigma\), written \(\operatorname{Re} s\).</p>
-<p>Unique factorization connects this function to the primes. Euler showed that \(\zeta\) is a product over all primes \(p\), with one factor \(1/(1 - p^{-s})\) for each prime. So the function holds information about primes in a form that analysis can use.</p>
-<p>A <dfn>zero</dfn> of \(\zeta\) is a number \(s\) with \(\zeta(s) = 0\). The numbers \(-2, -4, -6, \dots\) are zeros, and they are easy to find. All other zeros lie in the strip \(0 &lt; \operatorname{Re} s &lt; 1\). The first of these is near \(\tfrac12 + 14.1347i\).</p>
-<p>Riemann's formula writes the error in the prime count as a sum over these zeros. A zero with real part \(\beta\) gives a wave of size about \(x^{\beta}\). So the zero with the largest real part sets the size of the error.</p>
-<figure class="ai-math-figure">
+<p>The <dfn>Riemann zeta function</dfn> starts as this sum, and a standard method extends it to complex \(s\):</p>
+\[ \zeta(s) = 1 + \frac{1}{2^s} + \frac{1}{3^s} + \cdots \]
+<p>Apart from the simple zeros at \(-2, -4, -6, \dots\), all its zeros lie in the strip \(0 &lt; \operatorname{Re} s &lt; 1\).</p>
+<p>These zeros control the primes. Let \(\pi(x)\) count the primes up to \(x\). The best simple estimate is \(\operatorname{li}(x) = \int_0^x dt / \ln t\). Riemann's formula writes the error as a sum over the zeros, and a zero with real part \(\beta\) contributes about \(x^{\beta}\). So the rightmost zero sets the size of the error.</p>
+<figure class="ai-math-side">
 {{fig:strip}}
-<figcaption>The upper half of the strip that holds the zeros of \(\zeta\). The dots are the first five zeros, with their imaginary parts. The lower half is the mirror image. The shaded bands are the regions where the new result excludes zeros.</figcaption>
+<figcaption>The first five zeros, with their heights. The new result excludes the shaded bands. The zeros in the lower half of the plane are the mirror image.</figcaption>
 </figure>
-<div class="table-scroll" data-scroll-region aria-label="Three statements about the zeros and the prime count error">
-<table class="ui-table">
-<thead><tr><th scope="col">Statement</th><th scope="col">Largest real part of a zero</th><th scope="col">Error in \(\pi(x)\)</th></tr></thead>
-<tbody>
-<tr><td>Known before 2026</td><td>No fixed limit below 1</td><td>Below \(x / (\ln x)^{A}\) for each \(A\), when \(x\) is large</td></tr>
-<tr><td>Quasi-Riemann hypothesis</td><td>Some fixed \(\beta &lt; 1\)</td><td>Below \(C x^{p}\) for each \(p &gt; \beta\)</td></tr>
-<tr><td>Riemann hypothesis, open</td><td>Exactly \(1/2\)</td><td>Below \(C x^{1/2} \ln x\)</td></tr>
-</tbody>
-</table>
-</div>
-<p>The constant \(C\) in this table is unknown or large. So the table compares growth rates and not exact limits. Mathematicians have checked that the first 12 trillion zeros have real part exactly \(1/2\).</p>
-
-{{divider}}
-
-<h2 id="result">The result</h2>
-<p>The OpenAI manuscript states that the zeta function has no zero in this half-plane:</p>
-\[ \operatorname{Re} s &gt; \tfrac{7}{8} \]
-<p>A symmetry of \(\zeta\) then excludes zeros with \(0 &lt; \operatorname{Re} s &lt; 1/8\). So each zero in the strip has real part between \(1/8\) and \(7/8\), and the limit \(\beta = 7/8\) holds. The same half-plane has no zeros for all Dirichlet L-functions, and for a family of Hecke L-functions.</p>
-<p>A <dfn>Dirichlet L-function</dfn> is a sum of the same form as \(\zeta\), with a periodic pattern of signs or roots of unity in its terms. These functions control primes in fixed remainder classes.</p>
-
-<h2 id="not">What the result does not say</h2>
-<ul>
-<li><strong>It is not the Riemann hypothesis.</strong> The Riemann hypothesis puts every such zero on the line \(\operatorname{Re} s = 1/2\). That statement remains open.</li>
-<li><strong>It does not exclude the line itself.</strong> The theorem does not exclude a zero with real part exactly \(7/8\).</li>
-<li><strong>It does not predict individual primes.</strong> It limits the error in a count over a long range.</li>
-<li><strong>It does not show a path to the full hypothesis.</strong> Will Sawin and Thomas Bloom told Quanta that the full hypothesis still appears out of reach.</li>
-</ul>
-
-<h2 id="matters">Why the result matters</h2>
-<p>A fixed limit gives a power saving in the error. The error is below \(C x^{p}\) for each \(p &gt; 7/8\). The earlier bounds saved less than any fixed power of \(x\). Maksym Radziwiłł told Quanta that the implications are "staggering".</p>
-<p><strong>Primes in remainder classes.</strong> Primes above 5 end in 1, 3, 7 or 9, and these four classes hold nearly equal counts. Below \(10^{8}\) the counts are 1,440,298, 1,440,474, 1,440,495 and 1,440,186. The shorter manuscript gives an error below a constant times \(x^{11/12} \log x\) for all such classes with modulus up to \(x\).</p>
-<p><strong>Square roots modulo a prime.</strong> The squares modulo 7 are 1, 2 and 4, so 3 is the smallest non-square. The manuscript shows that the smallest non-square modulo \(p\) is at most a constant times a fixed power of \(\log p\). This proves a conjecture of Vinogradov. It also gives a deterministic fast algorithm for square roots modulo \(p\).</p>
-<p><strong>Landau–Siegel zeros.</strong> These are possible zeros of a Dirichlet L-function very near \(s = 1\). They were a long-standing obstacle in number theory. A half-plane with no zeros excludes all of them.</p>
-
-<h2 id="checked">How far the result has been checked</h2>
-<p>OpenAI released two manuscripts on 6 October 2026. A 199-page manuscript dated 30 September gives the 7/8 limit, with Lean proofs for \(\zeta\), for Dirichlet L-functions and for the Hecke family. A 49-page manuscript dated 5 October gives a separate proof of the weaker limit 11/12. It has no Lean proof, and a person edited it.</p>
-<p>Mathematicians have studied the shorter manuscript because of its length. Quanta reported on 19 October that write-ups of 7 to 13 pages circulate privately, and that these experts largely agree that the result is correct. Peter Sarnak told Quanta that he will wait for humans to check all the details. No source reports a finished journal review on this date.</p>
-
-<h2 id="sources">Sources</h2>
-<ul class="ai-math-sources">
-<li><a href="https://github.com/openai/math/blob/main/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf">The Quasi-Riemann Hypothesis: A Zero-Free Half-Plane Re s &gt; 7/8</a>, OpenAI.</li>
-<li><a href="https://github.com/openai/math/blob/main/preprints/The-Quasi-Riemann-Hypothesis-October-5-2026/paper2.pdf">The Quasi-Riemann Hypothesis, alternate 11/12 proof</a>, OpenAI.</li>
-<li><a href="https://www.quantamagazine.org/ai-proved-the-quasi-riemann-hypothesis-what-happens-now-20261019/">AI Proved the Quasi-Riemann Hypothesis. What Happens Now?</a>, Quanta Magazine, 19 October 2026.</li>
-<li><a href="https://johncarlosbaez.wordpress.com/2026/10/21/the-quasi-riemann-hypothesis/">The Quasi-Riemann Hypothesis</a>, John Baez, on prime count errors under the hypothesis.</li>
-</ul>
+<p>The <dfn>Riemann hypothesis</dfn> says that every zero in the strip has real part \(1/2\). The error is then about \(\sqrt{x}\). The <dfn>quasi-Riemann hypothesis</dfn> asks for less: some fixed \(\beta &lt; 1\) has no zeros to its right. Before this result, zeros arbitrarily near the line \(\operatorname{Re} s = 1\) could not be excluded.</p>
+<p><a href="https://github.com/openai/math/blob/main/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf">OpenAI reports</a> a proof with \(\beta = 7/8\). The error in the prime count is then below \(C x^{p}\) for every \(p &gt; 7/8\). Earlier bounds saved less than any fixed power of \(x\). The same limit holds for Dirichlet L-functions, which control primes in remainder classes, such as primes that end in 7. The Riemann hypothesis itself stays open.</p>
