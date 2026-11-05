@@ -24,7 +24,7 @@ test('the landing page lists every result in authored order, and each page links
   for (const { slug } of data.results) {
     const page = pageOf(slug);
     assert.match(page, new RegExp(`<link rel="canonical" href="https://jehlp\\.net/ai-math/${slug}/">`));
-    assert.match(page, /<a class="site-title" href="\.\.\/">AI Math Results<\/a>/);
+    assert.match(page, /<span class="site-title">AI Math Results<\/span><\/div>\s*<nav aria-label="Site links"><a href="\.\.\/">All results<\/a>/);
     assert.match(page, /<p class="ai-math-back"><a href="\.\.\/">All results<\/a><\/p>/);
     assert.match(page, /<img class="site-mark" src="https:\/\/jehlp\.net\/site-theme\/v2\/marks\/ai-math\.png" width="32" height="32" alt="">/);
     assert.match(page, /<span class="site-utility-pair"><a class="site-home" href="https:\/\/jehlp\.net\/"/);

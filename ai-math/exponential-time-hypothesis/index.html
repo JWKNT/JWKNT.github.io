@@ -3,31 +3,31 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="An algorithm can solve 3-SAT faster than every exponential time, but only for enormous inputs.">
+    <meta name="description" content="Two groups report an algorithm that solves 3-SAT faster than every exponential time, but only for enormous inputs.">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="The Exponential Time Hypothesis is false">
-    <meta property="og:description" content="An algorithm can solve 3-SAT faster than every exponential time, but only for enormous inputs.">
+    <meta property="og:title" content="The Exponential Time Hypothesis">
+    <meta property="og:description" content="Two groups report an algorithm that solves 3-SAT faster than every exponential time, but only for enormous inputs.">
     <meta property="og:url" content="https://jehlp.net/ai-math/exponential-time-hypothesis/">
     <meta property="og:site_name" content="jehlp.net">
     <meta name="theme-color" content="#fbfaf7">
     <link rel="canonical" href="https://jehlp.net/ai-math/exponential-time-hypothesis/">
-    <title>The Exponential Time Hypothesis is false · AI Math Results · jehlp.net</title>
+    <title>The Exponential Time Hypothesis · AI Math Results · jehlp.net</title>
     <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/ai-math.png" type="image/png">
     <script src="https://jehlp.net/site-theme/v2/theme.js?v=20261009-reading-folio"></script>
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261009-reading-folio">
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css?v=20261105-math3">
-    <link rel="stylesheet" href="../../assets/ai-math.css?v=20261105-math4">
+    <link rel="stylesheet" href="../../assets/ai-math.css?v=20261105-math5">
     <script src="https://jehlp.net/site-theme/v2/components.js?v=20261105-math3" defer></script>
   </head>
   <body data-site-tone="blue">
     <a class="skip-link" href="#explainer">Skip to the explanation</a>
     <header class="site-header site-header--identity">
-      <div class="site-brand"><img class="site-mark" src="https://jehlp.net/site-theme/v2/marks/ai-math.png" width="32" height="32" alt=""><a class="site-title" href="../">AI Math Results</a></div>
-      <nav aria-label="Site links"><span class="site-utility-pair"><a class="site-home" href="https://jehlp.net/" aria-label="Home — jehlp.net" title="Home — jehlp.net"><span aria-hidden="true">✳</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button></span></nav>
+      <div class="site-brand"><img class="site-mark" src="https://jehlp.net/site-theme/v2/marks/ai-math.png" width="32" height="32" alt=""><span class="site-title">AI Math Results</span></div>
+      <nav aria-label="Site links"><a href="../">All results</a><span class="site-utility-pair"><a class="site-home" href="https://jehlp.net/" aria-label="Home — jehlp.net" title="Home — jehlp.net"><span aria-hidden="true">✳</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button></span></nav>
     </header>
     <main id="explainer" class="ai-math-shell" tabindex="-1">
       <article class="prose ai-math-article">
-        <h1>The Exponential Time Hypothesis is false</h1>
+        <h1>The Exponential Time Hypothesis</h1>
 <p class="lede">The Exponential Time Hypothesis says that 3-SAT, a basic logic problem, needs exponential time in its worst cases. OpenAI and Anthropic each report an algorithm that is faster than every exponential for large inputs. The algorithms give no practical speed gain.</p>
 <dl class="data-strip ai-math-facts"><div><dt>Posted</dt><dd>2026-10-26</dd></div><div><dt>Lean proof</dt><dd>Complete</dd></div><div><dt>Human review</dt><dd>In progress</dd></div><div><dt>Status date</dt><dd>2026-11-05</dd></div></dl>
 
@@ -93,14 +93,14 @@
 <h2 id="not">What the result does not say</h2>
 <ul>
 <li><strong>It does not settle P versus NP.</strong> The new time is still far above any polynomial. Both groups say that their result does not settle that question.</li>
-<li><strong>It does not speed up every NP problem.</strong> A general reduction to 3-SAT can raise the variable count from <math><mi>n</mi></math> to <math><msup><mi>n</mi><mn>2</mn></msup></math> or more. A time of <math><msup><mn>2</mn><mrow><mi>o</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>n</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></msup></math> does not survive that change.</li>
+<li><strong>It does not speed up every NP problem.</strong> A general reduction to 3-SAT can raise the variable count from <math><mi>n</mi></math> to <math><msup><mi>n</mi><mn>2</mn></msup></math> or more. A time of <math><msup><mn>2</mn><mrow><mi>o</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>n</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></msup></math> in the old variable count does not stay subexponential after that change.</li>
 <li><strong>It does not help with real formulas.</strong> Anthropic calculates that its bound for formulas with <math><mrow><mi>m</mi><mo>=</mo><mn>5</mn><mi>n</mi></mrow></math> beats exhaustive search only for <span class="ai-math-nobreak"><math><mrow><mi>n</mi><mo>&gt;</mo><msup><mn>10</mn><mrow><mn>10</mn><mspace width="0.1667em"></mspace><mn>000</mn></mrow></msup></mrow></math>.</span> Its bound in <math><mi>n</mi></math> alone needs <span class="ai-math-nobreak"><math><mrow><mi>n</mi><mo>&gt;</mo><msup><mn>10</mn><msup><mn>10</mn><mn>8</mn></msup></msup></mrow></math>.</span> Exhaustive search is already impractical at <span class="ai-math-nobreak"><math><mrow><mi>n</mi><mo>=</mo><mn>100</mn></mrow></math>.</span></li>
 <li><strong>It does not remove all related lower bounds.</strong> Many of them also follow from the Orthogonal Vectors hypothesis, and this result does not refute that hypothesis.</li>
 </ul>
 
 <h2 id="matters">Why the result matters</h2>
-<p>Many hardness results rest on this hypothesis. Anthropic searched the literature with Claude and found more than 800 papers. Each has a result that holds only under this hypothesis or a stronger one. Those results lose that support. They do not automatically become false.</p>
-<p>The Strong Exponential Time Hypothesis and Gap-ETH imply this hypothesis, so they are false too. The OpenAI paper also refutes the nondeterministic form of the strong hypothesis.</p>
+<p>Many hardness results rest on this hypothesis. Anthropic searched the literature with Claude and found more than 800 papers. Each has a result that holds only under this hypothesis or a stronger one. If the proofs hold, those results lose that support. They do not automatically become false.</p>
+<p>The Strong Exponential Time Hypothesis and Gap-ETH imply this hypothesis, so the same proofs refute them. The OpenAI paper also refutes the nondeterministic form of the strong hypothesis.</p>
 <p>The result also gives new subexponential algorithms in theory. They count independent sets, proper colorings and perfect matchings in a graph. They also solve Independent Set, Clique, Vertex Cover and Dominating Set in <math><msup><mn>2</mn><mrow><mi>δ</mi><mi>n</mi></mrow></msup></math> steps for every <span class="ai-math-nobreak"><math><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math>.</span></p>
 
 <h2 id="checked">How far the result has been checked</h2>

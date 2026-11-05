@@ -63,14 +63,14 @@
 <h2 id="not">What the result does not say</h2>
 <ul>
 <li><strong>It does not settle P versus NP.</strong> The new time is still far above any polynomial. Both groups say that their result does not settle that question.</li>
-<li><strong>It does not speed up every NP problem.</strong> A general reduction to 3-SAT can raise the variable count from \(n\) to \(n^2\) or more. A time of \(2^{o(n)}\) does not survive that change.</li>
+<li><strong>It does not speed up every NP problem.</strong> A general reduction to 3-SAT can raise the variable count from \(n\) to \(n^2\) or more. A time of \(2^{o(n)}\) in the old variable count does not stay subexponential after that change.</li>
 <li><strong>It does not help with real formulas.</strong> Anthropic calculates that its bound for formulas with \(m = 5n\) beats exhaustive search only for \(n &gt; 10^{10\,000}\). Its bound in \(n\) alone needs \(n &gt; 10^{10^{8}}\). Exhaustive search is already impractical at \(n = 100\).</li>
 <li><strong>It does not remove all related lower bounds.</strong> Many of them also follow from the Orthogonal Vectors hypothesis, and this result does not refute that hypothesis.</li>
 </ul>
 
 <h2 id="matters">Why the result matters</h2>
-<p>Many hardness results rest on this hypothesis. Anthropic searched the literature with Claude and found more than 800 papers. Each has a result that holds only under this hypothesis or a stronger one. Those results lose that support. They do not automatically become false.</p>
-<p>The Strong Exponential Time Hypothesis and Gap-ETH imply this hypothesis, so they are false too. The OpenAI paper also refutes the nondeterministic form of the strong hypothesis.</p>
+<p>Many hardness results rest on this hypothesis. Anthropic searched the literature with Claude and found more than 800 papers. Each has a result that holds only under this hypothesis or a stronger one. If the proofs hold, those results lose that support. They do not automatically become false.</p>
+<p>The Strong Exponential Time Hypothesis and Gap-ETH imply this hypothesis, so the same proofs refute them. The OpenAI paper also refutes the nondeterministic form of the strong hypothesis.</p>
 <p>The result also gives new subexponential algorithms in theory. They count independent sets, proper colorings and perfect matchings in a graph. They also solve Independent Set, Clique, Vertex Cover and Dominating Set in \(2^{\delta n}\) steps for every \(\delta &gt; 0\).</p>
 
 <h2 id="checked">How far the result has been checked</h2>

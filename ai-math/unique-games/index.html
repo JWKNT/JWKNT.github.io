@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Some systems of simple two-variable equations are hard to satisfy even approximately. Many known approximation algorithms are then the best possible unless P = NP.">
+    <meta name="description" content="OpenAI reports a proof that some systems of two-variable equations are hard to satisfy even approximately. Many approximation algorithms are then the best possible unless P = NP.">
     <meta property="og:type" content="article">
     <meta property="og:title" content="The Unique Games Conjecture">
-    <meta property="og:description" content="Some systems of simple two-variable equations are hard to satisfy even approximately. Many known approximation algorithms are then the best possible unless P = NP.">
+    <meta property="og:description" content="OpenAI reports a proof that some systems of two-variable equations are hard to satisfy even approximately. Many approximation algorithms are then the best possible unless P = NP.">
     <meta property="og:url" content="https://jehlp.net/ai-math/unique-games/">
     <meta property="og:site_name" content="jehlp.net">
     <meta name="theme-color" content="#fbfaf7">
@@ -16,14 +16,14 @@
     <script src="https://jehlp.net/site-theme/v2/theme.js?v=20261009-reading-folio"></script>
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261009-reading-folio">
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css?v=20261105-math3">
-    <link rel="stylesheet" href="../../assets/ai-math.css?v=20261105-math4">
+    <link rel="stylesheet" href="../../assets/ai-math.css?v=20261105-math5">
     <script src="https://jehlp.net/site-theme/v2/components.js?v=20261105-math3" defer></script>
   </head>
   <body data-site-tone="blue">
     <a class="skip-link" href="#explainer">Skip to the explanation</a>
     <header class="site-header site-header--identity">
-      <div class="site-brand"><img class="site-mark" src="https://jehlp.net/site-theme/v2/marks/ai-math.png" width="32" height="32" alt=""><a class="site-title" href="../">AI Math Results</a></div>
-      <nav aria-label="Site links"><span class="site-utility-pair"><a class="site-home" href="https://jehlp.net/" aria-label="Home — jehlp.net" title="Home — jehlp.net"><span aria-hidden="true">✳</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button></span></nav>
+      <div class="site-brand"><img class="site-mark" src="https://jehlp.net/site-theme/v2/marks/ai-math.png" width="32" height="32" alt=""><span class="site-title">AI Math Results</span></div>
+      <nav aria-label="Site links"><a href="../">All results</a><span class="site-utility-pair"><a class="site-home" href="https://jehlp.net/" aria-label="Home — jehlp.net" title="Home — jehlp.net"><span aria-hidden="true">✳</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button></span></nav>
     </header>
     <main id="explainer" class="ai-math-shell" tabindex="-1">
       <article class="prose ai-math-article">
@@ -33,7 +33,7 @@
 
 <h2 id="question">The question</h2>
 <p>Many problems ask for an arrangement that satisfies as many constraints as possible. When the exact best answer is too hard to compute, a good approximate answer can be enough. The question is how good an approximate answer a fast algorithm can give.</p>
-<p>For many problems, researchers know a fast algorithm with a clear guarantee, but they could not show that it is the best possible. Subhash Khot proposed a conjecture in 2002 that would close many of these gaps at once.</p>
+<p>For many problems, researchers know a fast algorithm with a clear guarantee, but they could not show that it is the best possible. Subhash Khot proposed a conjecture in 2002 that would settle many of these questions together.</p>
 <p>A <dfn>unique game</dfn> has variables, a fixed set of labels and a list of constraints. Each constraint joins two variables. If one variable has a label, the constraint fixes exactly one label for the other variable. That is the meaning of "unique". The name "game" comes from an older form of the problem with two players.</p>
 
 <h2 id="examples">Examples</h2>
@@ -76,7 +76,7 @@
 </ul>
 
 <h2 id="matters">Why the result matters</h2>
-<p>Earlier work showed that the conjecture implies sharp limits for many problems. With this result, those limits become NP-hardness results. An algorithm cannot beat these thresholds by a fixed margin unless P = NP.</p>
+<p>Earlier work showed that the conjecture implies sharp limits for many problems. If the proof holds, those limits become NP-hardness results. An algorithm cannot beat these thresholds by a fixed margin unless P = NP.</p>
 <div class="table-scroll" data-scroll-region aria-label="Problems whose approximation limit follows from the result">
 <table class="ui-table">
 <thead><tr><th scope="col">Problem</th><th scope="col">Task</th><th scope="col">Known guarantee, now the limit</th></tr></thead>
