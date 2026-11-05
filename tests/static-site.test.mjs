@@ -149,6 +149,7 @@ test('Mathematics has an abstract category mark and plain Erdős and Cookie Clic
   assert.equal(mathematics.mark, 'continuum');
   assert.deepEqual(mathematics.pages, [
     { id: 'erdos1016', label: 'Erdős 1016', href: '/erdos1016/' },
+    { id: 'ai-math', label: 'AI Math Results', href: '/ai-math/' },
     { id: 'cookie-clicker', label: 'Cookie Clicker', href: '/cookie-clicker/' },
   ]);
   assert.ok(!categories.find(category => category.id === 'reading').pages.some(page => page.id === 'erdos1016'));

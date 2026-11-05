@@ -26,7 +26,8 @@
 .ai-math-article .lede { margin: 0 0 1.25rem; font-size: 1.08rem; }
 .ai-math-article ul { margin: .7rem 0 1.1rem; padding-left: 1.2rem; }
 .ai-math-article li { margin: .45rem 0; }
-.ai-math-article strong { font-weight: 700; }
+/* Wrenfold Text has one weight, and synthetic bold on it is faint. A run-in label uses the interface bold. */
+.ai-math-article strong { font-family: var(--ui, var(--serif)); font-size: .95em; font-weight: 600; }
 .ai-math-article dfn { font-style: italic; }
 .ai-math-article .table-scroll, .ai-math-article .ui-table { font-family: var(--ui, var(--serif)); }
 .ai-math-article .table-scroll { margin: 1.1rem 0 1.3rem; border-top: 1px solid var(--line-strong); }
@@ -44,9 +45,9 @@
 
 /* Key facts: short labels, so the strip stays on one or two rows. */
 .ai-math-facts { font-family: var(--ui, var(--serif)); }
-.ai-math-facts > div { padding: .55rem .7rem; }
+.ai-math-facts > div { min-width: 0; padding: .55rem .7rem; }
 .ai-math-facts > div:first-child { padding-left: 0; }
-.ai-math-facts dd { font-size: .86rem; font-weight: 500; }
+.ai-math-facts dd { font-size: .86rem; font-weight: 500; overflow-wrap: anywhere; }
 
 /* Figures: calculated SVG on theme tokens. The caption states what each one shows. */
 .ai-math-figure { margin: 1.5rem 0; }
