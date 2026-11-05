@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import { renderAiMath, typesetMath, mathChars, validateAiMath } from '../lib/ai-math.mjs';
-import { UG_CONSTRAINTS, UG_VALUES, ZETA_ZEROS, deltoidNeedle, deltoidPoint, figures } from '../lib/ai-math-figures.mjs';
+import { UG_CONSTRAINTS, UG_VALUES, ZETA_ZEROS, deltoidNeedle, deltoidPoint, figures, paleyMatrix } from '../lib/ai-math-figures.mjs';
 
 const root = new URL('../', import.meta.url);
 const results = JSON.parse(await readFile(new URL('data/ai-math.json', root), 'utf8'));
@@ -187,6 +187,49 @@ test('Navier–Stokes page: the model solution satisfies its equation', () => {
   const y = t => 1 / (1 - t), h = 1e-6;
   for (const t of [0, .5, .9]) assert.ok(Math.abs((y(t + h) - y(t - h)) / (2 * h) - y(t) ** 2) < 1e-2);
   assert.equal(y(0), 1);
+});
+
+test('Hadamard page: the drawn matrices are Hadamard, and the quoted orders hold', () => {
+  const dot = (a, b) => a.reduce((sum, v, i) => sum + v * b[i], 0);
+  const isHadamard = m => m.every((row, i) => m.every((other, j) => dot(row, other) === (i === j ? m.length : 0)));
+  const four = [[1, 1, 1, 1], [1, -1, 1, -1], [1, 1, -1, -1], [1, -1, -1, 1]];
+  assert.ok(isHadamard(four));
+  const twelve = paleyMatrix();
+  assert.equal(twelve.length, 12);
+  assert.ok(isHadamard(twelve));
+  assert.ok(twelve.every(row => row.every(v => v === 1 || v === -1)));
+  assert.equal(twelve[0].filter((v, j) => v === twelve[1][j]).length, 6);
+  // Three orthogonal rows split the columns into four groups of equal size.
+  const groups = new Map();
+  for (let j = 0; j < 12; j++) { const key = [twelve[0][j], twelve[1][j], twelve[2][j]].join(); groups.set(key, (groups.get(key) ?? 0) + 1); }
+  assert.deepEqual([...groups.values()].sort(), [3, 3, 3, 3]);
+  assert.equal(668 ** 2, 446224);
+  const orders = [668, 716, 892, 1132, 1244, 1388, 1436, 1676, 1772, 1916, 1948, 1964];
+  assert.ok(orders.every(n => n % 4 === 0 && n < 2000));
+  assert.equal(orders.length, 12);
+  assert.equal(4 * 599, 2396);
+  for (const n of orders) assert.ok(bodies['hadamard-matrices'].includes(String(n)), String(n));
+});
+
+test('Non-sofic page: the string operators obey the stated rules', () => {
+  // Each operator maps a binary string to a string, or to null for zero.
+  const s = bit => w => (w === null ? null : bit + w);
+  const t = bit => w => (w !== null && w.startsWith(bit) ? w.slice(1) : null);
+  for (const w of ['', '0', '1', '01', '10', '110', '0011']) {
+    for (const i of ['0', '1']) assert.equal(t(i)(s(i)(w)), w);
+    assert.equal(t('0')(s('1')(w)), null);
+    assert.equal(t('1')(s('0')(w)), null);
+    if (w) assert.equal([s('0')(t('0')(w)), s('1')(t('1')(w))].filter(x => x !== null).length, 1, 'one term survives');
+    if (w) assert.equal(s('0')(t('0')(w)) ?? s('1')(t('1')(w)), w);
+  }
+  assert.equal(s('0')(t('0')('1')), null, 's0 t0 is not the identity');
+  assert.equal((figures.cycle().match(/class="fig-dot"/g) || []).length, 12);
+  for (let k = 1; k < 12; k++) for (let x = 0; x < 12; x++) assert.notEqual((x + k) % 12, x);
+});
+
+test('3SUM page: the example sums to zero', () => {
+  assert.equal(-7 + 2 + 5, 0);
+  assert.match(bodies['subquadratic-3sum'], /\{-7, -3, 2, 5, 8, 11\\\}/);
 });
 
 test('figures are named, stay on theme tokens and contain no raw color', async () => {

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="What the 3SUM hypothesis says, and the algorithm that refutes it.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Subquadratic 3SUM">
+    <meta property="og:description" content="What the 3SUM hypothesis says, and the algorithm that refutes it.">
+    <meta property="og:url" content="https://jehlp.net/ai-math/subquadratic-3sum/">
+    <meta property="og:site_name" content="jehlp.net">
+    <meta name="theme-color" content="#fbfaf7">
+    <link rel="canonical" href="https://jehlp.net/ai-math/subquadratic-3sum/">
+    <title>Subquadratic 3SUM · AI Math Results · jehlp.net</title>
+    <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/ai-math.png" type="image/png">
+    <script src="https://jehlp.net/site-theme/v2/theme.js?v=20261009-reading-folio"></script>
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261009-reading-folio">
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css?v=20261105-math3">
+    <link rel="stylesheet" href="../../assets/ai-math.css?v=20261105-brief3">
+    <script src="https://jehlp.net/site-theme/v2/components.js?v=20261105-math3" defer></script>
+  </head>
+  <body data-site-tone="blue">
+    <a class="skip-link" href="#explainer">Skip to the explanation</a>
+    <header class="site-header site-header--identity">
+      <div class="site-brand"><img class="site-mark" src="https://jehlp.net/site-theme/v2/marks/ai-math.png" width="32" height="32" alt=""><span class="site-title">AI Math Results</span></div>
+      <nav aria-label="Site links"><a href="../">All results</a><span class="site-utility-pair"><a class="site-home" href="https://jehlp.net/" aria-label="Home — jehlp.net" title="Home — jehlp.net"><span aria-hidden="true">✳</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button></span></nav>
+    </header>
+    <main id="explainer" class="ai-math-shell" tabindex="-1">
+      <article class="prose ai-math-article">
+        <h1>Subquadratic 3SUM</h1>
+<p><dfn>3SUM</dfn> asks if three of <math><mi>n</mi></math> given integers sum to zero. In <math><mrow><mo fence="true" form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">−</mo><mn>7</mn><mo separator="true">,</mo><mo form="prefix" stretchy="false">−</mo><mn>3</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mn>5</mn><mo separator="true">,</mo><mn>8</mn><mo separator="true">,</mo><mn>11</mn><mo fence="true" form="postfix" stretchy="false">}</mo></mrow></math> the answer is yes, because <span class="ai-math-nobreak"><math><mrow><mo form="prefix" stretchy="false">−</mo><mn>7</mn><mo>+</mo><mn>2</mn><mo>+</mo><mn>5</mn><mo>=</mo><mn>0</mn></mrow></math>.</span></p>
+<p>The textbook method sorts the numbers. Then, for each number, it scans the sorted list from both ends for a matching pair. This takes about <math><msup><mi>n</mi><mn>2</mn></msup></math> steps, and decades of work removed only logarithmic factors.</p>
+<figure class="ai-math-side">
+<div class="table-scroll" data-scroll-region aria-label="Textbook and new running times">
+<table class="ui-table">
+<thead><tr><th scope="col">Problem</th><th scope="col">Textbook</th><th scope="col">New</th></tr></thead>
+<tbody>
+<tr><td>3SUM</td><td><math><msup><mi>n</mi><mn>2</mn></msup></math></td><td><math><msup><mi>n</mi><mn>1.9992</mn></msup></math></td></tr>
+<tr><td>All-pairs shortest paths</td><td><math><msup><mi>n</mi><mn>3</mn></msup></math></td><td><math><msup><mi>n</mi><mn>2.9995</mn></msup></math></td></tr>
+<tr><td>Tree edit distance</td><td><math><msup><mi>n</mi><mn>3</mn></msup></math></td><td><math><msup><mi>n</mi><mn>2.9995</mn></msup></math></td></tr>
+</tbody>
+</table>
+</div>
+</figure>
+<p>The <dfn>3SUM hypothesis</dfn> says that this is essentially optimal: no algorithm takes <math><msup><mi>n</mi><mrow><mn>2</mn><mo>−</mo><mi>ε</mi></mrow></msup></math> steps, for any fixed <span class="ai-math-nobreak"><math><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math>.</span> A similar hypothesis says the same about <math><msup><mi>n</mi><mn>3</mn></msup></math> for all-pairs shortest paths. Researchers used these hypotheses to explain why many other problems resist faster algorithms.</p>
+<p><a href="https://arxiv.org/abs/2610.06783">Josh Alman and Virginia Vassilevska Williams report</a> that both are false. Their exponents are in the table, for integers of polynomial size. Claude discovered the algorithm, and the authors then simplified and extended it.</p>
+<p>Everything comes from one new method. It computes selected entries of a product of two thin matrices faster than it could compute those entries one by one. Known reductions then carry the gain to 3SUM and the other problems.</p>
+<p>The authors say that the hidden constants are enormous, so the algorithms are potentially impractical. The change is in the theory: <math><msup><mi>n</mi><mn>2</mn></msup></math> is not a barrier for 3SUM.</p>
+      </article>
+    </main>
+  </body>
+</html>

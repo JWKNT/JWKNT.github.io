@@ -43,5 +43,20 @@
     "slug": "navier-stokes",
     "title": "Navier–Stokes",
     "description": "Whether the equations of fluid motion can produce infinite speed in finite time."
+  },
+  {
+    "slug": "hadamard-matrices",
+    "title": "Hadamard Matrices",
+    "description": "What a Hadamard matrix is, and which orders are now known."
+  },
+  {
+    "slug": "non-sofic-groups",
+    "title": "Non-Sofic Groups",
+    "description": "What it means for a group to be sofic, and the group reported not to be."
+  },
+  {
+    "slug": "subquadratic-3sum",
+    "title": "Subquadratic 3SUM",
+    "description": "What the 3SUM hypothesis says, and the algorithm that refutes it."
   }
 ]

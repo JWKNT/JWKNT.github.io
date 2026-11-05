@@ -1,0 +1,18 @@
+<p><dfn>3SUM</dfn> asks if three of \(n\) given integers sum to zero. In \(\{-7, -3, 2, 5, 8, 11\}\) the answer is yes, because \(-7 + 2 + 5 = 0\).</p>
+<p>The textbook method sorts the numbers. Then, for each number, it scans the sorted list from both ends for a matching pair. This takes about \(n^2\) steps, and decades of work removed only logarithmic factors.</p>
+<figure class="ai-math-side">
+<div class="table-scroll" data-scroll-region aria-label="Textbook and new running times">
+<table class="ui-table">
+<thead><tr><th scope="col">Problem</th><th scope="col">Textbook</th><th scope="col">New</th></tr></thead>
+<tbody>
+<tr><td>3SUM</td><td>\(n^2\)</td><td>\(n^{1.9992}\)</td></tr>
+<tr><td>All-pairs shortest paths</td><td>\(n^3\)</td><td>\(n^{2.9995}\)</td></tr>
+<tr><td>Tree edit distance</td><td>\(n^3\)</td><td>\(n^{2.9995}\)</td></tr>
+</tbody>
+</table>
+</div>
+</figure>
+<p>The <dfn>3SUM hypothesis</dfn> says that this is essentially optimal: no algorithm takes \(n^{2 - \varepsilon}\) steps, for any fixed \(\varepsilon &gt; 0\). A similar hypothesis says the same about \(n^3\) for all-pairs shortest paths. Researchers used these hypotheses to explain why many other problems resist faster algorithms.</p>
+<p><a href="https://arxiv.org/abs/2610.06783">Josh Alman and Virginia Vassilevska Williams report</a> that both are false. Their exponents are in the table, for integers of polynomial size. Claude discovered the algorithm, and the authors then simplified and extended it.</p>
+<p>Everything comes from one new method. It computes selected entries of a product of two thin matrices faster than it could compute those entries one by one. Known reductions then carry the gain to 3SUM and the other problems.</p>
+<p>The authors say that the hidden constants are enormous, so the algorithms are potentially impractical. The change is in the theory: \(n^2\) is not a barrier for 3SUM.</p>
