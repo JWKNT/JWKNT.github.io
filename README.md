@@ -71,6 +71,21 @@ with `site`, `href` and an optional `handle` and `kind`. Links must use HTTPS. T
 `node build.mjs` and `npm test`, and commit the data and `accounts/index.html` together.
 Every link has `rel="me"`. Layout rules are in `assets/accounts.css`.
 
+## AI math results
+
+`/ai-math/` explains what each AI mathematics result answers, without the proof. To add
+a result, append an entry to `data/ai-math.json` and write its body in
+`content/ai-math/<slug>.html`. Follow the `jehlp-math-explainer` skill in `site-theme`.
+Write math between `\(` and `\)` or between `\[` and `\]`. The build typesets it to native
+MathML with the pinned `temml` development dependency, so the pages load no typesetter.
+`{{facts}}`, `{{divider}}` and `{{fig:name}}` insert the status strip, the ornament and a
+figure from `lib/ai-math-figures.mjs`. Run `node build.mjs` and `npm test`, and commit the
+data, body and `ai-math/` output together. Layout rules are in `assets/ai-math.css`.
+
+Each status line records public sources on the `checked` date in the data file. When a
+status changes, update its entry, its page text and that date. `tests/ai-math.test.mjs`
+checks the quoted calculations in exact arithmetic and screens prose against the writing limits.
+
 ## Verification and release
 
 Check 390px/1440px, light/dark, 200% text, heading/link keyboard behavior,
@@ -87,7 +102,7 @@ are maintained in `site-theme`.
 Install build dependencies with `npm ci --ignore-scripts`. Run `npm test`, then
 `npm run build:site`. The `npm test` pretest regenerates the homepage before checking it.
 The build artifact is `_site/`: only the generated homepage,
-skills and accounts pages, public assets, CNAME, robots.txt, coverage metadata and search indexes. Source,
+skills, accounts and AI math pages, public assets, CNAME, robots.txt, coverage metadata and search indexes. Source,
 credentials, dependency files and fetch caches are never copied into it.
 
 The build fetches **only currently published jehlp.net inputs** under the

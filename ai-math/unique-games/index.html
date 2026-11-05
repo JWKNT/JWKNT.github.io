@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Some systems of simple two-variable equations are hard to satisfy even approximately. Many known approximation algorithms are then the best possible unless P = NP.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Unique Games Conjecture">
+    <meta property="og:description" content="Some systems of simple two-variable equations are hard to satisfy even approximately. Many known approximation algorithms are then the best possible unless P = NP.">
+    <meta property="og:url" content="https://jehlp.net/ai-math/unique-games/">
+    <meta property="og:site_name" content="jehlp.net">
+    <meta name="theme-color" content="#fbfaf7">
+    <link rel="canonical" href="https://jehlp.net/ai-math/unique-games/">
+    <title>The Unique Games Conjecture · AI Math Results · jehlp.net</title>
+    <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/ai-math.png" type="image/png">
+    <script src="https://jehlp.net/site-theme/v2/theme.js?v=20261009-reading-folio"></script>
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261009-reading-folio">
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css?v=20261105-math3">
+    <link rel="stylesheet" href="../../assets/ai-math.css?v=20261105-math3">
+    <script src="https://jehlp.net/site-theme/v2/components.js?v=20261105-math3" defer></script>
+  </head>
+  <body data-site-tone="blue">
+    <a class="skip-link" href="#explainer">Skip to the explanation</a>
+    <header class="site-header site-header--identity">
+      <div class="site-brand"><img class="site-mark" src="https://jehlp.net/site-theme/v2/marks/ai-math.png" width="32" height="32" alt=""><a class="site-title" href="../">AI Math Results</a></div>
+      <nav aria-label="Site links"><span class="site-utility-pair"><a class="site-home" href="https://jehlp.net/" aria-label="Home — jehlp.net" title="Home — jehlp.net"><span aria-hidden="true">✳</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button></span></nav>
+    </header>
+    <main id="explainer" class="ai-math-shell" tabindex="-1">
+      <article class="prose ai-math-article">
+        <h1>The Unique Games Conjecture</h1>
+<p class="lede">The Unique Games Conjecture says that some systems of simple two-variable equations are hard to satisfy even approximately. OpenAI reports a proof. If the proof is correct, many known approximation algorithms are the best possible unless P = NP.</p>
+<dl class="data-strip ai-math-facts"><div><dt>Posted</dt><dd>2026-10-06</dd></div><div><dt>Lean proof</dt><dd>Complete</dd></div><div><dt>Human review</dt><dd>In progress</dd></div><div><dt>Status date</dt><dd>2026-11-05</dd></div></dl>
+
+<h2 id="question">The question</h2>
+<p>Many problems ask for an arrangement that satisfies as many constraints as possible. When the exact best answer is too hard to compute, a good approximate answer can be enough. The question is how good an approximate answer a fast algorithm can give.</p>
+<p>For many problems, researchers know a fast algorithm with a clear guarantee, but they could not show that it is the best possible. Subhash Khot proposed a conjecture in 2002 that would close many of these gaps at once.</p>
+<p>A <dfn>unique game</dfn> has variables, a fixed set of labels and a list of constraints. Each constraint joins two variables. If one variable has a label, the constraint fixes exactly one label for the other variable. That is the meaning of "unique". The name "game" comes from an older form of the problem with two players.</p>
+
+<h2 id="examples">Examples</h2>
+<p>Use the labels 0, 1, 2, 3 and 4, with arithmetic modulo 5. The variables are <span class="ai-math-nobreak"><math><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mo separator="true">,</mo><mi>d</mi><mo separator="true">,</mo><mi>e</mi></mrow></math>.</span> Each constraint has the form "this variable equals that variable plus a constant".</p>
+<div class="ui-equation" data-scroll-region data-scroll-noun="of the formula" aria-label="Formula"><math display="block" class="tml-display" style="display:block math;"><mtable displaystyle="true" class="tml-jot"><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mi>b</mi></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mo>=</mo><mi>a</mi><mo>+</mo><mn>2</mn></mrow></mtd><mtd class="tml-right" style="padding-left:1em;padding-right:0em;"><mi>c</mi></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mo>=</mo><mi>b</mi><mo>+</mo><mn>1</mn></mrow></mtd><mtd class="tml-right" style="padding-left:1em;padding-right:0em;"><mi>d</mi></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mo>=</mo><mi>c</mi><mo>+</mo><mn>4</mn></mrow></mtd><mtd class="tml-right" style="padding-left:1em;padding-right:0em;"><mi>e</mi></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mo>=</mo><mi>d</mi><mo>+</mo><mn>3</mn></mrow></mtd></mtr><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mi>a</mi></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mo>=</mo><mi>e</mi><mo>+</mo><mn>0</mn></mrow></mtd><mtd class="tml-right" style="padding-left:1em;padding-right:0em;"><mi>c</mi></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mo>=</mo><mi>a</mi><mo>+</mo><mn>3</mn></mrow></mtd><mtd class="tml-right" style="padding-left:1em;padding-right:0em;"><mi>d</mi></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mo>=</mo><mi>b</mi><mo>+</mo><mn>0</mn></mrow></mtd><mtd class="tml-right" style="padding-left:1em;padding-right:0em;"><mi>e</mi></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mo>=</mo><mi>c</mi><mo>+</mo><mn>2</mn></mrow></mtd></mtr></mtable></math></div>
+<figure class="ai-math-figure ai-math-figure--small">
+<svg viewBox="0 0 360 268" role="img" aria-label="A graph on five variables with eight arrows and a labeling that satisfies all of them"><line class="fig-guide-strong" x1="194.56" y1="44.58" x2="262.73" y2="94.11"/><polygon class="fig-solid" points="262.73,94.11 253.1,92.05 257.8,85.58"/><text class="fig-note" x="222.4" y="83.64" text-anchor="middle">+2</text><line class="fig-guide-strong" x1="273.35" y1="122.98" x2="247.31" y2="203.12"/><polygon class="fig-solid" points="247.31,203.12 246.29,193.32 253.9,195.79"/><text class="fig-note" x="248.61" y="164.29" text-anchor="middle">+1</text><line class="fig-guide-strong" x1="223.13" y1="222.14" x2="138.87" y2="222.14"/><polygon class="fig-solid" points="138.87,222.14 147.87,218.14 147.87,226.14"/><text class="fig-note" x="180" y="214.14" text-anchor="middle">+4</text><line class="fig-guide-strong" x1="113.31" y1="205.02" x2="87.27" y2="124.88"/><polygon class="fig-solid" points="87.27,124.88 93.86,132.21 86.25,134.68"/><text class="fig-note" x="111.39" y="164.29" text-anchor="middle">+3</text><line class="fig-guide-strong" x1="95.65" y1="95.28" x2="163.82" y2="45.76"/><polygon class="fig-solid" points="163.82,45.76 158.89,54.28 154.19,47.81"/><text class="fig-note" x="137.6" y="83.64" text-anchor="middle">+0</text><line class="fig-guide-strong" x1="185.56" y1="51.12" x2="234.95" y2="203.12"/><polygon class="fig-solid" points="234.95,203.12 228.36,195.79 235.97,193.32"/><text class="fig-note" x="186.93" y="98.15" text-anchor="middle">+3</text><line class="fig-guide-strong" x1="264.35" y1="116.44" x2="135.05" y2="210.38"/><polygon class="fig-solid" points="135.05,210.38 139.98,201.86 144.68,208.33"/><text class="fig-note" x="223.84" y="135.04" text-anchor="middle">+0</text><line class="fig-guide-strong" x1="226.57" y1="211.56" x2="97.27" y2="117.62"/><polygon class="fig-solid" points="97.27,117.62 106.9,119.67 102.2,126.14"/><text class="fig-note" x="139.36" y="137.36" text-anchor="middle">+2</text><circle class="fig-node" cx="180" cy="34" r="17"/><text class="fig-node-label" x="180" y="39" text-anchor="middle">a=0</text><circle class="fig-node" cx="278.91" cy="105.86" r="17"/><text class="fig-node-label" x="278.91" y="110.86" text-anchor="middle">b=2</text><circle class="fig-node" cx="241.13" cy="222.14" r="17"/><text class="fig-node-label" x="241.13" y="227.14" text-anchor="middle">c=3</text><circle class="fig-node" cx="118.87" cy="222.14" r="17"/><text class="fig-node-label" x="118.87" y="227.14" text-anchor="middle">d=2</text><circle class="fig-node" cx="81.09" cy="105.86" r="17"/><text class="fig-node-label" x="81.09" y="110.86" text-anchor="middle">e=0</text></svg>
+<figcaption>The eight constraints as a graph. Each arrow adds its constant modulo 5. The labels shown satisfy all eight constraints.</figcaption>
+</figure>
+<p>If all constraints can hold together, a fast method finds a solution. Choose <span class="ai-math-nobreak"><math><mrow><mi>a</mi><mo>=</mo><mn>0</mn></mrow></math>,</span> and then follow the constraints: <span class="ai-math-nobreak"><math><mrow><mi>b</mi><mo>=</mo><mn>2</mn></mrow></math>,</span> <span class="ai-math-nobreak"><math><mrow><mi>c</mi><mo>=</mo><mn>3</mn></mrow></math>,</span> <span class="ai-math-nobreak"><math><mrow><mi>d</mi><mo>=</mo><mn>2</mn></mrow></math>,</span> <span class="ai-math-nobreak"><math><mrow><mi>e</mi><mo>=</mo><mn>0</mn></mrow></math>.</span> The remaining constraints then either hold or show that no full solution exists.</p>
+<p>Now change the first constraint to <span class="ai-math-nobreak"><math><mrow><mi>b</mi><mo>=</mo><mi>a</mi><mo>+</mo><mn>3</mn></mrow></math>.</span> No labeling now satisfies all eight constraints. The best labelings satisfy seven of the eight. If you follow the first four constraints in order from <span class="ai-math-nobreak"><math><mrow><mi>a</mi><mo>=</mo><mn>0</mn></mrow></math>,</span> you get a labeling that satisfies only six.</p>
+<p>A larger system shows the difficulty more clearly. Suppose that 1% of the constraints are wrong, at unknown positions. A chain of 100 constraints then contains at least one wrong constraint with probability about 63%. Each label after that point is wrong by a fixed shift. So the method fails for most of the system, even when 99% of the constraints can hold.</p>
+<p>The <dfn>value</dfn> of a game is the largest fraction of constraints that one labeling can satisfy. Value 100% is easy to detect. The hard case is a value near 100%.</p>
+
+<h2 id="conjecture">The conjecture</h2>
+<p>The <dfn>Unique Games Conjecture</dfn> concerns all small numbers <math><mi>ε</mi></math> and <span class="ai-math-nobreak"><math><mi>δ</mi></math>,</span> with enough labels. It says that no fast algorithm can separate two kinds of game unless P = NP.</p>
+<ul>
+<li>Games with value at least <span class="ai-math-nobreak"><math><mrow><mn>1</mn><mo>−</mo><mi>ε</mi></mrow></math>,</span> for example at least 99%.</li>
+<li>Games with value at most <span class="ai-math-nobreak"><math><mi>δ</mi></math>,</span> for example at most 1%.</li>
+</ul>
+<p>A problem with this property is <dfn>NP-hard</dfn>. So a polynomial-time algorithm for it would give a polynomial-time algorithm for 3-SAT and for every other problem in NP.</p>
+
+<div class="site-divider ai-math-divider" data-ornament="folio" aria-hidden="true"><span></span></div>
+
+<h2 id="result">The result</h2>
+<p>The OpenAI manuscript states a procedure that turns a 3-SAT formula <math><mi>φ</mi></math> into a unique game <span class="ai-math-nobreak"><math><msub><mi>G</mi><mi>φ</mi></msub></math>.</span> For each fixed <math><mi>ε</mi></math> and <math><mi>δ</mi></math> between 0 and <span class="ai-math-nobreak"><math><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></math>,</span> the procedure is deterministic and runs in polynomial time. It has these two properties:</p>
+<div class="ui-equation" data-scroll-region data-scroll-noun="of the formula" aria-label="Formula"><math display="block" class="tml-display" style="display:block math;"><mtable displaystyle="true" class="tml-jot"><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mrow><mi>φ</mi><mtext> has a solution</mtext></mrow></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mspace width="0.2778em"></mspace><mo stretchy="false">⟹</mo><mspace width="0.2778em"></mspace><mspace width="0.1667em"></mspace><mi>value</mi><mo>⁡</mo><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><msub><mi>G</mi><mi>φ</mi></msub><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>≥</mo><mn>1</mn><mo>−</mo><mi>ε</mi></mrow></mtd></mtr><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mrow><mi>φ</mi><mtext> has no solution</mtext></mrow></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mspace width="0.2778em"></mspace><mo stretchy="false">⟹</mo><mspace width="0.2778em"></mspace><mspace width="0.1667em"></mspace><mi>value</mi><mo>⁡</mo><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><msub><mi>G</mi><mi>φ</mi></msub><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>≤</mo><mi>δ</mi></mrow></mtd></mtr></mtable></math></div>
+<figure class="ai-math-figure">
+<svg viewBox="0 0 490 126" role="img" aria-label="A scale of game values from zero to one hundred percent, with one band at most five percent and one band at least ninety-five percent"><line class="fig-line" x1="20" y1="96" x2="470" y2="96"/><line class="fig-line" x1="20" y1="96" x2="20" y2="102"/><text class="fig-label" x="20" y="118" text-anchor="middle">0%</text><line class="fig-line" x1="132.5" y1="96" x2="132.5" y2="102"/><text class="fig-label" x="132.5" y="118" text-anchor="middle">25%</text><line class="fig-line" x1="245" y1="96" x2="245" y2="102"/><text class="fig-label" x="245" y="118" text-anchor="middle">50%</text><line class="fig-line" x1="357.5" y1="96" x2="357.5" y2="102"/><text class="fig-label" x="357.5" y="118" text-anchor="middle">75%</text><line class="fig-line" x1="470" y1="96" x2="470" y2="102"/><text class="fig-label" x="470" y="118" text-anchor="middle">100%</text><polygon class="fig-band" points="20,60 42.5,60 42.5,82 20,82"/><line class="fig-accent" x1="20" y1="82" x2="42.5" y2="82"/><text class="fig-note" x="20" y="53">Formula has no solution: value at most 5%</text><polygon class="fig-band" points="447.5,22 470,22 470,44 447.5,44"/><line class="fig-accent" x1="447.5" y1="44" x2="470" y2="44"/><text class="fig-note" x="470" y="15" text-anchor="end">Formula has a solution: value at least 95%</text></svg>
+<figcaption>The value of the game that the procedure builds, with <math><mrow><mi>ε</mi><mo>=</mo><mi>δ</mi><mo>=</mo><mn>5</mn><mi>%</mi></mrow></math> as an example. The procedure produces no game with a value between the two bands. An algorithm that detects the band solves 3-SAT.</figcaption>
+</figure>
+<p>The constraints in <math><msub><mi>G</mi><mi>φ</mi></msub></math> have a simple form. Each label is a string of <math><mi>s</mi></math> bits, and each constraint says that one label equals the other label with a fixed bit pattern added. The number <math><mi>s</mi></math> depends only on <math><mi>ε</mi></math> and <span class="ai-math-nobreak"><math><mi>δ</mi></math>.</span></p>
+
+<h2 id="not">What the result does not say</h2>
+<ul>
+<li><strong>It does not prove P ≠ NP.</strong> Each hardness statement here has the form "no fast algorithm exists unless P = NP".</li>
+<li><strong>It does not mean that unique games need exponential time.</strong> Sanjeev Arora, Boaz Barak and David Steurer gave a subexponential algorithm for nearly satisfiable games. The reduction is polynomial, so these facts agree.</li>
+<li><strong>It does not cover every related problem.</strong> Khot also conjectured a form of the problem for games with value exactly 100%, the 2-to-1 conjecture. Separate work treats it.</li>
+<li><strong>It does not concern ordinary games.</strong> The name comes from the theory of proofs with two players.</li>
+</ul>
+
+<h2 id="matters">Why the result matters</h2>
+<p>Earlier work showed that the conjecture implies sharp limits for many problems. With this result, those limits become NP-hardness results. An algorithm cannot beat these thresholds by a fixed margin unless P = NP.</p>
+<div class="table-scroll" data-scroll-region aria-label="Problems whose approximation limit follows from the result">
+<table class="ui-table">
+<thead><tr><th scope="col">Problem</th><th scope="col">Task</th><th scope="col">Known guarantee, now the limit</th></tr></thead>
+<tbody>
+<tr><td>Max-Cut</td><td>Split the vertices of a graph in two so that as many edges as possible cross</td><td>0.87856 of the best value, from Goemans and Williamson</td></tr>
+<tr><td>Vertex Cover</td><td>Choose the fewest vertices that touch every edge</td><td>2 times the best value</td></tr>
+<tr><td>Constraint satisfaction</td><td>Satisfy as many constraints as possible, for each fixed type of constraint</td><td>The ratio of one standard algorithm, from Raghavendra</td></tr>
+</tbody>
+</table>
+</div>
+<p>A 5-cycle shows Max-Cut in small form. It has five edges, and the best split has four crossing edges. A fast algorithm cannot always guarantee more than 0.87856 of the best value, unless P = NP.</p>
+<p>The manuscript also lists consequences for ordering constraints, cuts, deletion and clustering. The conjecture has further links to the geometry of foams and to voting systems. For the related claim about fast algorithms, see the <a href="../exponential-time-hypothesis/">Exponential Time Hypothesis</a>.</p>
+
+<h2 id="checked">How far the result has been checked</h2>
+<p>OpenAI released the manuscript on 6 October 2026, with a Lean proof of the main theorem. Quanta Magazine reported that only one manuscript in that release had human editing, and this manuscript is not that one.</p>
+<p>Experts have since studied the proof. Scott Aaronson reports that Dana Moshkovitz studied it closely with Khot, Johan Håstad, Dor Minzer and other colleagues. She gave two whiteboard talks at the Simons Institute, and a talk at UT Austin on 4 November 2026. She describes the main new part as a code construction. Her abstract does not state a final verdict, and no source reports a finished journal review on this date.</p>
+
+<h2 id="sources">Sources</h2>
+<ul class="ai-math-sources">
+<li><a href="https://github.com/openai/math/blob/main/preprints/The-Unique-Games-Theorem-September-23-2026/paper.pdf">The Unique Games Theorem</a>, OpenAI, dated 23 September 2026.</li>
+<li><a href="https://www.quantamagazine.org/as-ai-closed-in-on-unique-games-proof-researchers-raced-to-beat-the-machines-20261007/">As AI Closed In on Unique Games Proof, Researchers Raced to Beat the Machines</a>, Quanta Magazine, 7 October 2026.</li>
+<li><a href="https://scottaaronson.blog/?p=10232">Talk by Dana Moshkovitz: The Unique Games Conjecture – Proved (!!?)</a>, Shtetl-Optimized.</li>
+</ul>
+      </article>
+      <p class="ai-math-back"><a href="../">All results</a></p>
+    </main>
+  </body>
+</html>

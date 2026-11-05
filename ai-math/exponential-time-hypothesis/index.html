@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="An algorithm can solve 3-SAT faster than every exponential time, but only for enormous inputs.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Exponential Time Hypothesis is false">
+    <meta property="og:description" content="An algorithm can solve 3-SAT faster than every exponential time, but only for enormous inputs.">
+    <meta property="og:url" content="https://jehlp.net/ai-math/exponential-time-hypothesis/">
+    <meta property="og:site_name" content="jehlp.net">
+    <meta name="theme-color" content="#fbfaf7">
+    <link rel="canonical" href="https://jehlp.net/ai-math/exponential-time-hypothesis/">
+    <title>The Exponential Time Hypothesis is false · AI Math Results · jehlp.net</title>
+    <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/ai-math.png" type="image/png">
+    <script src="https://jehlp.net/site-theme/v2/theme.js?v=20261009-reading-folio"></script>
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261009-reading-folio">
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css?v=20261105-math3">
+    <link rel="stylesheet" href="../../assets/ai-math.css?v=20261105-math3">
+    <script src="https://jehlp.net/site-theme/v2/components.js?v=20261105-math3" defer></script>
+  </head>
+  <body data-site-tone="blue">
+    <a class="skip-link" href="#explainer">Skip to the explanation</a>
+    <header class="site-header site-header--identity">
+      <div class="site-brand"><img class="site-mark" src="https://jehlp.net/site-theme/v2/marks/ai-math.png" width="32" height="32" alt=""><a class="site-title" href="../">AI Math Results</a></div>
+      <nav aria-label="Site links"><span class="site-utility-pair"><a class="site-home" href="https://jehlp.net/" aria-label="Home — jehlp.net" title="Home — jehlp.net"><span aria-hidden="true">✳</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button></span></nav>
+    </header>
+    <main id="explainer" class="ai-math-shell" tabindex="-1">
+      <article class="prose ai-math-article">
+        <h1>The Exponential Time Hypothesis is false</h1>
+<p class="lede">The Exponential Time Hypothesis says that 3-SAT, a basic logic problem, needs exponential time in its worst cases. OpenAI and Anthropic each report an algorithm that is faster than every exponential for large inputs. The algorithms give no practical speed gain.</p>
+<dl class="data-strip ai-math-facts"><div><dt>Posted</dt><dd>2026-10-26</dd></div><div><dt>Lean proof</dt><dd>Complete</dd></div><div><dt>Human review</dt><dd>In progress</dd></div><div><dt>Status date</dt><dd>2026-11-05</dd></div></dl>
+
+<h2 id="question">The question</h2>
+<p>A <dfn>Boolean variable</dfn> has the value true or false. A <dfn>clause</dfn> joins variables or their negations with "or". A <dfn>3-SAT formula</dfn> joins clauses of at most three items with "and". An <dfn>assignment</dfn> gives a value to each variable. A <dfn>solution</dfn> is an assignment that makes every clause true.</p>
+<p>The 3-SAT problem asks if a formula has a solution. Many scheduling, design and verification problems can be written as 3-SAT. The question for this result is how fast an algorithm can answer for the worst formulas.</p>
+
+<h2 id="examples">Examples</h2>
+<p>This formula has three variables, so it has eight assignments. The symbol <math><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">∨</mo></math> means "or", <math><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">∧</mo></math> means "and" and <math><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">¬</mo></math> means "not".</p>
+<div class="ui-equation" data-scroll-region data-scroll-noun="of the formula" aria-label="Formula"><math display="block" class="tml-display" style="display:block math;"><mtable displaystyle="true" class="tml-jot"><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mrow></mrow></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>a</mi><mo>∨</mo><mi>b</mi><mo>∨</mo><mi>c</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>∧</mo><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">¬</mo><mi>a</mi><mo>∨</mo><mo form="prefix" stretchy="false">¬</mo><mi>b</mi><mo>∨</mo><mi>c</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></mtd></mtr><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mrow><mo form="prefix" stretchy="false">∧</mo><mspace width="0.2778em"></mspace></mrow></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>a</mi><mo>∨</mo><mo form="prefix" stretchy="false">¬</mo><mi>b</mi><mo>∨</mo><mo form="prefix" stretchy="false">¬</mo><mi>c</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>∧</mo><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">¬</mo><mi>a</mi><mo>∨</mo><mi>b</mi><mo>∨</mo><mo form="prefix" stretchy="false">¬</mo><mi>c</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></mtd></mtr></mtable></math></div>
+<div class="table-scroll" data-scroll-region aria-label="All eight assignments of the example formula">
+<table class="ui-table">
+<thead><tr><th scope="col"><math><mi>a</mi></math></th><th scope="col"><math><mi>b</mi></math></th><th scope="col"><math><mi>c</mi></math></th><th scope="col">Outcome</th></tr></thead>
+<tbody>
+<tr><td>false</td><td>false</td><td>false</td><td>Clause 1 fails</td></tr>
+<tr><td>false</td><td>false</td><td>true</td><td><strong>Solution</strong></td></tr>
+<tr><td>false</td><td>true</td><td>false</td><td><strong>Solution</strong></td></tr>
+<tr><td>false</td><td>true</td><td>true</td><td>Clause 3 fails</td></tr>
+<tr><td>true</td><td>false</td><td>false</td><td><strong>Solution</strong></td></tr>
+<tr><td>true</td><td>false</td><td>true</td><td>Clause 4 fails</td></tr>
+<tr><td>true</td><td>true</td><td>false</td><td>Clause 2 fails</td></tr>
+<tr><td>true</td><td>true</td><td>true</td><td><strong>Solution</strong></td></tr>
+</tbody>
+</table>
+</div>
+<p>The formula has a solution, and it has exactly four solutions. To answer "is there a solution" and to answer "how many solutions" are different tasks. Counting is at least as hard.</p>
+<p>Exhaustive search tests every assignment. A formula with <math><mi>n</mi></math> variables has <math><msup><mn>2</mn><mi>n</mi></msup></math> assignments, so each extra variable doubles the work. With 100 variables there are about <math><mrow><mn>1.27</mn><mo>×</mo><msup><mn>10</mn><mn>30</mn></msup></mrow></math> assignments. A computer that tests <math><msup><mn>10</mn><mn>18</mn></msup></math> assignments each second needs about 40,000 years.</p>
+<p>Better algorithms exist. Before October 2026, the fastest known randomized algorithm used about <math><msup><mn>1.308</mn><mi>n</mi></msup></math> steps. The fastest known deterministic algorithm used about <math><msup><mn>1.328</mn><mi>n</mi></msup></math> steps.</p>
+<div class="table-scroll" data-scroll-region aria-label="Growth of exhaustive search and of the earlier best algorithm">
+<table class="ui-table ai-math-numbers">
+<thead><tr><th scope="col">Variables <math><mi>n</mi></math></th><th scope="col"><math><msup><mn>2</mn><mi>n</mi></msup></math></th><th scope="col"><math><msup><mn>1.308</mn><mi>n</mi></msup></math></th></tr></thead>
+<tbody>
+<tr><td>20</td><td><math><mrow><mn>1.05</mn><mo>×</mo><msup><mn>10</mn><mn>6</mn></msup></mrow></math></td><td>215</td></tr>
+<tr><td>50</td><td><math><mrow><mn>1.13</mn><mo>×</mo><msup><mn>10</mn><mn>15</mn></msup></mrow></math></td><td><math><mrow><mn>6.77</mn><mo>×</mo><msup><mn>10</mn><mn>5</mn></msup></mrow></math></td></tr>
+<tr><td>100</td><td><math><mrow><mn>1.27</mn><mo>×</mo><msup><mn>10</mn><mn>30</mn></msup></mrow></math></td><td><math><mrow><mn>4.58</mn><mo>×</mo><msup><mn>10</mn><mn>11</mn></msup></mrow></math></td></tr>
+<tr><td>300</td><td><math><mrow><mn>2.04</mn><mo>×</mo><msup><mn>10</mn><mn>90</mn></msup></mrow></math></td><td><math><mrow><mn>9.60</mn><mo>×</mo><msup><mn>10</mn><mn>34</mn></msup></mrow></math></td></tr>
+<tr><td>1000</td><td><math><mrow><mn>1.07</mn><mo>×</mo><msup><mn>10</mn><mn>301</mn></msup></mrow></math></td><td><math><mrow><mn>4.05</mn><mo>×</mo><msup><mn>10</mn><mn>116</mn></msup></mrow></math></td></tr>
+</tbody>
+</table>
+</div>
+<p>The base 1.308 is smaller than 2, but this time is still exponential. Its exponent grows in proportion to <span class="ai-math-nobreak"><math><mi>n</mi></math>.</span></p>
+
+<h2 id="hypothesis">The hypothesis</h2>
+<p>Russell Impagliazzo and Ramamohan Paturi stated the Exponential Time Hypothesis, and a paper of 2001 gives its usual form. It says that a number <math><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math> exists such that no algorithm solves every 3-SAT formula in <math><msup><mn>2</mn><mrow><mi>δ</mi><mi>n</mi></mrow></msup></math> steps. Thus the base of an exponential time cannot come arbitrarily near 1.</p>
+<p>The hypothesis was a working assumption and not a theorem. In a 2012 lecture, Impagliazzo said that he and Paturi gave it about even odds of being true.</p>
+<p>Researchers used the hypothesis to explain why other problems appear hard. If a fast algorithm for problem <math><mi>X</mi></math> gives a fast algorithm for 3-SAT, then the hypothesis limits the speed of any algorithm for <span class="ai-math-nobreak"><math><mi>X</mi></math>.</span></p>
+
+<div class="site-divider ai-math-divider" data-ornament="folio" aria-hidden="true"><span></span></div>
+
+<h2 id="result">The result</h2>
+<p>A <dfn>k-CNF formula</dfn> is the same as a 3-SAT formula, except that each clause has at most <math><mi>k</mi></math> items. The OpenAI paper states a deterministic algorithm that counts the solutions of a k-CNF formula with <math><mi>n</mi></math> variables and <math><mi>m</mi></math> clauses. For each fixed <span class="ai-math-nobreak"><math><mi>k</mi></math>,</span> it uses polynomial space and this time:</p>
+<div class="ui-equation" data-scroll-region data-scroll-noun="of the formula" aria-label="Formula"><math display="block" class="tml-display" style="display:block math;"><mrow><msup><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>m</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mrow><msub><mi>O</mi><mi>k</mi></msub><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>1</mn><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></msup><mo>⋅</mo><msup><mn>2</mn><mrow><mspace width="0.1667em"></mspace><msub><mi>O</mi><mi>k</mi></msub><mrow><mo fence="true" form="prefix" stretchy="true">(</mo><mi>n</mi><mrow><mspace width="0.1667em"></mspace><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mspace width="0.1667em"></mspace><mi>/</mi><mspace width="0.1667em"></mspace><msqrt><mrow><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi></mrow></msqrt><mo fence="true" form="postfix" stretchy="true">)</mo></mrow></mrow></msup></mrow></math></div>
+<p>The notation <math><mrow><msub><mi>O</mi><mi>k</mi></msub><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>x</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math> means at most a constant times <span class="ai-math-nobreak"><math><mi>x</mi></math>,</span> where the constant depends only on <span class="ai-math-nobreak"><math><mi>k</mi></math>.</span> The Anthropic paper states a time with the same main term. Its constant is explicit in <span class="ai-math-nobreak"><math><mi>k</mi></math>,</span> and it also gives a bound in terms of <span class="ai-math-nobreak"><math><mi>m</mi></math>.</span></p>
+<p>The exponent is <math><mi>n</mi></math> times a factor <span class="ai-math-nobreak"><math><mrow><mi>c</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>n</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>=</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mi>/</mi><msqrt><mrow><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi></mrow></msqrt></mrow></math>.</span> This factor goes to zero as <math><mi>n</mi></math> grows. So for each <span class="ai-math-nobreak"><math><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math>,</span> the time is below <math><msup><mn>2</mn><mrow><mi>δ</mi><mi>n</mi></mrow></msup></math> when <math><mi>n</mi></math> is large enough, and the hypothesis is false.</p>
+<div class="table-scroll" data-scroll-region aria-label="The factor c(n) for growing n, without the hidden constant">
+<table class="ui-table ai-math-numbers">
+<thead><tr><th scope="col"><math><mi>n</mi></math></th><th scope="col"><math><msup><mn>10</mn><mn>3</mn></msup></math></th><th scope="col"><math><msup><mn>10</mn><mn>12</mn></msup></math></th><th scope="col"><math><msup><mn>10</mn><mn>100</mn></msup></math></th><th scope="col"><math><msup><mn>10</mn><mn>1000</mn></msup></math></th><th scope="col"><math><msup><mn>10</mn><mrow><mn>10</mn><mspace width="0.1667em"></mspace><mn>000</mn></mrow></msup></math></th><th scope="col"><math><msup><mn>10</mn><mrow><mn>1</mn><mspace width="0.1667em"></mspace><mn>000</mn><mspace width="0.1667em"></mspace><mn>000</mn></mrow></msup></math></th></tr></thead>
+<tbody><tr><th scope="row"><math><mrow><mi>c</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>n</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math></th><td>0.735</td><td>0.631</td><td>0.358</td><td>0.161</td><td>0.066</td><td>0.010</td></tr></tbody>
+</table>
+</div>
+<p>This table uses natural logarithms and omits the hidden constant. It shows only how slowly the factor falls.</p>
+
+<h2 id="not">What the result does not say</h2>
+<ul>
+<li><strong>It does not settle P versus NP.</strong> The new time is still far above any polynomial. Both groups say that their result does not settle that question.</li>
+<li><strong>It does not speed up every NP problem.</strong> A general reduction to 3-SAT can raise the variable count from <math><mi>n</mi></math> to <math><msup><mi>n</mi><mn>2</mn></msup></math> or more. A time of <math><msup><mn>2</mn><mrow><mi>o</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>n</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></msup></math> does not survive that change.</li>
+<li><strong>It does not help with real formulas.</strong> Anthropic calculates that its bound for formulas with <math><mrow><mi>m</mi><mo>=</mo><mn>5</mn><mi>n</mi></mrow></math> beats exhaustive search only for <span class="ai-math-nobreak"><math><mrow><mi>n</mi><mo>&gt;</mo><msup><mn>10</mn><mrow><mn>10</mn><mspace width="0.1667em"></mspace><mn>000</mn></mrow></msup></mrow></math>.</span> Its bound in <math><mi>n</mi></math> alone needs <span class="ai-math-nobreak"><math><mrow><mi>n</mi><mo>&gt;</mo><msup><mn>10</mn><msup><mn>10</mn><mn>8</mn></msup></msup></mrow></math>.</span> Exhaustive search is already impractical at <span class="ai-math-nobreak"><math><mrow><mi>n</mi><mo>=</mo><mn>100</mn></mrow></math>.</span></li>
+<li><strong>It does not remove all related lower bounds.</strong> Many of them also follow from the Orthogonal Vectors hypothesis, and this result does not refute that hypothesis.</li>
+</ul>
+
+<h2 id="matters">Why the result matters</h2>
+<p>Many hardness results rest on this hypothesis. Anthropic searched the literature with Claude and found more than 800 papers. Each has a result that holds only under this hypothesis or a stronger one. Those results lose that support. They do not automatically become false.</p>
+<p>The Strong Exponential Time Hypothesis and Gap-ETH imply this hypothesis, so they are false too. The OpenAI paper also refutes the nondeterministic form of the strong hypothesis.</p>
+<p>The result also gives new subexponential algorithms in theory. They count independent sets, proper colorings and perfect matchings in a graph. They also solve Independent Set, Clique, Vertex Cover and Dominating Set in <math><msup><mn>2</mn><mrow><mi>δ</mi><mi>n</mi></mrow></msup></math> steps for every <span class="ai-math-nobreak"><math><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math>.</span></p>
+
+<h2 id="checked">How far the result has been checked</h2>
+<p>OpenAI states that its model found the argument on 16 October 2026 and that the Lean proof followed on 17 October. Its Lean proof gives a slightly weaker exponent, with <math><msup><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mn>2</mn></msup></math> in place of <span class="ai-math-nobreak"><math><mrow><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi></mrow></math>.</span> That weaker exponent still refutes the hypothesis.</p>
+<p>Anthropic states that an internal Claude model found its core algorithm on 16 October, with no human input and independently of OpenAI. Its repository holds a Lean proof, checked by a second, independently written proof kernel. The repository warns that no machine checks whether the Lean file says what the paper says. It keeps the file short for human readers.</p>
+<p>OpenAI states that a group led by Impagliazzo, Paturi and Ryan Williams will verify and explain its result. The reviewers state that their part in this examination is not a certification. No source reports a finished journal review on this date.</p>
+
+<h2 id="sources">Sources</h2>
+<ul class="ai-math-sources">
+<li><a href="https://github.com/openai/math/blob/main/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/paper.pdf">The Exponential Time Hypothesis is False</a>, OpenAI, revised 25 October 2026.</li>
+<li><a href="https://github.com/anthropics/formal-math/blob/main/eth/paper.pdf">A 2<sup>o(n)</sup> Time Algorithm for 3-SAT</a>, Claude, Anthropic, 26 October 2026, with its <a href="https://github.com/anthropics/formal-math/tree/main/eth">Lean project</a>.</li>
+<li><a href="https://openai.com/index/building-scientific-understanding-with-academic-communities/">OpenAI's announcement</a>, 26 October 2026.</li>
+<li><a href="https://doi.org/10.1006/jcss.2000.1727">On the Complexity of k-SAT</a>, Impagliazzo and Paturi, 2001.</li>
+<li><a href="https://en.wikipedia.org/wiki/Exponential_time_hypothesis">Exponential time hypothesis</a>, Wikipedia, for the 2012 lecture remark.</li>
+<li><a href="https://dataconomy.com/2026/11/04/openai-and-anthropic-claim-ai-disproved-the-exponential/">Dataconomy's report</a> on the reviewers' letter and the two papers, 4 November 2026.</li>
+</ul>
+      </article>
+      <p class="ai-math-back"><a href="../">All results</a></p>
+    </main>
+  </body>
+</html>

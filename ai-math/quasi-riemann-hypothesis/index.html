@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="No zero of the Riemann zeta function has real part above 7/8. This controls the error in prime counts.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The quasi-Riemann hypothesis">
+    <meta property="og:description" content="No zero of the Riemann zeta function has real part above 7/8. This controls the error in prime counts.">
+    <meta property="og:url" content="https://jehlp.net/ai-math/quasi-riemann-hypothesis/">
+    <meta property="og:site_name" content="jehlp.net">
+    <meta name="theme-color" content="#fbfaf7">
+    <link rel="canonical" href="https://jehlp.net/ai-math/quasi-riemann-hypothesis/">
+    <title>The quasi-Riemann hypothesis · AI Math Results · jehlp.net</title>
+    <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/ai-math.png" type="image/png">
+    <script src="https://jehlp.net/site-theme/v2/theme.js?v=20261009-reading-folio"></script>
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261009-reading-folio">
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css?v=20261105-math3">
+    <link rel="stylesheet" href="../../assets/ai-math.css?v=20261105-math3">
+    <script src="https://jehlp.net/site-theme/v2/components.js?v=20261105-math3" defer></script>
+  </head>
+  <body data-site-tone="blue">
+    <a class="skip-link" href="#explainer">Skip to the explanation</a>
+    <header class="site-header site-header--identity">
+      <div class="site-brand"><img class="site-mark" src="https://jehlp.net/site-theme/v2/marks/ai-math.png" width="32" height="32" alt=""><a class="site-title" href="../">AI Math Results</a></div>
+      <nav aria-label="Site links"><span class="site-utility-pair"><a class="site-home" href="https://jehlp.net/" aria-label="Home — jehlp.net" title="Home — jehlp.net"><span aria-hidden="true">✳</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button></span></nav>
+    </header>
+    <main id="explainer" class="ai-math-shell" tabindex="-1">
+      <article class="prose ai-math-article">
+        <h1>The quasi-Riemann hypothesis</h1>
+<p class="lede">The Riemann hypothesis says where the zeros of the zeta function lie, and those zeros control the errors in prime counts. OpenAI reports a weaker statement: no zero has real part above 7/8. Before this result, no fixed limit below 1 was known.</p>
+<dl class="data-strip ai-math-facts"><div><dt>Posted</dt><dd>2026-10-06</dd></div><div><dt>Lean proof</dt><dd>Complete</dd></div><div><dt>Human review</dt><dd>Largely positive</dd></div><div><dt>Status date</dt><dd>2026-11-05</dd></div></dl>
+
+<h2 id="question">The question</h2>
+<p>A <dfn>prime</dfn> is a whole number above 1 with no divisors except 1 and itself. Primes become less common as numbers grow. Near a large number <span class="ai-math-nobreak"><math><mi>x</mi></math>,</span> about one number in <math><mrow><mrow><mi>ln</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>x</mi></mrow></math> is prime.</p>
+<p>Write <math><mrow><mi>π</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>x</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math> for the number of primes up to <span class="ai-math-nobreak"><math><mi>x</mi></math>.</span> The <dfn>logarithmic integral</dfn> <math><mrow><mi>li</mi><mo>⁡</mo><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>x</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>=</mo><msubsup><mo movablelimits="false">∫</mo><mn>0</mn><mi>x</mi></msubsup><mi>d</mi><mi>t</mi><mi>/</mi><mrow><mspace width="0.1667em"></mspace><mi>ln</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>t</mi></mrow></math> adds up that density, and it estimates <span class="ai-math-nobreak"><math><mrow><mi>π</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>x</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math>.</span> The question is how large the error <math><mrow><mi>li</mi><mo>⁡</mo><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>x</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>−</mo><mi>π</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>x</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math> can become.</p>
+
+<h2 id="examples">Examples</h2>
+<div class="table-scroll" data-scroll-region aria-label="Prime counts, the error of the logarithmic integral, and two growth rates">
+<table class="ui-table ai-math-numbers">
+<thead><tr><th scope="col"><math><mi>x</mi></math></th><th scope="col"><math><mrow><mi>π</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>x</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math></th><th scope="col"><math><mrow><mi>li</mi><mo>⁡</mo><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>x</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>−</mo><mi>π</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>x</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math></th><th scope="col"><math><msup><mi>x</mi><mrow class="tml-sml-pad"><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup></math></th><th scope="col"><math><msup><mi>x</mi><mrow class="tml-sml-pad"><mn>7</mn><mi>/</mi><mn>8</mn></mrow></msup></math></th></tr></thead>
+<tbody>
+<tr><td><math><msup><mn>10</mn><mn>6</mn></msup></math></td><td>78,498</td><td>130</td><td><math><mrow><mn>1.00</mn><mo>×</mo><msup><mn>10</mn><mn>3</mn></msup></mrow></math></td><td><math><mrow><mn>1.78</mn><mo>×</mo><msup><mn>10</mn><mn>5</mn></msup></mrow></math></td></tr>
+<tr><td><math><msup><mn>10</mn><mn>9</mn></msup></math></td><td>50,847,534</td><td>1,701</td><td><math><mrow><mn>3.16</mn><mo>×</mo><msup><mn>10</mn><mn>4</mn></msup></mrow></math></td><td><math><mrow><mn>7.50</mn><mo>×</mo><msup><mn>10</mn><mn>7</mn></msup></mrow></math></td></tr>
+<tr><td><math><msup><mn>10</mn><mn>12</mn></msup></math></td><td>37,607,912,018</td><td>38,263</td><td><math><mrow><mn>1.00</mn><mo>×</mo><msup><mn>10</mn><mn>6</mn></msup></mrow></math></td><td><math><mrow><mn>3.16</mn><mo>×</mo><msup><mn>10</mn><mn>10</mn></msup></mrow></math></td></tr>
+<tr><td><math><msup><mn>10</mn><mn>18</mn></msup></math></td><td><math><mrow><mn>2.47</mn><mo>×</mo><msup><mn>10</mn><mn>16</mn></msup></mrow></math></td><td><math><mrow><mn>2.19</mn><mo>×</mo><msup><mn>10</mn><mn>7</mn></msup></mrow></math></td><td><math><mrow><mn>1.00</mn><mo>×</mo><msup><mn>10</mn><mn>9</mn></msup></mrow></math></td><td><math><mrow><mn>5.62</mn><mo>×</mo><msup><mn>10</mn><mn>15</mn></msup></mrow></math></td></tr>
+<tr><td><math><msup><mn>10</mn><mn>24</mn></msup></math></td><td><math><mrow><mn>1.84</mn><mo>×</mo><msup><mn>10</mn><mn>22</mn></msup></mrow></math></td><td><math><mrow><mn>1.71</mn><mo>×</mo><msup><mn>10</mn><mn>10</mn></msup></mrow></math></td><td><math><mrow><mn>1.00</mn><mo>×</mo><msup><mn>10</mn><mn>12</mn></msup></mrow></math></td><td><math><mrow><mn>1.00</mn><mo>×</mo><msup><mn>10</mn><mn>21</mn></msup></mrow></math></td></tr>
+</tbody>
+</table>
+</div>
+<p>In this range the error stays below <span class="ai-math-nobreak"><math><msup><mi>x</mi><mrow class="tml-sml-pad"><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup></math>.</span> A table cannot show what happens for all <span class="ai-math-nobreak"><math><mi>x</mi></math>.</span> A proof must control the error for numbers far beyond any computation.</p>
+
+<h2 id="zeta">The zeta function and its zeros</h2>
+<p>The <dfn>Riemann zeta function</dfn> starts as this sum:</p>
+<div class="ui-equation" data-scroll-region data-scroll-noun="of the formula" aria-label="Formula"><math display="block" class="tml-display" style="display:block math;"><mrow><mi>ζ</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>s</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>=</mo><mn>1</mn><mo>+</mo><mfrac><mn>1</mn><msup><mn>2</mn><mi>s</mi></msup></mfrac><mo>+</mo><mfrac><mn>1</mn><msup><mn>3</mn><mi>s</mi></msup></mfrac><mo>+</mo><mfrac><mn>1</mn><msup><mn>4</mn><mi>s</mi></msup></mfrac><mo>+</mo><mi>⋯</mi></mrow></math></div>
+<p>For <span class="ai-math-nobreak"><math><mrow><mi>s</mi><mo>=</mo><mn>2</mn></mrow></math>,</span> the sum approaches <span class="ai-math-nobreak"><math><mrow><msup><mi>π</mi><mn>2</mn></msup><mi>/</mi><mn>6</mn><mo>≈</mo><mn>1.6449</mn></mrow></math>.</span> The first 10 terms give 1.5498, and the first 1000 terms give 1.6439. For <span class="ai-math-nobreak"><math><mrow><mi>s</mi><mo>=</mo><mn>1</mn></mrow></math>,</span> the sum grows without limit.</p>
+<p>The sum converges only when the real part of <math><mi>s</mi></math> is above 1. A standard method extends <math><mi>ζ</mi></math> to all complex numbers except <span class="ai-math-nobreak"><math><mrow><mi>s</mi><mo>=</mo><mn>1</mn></mrow></math>.</span> A complex number <math><mrow><mi>s</mi><mo>=</mo><mi>σ</mi><mo>+</mo><mi>i</mi><mi>t</mi></mrow></math> has <dfn>real part</dfn> <span class="ai-math-nobreak"><math><mi>σ</mi></math>,</span> written <span class="ai-math-nobreak"><math><mrow><mi>Re</mi><mo>⁡</mo><mspace width="0.1667em"></mspace><mi>s</mi></mrow></math>.</span></p>
+<p>Unique factorization connects this function to the primes. Euler showed that <math><mi>ζ</mi></math> is a product over all primes <span class="ai-math-nobreak"><math><mi>p</mi></math>,</span> with one factor <math><mrow><mn>1</mn><mi>/</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><msup><mi>p</mi><mrow class="tml-med-pad"><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">−</mo><mi>s</mi></mrow></msup><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math> for each prime. So the function holds information about primes in a form that analysis can use.</p>
+<p>A <dfn>zero</dfn> of <math><mi>ζ</mi></math> is a number <math><mi>s</mi></math> with <span class="ai-math-nobreak"><math><mrow><mi>ζ</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>s</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>=</mo><mn>0</mn></mrow></math>.</span> The numbers <math><mrow><mo form="prefix" stretchy="false">−</mo><mn>2</mn><mo separator="true">,</mo><mo form="prefix" stretchy="false">−</mo><mn>4</mn><mo separator="true">,</mo><mo form="prefix" stretchy="false">−</mo><mn>6</mn><mo separator="true">,</mo><mi>…</mi></mrow></math> are zeros, and they are easy to find. All other zeros lie in the strip <span class="ai-math-nobreak"><math><mrow><mn>0</mn><mo>&lt;</mo><mi>Re</mi><mo>⁡</mo><mspace width="0.1667em"></mspace><mi>s</mi><mo>&lt;</mo><mn>1</mn></mrow></math>.</span> The first of these is near <span class="ai-math-nobreak"><math><mrow><mstyle displaystyle="false" scriptlevel="0"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mo>+</mo><mn>14.1347</mn><mi>i</mi></mrow></math>.</span></p>
+<p>Riemann's formula writes the error in the prime count as a sum over these zeros. A zero with real part <math><mi>β</mi></math> gives a wave of size about <span class="ai-math-nobreak"><math><msup><mi>x</mi><mi class="tml-sml-pad">β</mi></msup></math>.</span> So the zero with the largest real part sets the size of the error.</p>
+<figure class="ai-math-figure">
+<svg viewBox="0 0 490 322" role="img" aria-label="The strip between real part 0 and real part 1, with zeros on the line at one half and shaded bands free of zeros"><polygon class="fig-band" points="126,18 156,18 156,292 126,292"/><polygon class="fig-band" points="336,18 366,18 366,292 336,292"/><line class="fig-line" x1="126" y1="18" x2="126" y2="292"/><line class="fig-line" x1="366" y1="18" x2="366" y2="292"/><line class="fig-accent" x1="246" y1="18" x2="246" y2="292"/><line class="fig-line" x1="66" y1="292" x2="426" y2="292"/><line class="fig-line" x1="126" y1="292" x2="126" y2="297"/><text class="fig-label" x="126" y="312" text-anchor="middle">0</text><line class="fig-line" x1="156" y1="292" x2="156" y2="297"/><text class="fig-label" x="156" y="312" text-anchor="middle">1/8</text><line class="fig-line" x1="246" y1="292" x2="246" y2="297"/><text class="fig-label" x="246" y="312" text-anchor="middle">1/2</text><line class="fig-line" x1="336" y1="292" x2="336" y2="297"/><text class="fig-label" x="336" y="312" text-anchor="middle">7/8</text><line class="fig-line" x1="366" y1="292" x2="366" y2="297"/><text class="fig-label" x="366" y="312" text-anchor="middle">1</text><circle class="fig-dot-accent" cx="246" cy="185.99" r="3.5"/><text class="fig-note" x="255" y="189.99">14.13</text><circle class="fig-dot-accent" cx="246" cy="134.33" r="3.5"/><text class="fig-note" x="255" y="138.33">21.02</text><circle class="fig-dot-accent" cx="246" cy="104.42" r="3.5"/><text class="fig-note" x="255" y="108.42">25.01</text><circle class="fig-dot-accent" cx="246" cy="63.81" r="3.5"/><text class="fig-note" x="255" y="67.81">30.42</text><circle class="fig-dot-accent" cx="246" cy="44.99" r="3.5"/><text class="fig-note" x="255" y="48.99">32.94</text><text class="fig-note" x="141" y="13" text-anchor="middle">no zeros</text><text class="fig-note" x="351" y="13" text-anchor="middle">no zeros</text><text class="fig-note" x="426" y="284" text-anchor="end">Re s</text></svg>
+<figcaption>The upper half of the strip that holds the zeros of <span class="ai-math-nobreak"><math><mi>ζ</mi></math>.</span> The dots are the first five zeros, with their imaginary parts. The lower half is the mirror image. The shaded bands are the regions where the new result excludes zeros.</figcaption>
+</figure>
+<div class="table-scroll" data-scroll-region aria-label="Three statements about the zeros and the prime count error">
+<table class="ui-table">
+<thead><tr><th scope="col">Statement</th><th scope="col">Largest real part of a zero</th><th scope="col">Error in <math><mrow><mi>π</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>x</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math></th></tr></thead>
+<tbody>
+<tr><td>Known before 2026</td><td>No fixed limit below 1</td><td>Below <math><mrow><mi>x</mi><mi>/</mi><msup><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mrow><mi>ln</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>x</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mi>A</mi></msup></mrow></math> for each <span class="ai-math-nobreak"><math><mi>A</mi></math>,</span> when <math><mi>x</mi></math> is large</td></tr>
+<tr><td>Quasi-Riemann hypothesis</td><td>Some fixed <math><mrow><mi>β</mi><mo>&lt;</mo><mn>1</mn></mrow></math></td><td>Below <math><mrow><mi>C</mi><msup><mi>x</mi><mi class="tml-sml-pad">p</mi></msup></mrow></math> for each <math><mrow><mi>p</mi><mo>&gt;</mo><mi>β</mi></mrow></math></td></tr>
+<tr><td>Riemann hypothesis, open</td><td>Exactly <math><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></math></td><td>Below <math><mrow><mi>C</mi><msup><mi>x</mi><mrow class="tml-sml-pad"><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mrow><mi>ln</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>x</mi></mrow></math></td></tr>
+</tbody>
+</table>
+</div>
+<p>The constant <math><mi>C</mi></math> in this table is unknown or large. So the table compares growth rates and not exact limits. Mathematicians have checked that the first 12 trillion zeros have real part exactly <span class="ai-math-nobreak"><math><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></math>.</span></p>
+
+<div class="site-divider ai-math-divider" data-ornament="folio" aria-hidden="true"><span></span></div>
+
+<h2 id="result">The result</h2>
+<p>The OpenAI manuscript states that the zeta function has no zero in this half-plane:</p>
+<div class="ui-equation" data-scroll-region data-scroll-noun="of the formula" aria-label="Formula"><math display="block" class="tml-display" style="display:block math;"><mrow><mi>Re</mi><mo>⁡</mo><mspace width="0.1667em"></mspace><mi>s</mi><mo>&gt;</mo><mstyle displaystyle="false" scriptlevel="0"><mfrac><mn>7</mn><mn>8</mn></mfrac></mstyle></mrow></math></div>
+<p>A symmetry of <math><mi>ζ</mi></math> then excludes zeros with <span class="ai-math-nobreak"><math><mrow><mn>0</mn><mo>&lt;</mo><mi>Re</mi><mo>⁡</mo><mspace width="0.1667em"></mspace><mi>s</mi><mo>&lt;</mo><mn>1</mn><mi>/</mi><mn>8</mn></mrow></math>.</span> So each zero in the strip has real part between <math><mrow><mn>1</mn><mi>/</mi><mn>8</mn></mrow></math> and <span class="ai-math-nobreak"><math><mrow><mn>7</mn><mi>/</mi><mn>8</mn></mrow></math>,</span> and the limit <math><mrow><mi>β</mi><mo>=</mo><mn>7</mn><mi>/</mi><mn>8</mn></mrow></math> holds. The same half-plane has no zeros for all Dirichlet L-functions, and for a family of Hecke L-functions.</p>
+<p>A <dfn>Dirichlet L-function</dfn> is a sum of the same form as <span class="ai-math-nobreak"><math><mi>ζ</mi></math>,</span> with a periodic pattern of signs or roots of unity in its terms. These functions control primes in fixed remainder classes.</p>
+
+<h2 id="not">What the result does not say</h2>
+<ul>
+<li><strong>It is not the Riemann hypothesis.</strong> The Riemann hypothesis puts every such zero on the line <span class="ai-math-nobreak"><math><mrow><mi>Re</mi><mo>⁡</mo><mspace width="0.1667em"></mspace><mi>s</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow></math>.</span> That statement remains open.</li>
+<li><strong>It does not exclude the line itself.</strong> The theorem does not exclude a zero with real part exactly <span class="ai-math-nobreak"><math><mrow><mn>7</mn><mi>/</mi><mn>8</mn></mrow></math>.</span></li>
+<li><strong>It does not predict individual primes.</strong> It limits the error in a count over a long range.</li>
+<li><strong>It does not show a path to the full hypothesis.</strong> Will Sawin and Thomas Bloom told Quanta that the full hypothesis still appears out of reach.</li>
+</ul>
+
+<h2 id="matters">Why the result matters</h2>
+<p>A fixed limit gives a power saving in the error. The error is below <math><mrow><mi>C</mi><msup><mi>x</mi><mi class="tml-sml-pad">p</mi></msup></mrow></math> for each <span class="ai-math-nobreak"><math><mrow><mi>p</mi><mo>&gt;</mo><mn>7</mn><mi>/</mi><mn>8</mn></mrow></math>.</span> The earlier bounds saved less than any fixed power of <span class="ai-math-nobreak"><math><mi>x</mi></math>.</span> Maksym Radziwiłł told Quanta that the implications are "staggering".</p>
+<p><strong>Primes in remainder classes.</strong> Primes above 5 end in 1, 3, 7 or 9, and these four classes hold nearly equal counts. Below <math><msup><mn>10</mn><mn>8</mn></msup></math> the counts are 1,440,298, 1,440,474, 1,440,495 and 1,440,186. The shorter manuscript gives an error below a constant times <math><mrow><msup><mi>x</mi><mrow class="tml-sml-pad"><mn>11</mn><mi>/</mi><mn>12</mn></mrow></msup><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>x</mi></mrow></math> for all such classes with modulus up to <span class="ai-math-nobreak"><math><mi>x</mi></math>.</span></p>
+<p><strong>Square roots modulo a prime.</strong> The squares modulo 7 are 1, 2 and 4, so 3 is the smallest non-square. The manuscript shows that the smallest non-square modulo <math><mi>p</mi></math> is at most a constant times a fixed power of <span class="ai-math-nobreak"><math><mrow><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>p</mi></mrow></math>.</span> This proves a conjecture of Vinogradov. It also gives a deterministic fast algorithm for square roots modulo <span class="ai-math-nobreak"><math><mi>p</mi></math>.</span></p>
+<p><strong>Landau–Siegel zeros.</strong> These are possible zeros of a Dirichlet L-function very near <span class="ai-math-nobreak"><math><mrow><mi>s</mi><mo>=</mo><mn>1</mn></mrow></math>.</span> They were a long-standing obstacle in number theory. A half-plane with no zeros excludes all of them.</p>
+
+<h2 id="checked">How far the result has been checked</h2>
+<p>OpenAI released two manuscripts on 6 October 2026. A 199-page manuscript dated 30 September gives the 7/8 limit, with Lean proofs for <span class="ai-math-nobreak"><math><mi>ζ</mi></math>,</span> for Dirichlet L-functions and for the Hecke family. A 49-page manuscript dated 5 October gives a separate proof of the weaker limit 11/12. It has no Lean proof, and a person edited it.</p>
+<p>Mathematicians have studied the shorter manuscript because of its length. Quanta reported on 19 October that write-ups of 7 to 13 pages circulate privately, and that these experts largely agree that the result is correct. Peter Sarnak told Quanta that he will wait for humans to check all the details. No source reports a finished journal review on this date.</p>
+
+<h2 id="sources">Sources</h2>
+<ul class="ai-math-sources">
+<li><a href="https://github.com/openai/math/blob/main/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf">The Quasi-Riemann Hypothesis: A Zero-Free Half-Plane Re s &gt; 7/8</a>, OpenAI.</li>
+<li><a href="https://github.com/openai/math/blob/main/preprints/The-Quasi-Riemann-Hypothesis-October-5-2026/paper2.pdf">The Quasi-Riemann Hypothesis, alternate 11/12 proof</a>, OpenAI.</li>
+<li><a href="https://www.quantamagazine.org/ai-proved-the-quasi-riemann-hypothesis-what-happens-now-20261019/">AI Proved the Quasi-Riemann Hypothesis. What Happens Now?</a>, Quanta Magazine, 19 October 2026.</li>
+<li><a href="https://johncarlosbaez.wordpress.com/2026/10/21/the-quasi-riemann-hypothesis/">The Quasi-Riemann Hypothesis</a>, John Baez, on prime count errors under the hypothesis.</li>
+</ul>
+      </article>
+      <p class="ai-math-back"><a href="../">All results</a></p>
+    </main>
+  </body>
+</html>

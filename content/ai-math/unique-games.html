@@ -1,0 +1,72 @@
+<p class="lede">The Unique Games Conjecture says that some systems of simple two-variable equations are hard to satisfy even approximately. OpenAI reports a proof. If the proof is correct, many known approximation algorithms are the best possible unless P = NP.</p>
+{{facts}}
+
+<h2 id="question">The question</h2>
+<p>Many problems ask for an arrangement that satisfies as many constraints as possible. When the exact best answer is too hard to compute, a good approximate answer can be enough. The question is how good an approximate answer a fast algorithm can give.</p>
+<p>For many problems, researchers know a fast algorithm with a clear guarantee, but they could not show that it is the best possible. Subhash Khot proposed a conjecture in 2002 that would close many of these gaps at once.</p>
+<p>A <dfn>unique game</dfn> has variables, a fixed set of labels and a list of constraints. Each constraint joins two variables. If one variable has a label, the constraint fixes exactly one label for the other variable. That is the meaning of "unique". The name "game" comes from an older form of the problem with two players.</p>
+
+<h2 id="examples">Examples</h2>
+<p>Use the labels 0, 1, 2, 3 and 4, with arithmetic modulo 5. The variables are \(a, b, c, d, e\). Each constraint has the form "this variable equals that variable plus a constant".</p>
+\[ \begin{aligned} b &amp;= a + 2 &amp; c &amp;= b + 1 &amp; d &amp;= c + 4 &amp; e &amp;= d + 3 \\ a &amp;= e + 0 &amp; c &amp;= a + 3 &amp; d &amp;= b + 0 &amp; e &amp;= c + 2 \end{aligned} \]
+<figure class="ai-math-figure ai-math-figure--small">
+{{fig:ug-graph}}
+<figcaption>The eight constraints as a graph. Each arrow adds its constant modulo 5. The labels shown satisfy all eight constraints.</figcaption>
+</figure>
+<p>If all constraints can hold together, a fast method finds a solution. Choose \(a = 0\), and then follow the constraints: \(b = 2\), \(c = 3\), \(d = 2\), \(e = 0\). The remaining constraints then either hold or show that no full solution exists.</p>
+<p>Now change the first constraint to \(b = a + 3\). No labeling now satisfies all eight constraints. The best labelings satisfy seven of the eight. If you follow the first four constraints in order from \(a = 0\), you get a labeling that satisfies only six.</p>
+<p>A larger system shows the difficulty more clearly. Suppose that 1% of the constraints are wrong, at unknown positions. A chain of 100 constraints then contains at least one wrong constraint with probability about 63%. Each label after that point is wrong by a fixed shift. So the method fails for most of the system, even when 99% of the constraints can hold.</p>
+<p>The <dfn>value</dfn> of a game is the largest fraction of constraints that one labeling can satisfy. Value 100% is easy to detect. The hard case is a value near 100%.</p>
+
+<h2 id="conjecture">The conjecture</h2>
+<p>The <dfn>Unique Games Conjecture</dfn> concerns all small numbers \(\varepsilon\) and \(\delta\), with enough labels. It says that no fast algorithm can separate two kinds of game unless P = NP.</p>
+<ul>
+<li>Games with value at least \(1 - \varepsilon\), for example at least 99%.</li>
+<li>Games with value at most \(\delta\), for example at most 1%.</li>
+</ul>
+<p>A problem with this property is <dfn>NP-hard</dfn>. So a polynomial-time algorithm for it would give a polynomial-time algorithm for 3-SAT and for every other problem in NP.</p>
+
+{{divider}}
+
+<h2 id="result">The result</h2>
+<p>The OpenAI manuscript states a procedure that turns a 3-SAT formula \(\varphi\) into a unique game \(G_\varphi\). For each fixed \(\varepsilon\) and \(\delta\) between 0 and \(1/2\), the procedure is deterministic and runs in polynomial time. It has these two properties:</p>
+\[ \begin{aligned} \varphi \text{ has a solution} &amp;\implies \operatorname{value}(G_\varphi) \ge 1 - \varepsilon \\ \varphi \text{ has no solution} &amp;\implies \operatorname{value}(G_\varphi) \le \delta \end{aligned} \]
+<figure class="ai-math-figure">
+{{fig:ug-gap}}
+<figcaption>The value of the game that the procedure builds, with \(\varepsilon = \delta = 5\%\) as an example. The procedure produces no game with a value between the two bands. An algorithm that detects the band solves 3-SAT.</figcaption>
+</figure>
+<p>The constraints in \(G_\varphi\) have a simple form. Each label is a string of \(s\) bits, and each constraint says that one label equals the other label with a fixed bit pattern added. The number \(s\) depends only on \(\varepsilon\) and \(\delta\).</p>
+
+<h2 id="not">What the result does not say</h2>
+<ul>
+<li><strong>It does not prove P ≠ NP.</strong> Each hardness statement here has the form "no fast algorithm exists unless P = NP".</li>
+<li><strong>It does not mean that unique games need exponential time.</strong> Sanjeev Arora, Boaz Barak and David Steurer gave a subexponential algorithm for nearly satisfiable games. The reduction is polynomial, so these facts agree.</li>
+<li><strong>It does not cover every related problem.</strong> Khot also conjectured a form of the problem for games with value exactly 100%, the 2-to-1 conjecture. Separate work treats it.</li>
+<li><strong>It does not concern ordinary games.</strong> The name comes from the theory of proofs with two players.</li>
+</ul>
+
+<h2 id="matters">Why the result matters</h2>
+<p>Earlier work showed that the conjecture implies sharp limits for many problems. With this result, those limits become NP-hardness results. An algorithm cannot beat these thresholds by a fixed margin unless P = NP.</p>
+<div class="table-scroll" data-scroll-region aria-label="Problems whose approximation limit follows from the result">
+<table class="ui-table">
+<thead><tr><th scope="col">Problem</th><th scope="col">Task</th><th scope="col">Known guarantee, now the limit</th></tr></thead>
+<tbody>
+<tr><td>Max-Cut</td><td>Split the vertices of a graph in two so that as many edges as possible cross</td><td>0.87856 of the best value, from Goemans and Williamson</td></tr>
+<tr><td>Vertex Cover</td><td>Choose the fewest vertices that touch every edge</td><td>2 times the best value</td></tr>
+<tr><td>Constraint satisfaction</td><td>Satisfy as many constraints as possible, for each fixed type of constraint</td><td>The ratio of one standard algorithm, from Raghavendra</td></tr>
+</tbody>
+</table>
+</div>
+<p>A 5-cycle shows Max-Cut in small form. It has five edges, and the best split has four crossing edges. A fast algorithm cannot always guarantee more than 0.87856 of the best value, unless P = NP.</p>
+<p>The manuscript also lists consequences for ordering constraints, cuts, deletion and clustering. The conjecture has further links to the geometry of foams and to voting systems. For the related claim about fast algorithms, see the <a href="../exponential-time-hypothesis/">Exponential Time Hypothesis</a>.</p>
+
+<h2 id="checked">How far the result has been checked</h2>
+<p>OpenAI released the manuscript on 6 October 2026, with a Lean proof of the main theorem. Quanta Magazine reported that only one manuscript in that release had human editing, and this manuscript is not that one.</p>
+<p>Experts have since studied the proof. Scott Aaronson reports that Dana Moshkovitz studied it closely with Khot, Johan Håstad, Dor Minzer and other colleagues. She gave two whiteboard talks at the Simons Institute, and a talk at UT Austin on 4 November 2026. She describes the main new part as a code construction. Her abstract does not state a final verdict, and no source reports a finished journal review on this date.</p>
+
+<h2 id="sources">Sources</h2>
+<ul class="ai-math-sources">
+<li><a href="https://github.com/openai/math/blob/main/preprints/The-Unique-Games-Theorem-September-23-2026/paper.pdf">The Unique Games Theorem</a>, OpenAI, dated 23 September 2026.</li>
+<li><a href="https://www.quantamagazine.org/as-ai-closed-in-on-unique-games-proof-researchers-raced-to-beat-the-machines-20261007/">As AI Closed In on Unique Games Proof, Researchers Raced to Beat the Machines</a>, Quanta Magazine, 7 October 2026.</li>
+<li><a href="https://scottaaronson.blog/?p=10232">Talk by Dana Moshkovitz: The Unique Games Conjecture – Proved (!!?)</a>, Shtetl-Optimized.</li>
+</ul>

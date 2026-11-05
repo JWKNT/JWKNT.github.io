@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A set that holds a unit segment in every direction can have zero volume, but its dimension is always full.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Kakeya conjecture in every dimension">
+    <meta property="og:description" content="A set that holds a unit segment in every direction can have zero volume, but its dimension is always full.">
+    <meta property="og:url" content="https://jehlp.net/ai-math/kakeya-conjecture/">
+    <meta property="og:site_name" content="jehlp.net">
+    <meta name="theme-color" content="#fbfaf7">
+    <link rel="canonical" href="https://jehlp.net/ai-math/kakeya-conjecture/">
+    <title>The Kakeya conjecture in every dimension · AI Math Results · jehlp.net</title>
+    <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/ai-math.png" type="image/png">
+    <script src="https://jehlp.net/site-theme/v2/theme.js?v=20261009-reading-folio"></script>
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261009-reading-folio">
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css?v=20261105-math3">
+    <link rel="stylesheet" href="../../assets/ai-math.css?v=20261105-math3">
+    <script src="https://jehlp.net/site-theme/v2/components.js?v=20261105-math3" defer></script>
+  </head>
+  <body data-site-tone="blue">
+    <a class="skip-link" href="#explainer">Skip to the explanation</a>
+    <header class="site-header site-header--identity">
+      <div class="site-brand"><img class="site-mark" src="https://jehlp.net/site-theme/v2/marks/ai-math.png" width="32" height="32" alt=""><a class="site-title" href="../">AI Math Results</a></div>
+      <nav aria-label="Site links"><span class="site-utility-pair"><a class="site-home" href="https://jehlp.net/" aria-label="Home — jehlp.net" title="Home — jehlp.net"><span aria-hidden="true">✳</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button></span></nav>
+    </header>
+    <main id="explainer" class="ai-math-shell" tabindex="-1">
+      <article class="prose ai-math-article">
+        <h1>The Kakeya conjecture in every dimension</h1>
+<p class="lede">A Kakeya set contains a unit segment in every direction. Such a set can have zero volume. OpenAI reports a proof that it still has full dimension, in every dimension. The result follows from a stronger statement about waves.</p>
+<dl class="data-strip ai-math-facts"><div><dt>Posted</dt><dd>2026-10-26</dd></div><div><dt>Lean proof</dt><dd>Complete</dd></div><div><dt>Human review</dt><dd>None found</dd></div><div><dt>Status date</dt><dd>2026-11-05</dd></div></dl>
+
+<h2 id="question">The question</h2>
+<p>In 1917, Sōichi Kakeya asked for the smallest region in which a needle of length 1 can turn around completely. The needle has no width. It can slide and rotate in the region, and it must finish in the reverse position.</p>
+<p>A later form of the question drops the motion. A <dfn>Kakeya set</dfn> in <math><mi>n</mi></math>-dimensional space contains a segment of length 1 in every direction. The needle does not need to move from one position to the next. The question is how small a Kakeya set can be.</p>
+
+<h2 id="examples">Examples</h2>
+<div class="ai-math-panels">
+<figure class="ai-math-panel"><svg viewBox="0 0 170 170" role="img" aria-label="A disk of diameter one with several diameters"><circle class="fig-line" cx="85" cy="85" r="60"/><line class="fig-guide" x1="25" y1="85" x2="145" y2="85"/><line class="fig-accent" x1="29.57" y1="62.04" x2="140.43" y2="107.96"/><line class="fig-guide" x1="42.57" y1="42.57" x2="127.43" y2="127.43"/><line class="fig-guide" x1="62.04" y1="29.57" x2="107.96" y2="140.43"/><line class="fig-guide" x1="85" y1="25" x2="85" y2="145"/><line class="fig-guide" x1="107.96" y1="29.57" x2="62.04" y2="140.43"/><line class="fig-guide" x1="127.43" y1="42.57" x2="42.57" y2="127.43"/><line class="fig-guide" x1="140.43" y1="62.04" x2="29.57" y2="107.96"/></svg><figcaption><strong>Disk</strong><br>Area 0.785</figcaption></figure><figure class="ai-math-panel"><svg viewBox="0 0 170 170" role="img" aria-label="An equilateral triangle of height one with needles from each vertex"><polygon class="fig-line-closed" points="85,25 15.72,145 154.28,145"/><line class="fig-guide" x1="85" y1="25" x2="133.81" y2="134.63"/><line class="fig-guide" x1="85" y1="25" x2="109.95" y2="142.38"/><line class="fig-guide" x1="85" y1="25" x2="85" y2="145"/><line class="fig-accent" x1="85" y1="25" x2="60.05" y2="142.38"/><line class="fig-guide" x1="85" y1="25" x2="36.19" y2="134.63"/><line class="fig-guide" x1="15.72" y1="145" x2="86.25" y2="47.92"/><line class="fig-guide" x1="15.72" y1="145" x2="104.9" y2="64.7"/><line class="fig-guide" x1="15.72" y1="145" x2="119.64" y2="85"/><line class="fig-guide" x1="15.72" y1="145" x2="129.84" y2="107.92"/><line class="fig-guide" x1="15.72" y1="145" x2="135.06" y2="132.46"/><line class="fig-guide" x1="154.28" y1="145" x2="34.94" y2="132.46"/><line class="fig-guide" x1="154.28" y1="145" x2="40.16" y2="107.92"/><line class="fig-guide" x1="154.28" y1="145" x2="50.36" y2="85"/><line class="fig-guide" x1="154.28" y1="145" x2="65.1" y2="64.7"/><line class="fig-guide" x1="154.28" y1="145" x2="83.75" y2="47.92"/></svg><figcaption><strong>Triangle</strong><br>Area 0.577</figcaption></figure><figure class="ai-math-panel"><svg viewBox="0 0 170 170" role="img" aria-label="A deltoid with needles that touch its boundary at both ends"><polygon class="fig-line-closed" points="85,6 85,6.11 85.01,6.44 85.03,6.98 85.08,7.75 85.16,8.72 85.27,9.9 85.43,11.29 85.64,12.88 85.91,14.67 86.24,16.64 86.64,18.79 87.11,21.11 87.66,23.6 88.3,26.25 89.02,29.04 89.83,31.97 90.74,35.02 91.74,38.19 92.83,41.46 94.02,44.83 95.31,48.28 96.7,51.79 98.18,55.37 99.75,58.99 101.42,62.64 103.17,66.32 105.01,70 106.93,73.69 108.92,77.36 110.98,81 113.11,84.61 115.29,88.17 117.52,91.67 119.79,95.1 122.1,98.46 124.43,101.73 126.78,104.9 129.13,107.97 131.49,110.93 133.83,113.77 136.15,116.49 138.43,119.07 140.68,121.52 142.87,123.83 145,126 147.06,128.02 149.03,129.89 150.91,131.62 152.69,133.19 154.35,134.61 155.89,135.88 157.3,137 158.57,137.98 159.7,138.81 160.67,139.5 161.47,140.06 162.11,140.48 162.57,140.77 162.85,140.94 162.94,141 162.85,140.95 162.56,140.79 162.07,140.54 161.39,140.2 160.51,139.78 159.42,139.28 158.14,138.73 156.66,138.11 154.98,137.45 153.11,136.75 151.05,136.02 148.8,135.27 146.37,134.5 143.76,133.73 140.98,132.96 138.04,132.2 134.94,131.46 131.7,130.74 128.32,130.05 124.8,129.4 121.17,128.79 117.44,128.23 113.6,127.73 109.68,127.28 105.68,126.9 101.62,126.58 97.51,126.33 93.36,126.15 89.19,126.04 85,126 80.81,126.04 76.64,126.15 72.49,126.33 68.38,126.58 64.32,126.9 60.32,127.28 56.4,127.73 52.56,128.23 48.83,128.79 45.2,129.4 41.68,130.05 38.3,130.74 35.06,131.46 31.96,132.2 29.02,132.96 26.24,133.73 23.63,134.5 21.2,135.27 18.95,136.02 16.89,136.75 15.02,137.45 13.34,138.11 11.86,138.73 10.58,139.28 9.49,139.78 8.61,140.2 7.93,140.54 7.44,140.79 7.15,140.95 7.06,141 7.15,140.94 7.43,140.77 7.89,140.48 8.53,140.06 9.33,139.5 10.3,138.81 11.43,137.98 12.7,137 14.11,135.88 15.65,134.61 17.31,133.19 19.09,131.62 20.97,129.89 22.94,128.02 25,126 27.13,123.83 29.32,121.52 31.57,119.07 33.85,116.49 36.17,113.77 38.51,110.93 40.87,107.97 43.22,104.9 45.57,101.73 47.9,98.46 50.21,95.1 52.48,91.67 54.71,88.17 56.89,84.61 59.02,81 61.08,77.36 63.07,73.69 64.99,70 66.83,66.32 68.58,62.64 70.25,58.99 71.82,55.37 73.3,51.79 74.69,48.28 75.98,44.83 77.17,41.46 78.26,38.19 79.26,35.02 80.17,31.97 80.98,29.04 81.7,26.25 82.34,23.6 82.89,21.11 83.36,18.79 83.76,16.64 84.09,14.67 84.36,12.88 84.57,11.29 84.73,9.9 84.84,8.72 84.92,7.75 84.97,6.98 84.99,6.44 85,6.11"/><line class="fig-guide" x1="92.79" y1="126.13" x2="84.99" y2="6.38"/><line class="fig-guide" x1="122.5" y1="129.01" x2="83.98" y2="15.36"/><line class="fig-accent" x1="146.02" y1="134.4" x2="79.39" y2="34.59"/><line class="fig-guide" x1="159.84" y1="139.47" x2="69.65" y2="60.31"/><line class="fig-guide" x1="162.62" y1="140.8" x2="55.02" y2="87.68"/><line class="fig-guide" x1="155.35" y1="135.44" x2="37.66" y2="111.97"/><line class="fig-guide" x1="140.98" y1="121.85" x2="21.24" y2="129.64"/><line class="fig-guide" x1="123.58" y1="100.56" x2="9.93" y2="139.08"/><line class="fig-guide" x1="107.2" y1="74.19" x2="7.39" y2="140.82"/><line class="fig-guide" x1="94.83" y1="47.02" x2="15.67" y2="137.2"/><line class="fig-guide" x1="87.74" y1="23.96" x2="34.62" y2="131.56"/><line class="fig-guide" x1="85.23" y1="9.45" x2="61.76" y2="127.14"/></svg><figcaption><strong>Deltoid</strong><br>Area 0.393</figcaption></figure>
+</div>
+<p>In each shape above, the needle can turn around, and the lines show some of its positions. The disk has diameter 1 and area <span class="ai-math-nobreak"><math><mrow><mi>π</mi><mi>/</mi><mn>4</mn><mo>≈</mo><mn>0.785</mn></mrow></math>.</span> The equilateral triangle has height 1 and area <span class="ai-math-nobreak"><math><mrow><mn>1</mn><mi>/</mi><msqrt><mn>3</mn></msqrt><mo>≈</mo><mn>0.577</mn></mrow></math>.</span> Gyula Pál showed that no convex region is smaller. The three-pointed deltoid has area <span class="ai-math-nobreak"><math><mrow><mi>π</mi><mi>/</mi><mn>8</mn><mo>≈</mo><mn>0.393</mn></mrow></math>,</span> and the needle touches its boundary at both ends.</p>
+<p>Non-convex regions can be much smaller. Abram Besicovitch showed in 1928 that the needle can turn around in a region of any positive area, however small. He also showed in 1920 that a Kakeya set in the plane can have area zero.</p>
+<p>So area cannot measure these sets. A set can have area zero and still hold a segment in every direction. The useful measure is dimension.</p>
+
+<h2 id="dimension">Dimension by counting boxes</h2>
+<p>Cover a set with boxes of side <math><mi>δ</mi></math> and count the boxes. A segment of length 1 needs about <math><mrow><mn>1</mn><mi>/</mi><mi>δ</mi></mrow></math> boxes. A filled unit square needs about <math><mrow><mn>1</mn><mi>/</mi><msup><mi>δ</mi><mn>2</mn></msup></mrow></math> boxes. A filled unit cube needs about <math><mrow><mn>1</mn><mi>/</mi><msup><mi>δ</mi><mn>3</mn></msup></mrow></math> boxes. The exponent is the dimension.</p>
+<p>The exponent does not have to be a whole number. To make the Cantor set, remove the middle third of a segment, then the middle third of each piece, and continue without end. Its total length is zero. It needs <math><msup><mn>2</mn><mi>k</mi></msup></math> boxes of side <span class="ai-math-nobreak"><math><msup><mn>3</mn><mrow><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">−</mo><mi>k</mi></mrow></msup></math>,</span> so its dimension is <span class="ai-math-nobreak"><math><mrow><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mn>2</mn><mi>/</mi><mrow><mspace width="0.1667em"></mspace><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mn>3</mn><mo>≈</mo><mn>0.631</mn></mrow></math>.</span></p>
+<div class="table-scroll" data-scroll-region aria-label="Boxes needed to cover four sets at decreasing box sizes">
+<table class="ui-table ai-math-numbers">
+<thead><tr><th scope="col">Box side <math><mi>δ</mi></math></th><th scope="col">Cantor set</th><th scope="col">Segment</th><th scope="col">Square</th><th scope="col">Cube</th></tr></thead>
+<tbody>
+<tr><td><math><mrow><mn>1</mn><mi>/</mi><mn>3</mn></mrow></math></td><td>2</td><td>3</td><td>9</td><td>27</td></tr>
+<tr><td><math><mrow><mn>1</mn><mi>/</mi><mn>9</mn></mrow></math></td><td>4</td><td>9</td><td>81</td><td>729</td></tr>
+<tr><td><math><mrow><mn>1</mn><mi>/</mi><mn>27</mn></mrow></math></td><td>8</td><td>27</td><td>729</td><td>19,683</td></tr>
+<tr><td><math><mrow><mn>1</mn><mi>/</mi><mn>81</mn></mrow></math></td><td>16</td><td>81</td><td>6,561</td><td>531,441</td></tr>
+<tr><th scope="row">Dimension</th><td>0.631</td><td>1</td><td>2</td><td>3</td></tr>
+</tbody>
+</table>
+</div>
+<p>The exact statement uses <dfn>Hausdorff dimension</dfn>, a refined form of this count that also handles sets with very irregular structure. The Cantor set shows that zero size and positive dimension can occur together.</p>
+<p>The <dfn>Kakeya conjecture</dfn> says that every Kakeya set in <math><mi>n</mi></math>-dimensional space has dimension <span class="ai-math-nobreak"><math><mi>n</mi></math>.</span> Thus a set can have zero volume, but it cannot be thin at every scale. Roy Davies proved the case <math><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow></math> in 1971. Hong Wang and Joshua Zahl posted a proof of the case <math><mrow><mi>n</mi><mo>=</mo><mn>3</mn></mrow></math> in 2025. OpenAI's release of 6 October 2026 included a theorem for <span class="ai-math-nobreak"><math><mrow><mi>n</mi><mo>=</mo><mn>4</mn></mrow></math>.</span></p>
+
+<h2 id="tubes">The same question with tubes</h2>
+<p>Thicken each segment to a tube of width <span class="ai-math-nobreak"><math><mi>δ</mi></math>.</span> In <math><mi>n</mi></math> dimensions there are about <math><msup><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>1</mn><mi>/</mi><mi>δ</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></math> clearly different directions, and each tube has volume about <span class="ai-math-nobreak"><math><msup><mi>δ</mi><mrow><mspace width="0.1667em"></mspace><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></math>.</span> So the volumes of the tubes add up to about 1.</p>
+<p>Take <math><mrow><mi>n</mi><mo>=</mo><mn>3</mn></mrow></math> and <span class="ai-math-nobreak"><math><mrow><mi>δ</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>100</mn></mrow></math>.</span> There are about 10,000 tubes, and each has volume about <span class="ai-math-nobreak"><math><mrow><mn>1</mn><mi>/</mi><mn>10</mn><mspace width="0.1667em"></mspace><mn>000</mn></mrow></math>.</span> If the tubes did not overlap, their union would have volume about 1. Besicovitch's result shows that overlap can make the union smaller.</p>
+<p>The <dfn>Kakeya maximal conjecture</dfn> limits this overlap. It implies that the union has volume at least <span class="ai-math-nobreak"><math><mrow><mi>c</mi><mspace width="0.1667em"></mspace><msup><mi>δ</mi><mi>ε</mi></msup></mrow></math>,</span> for each <span class="ai-math-nobreak"><math><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math>,</span> with a constant <math><mi>c</mi></math> that depends on <span class="ai-math-nobreak"><math><mi>ε</mi></math>.</span> So the volume can fall as <math><mi>δ</mi></math> falls, but only more slowly than any power of <span class="ai-math-nobreak"><math><mi>δ</mi></math>.</span></p>
+
+<div class="site-divider ai-math-divider" data-ornament="folio" aria-hidden="true"><span></span></div>
+
+<h2 id="result">The result</h2>
+<p>The OpenAI paper states this theorem for every dimension <span class="ai-math-nobreak"><math><mrow><mi>n</mi><mo>≥</mo><mn>2</mn></mrow></math>:</span></p>
+<p class="ai-math-statement">Every subset of <math><msup><mi>ℝ</mi><mi>n</mi></msup></math> with a unit segment in each direction has Hausdorff dimension <span class="ai-math-nobreak"><math><mi>n</mi></math>.</span></p>
+<p>The paper also proves the Kakeya maximal conjecture. Both statements follow from a stronger theorem about waves, the <dfn>local smoothing conjecture</dfn> of Christopher Sogge from 1991.</p>
+<p>A wave can focus and become very large at one instant. Local smoothing says that this extreme focus is short-lived. If you average over a short time, the wave is smaller than its worst instant, by an exact amount. The connection is geometric. Short pieces of a wave travel along thin tubes, so a limit on the focus of waves gives a limit on the overlap of tubes.</p>
+
+<h2 id="not">What the result does not say</h2>
+<ul>
+<li><strong>It does not give a minimum volume.</strong> Kakeya sets of volume zero exist in every dimension <span class="ai-math-nobreak"><math><mrow><mi>n</mi><mo>≥</mo><mn>2</mn></mrow></math>.</span> The result concerns dimension.</li>
+<li><strong>It does not change the needle answer.</strong> The needle can still turn around in a region of any positive area.</li>
+<li><strong>It does not explain the proof.</strong> OpenAI released raw AI output, and it says that researchers must still explain the argument.</li>
+</ul>
+
+<h2 id="matters">Why the result matters</h2>
+<p>The conjecture looks like a puzzle about needles, but it sits at the center of a chain of statements in analysis. Local smoothing implies the Kakeya statements. The same paper deduces these other results:</p>
+<ul>
+<li>The Bochner–Riesz conjecture, which concerns how a function can be rebuilt from its frequencies.</li>
+<li>Fourier restriction estimates, which concern functions with frequencies on a sphere or similar surface.</li>
+<li>Sharp bounds for Stein's square function and for local smoothing of the Schrödinger equation.</li>
+</ul>
+<p>Before 2026, local smoothing was solved only for <span class="ai-math-nobreak"><math><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow></math>,</span> in 2019 by Larry Guth, Hong Wang and Ruixiang Zhang. Wang won a Fields Medal in 2026, and her Kakeya work with Zahl is a large part of the record.</p>
+
+<h2 id="checked">How far the result has been checked</h2>
+<p>OpenAI states that it obtained the AI output on 18 October 2026 and the Lean proof on the next day. The Lean project includes the local smoothing theorem, the Kakeya maximal statement and the Hausdorff dimension statement.</p>
+<p>OpenAI released the paper and the Lean proof on 26 October. It describes these manuscripts as raw research data. An expert advised this release, so that researchers can organize their own work on the result.</p>
+<p>A search on 5 November 2026 found no published human check of the argument. A Lean proof checks a formal statement step by step. Readers must still confirm that the formal statement says what the theorem says.</p>
+
+<h2 id="sources">Sources</h2>
+<ul class="ai-math-sources">
+<li><a href="https://github.com/openai/math/blob/main/preprints/Local-smoothing-for-the-Euclidean-wave-equation-October-25-2026/paper.pdf">Local smoothing for the Euclidean wave equation</a>, OpenAI, 25 October 2026.</li>
+<li><a href="https://openai.com/index/building-scientific-understanding-with-academic-communities/">OpenAI's announcement</a>, 26 October 2026.</li>
+<li><a href="https://github.com/openai/math/tree/main/lean">OpenAI's Lean project</a>.</li>
+<li><a href="https://en.wikipedia.org/wiki/Kakeya_set">Kakeya set</a>, Wikipedia, for the history and the areas.</li>
+</ul>
+      </article>
+      <p class="ai-math-back"><a href="../">All results</a></p>
+    </main>
+  </body>
+</html>

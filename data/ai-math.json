@@ -1,0 +1,68 @@
+{
+  "checked": "2026-11-05",
+  "results": [
+    {
+      "slug": "z-diophantine-in-q",
+      "title": "ℤ is Diophantine in ℚ",
+      "summary": "One polynomial equation can separate the integers from all other fractions.",
+      "status": "Posted 5 November 2026. AI reviews only. The Lean proof is incomplete.",
+      "facts": [["Posted", "2026-11-05"], ["Lean proof", "Incomplete"], ["Human review", "None found"]]
+    },
+    {
+      "slug": "exponential-time-hypothesis",
+      "title": "The Exponential Time Hypothesis is false",
+      "summary": "An algorithm can solve 3-SAT faster than every exponential time, but only for enormous inputs.",
+      "status": "Posted 26 October 2026 by two groups. Two separate Lean proofs. Expert review continues.",
+      "facts": [["Posted", "2026-10-26"], ["Lean proof", "Complete"], ["Human review", "In progress"]]
+    },
+    {
+      "slug": "quasi-riemann-hypothesis",
+      "title": "The quasi-Riemann hypothesis",
+      "summary": "No zero of the Riemann zeta function has real part above 7/8. This controls the error in prime counts.",
+      "status": "Posted 6 October 2026. Lean proof of the 7/8 bound. Experts who studied the proof largely agree that it is correct.",
+      "facts": [["Posted", "2026-10-06"], ["Lean proof", "Complete"], ["Human review", "Largely positive"]]
+    },
+    {
+      "slug": "kakeya-conjecture",
+      "title": "The Kakeya conjecture in every dimension",
+      "summary": "A set that holds a unit segment in every direction can have zero volume, but its dimension is always full.",
+      "status": "Posted 26 October 2026. Lean proof. No published human check found.",
+      "facts": [["Posted", "2026-10-26"], ["Lean proof", "Complete"], ["Human review", "None found"]]
+    },
+    {
+      "slug": "jacobian-conjecture",
+      "title": "The Jacobian conjecture is false",
+      "summary": "A polynomial map in three variables can preserve volume at every point and still send three points to one.",
+      "status": "Posted 19 July 2026. Anyone can check the example by direct calculation. The two-variable case remains open.",
+      "facts": [["Posted", "2026-07-19"], ["Check", "Calculation"], ["Two variables", "Open"]]
+    },
+    {
+      "slug": "unit-distance-problem",
+      "title": "Erdős's unit distance problem",
+      "summary": "Among n points in the plane, the number of pairs at distance 1 can exceed what Erdős expected, and it stays below a new limit.",
+      "status": "Lower bound, May 2026: checked by outside mathematicians. Upper bound, October 2026: Lean proof.",
+      "facts": [["Posted", "2026-05-20"], ["Lower bound", "Expert checked"], ["Upper bound", "Lean proof"]]
+    },
+    {
+      "slug": "hilberts-tenth-problem",
+      "title": "Hilbert's tenth problem over ℚ",
+      "summary": "No algorithm can decide if every polynomial equation has a solution in fractions.",
+      "status": "Posted 6 October 2026. No Lean proof. Later papers build on it. No published independent check found.",
+      "facts": [["Posted", "2026-10-06"], ["Lean proof", "None"], ["Human review", "None found"]]
+    },
+    {
+      "slug": "unique-games",
+      "title": "The Unique Games Conjecture",
+      "summary": "Some systems of simple two-variable equations are hard to satisfy even approximately. Many known approximation algorithms are then the best possible unless P = NP.",
+      "status": "Posted 6 October 2026. Lean proof. Experts are studying the proof and giving talks on it.",
+      "facts": [["Posted", "2026-10-06"], ["Lean proof", "Complete"], ["Human review", "In progress"]]
+    },
+    {
+      "slug": "navier-stokes",
+      "title": "Navier–Stokes blow-up",
+      "summary": "A smooth force on a fluid at rest can produce infinite speed in finite time. The case with no force remains open.",
+      "status": "Posted 8 September 2026. Lean proof. The Clay Mathematics Institute calls the problem apparently settled, and its review continues.",
+      "facts": [["Posted", "2026-09-08"], ["Lean proof", "Complete"], ["Clay review", "In progress"]]
+    }
+  ]
+}

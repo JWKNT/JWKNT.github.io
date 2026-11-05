@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="9 skills for agents that work on jehlp.net pages.">
+    <meta name="description" content="10 skills for agents that work on jehlp.net pages.">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Skills">
     <meta property="og:url" content="https://jehlp.net/skills/">
@@ -25,11 +25,11 @@
     <main id="skills" class="skills-shell" tabindex="-1">
       <div class="skills-intro">
         <p class="lede">Agents use these skills for work on jehlp.net pages.</p>
-        <p class="skills-meta">9 skills · <a href="https://jehlp.net/site-theme/SKILLS.md">Catalog and installation<span class="ui-link-arrow" aria-hidden="true"></span></a></p>
+        <p class="skills-meta">10 skills · <a href="https://jehlp.net/site-theme/SKILLS.md">Catalog and installation<span class="ui-link-arrow" aria-hidden="true"></span></a></p>
       </div>
       <nav class="skills-index" aria-labelledby="skills-index-title">
           <h2 class="skills-index-label" id="skills-index-title">Contents</h2>
-          <ol><li><a href="#jehlp-technical-writing"><span class="skill-prefix">jehlp-</span>technical-writing</a></li><li><a href="#jehlp-site-design"><span class="skill-prefix">jehlp-</span>site-design</a></li><li><a href="#jehlp-shared-theme"><span class="skill-prefix">jehlp-</span>shared-theme</a></li><li><a href="#jehlp-components"><span class="skill-prefix">jehlp-</span>components</a></li><li><a href="#jehlp-code-highlighting"><span class="skill-prefix">jehlp-</span>code-highlighting</a></li><li><a href="#jehlp-data-ui"><span class="skill-prefix">jehlp-</span>data-ui</a></li><li><a href="#jehlp-site-qa"><span class="skill-prefix">jehlp-</span>site-qa</a></li><li><a href="#jehlp-pages-release"><span class="skill-prefix">jehlp-</span>pages-release</a></li><li><a href="#jehlp-change-record"><span class="skill-prefix">jehlp-</span>change-record</a></li></ol>
+          <ol><li><a href="#jehlp-technical-writing"><span class="skill-prefix">jehlp-</span>technical-writing</a></li><li><a href="#jehlp-site-design"><span class="skill-prefix">jehlp-</span>site-design</a></li><li><a href="#jehlp-shared-theme"><span class="skill-prefix">jehlp-</span>shared-theme</a></li><li><a href="#jehlp-components"><span class="skill-prefix">jehlp-</span>components</a></li><li><a href="#jehlp-code-highlighting"><span class="skill-prefix">jehlp-</span>code-highlighting</a></li><li><a href="#jehlp-math-explainer"><span class="skill-prefix">jehlp-</span>math-explainer</a></li><li><a href="#jehlp-data-ui"><span class="skill-prefix">jehlp-</span>data-ui</a></li><li><a href="#jehlp-site-qa"><span class="skill-prefix">jehlp-</span>site-qa</a></li><li><a href="#jehlp-pages-release"><span class="skill-prefix">jehlp-</span>pages-release</a></li><li><a href="#jehlp-change-record"><span class="skill-prefix">jehlp-</span>change-record</a></li></ol>
           <h3 class="skills-index-label">Shared</h3>
           <ul><li><a href="#shared-original-technical-writing">Original technical writing</a></li></ul>
       </nav>
@@ -41,7 +41,7 @@
             </header>
             <p class="skill-description">Write or revise original jehlp.net explanations, instructions, help, interface text, and mathematical exposition with ASD-STE100 Issue 9. Preserve source, translated, literary, and formal content.</p>
             <div class="skill-body prose">
-<p>Read the owning repository's AGENTS.md and site-theme/docs/WRITING-STYLE.md. Locate site-theme beside the current repository, or resolve this skill's real path. Use the writing policy for all new original technical text and substantive prose edits.</p>
+<p>Read the owning repository's AGENTS.md and site-theme/docs/WRITING-STYLE.md. Locate site-theme beside the current repository, or resolve this skill's real path. Use the writing policy for all new original technical text and substantive prose edits. For a page that explains a mathematics result, also use <code>jehlp-math-explainer</code>.</p>
 <p>Classify original prose and protected content before the edit. Preserve reader text, translations, quotations, names, citations, legal text, and code. Preserve NDB fictional dialogue, story text, bestiary prose, and item descriptions. Preserve data, formulas, formal statements, hypotheses, quantifiers, proof dependencies, and uncertainty.</p>
 <p>Use short, complete sentences and consistent technical terms. Give instructions in the imperative, with prerequisite conditions first. Limit instructions to 20 words and descriptions to 25 words per sentence. Limit a paragraph to one topic and six sentences. Use active voice, simple verb forms, and no semicolons. Check dictionary meanings and parts of speech when the official dictionary is available. Retain precise mathematical and interface terms under the technical-term rules.</p>
 <p>Edit the source of generated content. Rebuild affected pages, PDFs, exports, and indexes. Compare protected content with the original. Run the repository's tests. Obtain a separate technical-meaning review for mathematical proof edits. Report actual checks and any dictionary-review limit. Do not claim unsupported complete compliance.</p>
@@ -110,6 +110,32 @@
 <p class="skill-shared-ref">Shared section: <a href="#shared-original-technical-writing">Original technical writing</a></p>
             </div>
           </article>
+          <article class="skill" id="jehlp-math-explainer" aria-labelledby="jehlp-math-explainer-name">
+            <header class="skill-header">
+              <h2 class="skill-name" id="jehlp-math-explainer-name"><span class="skill-prefix">jehlp-</span>math-explainer</h2>
+              <a class="skill-source" href="https://jehlp.net/site-theme/skills/jehlp-math-explainer/SKILL.md" aria-label="Markdown source of jehlp-math-explainer">Markdown<span class="ui-link-arrow" aria-hidden="true"></span></a>
+            </header>
+            <p class="skill-description">Explain what a mathematics result answers on jehlp.net, without its proof, for a reader with high-school mathematics and some science or engineering education. Includes native MathML, calculated figures and dated verification status.</p>
+            <div class="skill-body prose">
+<p>Read the owning repository's AGENTS.md, the theme's PHILOSOPHY.md and the math contract in docs/COMPONENTS.md. Locate site-theme beside the current repository, or resolve this skill's real path to its owning site-theme checkout.</p>
+<h3>Write for the reader</h3>
+<p>Explain the question that the result answers. Do not show the proof. Name the method only when the reader needs it to understand the statement, for example when a geometric result follows from a statement about waves.</p>
+<p>Write for a reader with high-school mathematics and some science or engineering education. Define each term before its first use. Use one term for one concept. Give worked examples with small numbers that the reader can check by hand. Show one example where the statement holds and one where it fails.</p>
+<p>Use these sections in this order: The question, Examples, The result, What the result does not say, Why the result matters, How far the result has been checked, and Sources. Add a section only when the subject needs it. State the exact result in one display formula or one short list. Then say what each part means.</p>
+<p>Each page must stand alone, because readers arrive from a direct link. Link a related explainer when a term depends on it.</p>
+<h3>Check the facts</h3>
+<p>Read the primary manuscript, not only its news coverage. News summaries can misread notation and scope. Take the statement, the bounds and the dates from the source. Name the people and the models that the source credits.</p>
+<p>Calculate each number on the page. Use exact arithmetic for worked examples. Keep a short check in the repository's tests for each quoted calculation. If a value is an estimate, say so and say how it was made.</p>
+<p>Give the status with a date. Keep these facts separate: a machine-checked proof, review by human experts, journal peer review, and any prize decision. A Lean proof checks a formal statement. A person must still confirm that the formal statement says what the headline says. Write &quot;reports&quot; until human experts confirm a result. If you find no human check, say that you found none and give the date.</p>
+<p>Paraphrase sources. Use a quotation only for a short phrase that the page needs, and credit the speaker.</p>
+<h3>Build the page</h3>
+<p>Add an explainer to the homepage repository as one entry in <code>data/ai-math.json</code> and one body in <code>content/ai-math/&lt;slug&gt;.html</code>. Write math between <code>\(</code> and <code>\)</code> or between <code>\[</code> and <code>\]</code>. The build typesets it to native MathML with a pinned Temml. Do not load a typesetter in the browser. Do not put a formula in an image.</p>
+<p>Load <code>v2/components.css</code> for the <code>--math</code> face and <code>.ui-equation</code>. Use <code>.ui-math-char</code> for a double-struck letter in a heading or other plain text. Put a formula that can overflow in <code>.ui-equation</code> with <code>data-scroll-region</code> and an accessible name.</p>
+<p>Calculate figures during the build as inline SVG. Use the theme tokens, so that both color modes work. Give each figure an accessible name and a caption that states what it shows. Draw only what the mathematics or the data supports. If a quantity has an unknown constant, say so near the figure.</p>
+<p>Check both color modes, print, keyboard focus, a narrow screen and the largest table. Run the owning repository's tests. A new explainer needs no new homepage entry, because the search crawl follows links from the landing page.</p>
+<p class="skill-shared-ref">Shared section: <a href="#shared-original-technical-writing">Original technical writing</a></p>
+            </div>
+          </article>
           <article class="skill" id="jehlp-data-ui" aria-labelledby="jehlp-data-ui-name">
             <header class="skill-header">
               <h2 class="skill-name" id="jehlp-data-ui-name"><span class="skill-prefix">jehlp-</span>data-ui</h2>
@@ -175,7 +201,7 @@
             <header class="skill-header">
               <h2 class="skill-name" id="shared-original-technical-writing-name">Original technical writing</h2>
             </header>
-            <p class="skill-description">Shared section in 8 of 9 skills.</p>
+            <p class="skill-description">Shared section in 9 of 10 skills.</p>
             <div class="skill-body prose">
 <p>For original prose, use <code>jehlp-technical-writing</code> and <code>docs/WRITING-STYLE.md</code>. Apply ASD-STE100 Issue 9 to explanations, instructions, help, and interface text. Preserve translated and reader text, quotations, NDB fiction and item descriptions, and exact technical meaning. Review generated outputs and accessible names after a text change.</p>
             </div>
