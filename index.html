@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Reading, Mathematics, Data, Tools, Agents, Games at jehlp.net.">
+    <meta name="description" content="Me, Reading, Mathematics, Data, Tools, Agents, Games at jehlp.net.">
     <meta property="og:type" content="website">
     <meta property="og:title" content="jehlp.net">
     <meta property="og:url" content="https://jehlp.net/">
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261009-reading-folio">
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css">
     <script src="https://jehlp.net/site-theme/v2/components.js" defer></script>
-    <link rel="stylesheet" href="assets/styles.css?v=20261102-agents">
+    <link rel="stylesheet" href="assets/styles.css?v=20261105-me">
     <script src="assets/app.js?v=20261003-controls" type="module"></script>
   </head>
   <body>
@@ -32,7 +32,7 @@
       <section id="search-panel" class="search-panel" aria-label="Site search results" aria-busy="false" hidden>
         <div class="search-options">
           <label for="search-site">Search in</label>
-          <select id="search-site" data-ui-select><option value="">All sites</option><option value="Albatross Koukairoku">Albatross Koukairoku</option><option value="Black Sheep Town">Black Sheep Town</option><option value="Readers">Readers</option><option value="Links">Links</option><option value="Accounts">Accounts</option><option value="Erdős 1016">Erdős 1016</option><option value="AI Math Results">AI Math Results</option><option value="Cookie Clicker">Cookie Clicker</option><option value="Profile">Profile</option><option value="Mystery Consensus">Mystery Consensus</option><option value="Borderlands 2 Armory">Borderlands 2 Armory</option><option value="NGU Idle">NGU Idle</option><option value="Gazetteer">Gazetteer</option><option value="Box Logic">Box Logic</option><option value="Logical Solvers">Logical Solvers</option><option value="MTL Guide">MTL Guide</option><option value="Style Library">Style Library</option><option value="Skills">Skills</option><option value="Site Theme">Site Theme</option><option value="NDB Idle">NDB Idle</option><option value="Puzzles">Puzzles</option><option value="Baba Is You">Baba Is You</option><option value="Pokémon Reborn">Pokémon Reborn</option></select>
+          <select id="search-site" data-ui-select><option value="">All sites</option><option value="Profile">Profile</option><option value="Links">Links</option><option value="Accounts">Accounts</option><option value="Albatross Koukairoku">Albatross Koukairoku</option><option value="Black Sheep Town">Black Sheep Town</option><option value="Readers">Readers</option><option value="Erdős 1016">Erdős 1016</option><option value="AI Math Results">AI Math Results</option><option value="Cookie Clicker">Cookie Clicker</option><option value="Mystery Consensus">Mystery Consensus</option><option value="Borderlands 2 Armory">Borderlands 2 Armory</option><option value="Logical Solvers">Logical Solvers</option><option value="Gazetteer">Gazetteer</option><option value="MTL Guide">MTL Guide</option><option value="Style Library">Style Library</option><option value="Skills">Skills</option><option value="Site Theme">Site Theme</option><option value="NDB Idle">NDB Idle</option><option value="Puzzles">Puzzles</option><option value="Baba Is You">Baba Is You</option><option value="Pokémon Reborn">Pokémon Reborn</option><option value="NGU Idle">NGU Idle</option><option value="Box Logic">Box Logic</option></select>
         </div>
         <p id="search-hint" class="search-hint">Put a phrase in quotes for an exact match.</p>
         <p id="page-status" class="search-status" role="status" aria-live="polite" aria-atomic="true"></p>
@@ -41,6 +41,17 @@
         <button id="search-retry" type="button" hidden>Try again</button>
       </section>
       <nav class="directory" id="directory" aria-label="Pages" tabindex="-1">
+        <section class="atlas-category" data-category="me" aria-labelledby="category-me">
+          <h2 id="category-me" class="category-heading">
+            <span class="type-study study-whorl" aria-hidden="true"><svg class="whorl-study" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="112" height="112"><g fill="none" stroke="currentColor" stroke-linecap="round" transform="rotate(-14 32 32)"><path d="M13 57C8 38 9 7 33 6s28 30 20 51" stroke-width="3.3"/><path class="whorl-echo" d="M21.5 58C17.5 42 19 18 33 17.5s17 24.5 11.5 40.5" stroke-width="2.3"/><path d="M27 57C25 46 26 29 33 28.5s9 17.5 6 28.5" stroke-width="3.3"/></g></svg><i></i></span>
+            <span class="category-label">Me</span>
+          </h2>
+          <ul class="page-links">
+            <li data-project="profile"><a href="/profile/">Profile<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
+            <li data-project="links"><a href="/links/">Links<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
+            <li data-project="accounts"><a href="/accounts/">Accounts<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
+          </ul>
+        </section>
         <section class="atlas-category" data-category="reading" aria-labelledby="category-reading">
           <h2 id="category-reading" class="category-heading">
             <span class="type-study study-parentheses" aria-hidden="true"><span class="glyph glyph-a">(</span><span class="glyph glyph-b">)</span><span class="glyph glyph-c">)</span><i></i></span>
@@ -50,8 +61,6 @@
             <li data-project="albatross-koukairoku"><a href="/albatross-koukairoku/">Albatross Koukairoku<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
             <li data-project="black-sheep-town"><a href="/black-sheep-town/">Black Sheep Town<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
             <li data-project="readers"><a href="/readers/">Readers<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
-            <li data-project="links"><a href="/links/">Links<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
-            <li data-project="accounts"><a href="/accounts/">Accounts<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
           </ul>
         </section>
         <section class="atlas-category" data-category="mathematics" aria-labelledby="category-mathematics">
@@ -71,11 +80,8 @@
             <span class="category-label">Data</span>
           </h2>
           <ul class="page-links">
-            <li data-project="profile"><a href="/profile/">Profile<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
             <li data-project="mystery-report"><a href="/mystery-report/">Mystery Consensus<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
             <li data-project="bl2"><a href="/bl2/">Borderlands 2 Armory<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
-            <li data-project="ngu-idle-dashboard"><a href="/ngu-idle-dashboard/">NGU Idle<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
-            <li data-project="gazetteer"><a href="/gazetteer/">Gazetteer<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
           </ul>
         </section>
         <section class="atlas-category" data-category="tools" aria-labelledby="category-tools">
@@ -84,8 +90,8 @@
             <span class="category-label">Tools</span>
           </h2>
           <ul class="page-links">
-            <li data-project="box-puzzles"><a href="/box-puzzles/">Box Logic<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
             <li data-project="logical-solver"><a href="/logical-solver/">Logical Solvers<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
+            <li data-project="gazetteer"><a href="/gazetteer/">Gazetteer<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
           </ul>
         </section>
         <section class="atlas-category" data-category="agents" aria-labelledby="category-agents">
@@ -110,6 +116,8 @@
             <li data-project="puzzles"><a href="/puzzles/">Puzzles<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
             <li data-project="baba-is-you"><a href="/baba-is-you/">Baba Is You<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
             <li data-project="pokemon-reborn"><a href="/pokemon-reborn/">Pokémon Reborn<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
+            <li data-project="ngu-idle-dashboard"><a href="/ngu-idle-dashboard/">NGU Idle<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
+            <li data-project="box-puzzles"><a href="/box-puzzles/">Box Logic<span class="link-point ui-link-arrow" aria-hidden="true"></span></a></li>
           </ul>
         </section>
       </nav>

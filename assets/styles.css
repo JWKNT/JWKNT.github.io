@@ -136,6 +136,10 @@ body { margin: 0; }
 .study-spiral .spiral-study { position: absolute; width: 7em; height: 7em; top: .1em; left: .2em; }
 .spiral-echo { color: var(--atlas-faint); }
 .study-spiral i { top: 1.28em; left: 6.89em; }
+/* Nested arches close around one point, as the ridges of a fingerprint do. */
+.study-whorl .whorl-study { position: absolute; width: 7em; height: 7em; top: .1em; left: .2em; }
+.whorl-echo { color: var(--atlas-faint); }
+.study-whorl i { top: 4.7em; left: 3.97em; }
 .empty-result { font-size: 1rem; color: var(--muted); margin: 2rem 0; }
 [hidden] { display: none !important; }
 

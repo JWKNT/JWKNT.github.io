@@ -170,11 +170,32 @@ test('Agents groups agent guidance under an abstract spiral mark, apart from Too
 });
 
 
+test('Me comes first under an abstract mark and holds the personal pages', () => {
+  const [first] = categories;
+  assert.equal(first.id, 'me');
+  assert.equal(first.label, 'Me');
+  assert.equal(first.mark, 'whorl');
+  assert.deepEqual(first.pages, [
+    { id: 'profile', label: 'Profile', href: '/profile/' },
+    { id: 'links', label: 'Links', href: '/links/' },
+    { id: 'accounts', label: 'Accounts', href: '/accounts/' },
+  ]);
+  assert.match(index, /<nav class="directory"[^>]*>\s*<section class="atlas-category" data-category="me"/);
+  assert.match(index, /class="type-study study-whorl" aria-hidden="true"><svg class="whorl-study" aria-hidden="true" focusable="false"/);
+});
+
+test('NGU Idle and Box Logic are games, and Gazetteer is a tool', () => {
+  const owner = id => categories.find(category => category.pages.some(page => page.id === id)).id;
+  assert.equal(owner('ngu-idle-dashboard'), 'games');
+  assert.equal(owner('box-puzzles'), 'games');
+  assert.equal(owner('gazetteer'), 'tools');
+});
+
 test('decorative studies keep their original font and fixed geometry', async () => {
   const css = await readFile(new URL('../assets/styles.css', import.meta.url), 'utf8');
   assert.match(css, /\.glyph \{[^}]*font-family: 'Baskerville', 'Times New Roman', serif;/);
   assert.doesNotMatch(css, /--reading|Wrenfold/);
   assert.match(css, /\.type-study \{[^}]*font-size: 16px;/);
   assert.match(css, /\.study-parentheses \.glyph \{ font-size: 128px;/);
-  assert.match(index, /assets\/styles\.css\?v=20261102-agents/);
+  assert.match(index, /assets\/styles\.css\?v=20261105-me/);
 });
