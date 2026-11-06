@@ -16,7 +16,7 @@
     <script src="https://jehlp.net/site-theme/v2/theme.js?v=20261009-reading-folio"></script>
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261009-reading-folio">
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css?v=20261105-math3">
-    <link rel="stylesheet" href="../../assets/ai-math.css?v=20261105-brief3">
+    <link rel="stylesheet" href="../../assets/ai-math.css?v=20261105-simple1">
     <script src="https://jehlp.net/site-theme/v2/components.js?v=20261105-math3" defer></script>
   </head>
   <body data-site-tone="blue">
@@ -27,7 +27,7 @@
     </header>
     <main id="explainer" class="ai-math-shell" tabindex="-1">
       <article class="prose ai-math-article">
-        <h1>Unit Distance Problem</h1>
+        <div class="ai-math-head"><h1>Unit Distance Problem</h1><a class="ai-math-version" href="simple/">Simplify</a></div>
 <p>Place <math><mi>n</mi></math> points in the plane and count the pairs at distance exactly 1. Let <math><mrow><mi>u</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>n</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math> be the largest possible count. The question is how fast <math><mrow><mi>u</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>n</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math> grows.</p>
 <p>A square grid does better than it first appears to. With spacing 1, each point has 4 neighbors. With spacing <span class="ai-math-nobreak"><math><mrow><mn>1</mn><mi>/</mi><mn>5</mn></mrow></math>,</span> it has 12, because <math><mrow><msup><mi>p</mi><mn class="tml-med-pad">2</mn></msup><mo>+</mo><msup><mi>q</mi><mn class="tml-med-pad">2</mn></msup><mo>=</mo><mn>25</mn></mrow></math> has 12 integer solutions. A good choice of spacing gives <math><msup><mi>n</mi><mrow><mn>1</mn><mo>+</mo><mi>c</mi><mi>/</mi><mrow><mspace width="0.1667em"></mspace><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mrow><mi>log</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>n</mi></mrow></msup></math> pairs, where the extra exponent slowly falls to zero.</p>
 <figure class="ai-math-side">

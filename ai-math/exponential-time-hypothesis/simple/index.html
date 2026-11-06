@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="What the Exponential Time Hypothesis says, and what an algorithm that refutes it means. A longer version in plain language.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Exponential Time Hypothesis, simplified">
+    <meta property="og:description" content="What the Exponential Time Hypothesis says, and what an algorithm that refutes it means. A longer version in plain language.">
+    <meta property="og:url" content="https://jehlp.net/ai-math/exponential-time-hypothesis/simple/">
+    <meta property="og:site_name" content="jehlp.net">
+    <meta name="theme-color" content="#fbfaf7">
+    <link rel="canonical" href="https://jehlp.net/ai-math/exponential-time-hypothesis/simple/">
+    <title>Exponential Time Hypothesis, simplified · AI Math Results · jehlp.net</title>
+    <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/ai-math.png" type="image/png">
+    <script src="https://jehlp.net/site-theme/v2/theme.js?v=20261009-reading-folio"></script>
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261009-reading-folio">
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css?v=20261105-math3">
+    <link rel="stylesheet" href="../../../assets/ai-math.css?v=20261105-simple1">
+    <script src="https://jehlp.net/site-theme/v2/components.js?v=20261105-math3" defer></script>
+  </head>
+  <body data-site-tone="blue">
+    <a class="skip-link" href="#explainer">Skip to the explanation</a>
+    <header class="site-header site-header--identity">
+      <div class="site-brand"><img class="site-mark" src="https://jehlp.net/site-theme/v2/marks/ai-math.png" width="32" height="32" alt=""><span class="site-title">AI Math Results</span></div>
+      <nav aria-label="Site links"><a href="../../">All results</a><span class="site-utility-pair"><a class="site-home" href="https://jehlp.net/" aria-label="Home — jehlp.net" title="Home — jehlp.net"><span aria-hidden="true">✳</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button></span></nav>
+    </header>
+    <main id="explainer" class="ai-math-shell" tabindex="-1">
+      <article class="prose ai-math-article">
+        <div class="ai-math-head"><h1>Exponential Time Hypothesis</h1><a class="ai-math-version" href="../">Short version</a></div>
+<p>Some puzzles are easy to check but hard to solve. The Exponential Time Hypothesis is a claim about how hard one such puzzle must be.</p>
+<p>The puzzle is called <dfn>3-SAT</dfn>. You have a row of switches, and each switch is on or off. You also have a list of rules. Each rule gives up to three conditions, and at least one of them must hold. For example: <math><mi>a</mi></math> is on, or <math><mi>b</mi></math> is on, or <math><mi>c</mi></math> is off.</p>
+<p>The puzzle asks if some setting of the switches obeys every rule. Checking one setting is easy, because you only read through the rules. Finding a good setting is the hard part.</p>
+<p>The simplest method tries every setting. With 2 switches there are 4 settings. With 10 there are 1,024. With 100 there are about <span class="ai-math-nobreak"><math><mrow><mn>1.27</mn><mo>×</mo><msup><mn>10</mn><mn>30</mn></msup></mrow></math>,</span> a number with 31 digits. A computer that tests a billion billion settings each second would need about 40,000 years.</p>
+<p>Each new switch doubles the work, because each old setting now has two versions. Growth like this is called <dfn>exponential</dfn>. Clever methods do much better. The best methods before 2026 multiplied the work by about 1.3 for each new switch, not 2. But the work still grew by a fixed multiple, so it was still exponential.</p>
+<figure class="ai-math-side">
+<div class="table-scroll" data-scroll-region aria-label="How much the work grows for each new switch">
+<table class="ui-table">
+<thead><tr><th scope="col">Method</th><th scope="col">Work multiplier for each new switch</th></tr></thead>
+<tbody>
+<tr><td>Try every setting</td><td>2</td></tr>
+<tr><td>Best before 2026</td><td>About 1.3</td></tr>
+<tr><td>The hypothesis</td><td>Never comes close to 1</td></tr>
+<tr><td>New methods</td><td>Falls toward 1 as puzzles grow</td></tr>
+</tbody>
+</table>
+</div>
+</figure>
+<p>The <dfn>Exponential Time Hypothesis</dfn> says that this cannot be fixed. It says that some number above 1 exists, such as 1.1 or 1.01, with this property. Every possible method must multiply the work by at least that number for each new switch, on the hardest puzzles.</p>
+<p>Nobody had proved this. Researchers used it as a working assumption, to show that other problems are hard. The argument goes like this: if that problem had a fast method, then 3-SAT would have a method faster than the hypothesis allows.</p>
+<p><a href="https://github.com/openai/math/blob/main/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/paper.pdf">OpenAI</a> and <a href="https://github.com/anthropics/formal-math/blob/main/eth/paper.pdf">Anthropic</a> each report that the hypothesis is false. Each gives a method whose multiplier is not fixed. As puzzles grow, the multiplier for each new switch keeps falling toward 1. So no number above 1 can be a limit. Both methods also count how many settings work, not only whether one exists.</p>
+<p>This does not help anyone solve real puzzles. The gain appears only for enormous inputs. Anthropic calculates that its bound beats trying every setting only above <math><msup><mn>10</mn><mrow><mn>10</mn><mspace width="0.1667em"></mspace><mn>000</mn></mrow></msup></math> switches, when there are 5 rules per switch. That is a 1 followed by 10,000 zeros. The observable universe has only about <math><msup><mn>10</mn><mn>80</mn></msup></math> atoms.</p>
+<p>It also does not settle the famous question of P versus NP. For <math><mi>n</mi></math> switches, that question asks for a method with work like <math><msup><mi>n</mi><mn>2</mn></msup></math> or <span class="ai-math-nobreak"><math><msup><mi>n</mi><mn>3</mn></msup></math>,</span> or any other fixed power of <span class="ai-math-nobreak"><math><mi>n</mi></math>.</span> The new methods are still far slower than that.</p>
+      </article>
+    </main>
+  </body>
+</html>

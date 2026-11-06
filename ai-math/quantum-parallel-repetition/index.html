@@ -16,7 +16,7 @@
     <script src="https://jehlp.net/site-theme/v2/theme.js?v=20261009-reading-folio"></script>
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261009-reading-folio">
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css?v=20261105-math3">
-    <link rel="stylesheet" href="../../assets/ai-math.css?v=20261105-brief3">
+    <link rel="stylesheet" href="../../assets/ai-math.css?v=20261105-simple1">
     <script src="https://jehlp.net/site-theme/v2/components.js?v=20261105-math3" defer></script>
   </head>
   <body data-site-tone="blue">
@@ -27,7 +27,7 @@
     </header>
     <main id="explainer" class="ai-math-shell" tabindex="-1">
       <article class="prose ai-math-article">
-        <h1>Quantum Parallel Repetition</h1>
+        <div class="ai-math-head"><h1>Quantum Parallel Repetition</h1><a class="ai-math-version" href="simple/">Simplify</a></div>
 <p>In a two-player game, a referee sends a question to each player. The players answer without communicating, and a fixed rule decides if they win. The <dfn>value</dfn> of the game is their best probability of winning.</p>
 <p>Players who share entangled particles can sometimes do better. In the CHSH game, the players receive bits <math><mi>x</mi></math> and <math><mi>y</mi></math> and answer with bits <math><mi>a</mi></math> and <span class="ai-math-nobreak"><math><mi>b</mi></math>.</span> They win if <math><mrow><mi>a</mi><mo>+</mo><mi>b</mi><mo>=</mo><mi>x</mi><mi>y</mi></mrow></math> modulo 2. The best value is <math><mrow><mn>3</mn><mi>/</mi><mn>4</mn></mrow></math> without entanglement and about <math><mn>0.854</mn></math> with it.</p>
 <p><dfn>Parallel repetition</dfn> plays <math><mi>n</mi></math> copies at once, and the players must win every copy. If one copy has value <span class="ai-math-nobreak"><math><mi>v</mi></math>,</span> you might expect the value <span class="ai-math-nobreak"><math><msup><mi>v</mi><mi class="tml-sml-pad">n</mi></msup></math>.</span> This is false, because each player sees all their questions before answering, and can correlate the answers.</p>

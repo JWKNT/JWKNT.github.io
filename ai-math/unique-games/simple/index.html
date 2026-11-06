@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="What the Unique Games Conjecture says about systems of simple equations that are hard to satisfy even approximately. A longer version in plain language.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Unique Games Conjecture, simplified">
+    <meta property="og:description" content="What the Unique Games Conjecture says about systems of simple equations that are hard to satisfy even approximately. A longer version in plain language.">
+    <meta property="og:url" content="https://jehlp.net/ai-math/unique-games/simple/">
+    <meta property="og:site_name" content="jehlp.net">
+    <meta name="theme-color" content="#fbfaf7">
+    <link rel="canonical" href="https://jehlp.net/ai-math/unique-games/simple/">
+    <title>Unique Games Conjecture, simplified · AI Math Results · jehlp.net</title>
+    <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/ai-math.png" type="image/png">
+    <script src="https://jehlp.net/site-theme/v2/theme.js?v=20261009-reading-folio"></script>
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261009-reading-folio">
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css?v=20261105-math3">
+    <link rel="stylesheet" href="../../../assets/ai-math.css?v=20261105-simple1">
+    <script src="https://jehlp.net/site-theme/v2/components.js?v=20261105-math3" defer></script>
+  </head>
+  <body data-site-tone="blue">
+    <a class="skip-link" href="#explainer">Skip to the explanation</a>
+    <header class="site-header site-header--identity">
+      <div class="site-brand"><img class="site-mark" src="https://jehlp.net/site-theme/v2/marks/ai-math.png" width="32" height="32" alt=""><span class="site-title">AI Math Results</span></div>
+      <nav aria-label="Site links"><a href="../../">All results</a><span class="site-utility-pair"><a class="site-home" href="https://jehlp.net/" aria-label="Home — jehlp.net" title="Home — jehlp.net"><span aria-hidden="true">✳</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button></span></nav>
+    </header>
+    <main id="explainer" class="ai-math-shell" tabindex="-1">
+      <article class="prose ai-math-article">
+        <div class="ai-math-head"><h1>Unique Games Conjecture</h1><a class="ai-math-version" href="../">Short version</a></div>
+<p>Start with arithmetic on a small clock. With 5 values, the numbers are 0, 1, 2, 3 and 4, and after 4 you return to 0. So <math><mrow><mn>3</mn><mo>+</mo><mn>4</mn><mo>=</mo><mn>2</mn></mrow></math> on this clock. This is called arithmetic <dfn>modulo 5</dfn>.</p>
+<p>A <dfn>unique game</dfn> is a list of rules about some unknown values on such a clock. Each rule links two unknowns, for example: <math><mi>b</mi></math> equals <math><mi>a</mi></math> plus 2. If you know <span class="ai-math-nobreak"><math><mi>a</mi></math>,</span> the rule gives exactly one value for <span class="ai-math-nobreak"><math><mi>b</mi></math>.</span> That is the meaning of "unique". The word "game" comes from an older form of the problem with two players.</p>
+<figure class="ai-math-side">
+<svg viewBox="0 0 300 248" role="img" aria-label="A graph on five variables with eight arrows and values that satisfy all of them" preserveAspectRatio="xMinYMin meet"><line class="fig-guide-strong" x1="164.56" y1="40.58" x2="227.02" y2="85.96"/><polygon class="fig-solid" points="227.02,85.96 217.39,83.91 222.09,77.43"/><text class="fig-note" x="189.55" y="77.57" text-anchor="middle">+2</text><line class="fig-guide-strong" x1="237.64" y1="114.84" x2="213.78" y2="188.26"/><polygon class="fig-solid" points="213.78,188.26 212.76,178.47 220.37,180.94"/><text class="fig-note" x="213.99" y="152.79" text-anchor="middle">+1</text><line class="fig-guide-strong" x1="189.6" y1="207.28" x2="112.4" y2="207.28"/><polygon class="fig-solid" points="112.4,207.28 121.4,203.28 121.4,211.28"/><text class="fig-note" x="150" y="199.28" text-anchor="middle">+4</text><line class="fig-guide-strong" x1="86.83" y1="190.16" x2="62.98" y2="116.74"/><polygon class="fig-solid" points="62.98,116.74 69.56,124.06 61.95,126.53"/><text class="fig-note" x="86.01" y="152.79" text-anchor="middle">+3</text><line class="fig-guide-strong" x1="71.36" y1="87.14" x2="133.82" y2="41.76"/><polygon class="fig-solid" points="133.82,41.76 128.89,50.28 124.19,43.81"/><text class="fig-note" x="110.45" y="77.57" text-anchor="middle">+0</text><line class="fig-guide-strong" x1="155.56" y1="47.12" x2="201.42" y2="188.26"/><polygon class="fig-solid" points="201.42,188.26 194.84,180.94 202.45,178.47"/><text class="fig-note" x="155.87" y="90.89" text-anchor="middle">+3</text><line class="fig-guide-strong" x1="228.64" y1="108.3" x2="108.58" y2="195.53"/><polygon class="fig-solid" points="108.58,195.53 113.51,187 118.21,193.47"/><text class="fig-note" x="190.91" y="124.88" text-anchor="middle">+0</text><line class="fig-guide-strong" x1="193.04" y1="196.7" x2="72.98" y2="109.47"/><polygon class="fig-solid" points="72.98,109.47 82.61,111.53 77.91,118"/><text class="fig-note" x="112.11" y="127.07" text-anchor="middle">+2</text><circle class="fig-node" cx="150" cy="30" r="17"/><text class="fig-node-label" x="150" y="34" text-anchor="middle">a=0</text><circle class="fig-node" cx="243.2" cy="97.72" r="17"/><text class="fig-node-label" x="243.2" y="101.72" text-anchor="middle">b=2</text><circle class="fig-node" cx="207.6" cy="207.28" r="17"/><text class="fig-node-label" x="207.6" y="211.28" text-anchor="middle">c=3</text><circle class="fig-node" cx="92.4" cy="207.28" r="17"/><text class="fig-node-label" x="92.4" y="211.28" text-anchor="middle">d=2</text><circle class="fig-node" cx="56.8" cy="97.72" r="17"/><text class="fig-node-label" x="56.8" y="101.72" text-anchor="middle">e=0</text></svg>
+<figcaption>Five unknowns on a clock with 5 values. Each arrow adds its number. These values satisfy all eight rules.</figcaption>
+</figure>
+<p>If all the rules can hold together, a solution is easy to find. Choose a value for <span class="ai-math-nobreak"><math><mi>a</mi></math>,</span> follow the rules, and fill in everything else. In the figure, <math><mrow><mi>a</mi><mo>=</mo><mn>0</mn></mrow></math> gives <span class="ai-math-nobreak"><math><mrow><mi>b</mi><mo>=</mo><mn>2</mn></mrow></math>,</span> then <span class="ai-math-nobreak"><math><mrow><mi>c</mi><mo>=</mo><mn>3</mn></mrow></math>,</span> <math><mrow><mi>d</mi><mo>=</mo><mn>2</mn></mrow></math> and <span class="ai-math-nobreak"><math><mrow><mi>e</mi><mo>=</mo><mn>0</mn></mrow></math>,</span> and all eight rules hold.</p>
+<p>Now suppose that only 99% of the rules can hold, and you do not know which 1% are bad. Following the rules now fails. A chain of 100 rules hits a bad rule with probability about 63%. After that point, every value is wrong.</p>
+<p>So you might aim much lower and try to satisfy only 1% of the rules. That sounds easy. A conjecture is a statement that nobody has proved yet. The <dfn>Unique Games Conjecture</dfn> says that it is still hard, if the clock is large enough. When 99% of the rules can hold, finding values that satisfy even 1% of them is NP-hard.</p>
+<p><dfn>NP-hard</dfn> means that a fast method for this task would also solve <a href="../../exponential-time-hypothesis/simple/">3-SAT</a> and every other problem in a large family called NP. Nobody has a fast method for those problems, and most researchers expect that none exists. "Fast" here means that the work grows like a fixed power of the input size.</p>
+<p><a href="https://github.com/openai/math/blob/main/preprints/The-Unique-Games-Theorem-September-23-2026/paper.pdf">An OpenAI manuscript</a> reports a proof. It gives a fast way to turn any 3-SAT puzzle into a unique game. If the puzzle has a solution, nearly all the rules can hold. If not, almost none can. So a fast way to tell these two kinds of game apart would solve 3-SAT.</p>
+<p>The conjecture is famous because of what it implies. Many problems have a fast method that gives a good but not perfect answer. The conjecture says that many of those methods are already the best possible, unless every problem in NP has a fast method.</p>
+<p>Here is one example. Split the people at a party into two groups, so that as many pairs of rivals as possible end up in different groups. A known method guarantees at least 87.8% of the best possible count. If the proof is right, no fast method can guarantee more, unless every problem in NP has a fast method.</p>
+      </article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+<p>Put \(n\) dots on a sheet of paper. Measure the distance between each pair of dots, and count the pairs that are exactly 1 apart. The question is how large that count can be. Write \(u(n)\) for the largest possible count.</p>
+<p>Small cases show the idea. Three dots in an equilateral triangle give 3 pairs. Four dots, as two triangles that share a side, give 5 pairs. Seven dots, as a hexagon with its center, give 12 pairs. Exact answers are known only for small \(n\).</p>
+<p>For many dots, start with a square grid with spacing 1. Each dot has 4 neighbors at distance 1: left, right, up and down. Each pair has two dots, so the count is about \(2n\).</p>
+<p>Now make the spacing smaller. With spacing \(1/5\), a dot that is 3 steps across and 4 steps up is exactly 1 away. This is the 3-4-5 triangle: \((3/5)^2 + (4/5)^2 = 1\). Each dot now has 12 neighbors at distance 1, as the figure shows.</p>
+<figure class="ai-math-side">
+{{fig:unit-grid}}
+<figcaption>A grid with spacing \(1/5\). The circle has radius 1 and passes through 12 grid points.</figcaption>
+</figure>
+<p>Other spacings give even more. Spacing \(1/\sqrt{65}\) gives 16 neighbors, and spacing \(1/\sqrt{1105}\) gives 32. Paul Erdős showed that the best grids give about \(n^{1 + \text{small}}\) pairs, where the small part slowly shrinks to 0 as \(n\) grows.</p>
+<p>Erdős conjectured that nothing does much better than these grids. A conjecture is a statement that nobody has proved yet. In this one, the raised number on \(n\), called the <dfn>exponent</dfn>, gets closer and closer to 1 as \(n\) grows. Mathematicians had also proved that the count is at most a constant times \(n^{4/3}\). So the true exponent lay somewhere between 1 and \(4/3\).</p>
+<p>The exponent makes a large difference for large \(n\). For one million dots, \(n^{4/3}\) is 100 million pairs, which is 100 per dot. A grid with a well-chosen spacing gives about 26 per dot.</p>
+<p><a href="https://openai.com/index/model-disproves-discrete-geometry-conjecture/">An OpenAI model</a> disproved the conjecture. For infinitely many \(n\), it builds an arrangement with at least \(n^{1 + \delta}\) pairs, for a fixed number \(\delta\) above 0. <a href="https://en.wikipedia.org/wiki/Unit_distance_graph">Later work</a> reached \(\delta = 0.043\), so the exponent is at least 1.043 for those \(n\).</p>
+<p>Here is the idea behind it. Treat each grid point as a number \(a + bi\), where \(i\) is the square root of \(-1\). Steps of length 1 then come from numbers such as \((3 + 4i)/5\). The new construction uses much larger number systems, which have far more numbers of this kind.</p>
+<p><a href="https://github.com/openai/math/blob/main/preprints/A-power-saving-for-planar-unit-distances-September-23-2026/paper.pdf">A later OpenAI manuscript</a> reports that the upper exponent is also below \(4/3\), by an unstated amount. The exact exponent is still unknown.</p>

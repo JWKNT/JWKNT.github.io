@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Whether the equations of fluid motion can produce infinite speed in finite time. A longer version in plain language.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Navier–Stokes, simplified">
+    <meta property="og:description" content="Whether the equations of fluid motion can produce infinite speed in finite time. A longer version in plain language.">
+    <meta property="og:url" content="https://jehlp.net/ai-math/navier-stokes/simple/">
+    <meta property="og:site_name" content="jehlp.net">
+    <meta name="theme-color" content="#fbfaf7">
+    <link rel="canonical" href="https://jehlp.net/ai-math/navier-stokes/simple/">
+    <title>Navier–Stokes, simplified · AI Math Results · jehlp.net</title>
+    <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/ai-math.png" type="image/png">
+    <script src="https://jehlp.net/site-theme/v2/theme.js?v=20261009-reading-folio"></script>
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261009-reading-folio">
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css?v=20261105-math3">
+    <link rel="stylesheet" href="../../../assets/ai-math.css?v=20261105-simple1">
+    <script src="https://jehlp.net/site-theme/v2/components.js?v=20261105-math3" defer></script>
+  </head>
+  <body data-site-tone="blue">
+    <a class="skip-link" href="#explainer">Skip to the explanation</a>
+    <header class="site-header site-header--identity">
+      <div class="site-brand"><img class="site-mark" src="https://jehlp.net/site-theme/v2/marks/ai-math.png" width="32" height="32" alt=""><span class="site-title">AI Math Results</span></div>
+      <nav aria-label="Site links"><a href="../../">All results</a><span class="site-utility-pair"><a class="site-home" href="https://jehlp.net/" aria-label="Home — jehlp.net" title="Home — jehlp.net"><span aria-hidden="true">✳</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button></span></nav>
+    </header>
+    <main id="explainer" class="ai-math-shell" tabindex="-1">
+      <article class="prose ai-math-article">
+        <div class="ai-math-head"><h1>Navier–Stokes</h1><a class="ai-math-version" href="../">Short version</a></div>
+<p>The <dfn>Navier–Stokes equations</dfn> describe how water and air move. They apply Newton's law, force equals mass times acceleration, to each tiny parcel of fluid. Engineers use them to design aircraft, forecast weather and study blood flow. They have this form, where <math><mi>u</mi></math> is the velocity of the fluid:</p>
+<div class="ui-equation" data-scroll-region data-scroll-noun="of the formula" aria-label="Formula"><math display="block" class="tml-display" style="display:block math;"><mtable displaystyle="true" class="tml-jot"><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mrow><mfrac><mrow><mi>∂</mi><mi>u</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo>+</mo><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>u</mi><mo>⋅</mo><mo form="prefix" stretchy="false">∇</mo><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mi>u</mi></mrow></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mo>=</mo><mo form="prefix" stretchy="false">−</mo><mo form="prefix" stretchy="false">∇</mo><mi>p</mi><mo>+</mo><mi>ν</mi><mrow><mi mathvariant="normal">Δ</mi><mspace></mspace></mrow><mi>u</mi><mo>+</mo><mi>f</mi></mrow></mtd></mtr><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mrow><mo form="prefix" stretchy="false">∇</mo><mo form="prefix" stretchy="false">⋅</mo><mi>u</mi></mrow></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mo>=</mo><mn>0</mn></mrow></mtd></mtr></mtable></math></div>
+<p>The left side of the first line is the acceleration of a parcel. On the right side, <math><mrow><mo form="prefix" stretchy="false">−</mo><mo form="prefix" stretchy="false">∇</mo><mi>p</mi></mrow></math> is the push from differences in pressure. The term <math><mrow><mi>ν</mi><mrow><mi mathvariant="normal">Δ</mi><mspace></mspace></mrow><mi>u</mi></mrow></math> is <dfn>viscosity</dfn>, the internal friction that makes honey thicker than water. The last term, <span class="ai-math-nobreak"><math><mi>f</mi></math>,</span> is an outside force, such as stirring. The second line says that the fluid cannot be compressed.</p>
+<p>Here is the question. Suppose that a fluid starts with a smooth flow, with no sudden jumps. The equations might keep it smooth forever. Or they might produce an infinite speed at some point, after a finite time. That event is called <dfn>blow-up</dfn>. Nobody knew which one happens.</p>
+<figure class="ai-math-side">
+<svg viewBox="0 0 380 236" role="img" aria-label="Two curves from one: y equals one over one minus t rises without limit at t equals one, and y equals e to the t stays finite" preserveAspectRatio="xMinYMin meet"><line class="fig-line" x1="34" y1="206" x2="362" y2="206"/><line class="fig-line" x1="34" y1="206" x2="34" y2="14.6"/><line class="fig-line" x1="34" y1="206" x2="34" y2="211"/><text class="fig-label" x="34" y="226" text-anchor="middle">0</text><line class="fig-line" x1="136.5" y1="206" x2="136.5" y2="211"/><text class="fig-label" x="136.5" y="226" text-anchor="middle">0.5</text><line class="fig-line" x1="239" y1="206" x2="239" y2="211"/><text class="fig-label" x="239" y="226" text-anchor="middle">1</text><line class="fig-line" x1="341.5" y1="206" x2="341.5" y2="211"/><text class="fig-label" x="341.5" y="226" text-anchor="middle">1.5</text><line class="fig-line" x1="29" y1="206" x2="34" y2="206"/><text class="fig-label" x="25" y="210" text-anchor="end">0</text><line class="fig-line" x1="29" y1="123.5" x2="34" y2="123.5"/><text class="fig-label" x="25" y="127.5" text-anchor="end">5</text><line class="fig-line" x1="29" y1="41" x2="34" y2="41"/><text class="fig-label" x="25" y="45" text-anchor="end">10</text><line class="fig-dash" x1="239" y1="206" x2="239" y2="14.6"/><polyline class="fig-line" points="34,189.5 39.47,189.05 44.93,188.6 50.4,188.13 55.87,187.64 61.33,187.15 66.8,186.64 72.27,186.11 77.73,185.58 83.2,185.02 88.67,184.46 94.13,183.88 99.6,183.28 105.07,182.66 110.53,182.03 116,181.38 121.47,180.72 126.93,180.04 132.4,179.33 137.87,178.61 143.33,177.87 148.8,177.11 154.27,176.33 159.73,175.53 165.2,174.71 170.67,173.86 176.13,172.99 181.6,172.1 187.07,171.19 192.53,170.24 198,169.28 203.47,168.29 208.93,167.27 214.4,166.22 219.87,165.15 225.33,164.04 230.8,162.91 236.27,161.74 241.73,160.55 247.2,159.32 252.67,158.06 258.13,156.76 263.6,155.43 269.07,154.06 274.53,152.66 280,151.22 285.47,149.74 290.93,148.22 296.4,146.66 301.87,145.05 307.33,143.4 312.8,141.71 318.27,139.98 323.73,138.19 329.2,136.36 334.67,134.48 340.13,132.54 345.6,130.56 351.07,128.52 356.53,126.43 362,124.27"/><polyline class="fig-accent" points="34,189.5 36.34,189.31 38.68,189.11 41.01,188.92 43.35,188.71 45.69,188.5 48.03,188.29 50.36,188.07 52.7,187.84 55.04,187.61 57.38,187.38 59.71,187.13 62.05,186.88 64.39,186.63 66.73,186.37 69.07,186.1 71.4,185.82 73.74,185.53 76.08,185.24 78.42,184.94 80.75,184.63 83.09,184.3 85.43,183.97 87.77,183.63 90.11,183.28 92.44,182.92 94.78,182.55 97.12,182.16 99.46,181.76 101.79,181.35 104.13,180.92 106.47,180.48 108.81,180.02 111.14,179.54 113.48,179.05 115.82,178.54 118.16,178.01 120.5,177.46 122.83,176.88 125.17,176.28 127.51,175.66 129.85,175.01 132.18,174.33 134.52,173.62 136.86,172.88 139.2,172.11 141.54,171.3 143.87,170.44 146.21,169.55 148.55,168.6 150.89,167.61 153.22,166.57 155.56,165.46 157.9,164.29 160.24,163.05 162.57,161.74 164.91,160.34 167.25,158.86 169.59,157.27 171.93,155.57 174.26,153.75 176.6,151.79 178.94,149.68 181.28,147.4 183.61,144.93 185.95,142.24 188.29,139.3 190.63,136.07 192.96,132.52 195.3,128.59 197.64,124.22 199.98,119.32 202.32,113.79 204.65,107.52 206.99,100.33 209.33,92 211.67,82.25 214,70.68 216.34,56.71 218.68,39.54 221.02,17.9"/><text class="fig-note-accent" x="204.4" y="57.5" text-anchor="end">dy/dt = y²</text><text class="fig-note" x="362" y="116.27" text-anchor="end">dy/dt = y</text><text class="fig-note" x="245" y="24.5">t = 1</text><text class="fig-math" x="362" y="199" text-anchor="end">t</text></svg>
+<figcaption>The label <math><mrow><mi>d</mi><mi>y</mi><mi>/</mi><mi>d</mi><mi>t</mi></mrow></math> means the rate at which <math><mi>y</mi></math> grows. The number that grows at a rate of <math><msup><mi>y</mi><mn class="tml-sml-pad">2</mn></msup></math> reaches infinity at time 1. The number that grows at a rate of <math><mi>y</mi></math> grows fast but stays finite.</figcaption>
+</figure>
+<p>Blow-up can happen even when nothing in an equation is infinite. Take a number <math><mi>y</mi></math> that starts at 1 and grows at a rate equal to <span class="ai-math-nobreak"><math><msup><mi>y</mi><mn class="tml-sml-pad">2</mn></msup></math>.</span> When <math><mi>y</mi></math> is 10, its rate is 100. The bigger it gets, the faster it grows. Its formula is <span class="ai-math-nobreak"><math><mrow><mi>y</mi><mo>=</mo><mn>1</mn><mi>/</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>t</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math>:</span></p>
+<div class="table-scroll" data-scroll-region aria-label="Values of y at several times">
+<table class="ui-table">
+<thead><tr><th scope="col">Time <math><mi>t</mi></math></th><th scope="col">Value <math><mi>y</mi></math></th></tr></thead>
+<tbody>
+<tr><td>0</td><td>1</td></tr>
+<tr><td>0.5</td><td>2</td></tr>
+<tr><td>0.9</td><td>10</td></tr>
+<tr><td>0.99</td><td>100</td></tr>
+<tr><td>0.999</td><td>1000</td></tr>
+<tr><td>1</td><td>Infinite</td></tr>
+</tbody>
+</table>
+</div>
+<p>So <math><mi>y</mi></math> reaches infinity at time 1. Compare a number that grows at a rate equal to <math><mi>y</mi></math> itself. It grows fast, but it stays finite at every time. The square makes the difference.</p>
+<p>The fluid equations have a similar term, <span class="ai-math-nobreak"><math><mrow><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>u</mi><mo>⋅</mo><mo form="prefix" stretchy="false">∇</mo><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mi>u</mi></mrow></math>,</span> which contains the velocity twice. Viscosity acts against it. The question is which one is stronger.</p>
+<p>The Clay Mathematics Institute offers one million dollars for <a href="https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf">this problem</a>. It accepts a proof of either outcome. Either every smooth start stays smooth when no force acts, or some smooth start breaks down under a smooth force.</p>
+<p><a href="https://openai.com/index/navier-stokes-solution/">OpenAI reports</a> a proof of the second outcome. The fluid starts at rest, and a smooth force drives it. A vortex, a spinning swirl like water that drains from a sink, spirals inward and stretches. Its center shrinks and speeds up, and its speed has no limit at a finite time. The force stays smooth, so the infinity comes from the motion of the fluid.</p>
+<p>A fluid with no force remains open, and many mathematicians regard that as the main question. The result concerns the equations and not real water. Real fluids are made of molecules, so the equations stop applying at very small sizes. Aircraft and weather models do not change.</p>
+      </article>
+    </main>
+  </body>
+</html>

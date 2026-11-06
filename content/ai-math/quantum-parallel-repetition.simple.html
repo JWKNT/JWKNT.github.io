@@ -1,0 +1,21 @@
+<p>Here is a kind of game. A referee sends a question to each of two players, Alice and Bob. They answer without talking to each other, and a fixed rule decides if they win. They can agree on a plan before the game starts. The <dfn>value</dfn> of the game is their best chance of winning, with the best possible plan.</p>
+<p>Here is a famous example, the CHSH game. The referee sends each player a random bit, 0 or 1. Each player answers with a bit. If both questions were 1, their answers must differ to win. Otherwise their answers must match.</p>
+<p>The simple plan is to always answer 0. This wins unless both questions were 1, so it wins 3 times out of 4. No ordinary plan does better. But players can share <dfn>entangled</dfn> particles, whose measurement results are linked in a way that ordinary plans cannot copy. This lets them win about 85.4% of the time, still with no messages.</p>
+<p>Now play many rounds at once. The referee sends all the questions together, the players send all their answers together, and they must win every round. This is <dfn>parallel repetition</dfn>. With a value of \(3/4\) for one round, you might expect \((3/4)^{10}\), about 5.6%, for ten rounds.</p>
+<p>That expectation is wrong in general. A player's answer in one round can depend on the questions in other rounds. The table shows this effect in a game by Uriel Feige.</p>
+<figure class="ai-math-side">
+<div class="table-scroll" data-scroll-region aria-label="A plan for two rounds of Feige's game">
+<table class="ui-table">
+<thead><tr><th scope="col">Round</th><th scope="col">Alice says</th><th scope="col">Bob says</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Alice, \(x_1\)</td><td>Alice, \(y_2\)</td></tr>
+<tr><td>2</td><td>Bob, \(x_1\)</td><td>Bob, \(y_2\)</td></tr>
+</tbody>
+</table>
+</div>
+<figcaption>A plan for two rounds of Feige's game. Each cell names a player and a bit. Alice's bits are \(x_1, x_2\), and Bob's bits are \(y_1, y_2\).</figcaption>
+</figure>
+<p>In Feige's game, each player gets a random bit, then names a player and a bit. They win if they name the same player and that player's real bit. One round has value \(1/2\). In the plan shown, Alice always answers with \(x_1\), and Bob always answers with \(y_2\). They win both rounds exactly when \(x_1\) and \(y_2\) are equal, so two rounds also have value \(1/2\), and not \(1/4\).</p>
+<p>Still, the chance must fall eventually. Ran Raz proved that, for ordinary plans, the value falls <dfn>exponentially</dfn> if one round has a value below 1. This means that each extra round cuts the chance by about the same fraction. For entangled players, the known results were weaker, with only a slower fall in general.</p>
+<p><a href="https://openai.com/index/ten-advances-in-mathematics/">OpenAI reports</a> a proof for entangled players and every finite two-player game. If the best chance in one round is below 100%, the chance of winning all \(n\) rounds falls exponentially. The exact rate depends on the gap below 100% and on the number of possible answers. <a href="https://arxiv.org/abs/2610.21410">Later work</a> improves the rate.</p>
+<p>Repeating a test is the standard way to catch cheaters. A cheater who can pass one round with some chance must now pass every round. This result says that the method still works when the cheaters share entanglement.</p>

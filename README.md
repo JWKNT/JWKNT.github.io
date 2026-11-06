@@ -85,6 +85,13 @@ MathML with the pinned `temml` development dependency, so the pages load no type
 `assets/ai-math.css`. `tests/ai-math.test.mjs` limits each page to 300 words and checks the
 quoted calculations in exact arithmetic.
 
+Each result also has a simple version for a reader with less schooling, written in
+`content/ai-math/<slug>.simple.html` and published at `/ai-math/<slug>/simple/`. The short page
+stays the default, and a Simplify button beside its title opens the simple page. The simple page
+has the same form, defines each term at first use and has 400 to 800 words. Its links go to the
+simple version of the other result, as `../../<slug>/simple/`. The search crawl skips these pages,
+so site search has one record for each result.
+
 ## Verification and release
 
 Check 390px/1440px, light/dark, 200% text, heading/link keyboard behavior,

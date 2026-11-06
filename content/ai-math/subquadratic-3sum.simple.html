@@ -1,0 +1,31 @@
+<p><dfn>3SUM</dfn> is a simple puzzle. You have a list of \(n\) whole numbers, some positive and some negative. The puzzle asks if three of them add up to exactly 0. In the list \(-7, -3, 2, 5, 8, 11\), the answer is yes, because \(-7 + 2 + 5 = 0\).</p>
+<p>The plain method tries every group of three. With 1,000 numbers, that is about 166 million groups. A better method sorts the list first. Then, for each number, it looks for a matching pair by moving in from both ends of the list.</p>
+<p>Here is that method for \(-7\). We need two numbers from the rest of the list that add up to 7. Start with the two ends of the list. If the sum is too big, drop the largest number. If it is too small, drop the smallest number.</p>
+<div class="table-scroll" data-scroll-region aria-label="The search for two numbers that add up to 7">
+<table class="ui-table">
+<thead><tr><th scope="col">Pair</th><th scope="col">Sum</th><th scope="col">Next step</th></tr></thead>
+<tbody>
+<tr><td>\(-3\) and 11</td><td>8</td><td>Too big, so drop 11</td></tr>
+<tr><td>\(-3\) and 8</td><td>5</td><td>Too small, so drop \(-3\)</td></tr>
+<tr><td>2 and 8</td><td>10</td><td>Too big, so drop 8</td></tr>
+<tr><td>2 and 5</td><td>7</td><td>This is the match</td></tr>
+</tbody>
+</table>
+</div>
+<p>Each number takes one pass through the list, so the work is about \(n \times n = n^2\) steps. With 1,000 numbers, that is about one million steps. For decades, the only improvements saved small factors, far less than any fixed power of \(n\).</p>
+<figure class="ai-math-side">
+<div class="table-scroll" data-scroll-region aria-label="Older and new numbers of steps">
+<table class="ui-table">
+<thead><tr><th scope="col">Problem</th><th scope="col">Older</th><th scope="col">New</th></tr></thead>
+<tbody>
+<tr><td>3SUM</td><td>\(n^2\)</td><td>\(n^{1.9992}\)</td></tr>
+<tr><td>All-pairs shortest paths</td><td>\(n^3\)</td><td>\(n^{2.9995}\)</td></tr>
+</tbody>
+</table>
+</div>
+</figure>
+<p>The <dfn>3SUM hypothesis</dfn> says that \(n^2\) is essentially the limit. It says that no method takes \(n^{1.99}\) steps, or \(n^{2 - \varepsilon}\) for any fixed small number \(\varepsilon\). A similar hypothesis says the same about \(n^3\) for <a href="../../all-pairs-shortest-paths/simple/">all-pairs shortest paths</a>.</p>
+<p>Researchers used these hypotheses as working assumptions. They showed that if some other problem had a fast method, then 3SUM would have one too. Many problems in geometry were explained in this way, such as checking if three out of many points lie on one straight line.</p>
+<p><a href="https://arxiv.org/abs/2610.06783">Josh Alman and Virginia Vassilevska Williams report</a> that both hypotheses are false. Their method takes about \(n^{1.9992}\) steps, for whole numbers no larger than a fixed power of \(n\). Claude discovered the method, and the authors then simplified and extended it.</p>
+<p>The saving is very small. With a billion numbers, \(n^{1.9992}\) is only about 1.6% less than \(n^2\). A count like this also leaves out a fixed multiplier, and the authors say that this multiplier is enormous. So the method is potentially impractical. What changes is the theory: \(n^2\) is not the limit for 3SUM.</p>
+<p>The method uses tables of numbers, called matrices. An operation called the matrix product combines two tables into a third. The new method computes selected entries of that third table faster than computing them one by one. Researchers had already built conversions from 3SUM to tasks of this kind, to show that those tasks are hard. The same conversions now run as a fast method for 3SUM.</p>
