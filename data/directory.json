@@ -27,6 +27,7 @@
     "id": "data", "label": "Data", "mark": "constellation",
     "pages": [
       { "id": "mystery-report", "label": "Mystery Consensus", "href": "/mystery-report/" },
+      { "id": "ai-security", "label": "AI Security Findings", "href": "/ai-security/" },
       { "id": "bl2", "label": "Borderlands 2 Armory", "href": "/bl2/" }
     ]
   },
