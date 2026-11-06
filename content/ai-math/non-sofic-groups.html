@@ -1,10 +1,10 @@
-<p>A group is <dfn>sofic</dfn> if every finite part of its multiplication table can be modeled by permutations of a finite set. Errors can occur on a small fraction of points. Each element \(g\) gets a permutation \(\sigma(g)\), so that:</p>
+<p>A group is a set with a multiplication in which every element can be undone, such as the invertible matrices of a fixed size. It is <dfn>sofic</dfn> if every finite part of its multiplication table can be modeled by permutations of a finite set. Errors can occur on a small fraction of points. Each element \(g\) gets a permutation \(\sigma(g)\), so that:</p>
 \[ \begin{aligned} \sigma(g)\sigma(h) &amp;= \sigma(gh) \text{ at almost every point} \\ \sigma(g) &amp;\text{ moves almost every point, if } g \ne 1 \end{aligned} \]
 <figure class="ai-math-side">
 {{fig:cycle}}
 <figcaption>A model of \(\mathbb{Z}\) on 12 points. The element 1 moves each point one step. Each \(k\) from 1 to 11 moves every point, and a longer cycle covers larger \(k\).</figcaption>
 </figure>
-<p>So a sofic group looks finite at every finite scale, even if the group is infinite. Finite groups, amenable groups and residually finite groups are all sofic. The open question was whether every countable group is sofic.</p>
+<p>The second condition excludes the trivial model in which every element does nothing. So a sofic group looks finite at every finite scale, even if the group is infinite. Finite groups and groups of invertible matrices are all sofic, and no group was known to fail. The open question was whether every countable group is sofic.</p>
 <p><a href="https://openai.com/index/ten-advances-in-mathematics/">OpenAI reports</a> that the answer is no. Its example comes from an algebra of operators on infinite binary strings. The operator \(s_i\) puts the bit \(i\) in front of a string, and \(t_i\) removes a leading bit \(i\) and gives zero otherwise. Thus \(t_i s_i = 1\), and \(s_0 t_0 + s_1 t_1 = 1\), because each string starts with 0 or 1.</p>
 <p>This algebra has \(t_0 s_0 = 1\) but \(s_0 t_0 \ne 1\), which cannot happen for finite square matrices. The theorem says that the group of invertible elements of this algebra, over the field with two elements, is not sofic.</p>
 <p>The proof builds on work of Gábor Kun and Andreas Thom. <a href="https://arxiv.org/abs/2608.02025">Later papers</a> give further examples. So some groups cannot be studied through finite approximations.</p>

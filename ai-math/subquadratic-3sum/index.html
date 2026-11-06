@@ -43,8 +43,8 @@
 </div>
 </figure>
 <p>The <dfn>3SUM hypothesis</dfn> says that this is essentially optimal: no algorithm takes <math><msup><mi>n</mi><mrow><mn>2</mn><mo>−</mo><mi>ε</mi></mrow></msup></math> steps, for any fixed <span class="ai-math-nobreak"><math><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math>.</span> A similar hypothesis says the same about <math><msup><mi>n</mi><mn>3</mn></msup></math> for all-pairs shortest paths. Researchers used these hypotheses to explain why many other problems resist faster algorithms.</p>
-<p><a href="https://arxiv.org/abs/2610.06783">Josh Alman and Virginia Vassilevska Williams report</a> that both are false. Their exponents are in the table, for integers of polynomial size. Claude discovered the algorithm, and the authors then simplified and extended it.</p>
-<p>Everything comes from one new method. It computes selected entries of a product of two thin matrices faster than it could compute those entries one by one. Known reductions then carry the gain to 3SUM and the other problems.</p>
+<p><a href="https://arxiv.org/abs/2610.06783">Josh Alman and Virginia Vassilevska Williams report</a> that both are false. Their exponents are in the table, for integer inputs no larger than a fixed power of <span class="ai-math-nobreak"><math><mi>n</mi></math>.</span> Claude discovered the algorithm, and the authors then simplified and extended it.</p>
+<p>Everything comes from one new method. It computes selected entries of a product of two thin matrices faster than it could compute those entries one by one. Researchers had already built conversions from 3SUM to tasks of this kind, to show that those tasks are hard. The same conversions now give a fast algorithm for 3SUM.</p>
 <p>The authors say that the hidden constants are enormous, so the algorithms are potentially impractical. The change is in the theory: <math><msup><mi>n</mi><mn>2</mn></msup></math> is not a barrier for 3SUM.</p>
       </article>
     </main>

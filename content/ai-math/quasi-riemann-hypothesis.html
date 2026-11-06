@@ -1,10 +1,10 @@
 <p>The <dfn>Riemann zeta function</dfn> starts as this sum, and a standard method extends it to complex \(s\):</p>
 \[ \zeta(s) = 1 + \frac{1}{2^s} + \frac{1}{3^s} + \cdots \]
-<p>Apart from the simple zeros at \(-2, -4, -6, \dots\), all its zeros lie in the strip \(0 &lt; \operatorname{Re} s &lt; 1\).</p>
+<p>Apart from easy zeros at \(-2, -4, -6, \dots\), all its zeros lie in the strip \(0 &lt; \operatorname{Re} s &lt; 1\), where \(\operatorname{Re} s\) is the real part of \(s\).</p>
 <p>These zeros control the primes. Let \(\pi(x)\) count the primes up to \(x\). The best simple estimate is \(\operatorname{li}(x) = \int_0^x dt / \ln t\). Riemann's formula writes the error as a sum over the zeros, and a zero with real part \(\beta\) contributes about \(x^{\beta}\). So the rightmost zero sets the size of the error.</p>
 <figure class="ai-math-side">
 {{fig:strip}}
-<figcaption>The first five zeros, with their heights. The new result excludes the shaded bands. The zeros in the lower half of the plane are the mirror image.</figcaption>
+<figcaption>The first five zeros, with their imaginary parts. The new result excludes the right band, and a symmetry of \(\zeta\) then excludes the left band. The lower half of the plane is the mirror image.</figcaption>
 </figure>
 <p>The <dfn>Riemann hypothesis</dfn> says that every zero in the strip has real part \(1/2\). The error is then about \(\sqrt{x}\). The <dfn>quasi-Riemann hypothesis</dfn> asks for less: some fixed \(\beta &lt; 1\) has no zeros to its right. Before this result, zeros arbitrarily near the line \(\operatorname{Re} s = 1\) could not be excluded.</p>
-<p><a href="https://github.com/openai/math/blob/main/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf">OpenAI reports</a> a proof with \(\beta = 7/8\). The error in the prime count is then below \(C x^{p}\) for every \(p &gt; 7/8\). Earlier bounds saved less than any fixed power of \(x\). The same limit holds for Dirichlet L-functions, which control primes in remainder classes, such as primes that end in 7. The Riemann hypothesis itself stays open.</p>
+<p><a href="https://github.com/openai/math/blob/main/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf">OpenAI reports</a> a proof with \(\beta = 7/8\). The error in the prime count is then below a constant times \(x^{p}\), for every \(p &gt; 7/8\). Earlier bounds saved less than any fixed power of \(x\). The same limit holds for Dirichlet L-functions, which control primes in remainder classes, such as primes that end in 7. The Riemann hypothesis itself stays open.</p>

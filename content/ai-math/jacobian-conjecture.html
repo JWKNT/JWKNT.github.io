@@ -11,9 +11,9 @@
 </table>
 </div>
 </figure>
-<p>A local inverse does not give a global inverse. The last map in the table has a nonzero determinant everywhere, yet it repeats its values. The <dfn>Jacobian conjecture</dfn> said that polynomials behave better: if \(F\) is a polynomial map with a constant nonzero determinant, then \(F\) has a polynomial inverse.</p>
-<p>The conjecture is false for \(n \ge 3\). <a href="https://x.com/__alpoge__/status/2079028340955197566">Levent Alpöge posted this counterexample</a> and credited the AI model Claude Fable 5:</p>
+<p>A local inverse does not give a global inverse. The last map in the table has a nonzero determinant everywhere, yet it repeats its values. The <dfn>Jacobian conjecture</dfn> said that polynomials behave better: if \(F\) is a polynomial map with a constant nonzero determinant, then \(F\) has a polynomial inverse. A polynomial on \(\mathbb{C}^n\) with no zeros must be constant, so this condition only says that the determinant is never zero.</p>
+<p>The conjecture is false for \(n \ge 3\). <a href="https://x.com/__alpoge__/status/2079028340955197566">Levent Alpöge posted this counterexample</a> in the variables \(x, y, z\), and credited the AI model Claude Fable 5:</p>
 \[ \begin{aligned} F_1 &amp;= (1 + xy)^3 z + y^2 (1 + xy)(4 + 3xy) \\ F_2 &amp;= y + 3x(1 + xy)^2 z + 3xy^2(4 + 3xy) \\ F_3 &amp;= 2x - 3x^2 y - x^3 z \end{aligned} \]
-<p>The determinant is \(-2\) at every point, yet three points have one output:</p>
+<p>The determinant of \(F = (F_1, F_2, F_3)\) is \(-2\) at every point, yet three points have one output:</p>
 \[ \begin{aligned} F(0, 0, -\tfrac14) &amp;= (-\tfrac14, 0, 0) \\ F(1, -\tfrac32, \tfrac{13}{2}) &amp;= (-\tfrac14, 0, 0) \\ F(-1, \tfrac32, \tfrac{13}{2}) &amp;= (-\tfrac14, 0, 0) \end{aligned} \]
 <p>Direct calculation confirms both facts. Extra coordinates that the map leaves unchanged give examples for each larger \(n\). The case \(n = 2\) remains open.</p>
