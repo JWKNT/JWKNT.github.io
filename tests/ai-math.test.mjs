@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import { renderAiMath, typesetMath, mathChars, validateAiMath } from '../lib/ai-math.mjs';
-import { UG_CONSTRAINTS, UG_VALUES, ZETA_ZEROS, deltoidNeedle, deltoidPoint, figures, paleyMatrix } from '../lib/ai-math-figures.mjs';
+import { APSP_EDGES, UG_CONSTRAINTS, UG_VALUES, ZETA_ZEROS, deltoidNeedle, deltoidPoint, figures, k5Color, paleyMatrix } from '../lib/ai-math-figures.mjs';
 
 const root = new URL('../', import.meta.url);
 const results = JSON.parse(await readFile(new URL('data/ai-math.json', root), 'utf8'));
@@ -230,6 +230,65 @@ test('Non-sofic page: the string operators obey the stated rules', () => {
 test('3SUM page: the example sums to zero', () => {
   assert.equal(-7 + 2 + 5, 0);
   assert.match(bodies['subquadratic-3sum'], /\{-7, -3, 2, 5, 8, 11\\\}/);
+});
+
+test('Shortest paths page: the route, the product and the table agree', () => {
+  const names = ['a', 'b', 'c', 'd'], n = 4, index = Object.fromEntries(names.map((v, i) => [v, i]));
+  const weights = Array.from({ length: n }, (_, i) => Array.from({ length: n }, (_, j) => (i === j ? 0 : Infinity)));
+  for (const [from, to, w] of APSP_EDGES) weights[index[from]][index[to]] = w;
+  const floyd = weights.map(row => [...row]);
+  for (let k = 0; k < n; k++) for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) floyd[i][j] = Math.min(floyd[i][j], floyd[i][k] + floyd[k][j]);
+  assert.equal(weights[0][2], 7);
+  assert.equal(floyd[0][2], 3);
+  const star = (A, B) => A.map((_, i) => A.map((_, j) => Math.min(...A.map((_, k) => A[i][k] + B[k][j]))));
+  assert.equal(star(weights, weights)[0][2], 3, 'two edges give the shorter route');
+  assert.deepEqual(star(star(weights, weights), star(weights, weights)), floyd, 'repeated squaring gives all distances');
+});
+
+test('Quantum page: the game values are as stated', () => {
+  const bits = [0, 1];
+  let chsh = 0;
+  for (const a0 of bits) for (const a1 of bits) for (const b0 of bits) for (const b1 of bits) {
+    let wins = 0;
+    for (const x of bits) for (const y of bits) if ((((x ? a1 : a0) + (y ? b1 : b0)) % 2) === (x & y)) wins++;
+    chsh = Math.max(chsh, wins / 4);
+  }
+  assert.equal(chsh, .75);
+  assert.equal((Math.cos(Math.PI / 8) ** 2).toFixed(3), '0.854');
+  // One copy of Feige's game: an answer is a named player (0 Alice, 1 Bob) and a bit.
+  const answers = [[0, 0], [0, 1], [1, 0], [1, 1]];
+  const wins = (x, y, a, b) => a[0] === b[0] && a[1] === b[1] && a[1] === (a[0] === 0 ? x : y);
+  let single = 0;
+  for (const a0 of answers) for (const a1 of answers) for (const b0 of answers) for (const b1 of answers) {
+    let count = 0;
+    for (const x of bits) for (const y of bits) if (wins(x, y, x ? a1 : a0, y ? b1 : b0)) count++;
+    single = Math.max(single, count / 4);
+  }
+  assert.equal(single, .5);
+  // The strategy in the table for two copies.
+  let both = 0;
+  for (const x1 of bits) for (const x2 of bits) for (const y1 of bits) for (const y2 of bits) {
+    if (wins(x1, y1, [0, x1], [0, y2]) && wins(x2, y2, [1, x1], [1, y2])) { both++; assert.equal(x1, y2); }
+  }
+  assert.equal(both / 16, .5);
+});
+
+test('Ramsey page: the small facts and the stated rates hold', () => {
+  const triangleFree = color => { for (let i = 0; i < 5; i++) for (let j = i + 1; j < 5; j++) for (let k = j + 1; k < 5; k++) if (color(i, j) === color(i, k) && color(i, j) === color(j, k)) return false; return true; };
+  assert.ok(triangleFree(k5Color), 'the drawn coloring has no one-color triangle');
+  const edges = []; for (let i = 0; i < 6; i++) for (let j = i + 1; j < 6; j++) edges.push([i, j]);
+  const position = new Map(edges.map(([i, j], e) => [`${i},${j}`, e]));
+  let bad = 0;
+  for (let mask = 0; mask < 2 ** 15; mask++) {
+    let found = false;
+    for (let i = 0; i < 6 && !found; i++) for (let j = i + 1; j < 6 && !found; j++) for (let k = j + 1; k < 6 && !found; k++) {
+      const [p, q, r] = [position.get(`${i},${j}`), position.get(`${i},${k}`), position.get(`${j},${k}`)].map(e => (mask >> e) & 1);
+      if (p === q && q === r) found = true;
+    }
+    if (!found) bad++;
+  }
+  assert.equal(bad, 0, 'every two-coloring on six points has a one-color triangle');
+  assert.equal((380 ** .2).toFixed(2), '3.28');
 });
 
 test('figures are named, stay on theme tokens and contain no raw color', async () => {

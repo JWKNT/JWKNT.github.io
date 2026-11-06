@@ -58,5 +58,20 @@
     "slug": "subquadratic-3sum",
     "title": "Subquadratic 3SUM",
     "description": "What the 3SUM hypothesis says, and the algorithm that refutes it."
+  },
+  {
+    "slug": "all-pairs-shortest-paths",
+    "title": "All-Pairs Shortest Paths",
+    "description": "Why all-pairs shortest paths was stuck at cubic time, and the algorithm that beats it."
+  },
+  {
+    "slug": "quantum-parallel-repetition",
+    "title": "Quantum Parallel Repetition",
+    "description": "What happens to a two-player game with entanglement when the players must win many copies at once."
+  },
+  {
+    "slug": "multicolor-triangle-ramsey",
+    "title": "Multicolor Triangle Ramsey Numbers",
+    "description": "How many points force a one-color triangle when the edges have k colors."
   }
 ]

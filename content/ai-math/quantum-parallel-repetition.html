@@ -1,0 +1,19 @@
+<p>In a two-player game, a referee sends a question to each player. The players answer without communicating, and a fixed rule decides if they win. The <dfn>value</dfn> of the game is their best probability of winning.</p>
+<p>Players who share entangled particles can sometimes do better. In the CHSH game, the players receive bits \(x\) and \(y\) and answer with bits \(a\) and \(b\). They win if \(a + b = xy\) modulo 2. The best value is \(3/4\) without entanglement and about \(0.854\) with it.</p>
+<p><dfn>Parallel repetition</dfn> plays \(n\) copies at once, and the players must win every copy. If one copy has value \(v\), you might expect the value \(v^n\). This is false, because each player sees all their questions before answering, and can correlate the answers.</p>
+<figure class="ai-math-side">
+<div class="table-scroll" data-scroll-region aria-label="A strategy for two copies of Feige's game">
+<table class="ui-table">
+<thead><tr><th scope="col">Copy</th><th scope="col">Alice says</th><th scope="col">Bob says</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Alice, \(x_1\)</td><td>Alice, \(y_2\)</td></tr>
+<tr><td>2</td><td>Bob, \(x_1\)</td><td>Bob, \(y_2\)</td></tr>
+</tbody>
+</table>
+</div>
+<figcaption>Each player gets a random bit in each copy, then names a player and a bit. They win a copy if they name the same player and that player's real bit. One copy has value \(1/2\). With this strategy, two copies also have value \(1/2\), because both wins need only \(x_1 = y_2\).</figcaption>
+</figure>
+<p>Even so, Ran Raz proved that the value falls exponentially in \(n\) for players without entanglement, if \(v &lt; 1\). For entangled players, only polynomial decay was known in general.</p>
+<p><a href="https://openai.com/index/ten-advances-in-mathematics/">OpenAI reports</a> a proof of exponential decay for every finite two-player game. Suppose that the entangled value is \(1 - \varepsilon\), and the players have \(|A|\) and \(|B|\) possible answers. Then \(n\) copies have value at most:</p>
+\[ \exp\left( -c\, \frac{\varepsilon^{13}}{\varepsilon + \log(|A||B|)}\, n \right) \]
+<p>Here \(c\) is a universal constant. <a href="https://arxiv.org/abs/2610.21410">Later work</a> improves the exponent 13 to 3. So repeating a test still drives down the chance of cheating, even when the cheaters share entanglement.</p>

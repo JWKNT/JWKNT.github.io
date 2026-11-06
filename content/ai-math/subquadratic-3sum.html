@@ -12,7 +12,7 @@
 </table>
 </div>
 </figure>
-<p>The <dfn>3SUM hypothesis</dfn> says that this is essentially optimal: no algorithm takes \(n^{2 - \varepsilon}\) steps, for any fixed \(\varepsilon &gt; 0\). A similar hypothesis says the same about \(n^3\) for all-pairs shortest paths. Researchers used these hypotheses to explain why many other problems resist faster algorithms.</p>
+<p>The <dfn>3SUM hypothesis</dfn> says that this is essentially optimal: no algorithm takes \(n^{2 - \varepsilon}\) steps, for any fixed \(\varepsilon &gt; 0\). A similar hypothesis says the same about \(n^3\) for <a href="../all-pairs-shortest-paths/">all-pairs shortest paths</a>. Researchers used these hypotheses to explain why many other problems resist faster algorithms.</p>
 <p><a href="https://arxiv.org/abs/2610.06783">Josh Alman and Virginia Vassilevska Williams report</a> that both are false. Their exponents are in the table, for integer inputs no larger than a fixed power of \(n\). Claude discovered the algorithm, and the authors then simplified and extended it.</p>
 <p>Everything comes from one new method. It computes selected entries of a product of two thin matrices faster than it could compute those entries one by one. Researchers had already built conversions from 3SUM to tasks of this kind, to show that those tasks are hard. The same conversions now give a fast algorithm for 3SUM.</p>
 <p>The authors say that the hidden constants are enormous, so the algorithms are potentially impractical. The change is in the theory: \(n^2\) is not a barrier for 3SUM.</p>
