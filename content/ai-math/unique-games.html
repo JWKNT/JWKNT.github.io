@@ -1,9 +1,0 @@
-<p>A <dfn>unique game</dfn> is a system of equations of the form \(x_i - x_j = c\), with arithmetic modulo a fixed number. Each equation has two variables, so a value for one variable fixes the other.</p>
-<figure class="ai-math-side">
-{{fig:ug-graph}}
-<figcaption>Five variables modulo 5. Each arrow adds its constant. These values satisfy all eight equations.</figcaption>
-</figure>
-<p>If all the equations can hold, a solution is easy to find. Choose one value and follow the equations. If only 99% can hold, this method fails. A chain of 100 equations hits one of the bad 1% with probability about 63%, and every value after that point is wrong.</p>
-<p>The <dfn>Unique Games Conjecture</dfn> says that this difficulty is real and extreme. When 99% of the equations can hold, it is NP-hard to find values that satisfy even 1% of them, if the modulus is large enough. The same holds with any numbers near 100% and 0% in place of 99% and 1%. NP-hard means that a fast algorithm for this task would also solve <a href="../exponential-time-hypothesis/">3-SAT</a> and every other problem in NP. Most researchers expect that to be impossible.</p>
-<p><a href="https://github.com/openai/math/blob/main/preprints/The-Unique-Games-Theorem-September-23-2026/paper.pdf">An OpenAI manuscript</a> reports a proof. It turns any 3-SAT formula, in polynomial time, into a game. If the formula has a solution, nearly all equations can hold. If not, almost none can. So a fast way to tell these two kinds of game apart would solve 3-SAT.</p>
-<p>The conjecture implies that many known approximation algorithms are the best possible unless \(\mathrm{P} = \mathrm{NP}\). For example, split the vertices of a graph into two sides so that as many edges as possible cross. A known algorithm guarantees 0.878 of the best count, and no fast algorithm can guarantee more.</p>

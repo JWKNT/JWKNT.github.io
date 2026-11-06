@@ -72,27 +72,6 @@ with `site`, `href` and an optional `handle` and `kind`. Links must use HTTPS. T
 `node build.mjs` and `npm test`, and commit the data and `accounts/index.html` together.
 Every link has `rel="me"`. Layout rules are in `assets/accounts.css`.
 
-## AI math results
-
-`/ai-math/` says what each AI mathematics result means, in two minutes, without the proof.
-To add a result, append an entry to `data/ai-math.json` and write its body in
-`content/ai-math/<slug>.html`. Follow the `jehlp-math-explainer` skill in `site-theme`.
-A body is plain paragraphs and one `ai-math-side` figure or table for the margin. It has
-no headings, status, history or source list. Link a source on the words that state the result.
-Write math between `\(` and `\)` or between `\[` and `\]`. The build typesets it to native
-MathML with the pinned `temml` development dependency, so the pages load no typesetter.
-`{{fig:name}}` inserts a figure from `lib/ai-math-figures.mjs`. Run `node build.mjs` and
-`npm test`, and commit the data, body and `ai-math/` output together. Layout rules are in
-`assets/ai-math.css`. `tests/ai-math.test.mjs` limits each page to 300 words and checks the
-quoted calculations in exact arithmetic.
-
-Each result also has a simple version for a reader with less schooling, written in
-`content/ai-math/<slug>.simple.html` and published at `/ai-math/<slug>/simple/`. The short page
-stays the default, and a Simplify button beside its title opens the simple page. The simple page
-has the same form, defines each term at first use and has 400 to 800 words. Its links go to the
-simple version of the other result, as `../../<slug>/simple/`. The search crawl skips these pages,
-so site search has one record for each result.
-
 ## Verification and release
 
 Check 390px/1440px, light/dark, 200% text, heading/link keyboard behavior,
@@ -109,7 +88,7 @@ are maintained in `site-theme`.
 Install build dependencies with `npm ci --ignore-scripts`. Run `npm test`, then
 `npm run build:site`. The `npm test` pretest regenerates the homepage before checking it.
 The build artifact is `_site/`: only the generated homepage,
-skills, accounts and AI math pages, public assets, CNAME, robots.txt, coverage metadata and search indexes. Source,
+skills and accounts pages, public assets, CNAME, robots.txt, coverage metadata and search indexes. Source,
 credentials, dependency files and fetch caches are never copied into it.
 
 The build fetches **only currently published jehlp.net inputs** under the

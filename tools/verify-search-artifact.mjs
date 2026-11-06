@@ -19,6 +19,4 @@ const skills = await readFile(resolve(root, '_site/skills/index.html'), 'utf8');
 if (!skills.includes('<link rel="canonical" href="https://jehlp.net/skills/">') || !skills.includes('<article class="skill"')) throw new Error('Incomplete skills page');
 const accounts = await readFile(resolve(root, '_site/accounts/index.html'), 'utf8');
 if (!accounts.includes('<link rel="canonical" href="https://jehlp.net/accounts/">') || !accounts.includes('rel="me"')) throw new Error('Incomplete accounts page');
-const aiMath = await readFile(resolve(root, '_site/ai-math/index.html'), 'utf8');
-if (!aiMath.includes('<link rel="canonical" href="https://jehlp.net/ai-math/">') || !aiMath.includes('class="ai-math-result"')) throw new Error('Incomplete AI math page');
 console.log(`Verified ${coverage.records} search targets in ${Object.keys(coverage.sites).length} sites at ${coverage.generatedAt}`);

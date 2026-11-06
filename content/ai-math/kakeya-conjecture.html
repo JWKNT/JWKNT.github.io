@@ -1,9 +1,0 @@
-<p>A <dfn>Kakeya set</dfn> in \(n\)-dimensional space contains a segment of length 1 in every direction. A ball of diameter 1 is one example. The question is how small such a set can be.</p>
-<figure class="ai-math-side">
-{{fig:deltoid}}
-<figcaption>A needle of length 1 can turn around inside this deltoid, which has area \(\pi/8\). It can also turn around in a region of any positive area, however small.</figcaption>
-</figure>
-<p>Volume does not answer this. Abram Besicovitch showed that a Kakeya set in the plane can have area zero. To see how, cut a triangle into thin slivers and slide them over each other. Each sliver keeps its directions, and the total area shrinks.</p>
-<p>Dimension does. Cover a set with boxes of side \(\delta\) and count them. A segment needs about \(1/\delta\) boxes, and a filled square needs about \(1/\delta^2\). The exponent is the dimension. It can be a fraction: the Cantor set has length zero and needs about \((1/\delta)^{0.63}\) boxes.</p>
-<p>The <dfn>Kakeya conjecture</dfn> says that every Kakeya set in \(n\) dimensions has dimension \(n\). A Kakeya set can have zero volume, but covering it still takes nearly as many small boxes as a solid block. So the overlap of the segments has a limit. The exact statement uses Hausdorff dimension, a refined form of this count. The cases \(n = 2\) and \(n = 3\) were already known.</p>
-<p><a href="https://github.com/openai/math/blob/main/preprints/Local-smoothing-for-the-Euclidean-wave-equation-October-25-2026/paper.pdf">OpenAI reports</a> a proof for every \(n\). It follows from a stronger statement about waves, the local smoothing conjecture, which limits how long a wave can stay focused.</p>
