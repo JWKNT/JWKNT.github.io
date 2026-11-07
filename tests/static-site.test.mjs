@@ -31,7 +31,8 @@ test('all authored destinations are present in the always-visible semantic secti
   for (const category of categories) assert.match(index, new RegExp(`<section class="atlas-category" data-category="${category.id}" aria-labelledby="category-${category.id}">\\s*<h2 id="category-${category.id}" class="category-heading">`));
   assert.match(index, /class="skip-link" href="#directory"/);
   assert.match(index, /site-theme\/v2\/base\.css/);
-  assert.match(index, /favicons\/home\.png/);
+  // A new address makes browsers fetch the seal favicon instead of an old cached copy.
+  assert.match(index, /favicons\/home\.png\?v=20261107-seal"/);
   assert.match(index, /data-theme-toggle/);
 });
 
