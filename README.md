@@ -5,13 +5,19 @@ The root [jehlp.net](https://jehlp.net) directory, built from `main` and publish
 
 ## Design contract
 
-No visible site name, masthead, introduction, taglines, or destination descriptions.
-Category and destination names are the content. Small accessible utility labels,
-search feedback, the skip link, and document metadata remain useful exceptions.
-Composed punctuation supplies a quiet, ink-like identity; it is decorative and
-hidden from assistive technology. It is not a replacement for the shared PNG
-masthead convention on project pages. No images, canvas, animation, or framework
-are needed for these code-native studies.
+One title above the directory: the Ruffle seal (style library icon i0063) and a
+`jehlp.net` wordmark, in `lib/wordmark.mjs`. The seal takes the place of a study,
+and the name starts where the destination names start. The letters are outlines
+of Wrenfold Display, so they scale with the column and never overflow. A hidden
+text name gives the `h1` its accessible name. Keep the faint echo and the accent
+point, because the studies below use the same two devices.
+
+No introduction, taglines, or destination descriptions. Category and destination
+names are the content. Small accessible utility labels, search feedback, the skip
+link, and document metadata remain useful exceptions. Composed punctuation supplies
+a quiet, ink-like identity; it is decorative and hidden from assistive technology.
+It is not a replacement for the shared PNG masthead convention on project pages.
+No images, canvas, animation, or framework are needed for these code-native studies.
 
 Keep the directory compact: a two-column desktop composition and a single column
 on mobile, with no internal scrollports. Preserve the shared paper/charcoal
@@ -44,7 +50,7 @@ it, returning focus to its button. Clearing a query restores the full directory.
 The directory is authored only: no automatic GitHub discovery or Other category.
 Add new destinations explicitly to the JSON with their intended category and name.
 
-The current seven groups hold 23 destinations. Me comes first, at the top left, and holds Profile,
+The current seven groups hold 24 destinations. Me comes first, at the top left, and holds Profile,
 Links, and Accounts. Games includes the playable NDB Idle, authored Puzzles, Baba Is You, NGU Idle,
 and Box Logic. Agents holds the guidance for agent work: MTL Guide, Style Library, Skills, and Site
 Theme. Tools keeps the solvers and Gazetteer. Category metadata is generated from the labels, not a

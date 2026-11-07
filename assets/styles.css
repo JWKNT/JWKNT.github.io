@@ -38,6 +38,20 @@ body { margin: 0; }
   font: 1rem/1.5 var(--ui, var(--serif));
 }
 
+/* The site title sits in the same two columns as a category: the seal takes the
+   place of a study, and the name starts where the destination names start. */
+.site-wordmark {
+  position: relative;
+  margin: 0 0 clamp(1.25rem, 4vh, 2.5rem);
+  padding: 0 0 0 10.5rem;
+  color: var(--ink);
+  line-height: 0;
+}
+.wordmark-seal { position: absolute; top: 50%; left: .25rem; width: 7rem; height: 7rem; transform: translateY(-50%); }
+.wordmark-name { display: block; width: min(100%, 31rem); height: auto; overflow: visible; fill: currentColor; }
+.wordmark-echo { fill: var(--atlas-faint); }
+.wordmark-point { fill: var(--atlas-accent); }
+
 .directory { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 4.5rem; }
 .atlas-category {
   position: relative;
@@ -151,6 +165,8 @@ body { margin: 0; }
 @media (max-width: 60rem) {
   .atlas { width: var(--site-frame-width, min(48rem, calc(100% - 3rem))); }
   .directory { gap: 0 2.5rem; }
+  .site-wordmark { padding-left: 6.25rem; }
+  .wordmark-seal { left: 0; width: 5.25rem; height: 5.25rem; }
   .atlas-category { padding-left: 0; padding-top: 8.5rem; }
   .type-study { top: .75rem; transform: scale(.75); transform-origin: top left; }
   .page-links a { font-size: 1.125rem; }
@@ -159,6 +175,8 @@ body { margin: 0; }
   .atlas { width: var(--site-frame-width, calc(100% - 2rem)); padding-top: var(--site-frame-top, .75rem); padding-bottom: 1rem; }
   .index-tools { margin-bottom: 1.5rem; }
   .directory { grid-template-columns: minmax(0, 1fr); }
+  .site-wordmark { margin-bottom: 1rem; padding-left: min(4.5rem, 19vw); }
+  .wordmark-seal { width: min(3.75rem, 16vw); height: min(3.75rem, 16vw); }
   .atlas-category { padding: .75rem 0 1.5rem min(6.4rem, 25vw); }
   .type-study { top: 1.4rem; left: -.2rem; font-size: 16px; width: 131px; height: 144px; transform: scale(.65); }
   .page-links a { min-height: 2.75rem; }

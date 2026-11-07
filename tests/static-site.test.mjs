@@ -57,9 +57,17 @@ test('metadata follows authored categories and legacy open flags cannot hide the
   assert.match(html, /data-category="reading" aria-labelledby="category-reading">\s*<h2/);
 });
 
-test('the index has no visible site title, masthead or description', () => {
-  const body = index.split('<body>')[1].split('</body>')[0].replace(/<a class="site-home"[^>]*>[\s\S]*?<\/a>/, '');
-  assert.doesNotMatch(body, /<h1\b|<header\b|masthead|jehlp\.net|jwknt\.github\.io/i);
+test('the index has one title, the seal and wordmark, and no description', () => {
+  const body = index.split('<body>')[1].split('</body>')[0];
+  assert.equal((body.match(/<h1\b/g) || []).length, 1);
+  const title = body.match(/<h1 class="site-wordmark">([\s\S]*?)<\/h1>/)?.[1];
+  assert.ok(title, 'the wordmark is the page title');
+  assert.match(title, /^<span class="sr-only">jehlp\.net<\/span>/, 'the outlined letters have a text name');
+  assert.equal((title.match(/<svg [^>]*aria-hidden="true"/g) || []).length, 2);
+  assert.match(title, /class="wordmark-seal"/);
+  assert.match(title, /M12 3\.2C14 2\.1 16 4 16 5\.5/, 'the seal is style library icon i0063');
+  assert.ok(body.indexOf('site-wordmark') < body.indexOf('id="directory"'), 'the title comes before the directory');
+  assert.doesNotMatch(body, /<header\b|jwknt\.github\.io/i);
   assert.doesNotMatch(body, /class="(?:project-description|category-description|intro|hero)"/);
   assert.match(index, /<title>jehlp\.net<\/title>/);
   assert.match(index, /<link rel="canonical" href="https:\/\/jehlp\.net\/">/);
@@ -156,7 +164,7 @@ test('Mathematics has an abstract category mark and plain Erdős and Cookie Clic
   assert.match(index, /class="type-study study-continuum" aria-hidden="true"><svg class="continuum-study" aria-hidden="true" focusable="false"/);
   assert.match(index, /<li data-project="erdos1016"><a href="\/erdos1016\/">Erdős 1016<span class="link-point ui-link-arrow"/);
   assert.match(index, /<li data-project="cookie-clicker"><a href="\/cookie-clicker\/">Cookie Clicker<span class="link-point ui-link-arrow"/);
-  assert.doesNotMatch(index, /destination-symbol|graph-study|<circle/);
+  assert.doesNotMatch(index.split('id="directory"')[1], /destination-symbol|graph-study|<circle/);
 });
 
 test('Agents groups agent guidance under an abstract spiral mark, apart from Tools', () => {
@@ -197,5 +205,5 @@ test('decorative studies keep their original font and fixed geometry', async () 
   assert.doesNotMatch(css, /--reading|Wrenfold/);
   assert.match(css, /\.type-study \{[^}]*font-size: 16px;/);
   assert.match(css, /\.study-parentheses \.glyph \{ font-size: 128px;/);
-  assert.match(index, /assets\/styles\.css\?v=20261105-me/);
+  assert.match(index, /assets\/styles\.css\?v=20261107-wordmark/);
 });

@@ -22,6 +22,8 @@ test('quiz adapter includes authored outcomes and answers without code or asset 
 
 function fixture() {
   const sources = new Map();
+  sources.set('/omniscient-readers-viewpoint/data/index.json', { chapters: [{ slug: 'chapter-001', title: 'Novel heading' }] });
+  sources.set('/omniscient-readers-viewpoint/data/chapters/chapter-001.json', { lines: [{ id: 'chapter-001:1', i: 1, en: 'A <printed heading> stays in the novel text.' }] });
   for (const [site, slug] of [['albatross-koukairoku', '1001'], ['black-sheep-town', 'A8']]) {
     sources.set(`/${site}/data/index.json`, { chapters: [{ slug, title: 'Chapter heading' }] });
     sources.set(`/${site}/data/chapters/${slug}.json`, {
@@ -67,7 +69,7 @@ test('all public adapters preserve body text and canonical supported routes', as
     return sources.get(path);
   };
   const result = await collectDynamicRecords({ getJSON: async path => read(path), getText: async path => read(path), addRecord: async record => records.push(record) });
-  assert.equal(records.length, 14);
+  assert.equal(records.length, 15);
   assert.deepEqual(result.htmlPaths, ['/puzzles/a-38-000tos/']);
   const passage = records.find(record => record.url === '/black-sheep-town/?chapter=A8#line-a8-0014');
   assert.ok(passage, 'Keep the exact source line ID, including lowercase and padding');
@@ -134,6 +136,16 @@ test('Profile allowlists rendered fields and ignores new raw or internal fields 
   const content = records.filter(record => record.site === 'profile').map(record => record.content).join('\n');
   assert.doesNotMatch(content, /SECRET_|NOT_RENDERED_COLOUR/);
   for (const copy of ['Visible population', 'Visible place', 'Visible comparison note', 'Visible date estimate', 'Visible segment', 'Visible haplogroup', 'Visible association', 'Visible variant', 'Visible gene']) assert.ok(content.includes(copy), copy);
+});
+
+test('the novel reader indexes English only and keeps its printed angle brackets', async () => {
+  const sources = fixture();
+  const records = [];
+  await collectDynamicRecords({ paths: ['/omniscient-readers-viewpoint/'], getJSON: async path => sources.get(path), getText: async path => sources.get(path), addRecord: async record => records.push(record) });
+  assert.equal(records.length, 1);
+  assert.equal(records[0].url, '/omniscient-readers-viewpoint/?chapter=chapter-001#line-chapter-001-1');
+  assert.match(records[0].content, /A <printed heading> stays/);
+  assert.equal(records[0].japanese, '');
 });
 
 test('long VN chapters are divided into bounded, line-addressable passages', async () => {
