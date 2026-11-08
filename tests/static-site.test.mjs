@@ -73,11 +73,13 @@ test('the index has one title, the seal, and the owner’s introduction with the
   const intro = body.match(/<div class="intro-text ui-human">\s*<p>([\s\S]*?)<\/p>\s*<p>([\s\S]*?)<\/p>\s*(<span class="ui-human-mark"[^>]*><\/span>)\s*<\/div>/);
   assert.ok(intro, 'the introduction is two marked paragraphs');
   const words = html => html.replace(/<svg[\s\S]*?<\/svg>/g, '').replace(/<[^>]+>/g, '').replaceAll('&nbsp;', ' ').trimEnd();
-  assert.deepEqual([words(intro[1]), words(intro[2])], introParagraphs);
-  assert.deepEqual(introParagraphs, [
-    'I have been on the internet a long time, and depending on where you have met me, I have gone by Jay, JW, jehlp, or KNT. I am interested in mathematics, data science, puzzles, science fiction, and otaku culture.',
+  assert.deepEqual([words(intro[1]), words(intro[2])], introParagraphs.map(words));
+  assert.deepEqual(introParagraphs.map(words), [
+    'I have been on the internet a long time, and depending on where you have encountered me, I have gone by Jay, JW, jehlp, or KNT. I am interested in mathematics, data science, puzzles, science fiction, and otaku culture.',
     'This website serves as a work-in-progress centralization of my past and future brainchildren, and everything directly on this site (i.e., any page starting with jehlp.net/) is written and programmed fully by AI under my supervision, unless explicitly marked with this symbol shown to the right',
   ]);
+  assert.match(intro[1], /gone by <strong>Jay<\/strong>, <strong>JW<\/strong>, <strong>jehlp<\/strong>, or <strong>KNT<\/strong>\./, 'the four names are bold');
+  assert.equal((body.match(/<strong>/g) || []).length, 4, 'nothing else is bold');
   assert.match(intro[2], /<span class="intro-end">the right&nbsp;<svg class="intro-arrow" aria-hidden="true"[^>]*>[\s\S]*<\/svg><\/span>$/, 'the arrow ends the paragraph on the line of the last words');
   assert.equal(intro[3], '<span class="ui-human-mark" role="img" aria-label="Written by a human" title="Written by a human"></span>');
   assert.match(body, /<\/div>\s*<\/div>\s*<hr class="atlas-rule">\s*<section id="search-panel"/, 'one rule ends the introduction, before search results and categories');
@@ -153,7 +155,7 @@ test('homepage omits the redundant Home link and retains search and theme contro
   assert.equal((index.match(/class="site-home"/g) || []).length, 0);
   assert.doesNotMatch(index, /site-home-dock/);
   assert.match(index, /<div class="index-tools">[\s\S]*?<span class="site-utility-pair"><button class="search-toggle site-search"[\s\S]*?<\/button><button[^>]*data-theme-toggle/);
-  assert.ok(index.includes('base.css?v=20261009-reading-folio'));
+  assert.ok(index.includes('base.css?v=20261108-justify'));
   assert.ok(index.includes('theme.js?v=20261009-reading-folio'));
   const css = await readFile(new URL('../assets/styles.css', import.meta.url), 'utf8');
   assert.match(css, /\.page-search \{[^}]*min-width: 0;[^}]*flex: 0 1 24rem;/);
@@ -223,7 +225,7 @@ test('decorative studies keep their original font and fixed geometry', async () 
   assert.match(css, /\.intro-text \{[^}]*font: 1\.25rem\/1\.65 var\(--reading\);/);
   assert.match(css, /\.type-study \{[^}]*font-size: 16px;/);
   assert.match(css, /\.study-parentheses \.glyph \{ font-size: 128px;/);
-  assert.match(index, /assets\/styles\.css\?v=20261108-margin/);
+  assert.match(index, /assets\/styles\.css\?v=20261108-justify/);
 });
 
 test('the introduction covers the frame, indents its second paragraph and ends at one clear rule', async () => {
