@@ -76,11 +76,11 @@ test('the index has one title, the seal, and the owner’s introduction with the
   assert.deepEqual([words(intro[1]), words(intro[2])], introParagraphs.map(words));
   assert.deepEqual(introParagraphs.map(words), [
     'I have been on the internet a long time, and depending on where you have encountered me, I have gone by Jay, JW, jehlp, or KNT. I am interested in mathematics, data science, puzzles, science fiction, and otaku culture.',
-    'This website serves as a work-in-progress centralization of my past and future brainchildren, and everything directly on this site (i.e., any page starting with jehlp.net/) is written and programmed fully by AI under my supervision, unless explicitly marked with this symbol shown to the right',
+    'This website serves as a work-in-progress centralization of my past and future brainchildren, and everything directly on this site (i.e., any page starting with jehlp.net/) is written and programmed fully by AI under my supervision, unless explicitly marked with this symbol shown to the right.',
   ]);
   assert.match(intro[1], /gone by <strong>Jay<\/strong>, <strong>JW<\/strong>, <strong>jehlp<\/strong>, or <strong>KNT<\/strong>\./, 'the four names are bold');
   assert.equal((body.match(/<strong>/g) || []).length, 4, 'nothing else is bold');
-  assert.match(intro[2], /<span class="intro-end">the right&nbsp;<svg class="intro-arrow" aria-hidden="true"[^>]*>[\s\S]*<\/svg><\/span>$/, 'the arrow ends the paragraph on the line of the last words');
+  assert.match(intro[2], /<span class="intro-end">the right\.&nbsp;<svg class="intro-arrow" aria-hidden="true"[^>]*>[\s\S]*<\/svg><\/span>$/, 'the arrow ends the paragraph on the line of the last words');
   assert.equal(intro[3], '<span class="ui-human-mark" role="img" aria-label="Written by a human" title="Written by a human"></span>');
   assert.match(body, /<\/div>\s*<\/div>\s*<hr class="atlas-rule">\s*<section id="search-panel"/, 'one rule ends the introduction, before search results and categories');
   assert.equal((body.match(/class="[^"]*\bui-human[\s"]/g) || []).length, 1, 'only the owner’s words carry the mark');
@@ -225,7 +225,7 @@ test('decorative studies keep their original font and fixed geometry', async () 
   assert.match(css, /\.intro-text \{[^}]*font: 1\.25rem\/1\.65 var\(--reading\);/);
   assert.match(css, /\.type-study \{[^}]*font-size: 16px;/);
   assert.match(css, /\.study-parentheses \.glyph \{ font-size: 128px;/);
-  assert.match(index, /assets\/styles\.css\?v=20261108-justify/);
+  assert.match(index, /assets\/styles\.css\?v=20261108-spacing/);
 });
 
 test('the introduction covers the frame, indents its second paragraph and ends at one clear rule', async () => {
@@ -235,6 +235,10 @@ test('the introduction covers the frame, indents its second paragraph and ends a
   // The mark hangs in the right page margin as far as that margin has room, less 1rem.
   assert.match(rule, /--human-mark-hang: clamp\(0px, max\(\(100vw - var\(--site-frame-page, 74rem\)\) \/ 2, var\(--site-frame-gutter, 2\.5rem\)\) - 1rem, var\(--human-mark-size\) \* 7 \/ 3\);/);
   assert.match(css, /\.intro-text p \+ p \{ text-indent: 2\.5em; \}/, 'a tab indent starts the second paragraph');
+  // The landing page justifies by spacing alone: no hyphens at line ends.
+  assert.match(css, /\.intro-text p \{ margin: 0; text-wrap: pretty; -webkit-hyphens: none; hyphens: none; \}/);
+  assert.match(css, /\.intro-end, \.intro-keep \{ white-space: nowrap; \}/);
+  assert.match(index, /<span class="intro-keep">work-in-progress<\/span>/);
   assert.match(css, /\.atlas-rule \{[^}]*border-top: 1px solid var\(--ink\);/);
   assert.match(css, /\.atlas-category:nth-child\(-n \+ 2\) \{ border-top-color: transparent; \}/, 'the rule replaces the faint rules of the first row');
   assert.match(css, /@media \(max-width: 38rem\) \{[\s\S]*?\.atlas-category:nth-child\(2\) \{ border-top-color: var\(--atlas-faint\); \}/, 'on one column the second category keeps its rule');

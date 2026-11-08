@@ -10,7 +10,8 @@ hidden text name for the `h1`. The owner's introduction is beside it, in
 `lib/intro.mjs`. The seal takes the place of a study. The text starts where the
 destination names start and covers the rest of the frame. The owner wrote the
 introduction, so keep its words and its two paragraphs exactly. The second
-paragraph starts with a tab indent. The introduction carries the human mark of
+paragraph starts with a tab indent. The text is justified by spacing alone,
+without hyphenation. The introduction carries the human mark of
 the site theme (`.ui-human`): a square bracket with a human figure. The mark hangs
 in the right page margin as far as that margin has room. The last words end in an
 arrow that points at the mark. The arrow has the faint echo and the accent point

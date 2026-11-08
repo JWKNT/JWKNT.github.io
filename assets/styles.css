@@ -55,9 +55,11 @@ body { margin: 0; }
   color: var(--ink);
   font: 1.25rem/1.65 var(--reading);
 }
-.intro-text p { margin: 0; text-wrap: pretty; }
+/* The landing page justifies its introduction by spacing alone: no hyphenation,
+   and no line break at the hyphens of work-in-progress. */
+.intro-text p { margin: 0; text-wrap: pretty; -webkit-hyphens: none; hyphens: none; }
 .intro-text p + p { text-indent: 2.5em; }
-.intro-end { white-space: nowrap; }
+.intro-end, .intro-keep { white-space: nowrap; }
 .intro-arrow { width: 2em; height: .75em; overflow: visible; vertical-align: -.02em; }
 .arrow-echo { stroke: var(--atlas-faint); }
 .arrow-point { fill: var(--atlas-accent); }
