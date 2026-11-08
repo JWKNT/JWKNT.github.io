@@ -82,7 +82,7 @@ test('the index has one title, the seal, and the owner’s introduction with the
   assert.equal((body.match(/<strong>/g) || []).length, 4, 'nothing else is bold');
   assert.match(intro[2], /<span class="intro-end">the right\.&nbsp;<svg class="intro-arrow" aria-hidden="true"[^>]*>[\s\S]*<\/svg><\/span>$/, 'the arrow ends the paragraph on the line of the last words');
   assert.equal(intro[3], '<span class="ui-human-mark" role="img" aria-label="Written by a human" title="Written by a human"></span>');
-  assert.match(body, /<\/div>\s*<\/div>\s*<hr class="atlas-rule">\s*<section id="search-panel"/, 'one rule ends the introduction, before search results and categories');
+  assert.match(body, /<\/div>\s*<\/div>\s*<hr class="atlas-rule">\s*<nav class="directory"/, 'one rule ends the introduction, before the categories');
   assert.equal((body.match(/class="[^"]*\bui-human[\s"]/g) || []).length, 1, 'only the owner’s words carry the mark');
   assert.match(index, /<link rel="stylesheet" href="https:\/\/jehlp\.net\/site-theme\/v2\/components\.css\?v=20261108-margin">/, 'the theme layer that draws the mark');
   assert.ok(body.indexOf('site-seal') < body.indexOf('intro-text') && body.indexOf('intro-text') < body.indexOf('id="directory"'), 'the title and introduction come before the directory');
@@ -236,7 +236,17 @@ test('decorative studies keep their original font and fixed geometry', async () 
   assert.match(css, /\.intro-text \{[^}]*font: 1\.25rem\/1\.65 var\(--reading\);/);
   assert.match(css, /\.type-study \{[^}]*font-size: 16px;/);
   assert.match(css, /\.study-parentheses \.glyph \{ font-size: 128px;/);
-  assert.match(index, /assets\/styles\.css\?v=20261108-spacing/);
+  assert.match(index, /assets\/styles\.css\?v=20261108-search/);
+  assert.match(index, /assets\/app\.js\?v=20261108-search/);
+});
+
+test('search opens directly under the search box, above the introduction', async () => {
+  const css = await readFile(new URL('../assets/styles.css', import.meta.url), 'utf8');
+  const body = index.split('<body>')[1];
+  assert.match(body, /<\/span>\s*<\/div>\s*<section id="search-panel"[\s\S]*?<\/section>\s*<div class="site-intro">/, 'the filter and results follow the search box, not the introduction');
+  assert.match(css, /\.search-panel \{ max-width: 58rem; margin: \.75rem 0 0; \}/);
+  assert.doesNotMatch(css.match(/\.index-tools \{[^}]*\}/)[0], /margin/, 'the gap above the introduction belongs to the introduction');
+  assert.match(css, /\.site-intro \{[^}]*margin: clamp\(1rem, 5vh, 3rem\) 0 clamp\(1\.75rem, 5vh, 3rem\);/);
 });
 
 test('the introduction covers the frame, indents its second paragraph and ends at one clear rule', async () => {

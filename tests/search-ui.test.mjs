@@ -35,7 +35,12 @@ test('Slash/Escape, empty state and focus restoration preserve directory disclos
     assert.equal(t.$('#search-panel').hidden, false);
     t.submit(''); await settle();
     assert.equal(t.$('#directory').hidden, false);
+    t.$('#page-query').value = 'ra'; t.$('#page-query').dispatchEvent(new t.window.Event('input', { bubbles: true }));
+    assert.equal(t.$('.site-intro').hidden, true, 'typing a query moves the introduction aside at once');
+    t.$('#page-query').value = ''; t.$('#page-query').dispatchEvent(new t.window.Event('input', { bubbles: true }));
+    assert.equal(t.$('.site-intro').hidden, false, 'an empty query restores it');
     t.submit('rare'); await settle();
+    for (const selector of ['.site-intro', '.atlas-rule', '#directory']) assert.equal(t.$(selector).hidden, true, `results take the place of ${selector}`);
     assert.equal(t.$('#search-results a').getAttribute('href'), '/readers/the-cat/#story/p-021');
     assert.equal(t.$('#search-results img'), null);
     assert.match(t.$('#search-results').textContent, /<img onerror=evil>/);
@@ -43,7 +48,7 @@ test('Slash/Escape, empty state and focus restoration preserve directory disclos
     assert.equal(t.document.activeElement, t.$('#search-results a'));
     t.document.activeElement.dispatchEvent(new t.window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
     assert.equal(t.$('#search-panel').hidden, true);
-    assert.equal(t.$('#directory').hidden, false);
+    for (const selector of ['.site-intro', '.atlas-rule', '#directory']) assert.equal(t.$(selector).hidden, false, `closing search restores ${selector}`);
     assert.equal(t.$('.atlas-category').open, false);
     assert.equal(t.document.activeElement, t.$('.search-toggle'));
   } finally { t.dom.window.close(); }
@@ -76,6 +81,7 @@ test('network failure provides a working fresh-engine retry', async () => {
     assert.match(t.$('#page-status').textContent, /could not load/);
     assert.equal(t.$('#search-retry').hidden, false);
     assert.equal(t.$('#directory').hidden, false);
+    assert.equal(t.$('.site-intro').hidden, false);
     t.$('#search-retry').click(); await settle();
     assert.equal(instances, 2);
     assert.equal(t.$('#search-results').children.length, 1);

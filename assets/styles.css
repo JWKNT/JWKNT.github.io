@@ -22,7 +22,6 @@ body { margin: 0; }
   justify-content: flex-end;
   gap: var(--utility-gap, .375rem);
   min-height: 2.75rem;
-  margin-bottom: clamp(1rem, 5vh, 3rem);
 }
 
 [data-theme-toggle]:not([data-theme-bound]) { visibility: hidden; }
@@ -44,7 +43,7 @@ body { margin: 0; }
    as far as that margin has room, and stays inside the frame on a narrow screen. */
 .site-intro {
   position: relative;
-  margin: 0 0 clamp(1.75rem, 5vh, 3rem);
+  margin: clamp(1rem, 5vh, 3rem) 0 clamp(1.75rem, 5vh, 3rem);
   padding: 0 0 0 10.5rem;
 }
 .site-seal { position: absolute; top: .15rem; left: .25rem; margin: 0; color: var(--ink); line-height: 0; }
@@ -67,7 +66,6 @@ body { margin: 0; }
 /* One clear ink rule ends the introduction. It is the top boundary of the first
    row of categories, so that row has no faint rule of its own. */
 .atlas-rule { height: 0; margin: 0; border: 0; border-top: 1px solid var(--ink); }
-.atlas-rule + .search-panel { margin-top: 1.5rem; }
 .atlas-category:nth-child(-n + 2) { border-top-color: transparent; }
 .atlas-category:nth-child(-n + 2)::before { display: none; }
 
@@ -193,9 +191,8 @@ body { margin: 0; }
 }
 @media (max-width: 38rem) {
   .atlas { width: var(--site-frame-width, calc(100% - 2rem)); padding-top: var(--site-frame-top, .75rem); padding-bottom: 1rem; }
-  .index-tools { margin-bottom: 1.5rem; }
   .directory { grid-template-columns: minmax(0, 1fr); }
-  .site-intro { margin-bottom: 1.25rem; padding-left: 0; }
+  .site-intro { margin: 1.5rem 0 1.25rem; padding-left: 0; }
   .site-seal { position: static; margin-bottom: .75rem; }
   .intro-seal { width: 3.75rem; height: 3.75rem; }
   .intro-text { font-size: 1.0625rem; }
@@ -218,9 +215,11 @@ body { margin: 0; }
 }
 
 /* Site-wide search keeps the ordinary page flow and fetches result excerpts only
-   as needed. No overlay, independent scrollport, or directory layout changes. */
+   as needed. No overlay, independent scrollport, or directory layout changes. The
+   panel opens directly under the search box, and a query's results take the place
+   of the introduction and the directory. */
 .page-search { min-width: 0; }
-.search-panel { max-width: 58rem; margin: 0 auto 2rem; }
+.search-panel { max-width: 58rem; margin: .75rem 0 0; }
 .search-options { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
 .search-options label { font-size: .875rem; color: var(--muted); }
 .search-options select, .search-options .ui-select { width: min(100%, 18rem); min-width: 0; }

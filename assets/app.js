@@ -5,6 +5,8 @@ const form = document.querySelector('.page-search');
 const input = document.querySelector('#page-query');
 const status = document.querySelector('#page-status');
 const directory = document.querySelector('#directory');
+// A query's results take the place of the introduction, its rule and the directory.
+const page = [document.querySelector('.site-intro'), document.querySelector('.atlas-rule'), directory].filter(Boolean);
 const panel = document.querySelector('#search-panel');
 const list = document.querySelector('#search-results');
 const siteSelect = document.querySelector('#search-site');
@@ -44,6 +46,9 @@ function rememberSearch(open = true) {
     history.replaceState(state, '');
   } catch { /* Search remains usable if history state is unavailable. */ }
 }
+function showPage(visible) {
+  for (const node of page) node.hidden = !visible;
+}
 function setBusy(value) {
   busy = value;
   panel.setAttribute('aria-busy', String(value));
@@ -55,7 +60,7 @@ function idle() {
   matches = []; shown = 0;
   list.replaceChildren(); more.hidden = true; retry.hidden = true;
   status.textContent = ''; setBusy(false);
-  directory.hidden = false;
+  showPage(true);
   hint.hidden = false;
   if (!form.hidden) rememberSearch();
 }
@@ -121,7 +126,7 @@ async function runSearch() {
   const token = ++sequence;
   matches = []; shown = 0;
   list.replaceChildren(); more.hidden = true; retry.hidden = true; hint.hidden = true;
-  directory.hidden = true; setBusy(true); status.textContent = 'Searching all sites…';
+  showPage(false); setBusy(true); status.textContent = 'Searching all sites…';
   try {
     const engine = await loadEngine(query);
     if (token !== sequence) return;
@@ -136,7 +141,7 @@ async function runSearch() {
   } catch (error) {
     if (token !== sequence) return;
     status.textContent = 'Search could not load. Check your connection and try again.';
-    retry.hidden = false; directory.hidden = false; setBusy(false);
+    retry.hidden = false; showPage(true); setBusy(false);
   }
 }
 
@@ -147,7 +152,7 @@ input.addEventListener('input', () => {
   sequence++; clearTimeout(timer); more.hidden = true; retry.hidden = true;
   if (!normalizeQuery(input.value)) { idle(); return; }
   // Do not leave stale results clickable while a newer query is being typed.
-  list.replaceChildren(); status.textContent = 'Searching all sites…';
+  list.replaceChildren(); showPage(false); status.textContent = 'Searching all sites…';
   timer = setTimeout(runSearch, 180);
 });
 siteSelect.addEventListener('change', runSearch);

@@ -51,7 +51,9 @@ All categories are permanent, labeled sections. Their destination links stay vis
 without scripts; do not restore disclosures or collapse controls. There is no
 category or page-count limit in the generator. The slash control opens full-text
 search across the authored public sites. `/` opens search; Escape clears and closes
-it, returning focus to its button. Clearing a query restores the full directory.
+it, returning focus to its button. The site filter and results open directly under
+the search box. While a query runs, its results take the place of the introduction
+and the directory. Clearing a query restores both.
 
 The directory is authored only: no automatic GitHub discovery or Other category.
 Add new destinations explicitly to the JSON with their intended category and name.
