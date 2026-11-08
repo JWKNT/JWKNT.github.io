@@ -38,23 +38,36 @@ body { margin: 0; }
   font: 1rem/1.5 var(--ui, var(--serif));
 }
 
-/* The introduction sits in the same two columns as a category: the seal takes the
-   place of a study, and the text starts where the destination names start. The
-   owner wrote it, so the theme's human mark brackets it in the right margin. */
+/* The seal takes the place of a study, and the introduction starts where the
+   destination names start and covers the rest of the frame. The owner wrote it,
+   so the theme's human mark brackets it. The mark hangs in the right page margin
+   as far as that margin has room, and stays inside the frame on a narrow screen. */
 .site-intro {
   position: relative;
-  margin: 0 0 clamp(1.5rem, 5vh, 3rem);
+  margin: 0 0 clamp(1.75rem, 5vh, 3rem);
   padding: 0 0 0 10.5rem;
 }
 .site-seal { position: absolute; top: .15rem; left: .25rem; margin: 0; color: var(--ink); line-height: 0; }
 .intro-seal { width: 7rem; height: 7rem; }
 .seal-point { fill: var(--atlas-accent); }
-.intro-text { max-width: calc(60ch + 4.1em); color: var(--ink); font: 1.2rem/1.65 var(--reading); }
-.intro-text p { margin: 0; }
+.intro-text {
+  --human-mark-hang: clamp(0px, max((100vw - var(--site-frame-page, 74rem)) / 2, var(--site-frame-gutter, 2.5rem)) - 1rem, var(--human-mark-size) * 7 / 3);
+  color: var(--ink);
+  font: 1.25rem/1.65 var(--reading);
+}
+.intro-text p { margin: 0; text-wrap: pretty; }
+.intro-text p + p { text-indent: 2.5em; }
 .intro-end { white-space: nowrap; }
 .intro-arrow { width: 2em; height: .75em; overflow: visible; vertical-align: -.02em; }
 .arrow-echo { stroke: var(--atlas-faint); }
 .arrow-point { fill: var(--atlas-accent); }
+
+/* One clear ink rule ends the introduction. It is the top boundary of the first
+   row of categories, so that row has no faint rule of its own. */
+.atlas-rule { height: 0; margin: 0; border: 0; border-top: 1px solid var(--ink); }
+.atlas-rule + .search-panel { margin-top: 1.5rem; }
+.atlas-category:nth-child(-n + 2) { border-top-color: transparent; }
+.atlas-category:nth-child(-n + 2)::before { display: none; }
 
 .directory { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 4.5rem; }
 .atlas-category {
@@ -185,6 +198,8 @@ body { margin: 0; }
   .intro-seal { width: 3.75rem; height: 3.75rem; }
   .intro-text { font-size: 1.0625rem; }
   .atlas-category { padding: .75rem 0 1.5rem min(6.4rem, 25vw); }
+  .atlas-category:nth-child(2) { border-top-color: var(--atlas-faint); }
+  .atlas-category:nth-child(2)::before { display: block; }
   .type-study { top: 1.4rem; left: -.2rem; font-size: 16px; width: 131px; height: 144px; transform: scale(.65); }
   .page-links a { min-height: 2.75rem; }
   .link-point { opacity: .55; }

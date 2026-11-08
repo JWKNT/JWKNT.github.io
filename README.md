@@ -7,12 +7,15 @@ The root [jehlp.net](https://jehlp.net) directory, built from `main` and publish
 
 One title above the directory: the Ruffle seal (style library icon i0063), with a
 hidden text name for the `h1`. The owner's introduction is beside it, in
-`lib/intro.mjs`. The seal takes the place of a study, and the text starts where the
-destination names start. The owner wrote the introduction, so keep its words
-exactly. It carries the human mark of the site theme (`.ui-human`): a square
-bracket in the right margin with a human figure. The last words end in an arrow
-that points at the mark. The arrow has the faint echo and the accent point of the
-studies below.
+`lib/intro.mjs`. The seal takes the place of a study. The text starts where the
+destination names start and covers the rest of the frame. The owner wrote the
+introduction, so keep its words and its two paragraphs exactly. The second
+paragraph starts with a tab indent. The introduction carries the human mark of
+the site theme (`.ui-human`): a square bracket with a human figure. The mark hangs
+in the right page margin as far as that margin has room. The last words end in an
+arrow that points at the mark. The arrow has the faint echo and the accent point
+of the studies below. One clear ink rule separates the introduction from the
+categories, in place of the faint rules of the first row.
 
 No taglines or destination descriptions. Category and destination names are the
 content. Small accessible utility labels, search feedback, the skip

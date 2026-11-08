@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import { marks, renderDirectory, validateDirectory, escapeHtml } from '../lib/directory.mjs';
-import { introText } from '../lib/intro.mjs';
+import { introParagraphs } from '../lib/intro.mjs';
 
 const categories = JSON.parse(await readFile(new URL('../data/directory.json', import.meta.url), 'utf8'));
 const index = await readFile(new URL('../index.html', import.meta.url), 'utf8');
@@ -70,15 +70,19 @@ test('the index has one title, the seal, and the owner’s introduction with the
   assert.match(title, /M12 3\.2C14 2\.1 16 4 16 5\.5/, 'the seal is style library icon i0063');
   assert.doesNotMatch(index, /wordmark/);
   // The owner wrote the introduction. Keep the exact words, and mark them with the theme's human mark.
-  const intro = body.match(/<div class="intro-text ui-human">\s*<p>([\s\S]*?)<\/p>\s*(<span class="ui-human-mark"[^>]*><\/span>)\s*<\/div>/);
-  assert.ok(intro, 'the introduction is one marked paragraph');
-  const words = intro[1].replace(/<svg[\s\S]*?<\/svg>/g, '').replace(/<[^>]+>/g, '').replaceAll('&nbsp;', ' ').trimEnd();
-  assert.equal(words, introText);
-  assert.equal(words, 'I have been on the internet a long time, and depending on where you have met me, I have gone by Jay, JW, jehlp, or KNT. I am interested in mathematics, data science, puzzles, science fiction, and otaku culture. This website serves as a work-in-progress centralization of my past and future brainchildren, and everything directly on this site (i.e., any page starting with jehlp.net/) is written and programmed fully by AI under my supervision, unless explicitly marked with this symbol shown to the right');
-  assert.match(intro[1], /<span class="intro-end">the right&nbsp;<svg class="intro-arrow" aria-hidden="true"[^>]*>[\s\S]*<\/svg><\/span>$/, 'the arrow ends the paragraph on the line of the last words');
-  assert.equal(intro[2], '<span class="ui-human-mark" role="img" aria-label="Written by a human" title="Written by a human"></span>');
+  const intro = body.match(/<div class="intro-text ui-human">\s*<p>([\s\S]*?)<\/p>\s*<p>([\s\S]*?)<\/p>\s*(<span class="ui-human-mark"[^>]*><\/span>)\s*<\/div>/);
+  assert.ok(intro, 'the introduction is two marked paragraphs');
+  const words = html => html.replace(/<svg[\s\S]*?<\/svg>/g, '').replace(/<[^>]+>/g, '').replaceAll('&nbsp;', ' ').trimEnd();
+  assert.deepEqual([words(intro[1]), words(intro[2])], introParagraphs);
+  assert.deepEqual(introParagraphs, [
+    'I have been on the internet a long time, and depending on where you have met me, I have gone by Jay, JW, jehlp, or KNT. I am interested in mathematics, data science, puzzles, science fiction, and otaku culture.',
+    'This website serves as a work-in-progress centralization of my past and future brainchildren, and everything directly on this site (i.e., any page starting with jehlp.net/) is written and programmed fully by AI under my supervision, unless explicitly marked with this symbol shown to the right',
+  ]);
+  assert.match(intro[2], /<span class="intro-end">the right&nbsp;<svg class="intro-arrow" aria-hidden="true"[^>]*>[\s\S]*<\/svg><\/span>$/, 'the arrow ends the paragraph on the line of the last words');
+  assert.equal(intro[3], '<span class="ui-human-mark" role="img" aria-label="Written by a human" title="Written by a human"></span>');
+  assert.match(body, /<\/div>\s*<\/div>\s*<hr class="atlas-rule">\s*<section id="search-panel"/, 'one rule ends the introduction, before search results and categories');
   assert.equal((body.match(/class="[^"]*\bui-human[\s"]/g) || []).length, 1, 'only the owner’s words carry the mark');
-  assert.match(index, /<link rel="stylesheet" href="https:\/\/jehlp\.net\/site-theme\/v2\/components\.css\?v=20261108-human">/, 'the theme layer that draws the mark');
+  assert.match(index, /<link rel="stylesheet" href="https:\/\/jehlp\.net\/site-theme\/v2\/components\.css\?v=20261108-margin">/, 'the theme layer that draws the mark');
   assert.ok(body.indexOf('site-seal') < body.indexOf('intro-text') && body.indexOf('intro-text') < body.indexOf('id="directory"'), 'the title and introduction come before the directory');
   assert.doesNotMatch(body, /<header\b|jwknt\.github\.io/i);
   assert.doesNotMatch(body, /class="(?:project-description|category-description|hero)"/);
@@ -216,8 +220,20 @@ test('decorative studies keep their original font and fixed geometry', async () 
   const css = await readFile(new URL('../assets/styles.css', import.meta.url), 'utf8');
   assert.match(css, /\.glyph \{[^}]*font-family: 'Baskerville', 'Times New Roman', serif;/);
   assert.deepEqual(css.match(/--reading|Wrenfold/g), ['--reading'], 'only the introduction uses the reading face');
-  assert.match(css, /\.intro-text \{[^}]*font: 1\.2rem\/1\.65 var\(--reading\);/);
+  assert.match(css, /\.intro-text \{[^}]*font: 1\.25rem\/1\.65 var\(--reading\);/);
   assert.match(css, /\.type-study \{[^}]*font-size: 16px;/);
   assert.match(css, /\.study-parentheses \.glyph \{ font-size: 128px;/);
-  assert.match(index, /assets\/styles\.css\?v=20261108-human/);
+  assert.match(index, /assets\/styles\.css\?v=20261108-margin/);
+});
+
+test('the introduction covers the frame, indents its second paragraph and ends at one clear rule', async () => {
+  const css = await readFile(new URL('../assets/styles.css', import.meta.url), 'utf8');
+  const rule = css.match(/\.intro-text \{[^}]*\}/)[0];
+  assert.doesNotMatch(rule, /max-width/, 'the text covers the frame from the destination names to its right edge');
+  // The mark hangs in the right page margin as far as that margin has room, less 1rem.
+  assert.match(rule, /--human-mark-hang: clamp\(0px, max\(\(100vw - var\(--site-frame-page, 74rem\)\) \/ 2, var\(--site-frame-gutter, 2\.5rem\)\) - 1rem, var\(--human-mark-size\) \* 7 \/ 3\);/);
+  assert.match(css, /\.intro-text p \+ p \{ text-indent: 2\.5em; \}/, 'a tab indent starts the second paragraph');
+  assert.match(css, /\.atlas-rule \{[^}]*border-top: 1px solid var\(--ink\);/);
+  assert.match(css, /\.atlas-category:nth-child\(-n \+ 2\) \{ border-top-color: transparent; \}/, 'the rule replaces the faint rules of the first row');
+  assert.match(css, /@media \(max-width: 38rem\) \{[\s\S]*?\.atlas-category:nth-child\(2\) \{ border-top-color: var\(--atlas-faint\); \}/, 'on one column the second category keeps its rule');
 });
