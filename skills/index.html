@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="10 skills for agents that work on jehlp.net pages.">
+    <meta name="description" content="11 skills for agents that work on jehlp.net pages.">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Skills">
     <meta property="og:url" content="https://jehlp.net/skills/">
@@ -25,11 +25,11 @@
     <main id="skills" class="skills-shell" tabindex="-1">
       <div class="skills-intro">
         <p class="lede">Agents use these skills for work on jehlp.net pages.</p>
-        <p class="skills-meta">10 skills · <a href="https://jehlp.net/site-theme/SKILLS.md">Catalog and installation<span class="ui-link-arrow" aria-hidden="true"></span></a></p>
+        <p class="skills-meta">11 skills · <a href="https://jehlp.net/site-theme/SKILLS.md">Catalog and installation<span class="ui-link-arrow" aria-hidden="true"></span></a></p>
       </div>
       <nav class="skills-index" aria-labelledby="skills-index-title">
           <h2 class="skills-index-label" id="skills-index-title">Contents</h2>
-          <ol><li><a href="#jehlp-technical-writing"><span class="skill-prefix">jehlp-</span>technical-writing</a></li><li><a href="#jehlp-site-design"><span class="skill-prefix">jehlp-</span>site-design</a></li><li><a href="#jehlp-shared-theme"><span class="skill-prefix">jehlp-</span>shared-theme</a></li><li><a href="#jehlp-components"><span class="skill-prefix">jehlp-</span>components</a></li><li><a href="#jehlp-code-highlighting"><span class="skill-prefix">jehlp-</span>code-highlighting</a></li><li><a href="#jehlp-math-explainer"><span class="skill-prefix">jehlp-</span>math-explainer</a></li><li><a href="#jehlp-data-ui"><span class="skill-prefix">jehlp-</span>data-ui</a></li><li><a href="#jehlp-site-qa"><span class="skill-prefix">jehlp-</span>site-qa</a></li><li><a href="#jehlp-pages-release"><span class="skill-prefix">jehlp-</span>pages-release</a></li><li><a href="#jehlp-change-record"><span class="skill-prefix">jehlp-</span>change-record</a></li></ol>
+          <ol><li><a href="#jehlp-technical-writing"><span class="skill-prefix">jehlp-</span>technical-writing</a></li><li><a href="#jehlp-human-mark"><span class="skill-prefix">jehlp-</span>human-mark</a></li><li><a href="#jehlp-site-design"><span class="skill-prefix">jehlp-</span>site-design</a></li><li><a href="#jehlp-shared-theme"><span class="skill-prefix">jehlp-</span>shared-theme</a></li><li><a href="#jehlp-components"><span class="skill-prefix">jehlp-</span>components</a></li><li><a href="#jehlp-code-highlighting"><span class="skill-prefix">jehlp-</span>code-highlighting</a></li><li><a href="#jehlp-math-explainer"><span class="skill-prefix">jehlp-</span>math-explainer</a></li><li><a href="#jehlp-data-ui"><span class="skill-prefix">jehlp-</span>data-ui</a></li><li><a href="#jehlp-site-qa"><span class="skill-prefix">jehlp-</span>site-qa</a></li><li><a href="#jehlp-pages-release"><span class="skill-prefix">jehlp-</span>pages-release</a></li><li><a href="#jehlp-change-record"><span class="skill-prefix">jehlp-</span>change-record</a></li></ol>
           <h3 class="skills-index-label">Shared</h3>
           <ul><li><a href="#shared-original-technical-writing">Original technical writing</a></li></ul>
       </nav>
@@ -45,6 +45,31 @@
 <p>Classify original prose and protected content before the edit. Preserve reader text, translations, quotations, names, citations, legal text, and code. Preserve NDB fictional dialogue, story text, bestiary prose, and item descriptions. Preserve data, formulas, formal statements, hypotheses, quantifiers, proof dependencies, and uncertainty.</p>
 <p>Use short, complete sentences and consistent technical terms. Give instructions in the imperative, with prerequisite conditions first. Limit instructions to 20 words and descriptions to 25 words per sentence. Limit a paragraph to one topic and six sentences. Use active voice, simple verb forms, and no semicolons. Check dictionary meanings and parts of speech when the official dictionary is available. Retain precise mathematical and interface terms under the technical-term rules.</p>
 <p>Edit the source of generated content. Rebuild affected pages, PDFs, exports, and indexes. Compare protected content with the original. Run the repository's tests. Obtain a separate technical-meaning review for mathematical proof edits. Report actual checks and any dictionary-review limit. Do not claim unsupported complete compliance.</p>
+            </div>
+          </article>
+          <article class="skill" id="jehlp-human-mark" aria-labelledby="jehlp-human-mark-name">
+            <header class="skill-header">
+              <h2 class="skill-name" id="jehlp-human-mark-name"><span class="skill-prefix">jehlp-</span>human-mark</h2>
+              <a class="skill-source" href="https://jehlp.net/site-theme/skills/jehlp-human-mark/SKILL.md" aria-label="Markdown source of jehlp-human-mark">Markdown<span class="ui-link-arrow" aria-hidden="true"></span></a>
+            </header>
+            <p class="skill-description">Mark a jehlp.net passage that the owner wrote with the shared human mark, a bracket in the right margin with a human figure, and keep the owner's exact words.</p>
+            <div class="skill-body prose">
+<p>AI writes and programs everything on jehlp.net under the owner's supervision. The human mark identifies the exceptions. The homepage introduction says this in the owner's words, and it carries the mark.</p>
+<p>Read the theme's PHILOSOPHY.md and the human mark contract in docs/COMPONENTS.md. Locate site-theme beside the current repository, or resolve this skill's real path to its owning site-theme checkout.</p>
+<h3>Decide</h3>
+<p>Use the mark when the owner gives text that the owner wrote and asks to show it as the owner's. Do not put it on text that AI wrote, translated, summarized or edited. Do not remove it from the owner's text. If you do not know who wrote a passage, ask the owner.</p>
+<p>Keep the owner's words exactly, with their spelling, punctuation and capitals. Do not apply ASD-STE100 or the other writing rules of the site to them. A page can mix the owner's text and AI text. Mark each block of the owner's text.</p>
+<h3>Apply</h3>
+<p>Load <code>v2/components.css</code> after <code>v2/base.css</code>. Add <code>class=&quot;ui-human&quot;</code> to the block that holds the owner's words. Put one mark inside it:</p>
+<pre><code>&lt;div class=&quot;ui-human&quot;&gt;
+  &lt;p&gt;Text that the owner wrote.&lt;/p&gt;
+  &lt;span class=&quot;ui-human-mark&quot; role=&quot;img&quot; aria-label=&quot;Written by a human&quot; title=&quot;Written by a human&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+<p>The stylesheet draws a square bracket in the right margin of the block and the figure from <code>v2/icons/human.svg</code> beside it. The block reserves that margin with right padding. The mark size follows the text size. To change it, set <code>--human-mark-size</code> on the block. Mark a whole block, not a phrase inside a sentence. Use the shared figure. Do not draw it again, and do not replace it with an emoji or a Unicode glyph.</p>
+<p>A generator renders the same markup during the build. An offline export keeps <code>components.css</code> and <code>icons/human.svg</code> together, because the stylesheet loads the figure by a relative URL.</p>
+<h3>Check</h3>
+<p>Check the mark in both color modes, on a narrow screen and at 200% text. The bracket must not cover text. A screen reader must announce &quot;Written by a human&quot;. Run the owning repository's tests.</p>
+<p class="skill-shared-ref">Shared section: <a href="#shared-original-technical-writing">Original technical writing</a></p>
             </div>
           </article>
           <article class="skill" id="jehlp-site-design" aria-labelledby="jehlp-site-design-name">
@@ -201,7 +226,7 @@
             <header class="skill-header">
               <h2 class="skill-name" id="shared-original-technical-writing-name">Original technical writing</h2>
             </header>
-            <p class="skill-description">Shared section in 9 of 10 skills.</p>
+            <p class="skill-description">Shared section in 10 of 11 skills.</p>
             <div class="skill-body prose">
 <p>For original prose, use <code>jehlp-technical-writing</code> and <code>docs/WRITING-STYLE.md</code>. Apply ASD-STE100 Issue 9 to explanations, instructions, help, and interface text. Preserve translated and reader text, quotations, NDB fiction and item descriptions, and exact technical meaning. Review generated outputs and accessible names after a text change.</p>
             </div>

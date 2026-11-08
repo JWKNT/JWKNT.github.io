@@ -5,15 +5,17 @@ The root [jehlp.net](https://jehlp.net) directory, built from `main` and publish
 
 ## Design contract
 
-One title above the directory: the Ruffle seal (style library icon i0063) and a
-`jehlp.net` wordmark, in `lib/wordmark.mjs`. The seal takes the place of a study,
-and the name starts where the destination names start. The letters are outlines
-of Wrenfold Display, so they scale with the column and never overflow. A hidden
-text name gives the `h1` its accessible name. Keep the faint echo and the accent
-point, because the studies below use the same two devices.
+One title above the directory: the Ruffle seal (style library icon i0063), with a
+hidden text name for the `h1`. The owner's introduction is beside it, in
+`lib/intro.mjs`. The seal takes the place of a study, and the text starts where the
+destination names start. The owner wrote the introduction, so keep its words
+exactly. It carries the human mark of the site theme (`.ui-human`): a square
+bracket in the right margin with a human figure. The last words end in an arrow
+that points at the mark. The arrow has the faint echo and the accent point of the
+studies below.
 
-No introduction, taglines, or destination descriptions. Category and destination
-names are the content. Small accessible utility labels, search feedback, the skip
+No taglines or destination descriptions. Category and destination names are the
+content. Small accessible utility labels, search feedback, the skip
 link, and document metadata remain useful exceptions. Composed punctuation supplies
 a quiet, ink-like identity; it is decorative and hidden from assistive technology.
 It is not a replacement for the shared PNG masthead convention on project pages.
