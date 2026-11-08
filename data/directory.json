@@ -8,12 +8,11 @@
     ]
   },
   {
-    "id": "reading", "label": "Reading", "mark": "parentheses",
+    "id": "translations", "label": "Translations", "mark": "parentheses",
     "pages": [
       { "id": "albatross-koukairoku", "label": "Albatross Koukairoku", "href": "/albatross-koukairoku/" },
       { "id": "black-sheep-town", "label": "Black Sheep Town", "href": "/black-sheep-town/" },
-      { "id": "omniscient-readers-viewpoint", "label": "Omniscient Reader’s Viewpoint", "href": "/omniscient-readers-viewpoint/" },
-      { "id": "readers", "label": "Readers", "href": "/readers/" }
+      { "id": "omniscient-readers-viewpoint", "label": "Omniscient Reader’s Viewpoint", "href": "/omniscient-readers-viewpoint/" }
     ]
   },
   {
@@ -35,7 +34,8 @@
     "id": "tools", "label": "Tools", "mark": "asterisk",
     "pages": [
       { "id": "logical-solver", "label": "Logical Solvers", "href": "/logical-solver/" },
-      { "id": "gazetteer", "label": "Gazetteer", "href": "/gazetteer/" }
+      { "id": "gazetteer", "label": "Gazetteer", "href": "/gazetteer/" },
+      { "id": "readers", "label": "Readers", "href": "/readers/" }
     ]
   },
   {

@@ -179,7 +179,7 @@ test('Mathematics has an abstract category mark and plain Erdős and Cookie Clic
     { id: 'ai-math', label: 'AI Math Results', href: '/ai-math/' },
     { id: 'cookie-clicker', label: 'Cookie Clicker', href: '/cookie-clicker/' },
   ]);
-  assert.ok(!categories.find(category => category.id === 'reading').pages.some(page => page.id === 'erdos1016'));
+  assert.ok(!categories.find(category => category.id === 'translations').pages.some(page => page.id === 'erdos1016'));
   assert.match(index, /class="type-study study-continuum" aria-hidden="true"><svg class="continuum-study" aria-hidden="true" focusable="false"/);
   assert.match(index, /<li data-project="erdos1016"><a href="\/erdos1016\/">Erdős 1016<span class="link-point ui-link-arrow"/);
   assert.match(index, /<li data-project="cookie-clicker"><a href="\/cookie-clicker\/">Cookie Clicker<span class="link-point ui-link-arrow"/);
@@ -216,6 +216,17 @@ test('NGU Idle and Box Logic are games, and Gazetteer is a tool', () => {
   assert.equal(owner('ngu-idle-dashboard'), 'games');
   assert.equal(owner('box-puzzles'), 'games');
   assert.equal(owner('gazetteer'), 'tools');
+});
+
+test('Translations holds the translated works, and Readers is a tool', () => {
+  const translations = categories.find(category => category.id === 'translations');
+  assert.equal(translations.label, 'Translations');
+  assert.equal(translations.mark, 'parentheses');
+  assert.deepEqual(translations.pages.map(page => page.id), ['albatross-koukairoku', 'black-sheep-town', 'omniscient-readers-viewpoint']);
+  assert.deepEqual(categories.find(category => category.id === 'tools').pages.map(page => page.id), ['logical-solver', 'gazetteer', 'readers']);
+  assert.ok(!categories.some(category => category.id === 'reading'));
+  assert.match(index, /<span class="category-label">Translations<\/span>/);
+  assert.doesNotMatch(index, /Reading/);
 });
 
 test('decorative studies keep their original font and fixed geometry', async () => {

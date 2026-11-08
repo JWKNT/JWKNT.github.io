@@ -57,10 +57,11 @@ The directory is authored only: no automatic GitHub discovery or Other category.
 Add new destinations explicitly to the JSON with their intended category and name.
 
 The current seven groups hold 24 destinations. Me comes first, at the top left, and holds Profile,
-Links, and Accounts. Games includes the playable NDB Idle, authored Puzzles, Baba Is You, NGU Idle,
-and Box Logic. Agents holds the guidance for agent work: MTL Guide, Style Library, Skills, and Site
-Theme. Tools keeps the solvers and Gazetteer. Category metadata is generated from the labels, not a
-fixed list of the original categories.
+Links, and Accounts. Translations holds the translated works: Albatross Koukairoku, Black Sheep
+Town, and Omniscient Reader’s Viewpoint. Games includes the playable NDB Idle, authored Puzzles,
+Baba Is You, NGU Idle, and Box Logic. Agents holds the guidance for agent work: MTL Guide, Style
+Library, Skills, and Site Theme. Tools keeps the solvers, Gazetteer, and Readers. Category metadata
+is generated from the labels, not a fixed list of the original categories.
 
 ## Skills page
 
