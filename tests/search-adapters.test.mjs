@@ -52,7 +52,7 @@ function fixture() {
     ancestry: { total: { name: 'European', color: 'rgb(1,2,3)' }, broad: [], detailed: [], regionalSignals: [], versionHistory: { comparison: [] }, timeline: [], timelineScale: [], paintings: {} },
     lineage: { maternal: {}, paternal: {}, neanderthal: { locations: [], traitMarkers: [] } },
     reports: [{ id: 'private-implementation-id', title: 'Published report', result: 'Published result', description: 'Public body copy.', personalNotes: [], variants: [] }],
-    privacy: { included: [], removed: ['Direct identifiers are excluded.'], processing: [] },
+    privacy: { included: [], removed: ['Direct identifiers are excluded.'] },
   })};`);
   sources.set('/links/data/links.json', { categories: ['Reading'], links: [{ title: 'A saved reference', description: 'Useful collected context.', category: 'Reading', url: 'https://example.org/' }] });
   sources.set('/puzzles/data/puzzles.json', [{ slug: 'a-38-000tos', title: 'A 38' }]);
