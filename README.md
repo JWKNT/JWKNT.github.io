@@ -83,7 +83,7 @@ The checked-in page is the branch-mode fallback and the input for `npm test`.
 ## Accounts page
 
 `/accounts/` links profiles on other sites. To add one, append an entry to `data/accounts.json`
-with `site`, `href` and an optional `handle` and `kind`. Links must use HTTPS. Then run
+with `site`, `href` and an optional `handle`. Links must use HTTPS. Then run
 `node build.mjs` and `npm test`, and commit the data and `accounts/index.html` together.
 Every link has `rel="me"`. Layout rules are in `assets/accounts.css`.
 

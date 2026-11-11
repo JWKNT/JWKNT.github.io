@@ -6,7 +6,7 @@ import { renderAccountsPage, validateAccounts } from '../lib/accounts.mjs';
 const accounts = JSON.parse(await readFile(new URL('../data/accounts.json', import.meta.url), 'utf8'));
 const page = await readFile(new URL('../accounts/index.html', import.meta.url), 'utf8');
 const fixture = () => [
-  { site: 'Example', handle: 'me', kind: 'Lists', href: 'https://example.com/me' },
+  { site: 'Example', handle: 'me', href: 'https://example.com/me' },
   { site: 'Other', href: 'https://other.example/u/1?tab=a&b=c' },
 ];
 
@@ -15,9 +15,9 @@ test('the accounts page is the deterministic build of the authored list', () => 
   assert.deepEqual([...page.matchAll(/<a class="account-site" href="([^"]+)" rel="me">/g)].map(m => m[1].replaceAll('&amp;', '&')), accounts.map(a => a.href));
 });
 
-test('every account is a labelled same-person link with optional handle and kind', () => {
+test('every account is a labelled same-person link with optional handle', () => {
   const html = renderAccountsPage(fixture());
-  assert.match(html, /<li><a class="account-site" href="https:\/\/example\.com\/me" rel="me">Example<span class="ui-link-arrow" aria-hidden="true"><\/span><\/a><span class="account-handle">me<\/span><span class="account-kind">Lists<\/span><\/li>/);
+  assert.match(html, /<li><a class="account-site" href="https:\/\/example\.com\/me" rel="me">Example<span class="ui-link-arrow" aria-hidden="true"><\/span><\/a><span class="account-handle">me<\/span><\/li>/);
   assert.match(html, /<li><a class="account-site" href="https:\/\/other\.example\/u\/1\?tab=a&amp;b=c" rel="me">Other<span class="ui-link-arrow" aria-hidden="true"><\/span><\/a><\/li>/);
   assert.match(html, /<meta name="description" content="jehlp on Example, Other\.">/);
 });
