@@ -44,8 +44,7 @@
       { "id": "mtl-guide", "label": "MTL Guide", "href": "/mtl-guide/" },
       { "id": "style-library", "label": "Style Library", "href": "/style-library/" },
       { "id": "skills", "label": "Skills", "href": "/skills/" },
-      { "id": "site-theme", "label": "Site Theme", "href": "/site-theme/" },
-      { "id": "ai-painting", "label": "AI Painting", "href": "/ai-painting/" }
+      { "id": "site-theme", "label": "Site Theme", "href": "/site-theme/" }
     ]
   },
   {
@@ -58,6 +57,12 @@
       { "id": "ngu-idle-dashboard", "label": "NGU Idle", "href": "/ngu-idle-dashboard/" },
       { "id": "box-puzzles", "label": "Box Logic", "href": "/box-puzzles/" },
       { "id": "better-minecraft-1-12-2", "label": "Better 1.12.2", "href": "/better-minecraft-1-12-2/" }
+    ]
+  },
+  {
+    "id": "art", "label": "Art", "mark": "stroke",
+    "pages": [
+      { "id": "ai-painting", "label": "AI Painting", "href": "/ai-painting/" }
     ]
   }
 ]

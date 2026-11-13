@@ -45,7 +45,7 @@ category has a unique `id`, `label`, `mark`, and a `pages` array. Each page
 has a unique `id`, `label`, and root-relative `href` ending in `/`. A page can also have `open`:
 the page below `href` that the link opens, while `href` stays the root of the site for search. IDs use lowercase
 letters, digits, and hyphens. Marks are `parentheses`, `constellation`, `asterisk`,
-`section`, `continuum`, `chevrons`, `spiral`, or `whorl`; extend the named mark registry in `lib/directory.mjs` and the local
+`section`, `continuum`, `chevrons`, `spiral`, `stroke`, or `whorl`; extend the named mark registry in `lib/directory.mjs` and the local
 study CSS for a genuinely new motif. Categories can reuse existing marks.
 
 All categories are permanent, labeled sections. Their destination links stay visible
@@ -59,12 +59,13 @@ and the directory. Clearing a query restores both.
 The directory is authored only: no automatic GitHub discovery or Other category.
 Add new destinations explicitly to the JSON with their intended category and name.
 
-The current seven groups hold 26 destinations. Me comes first, at the top left, and holds Profile,
+The current eight groups hold 26 destinations. Me comes first, at the top left, and holds Profile,
 Links, and Accounts. Translations holds the translated works: Albatross Koukairoku, Black Sheep
 Town, and Omniscient Reader’s Viewpoint. In Mathematics, Erdős 1016 & Graph Theory stands for the three
 tours of the Erdős site and opens their list page. Games includes the playable NDB Idle, authored Puzzles,
-Baba Is You, NGU Idle, Box Logic, and the Better 1.12.2 Minecraft mod. Agents holds the guidance for agent work, MTL Guide, Style
-Library, Skills, and Site Theme, and AI Painting, the paintings that an agent makes. Tools keeps the solvers, Gazetteer, and Readers. Category metadata
+Baba Is You, NGU Idle, Box Logic, and the Better 1.12.2 Minecraft mod. Agents holds the guidance for agent work: MTL Guide, Style
+Library, Skills, and Site Theme. Tools keeps the solvers, Gazetteer, and Readers. Art comes last, at the
+bottom right, and holds AI Painting under one sweep of a brush. Category metadata
 is generated from the labels, not a fixed list of the original categories.
 
 ## Skills page

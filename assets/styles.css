@@ -171,6 +171,10 @@ body { margin: 0; }
 .study-whorl .whorl-study { position: absolute; width: 7em; height: 7em; top: .1em; left: .2em; }
 .whorl-echo { color: var(--atlas-faint); }
 .study-whorl i { top: 4.7em; left: 3.97em; }
+/* One sweep of a brush; the point marks where it lifts. */
+.study-stroke .stroke-study { position: absolute; width: 7em; height: 7em; top: .1em; left: .2em; }
+.stroke-echo { color: var(--atlas-faint); }
+.study-stroke i { top: 2.41em; left: 6.45em; }
 .empty-result { font-size: 1rem; color: var(--muted); margin: 2rem 0; }
 [hidden] { display: none !important; }
 

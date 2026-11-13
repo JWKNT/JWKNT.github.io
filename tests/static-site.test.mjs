@@ -215,6 +215,18 @@ test('Agents groups agent guidance under an abstract spiral mark, apart from Too
 });
 
 
+test('Art comes last under one sweep of a brush and holds AI Painting', () => {
+  const art = categories.at(-1);
+  assert.equal(art.id, 'art');
+  assert.equal(art.label, 'Art');
+  assert.equal(art.mark, 'stroke');
+  assert.deepEqual(art.pages, [{ id: 'ai-painting', label: 'AI Painting', href: '/ai-painting/' }]);
+  assert.ok(!categories.find(category => category.id === 'agents').pages.some(page => page.id === 'ai-painting'));
+  assert.match(index, /class="type-study study-stroke" aria-hidden="true"><svg class="stroke-study" aria-hidden="true" focusable="false"/);
+  assert.match(index, /<li data-project="ai-painting"><a href="\/ai-painting\/">AI Painting<span class="link-point ui-link-arrow"/);
+  assert.equal(categories.length % 2, 0, 'two columns of categories end level');
+});
+
 test('Me comes first under an abstract mark and holds the personal pages', () => {
   const [first] = categories;
   assert.equal(first.id, 'me');
@@ -254,7 +266,7 @@ test('decorative studies keep their original font and fixed geometry', async () 
   assert.match(css, /\.intro-text \{[^}]*font: 1\.25rem\/1\.65 var\(--reading\);/);
   assert.match(css, /\.type-study \{[^}]*font-size: 16px;/);
   assert.match(css, /\.study-parentheses \.glyph \{ font-size: 128px;/);
-  assert.match(index, /assets\/styles\.css\?v=20261108-search/);
+  assert.match(index, /assets\/styles\.css\?v=20261113-art/);
   assert.match(index, /assets\/app\.js\?v=20261108-search/);
 });
 
