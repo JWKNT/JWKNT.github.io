@@ -176,12 +176,17 @@ test('Mathematics has an abstract category mark and plain Erdős and Cookie Clic
   assert.equal(mathematics.mark, 'continuum');
   assert.deepEqual(mathematics.pages, [
     { id: 'erdos1016', label: 'Erdős 1016', href: '/erdos1016/' },
+    { id: 'forest-estimate', label: 'Forest Estimate', href: '/erdos1016/forest/' },
+    { id: 'exact-maximums', label: 'Exact Maximums', href: '/erdos1016/exact-maximums/' },
     { id: 'ai-math', label: 'AI Math Results', href: '/ai-math/' },
     { id: 'cookie-clicker', label: 'Cookie Clicker', href: '/cookie-clicker/' },
   ]);
   assert.ok(!categories.find(category => category.id === 'translations').pages.some(page => page.id === 'erdos1016'));
   assert.match(index, /class="type-study study-continuum" aria-hidden="true"><svg class="continuum-study" aria-hidden="true" focusable="false"/);
   assert.match(index, /<li data-project="erdos1016"><a href="\/erdos1016\/">Erdős 1016<span class="link-point ui-link-arrow"/);
+  // The two companion tours are pages of the Erdős site, so their addresses are below its address.
+  assert.match(index, /<li data-project="forest-estimate"><a href="\/erdos1016\/forest\/">Forest Estimate<span class="link-point ui-link-arrow"/);
+  assert.match(index, /<li data-project="exact-maximums"><a href="\/erdos1016\/exact-maximums\/">Exact Maximums<span class="link-point ui-link-arrow"/);
   assert.match(index, /<li data-project="cookie-clicker"><a href="\/cookie-clicker\/">Cookie Clicker<span class="link-point ui-link-arrow"/);
   assert.doesNotMatch(index.split('id="directory"')[1], /destination-symbol|graph-study|<circle/);
 });
