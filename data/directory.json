@@ -18,9 +18,7 @@
   {
     "id": "mathematics", "label": "Mathematics", "mark": "continuum",
     "pages": [
-      { "id": "erdos1016", "label": "Erdős 1016", "href": "/erdos1016/" },
-      { "id": "forest-estimate", "label": "Forest Estimate", "href": "/erdos1016/forest/" },
-      { "id": "exact-maximums", "label": "Exact Maximums", "href": "/erdos1016/exact-maximums/" },
+      { "id": "erdos1016", "label": "Erdős 1016 & Graph Theory", "href": "/erdos1016/", "open": "/erdos1016/graph-theory/" },
       { "id": "ai-math", "label": "AI Math Results", "href": "/ai-math/" },
       { "id": "cookie-clicker", "label": "Cookie Clicker", "href": "/cookie-clicker/" }
     ]

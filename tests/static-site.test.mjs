@@ -28,7 +28,7 @@ test('generated homepage is the deterministic directory build', () => {
 
 test('all authored destinations are present in the always-visible semantic sections', () => {
   assert.equal([...index.matchAll(/<li data-project=/g)].length, destinations.length);
-  for (const destination of destinations) assert.ok(index.includes(`<li data-project="${destination.id}"><a href="${destination.href}">`));
+  for (const destination of destinations) assert.ok(index.includes(`<li data-project="${destination.id}"><a href="${destination.open ?? destination.href}">`));
   for (const category of categories) assert.match(index, new RegExp(`<section class="atlas-category" data-category="${category.id}" aria-labelledby="category-${category.id}">\\s*<h2 id="category-${category.id}" class="category-heading">`));
   assert.match(index, /class="skip-link" href="#directory"/);
   assert.match(index, /site-theme\/v2\/base\.css/);
@@ -137,6 +137,20 @@ test('duplicate pages and unsafe destination routes are rejected', () => {
   }
 });
 
+test('an entry can open a page below its root, and no other page', () => {
+  const fixture = copy(); fixture[0].pages[0].open = '/example/start/';
+  const html = renderDirectory(fixture);
+  assert.match(html, /<li data-project="example"><a href="\/example\/start\/">Example</);
+  assert.doesNotMatch(html, /<a href="\/example\/">/);
+  // The root of the entry is still its address for search and for the rule on repeated addresses.
+  const repeated = copy(); repeated[0].pages[0].open = '/example/start/'; repeated[1].pages[0].href = '/example/';
+  assert.throws(() => validateDirectory(repeated), /Invalid destination/);
+  for (const open of ['/example/', '/other/', '/other/example/', 'https://example.com/example/x/', '//example.com/', '/example/../x/', '/example/x', '/example/x/?q=1', '/example/x/#frag', '/example/x/" onfocus="x', 7, null]) {
+    const unsafe = copy(); unsafe[0].pages[0].open = open;
+    assert.throws(() => renderDirectory(unsafe), /Invalid opening page/, `Opening page ${JSON.stringify(open)} must be rejected.`);
+  }
+});
+
 test('24 categories and 480 destinations use the same renderer without a fixed cap', () => {
   const markNames = Object.keys(marks);
   const expanded = Array.from({ length: 24 }, (_, i) => ({
@@ -175,18 +189,17 @@ test('Mathematics has an abstract category mark and plain Erdős and Cookie Clic
   const mathematics = categories.find(category => category.id === 'mathematics');
   assert.equal(mathematics.mark, 'continuum');
   assert.deepEqual(mathematics.pages, [
-    { id: 'erdos1016', label: 'Erdős 1016', href: '/erdos1016/' },
-    { id: 'forest-estimate', label: 'Forest Estimate', href: '/erdos1016/forest/' },
-    { id: 'exact-maximums', label: 'Exact Maximums', href: '/erdos1016/exact-maximums/' },
+    { id: 'erdos1016', label: 'Erdős 1016 & Graph Theory', href: '/erdos1016/', open: '/erdos1016/graph-theory/' },
     { id: 'ai-math', label: 'AI Math Results', href: '/ai-math/' },
     { id: 'cookie-clicker', label: 'Cookie Clicker', href: '/cookie-clicker/' },
   ]);
   assert.ok(!categories.find(category => category.id === 'translations').pages.some(page => page.id === 'erdos1016'));
   assert.match(index, /class="type-study study-continuum" aria-hidden="true"><svg class="continuum-study" aria-hidden="true" focusable="false"/);
-  assert.match(index, /<li data-project="erdos1016"><a href="\/erdos1016\/">Erdős 1016<span class="link-point ui-link-arrow"/);
-  // The two companion tours are pages of the Erdős site, so their addresses are below its address.
-  assert.match(index, /<li data-project="forest-estimate"><a href="\/erdos1016\/forest\/">Forest Estimate<span class="link-point ui-link-arrow"/);
-  assert.match(index, /<li data-project="exact-maximums"><a href="\/erdos1016\/exact-maximums\/">Exact Maximums<span class="link-point ui-link-arrow"/);
+  // One entry stands for the three tours of the Erdős site. Its link opens the list page of the
+  // site, and its root stays /erdos1016/, so search covers the three tours under one name.
+  assert.match(index, /<li data-project="erdos1016"><a href="\/erdos1016\/graph-theory\/">Erdős 1016 &amp; Graph Theory<span class="link-point ui-link-arrow"/);
+  assert.match(index, /<option value="Erdős 1016 &amp; Graph Theory">Erdős 1016 &amp; Graph Theory<\/option>/);
+  assert.doesNotMatch(index, /data-project="forest-estimate"|data-project="exact-maximums"/);
   assert.match(index, /<li data-project="cookie-clicker"><a href="\/cookie-clicker\/">Cookie Clicker<span class="link-point ui-link-arrow"/);
   assert.doesNotMatch(index.split('id="directory"')[1], /destination-symbol|graph-study|<circle/);
 });

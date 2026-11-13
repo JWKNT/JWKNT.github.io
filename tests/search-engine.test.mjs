@@ -27,6 +27,7 @@ test('real sharded search matches body, phrases, case, accents, filters and titl
       { url: '/guide/', title: 'Choralcelo guide', site: 'MTL Guide', content: 'The choralcelo was a musical instrument. A comprehensive description follows.' },
       { url: '/albatross/?chapter=1#line-001', title: 'Voyage', site: 'Albatross', content: 'A transcendent mass overhead.' },
       { url: '/readers/other/#chapter/p-003', title: 'Narcotherapeutic examinations', site: 'Readers', content: 'The narcotherapeutic examinations were necessary.' },
+      { url: '/erdos1016/forest/', title: 'Forest Estimate', site: 'Erdős 1016 & Graph Theory', content: 'The outside part of a random even subgraph is a forest.' },
     ]) await index.addCustomRecord({ ...record, language: 'en', meta: { title: record.title, site: record.site }, filters: { site: [record.site] } });
     await index.writeFiles({ outputPath: directory });
     const { index: japanese } = await pagefind.createIndex();
@@ -57,6 +58,9 @@ test('real sharded search matches body, phrases, case, accents, filters and titl
     assert.equal((await search('"spectral cat"'))[0].url, '/readers/book/#chapter/p-021');
     assert.equal((await search('cafe'))[0].url, '/readers/book/#chapter/p-021');
     assert.equal((await search('narcotherapeutic'))[0].url, '/readers/other/#chapter/p-003');
+    // A site name with an ampersand is a filter value like each other name.
+    assert.equal((await search('subgraph', { filters: { site: 'Erdős 1016 & Graph Theory' } }))[0].url, '/erdos1016/forest/');
+    assert.equal((await search('subgraph', { filters: { site: 'Readers' } })).length, 0);
     assert.equal((await search('qzxnotaword')).length, 0);
     assert.equal((await search('学校'))[0].url, '/albatross/?chapter=1#line-001');
     assert.equal((await search('"transcendent mass"'))[0].url, '/albatross/?chapter=1#line-001');
