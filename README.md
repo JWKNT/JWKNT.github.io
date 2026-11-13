@@ -59,12 +59,12 @@ and the directory. Clearing a query restores both.
 The directory is authored only: no automatic GitHub discovery or Other category.
 Add new destinations explicitly to the JSON with their intended category and name.
 
-The current seven groups hold 25 destinations. Me comes first, at the top left, and holds Profile,
+The current seven groups hold 26 destinations. Me comes first, at the top left, and holds Profile,
 Links, and Accounts. Translations holds the translated works: Albatross Koukairoku, Black Sheep
 Town, and Omniscient Reader’s Viewpoint. In Mathematics, Erdős 1016 & Graph Theory stands for the three
 tours of the Erdős site and opens their list page. Games includes the playable NDB Idle, authored Puzzles,
-Baba Is You, NGU Idle, Box Logic, and the Better 1.12.2 Minecraft mod. Agents holds the guidance for agent work: MTL Guide, Style
-Library, Skills, and Site Theme. Tools keeps the solvers, Gazetteer, and Readers. Category metadata
+Baba Is You, NGU Idle, Box Logic, and the Better 1.12.2 Minecraft mod. Agents holds the guidance for agent work, MTL Guide, Style
+Library, Skills, and Site Theme, and AI Painting, the paintings that an agent makes. Tools keeps the solvers, Gazetteer, and Readers. Category metadata
 is generated from the labels, not a fixed list of the original categories.
 
 ## Skills page

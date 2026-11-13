@@ -44,7 +44,8 @@
       { "id": "mtl-guide", "label": "MTL Guide", "href": "/mtl-guide/" },
       { "id": "style-library", "label": "Style Library", "href": "/style-library/" },
       { "id": "skills", "label": "Skills", "href": "/skills/" },
-      { "id": "site-theme", "label": "Site Theme", "href": "/site-theme/" }
+      { "id": "site-theme", "label": "Site Theme", "href": "/site-theme/" },
+      { "id": "ai-painting", "label": "AI Painting", "href": "/ai-painting/" }
     ]
   },
   {
