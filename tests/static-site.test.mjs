@@ -55,7 +55,7 @@ test('metadata follows authored categories and legacy open flags cannot hide the
   fixture[0].label = 'Future category';
   fixture[0].open = false;
   const html = renderDirectory(fixture);
-  assert.match(html, /name="description" content="Future category, Data, Tools, Games at jehlp.net\."/);
+  assert.match(html, /name="description" content="Future category, data, tools and games at jehlp.net\."/);
   assert.match(html, /data-category="reading" aria-labelledby="category-reading">\s*<h2/);
 });
 
@@ -293,4 +293,17 @@ test('the introduction covers the frame, indents its second paragraph and ends a
   assert.match(css, /\.atlas-rule \{[^}]*border-top: 1px solid var\(--ink\);/);
   assert.match(css, /\.atlas-category:nth-child\(-n \+ 2\) \{ border-top-color: transparent; \}/, 'the rule replaces the faint rules of the first row');
   assert.match(css, /@media \(max-width: 38rem\) \{[\s\S]*?\.atlas-category:nth-child\(2\) \{ border-top-color: var\(--atlas-faint\); \}/, 'on one column the second category keeps its rule');
+});
+
+test('the home, Accounts and Skills pages have a complete link preview with a symbol card', async () => {
+  const pages = { 'index.html': 'home', 'accounts/index.html': 'home', 'skills/index.html': 'site-theme' };
+  for (const [file, symbol] of Object.entries(pages)) {
+    const html = await readFile(new URL(`../${file}`, import.meta.url), 'utf8');
+    for (const key of ['og:type', 'og:site_name', 'og:title', 'og:description', 'og:url', 'og:image', 'og:image:alt']) {
+      assert.match(html, new RegExp(`<meta property="${key}" content="[^"]+">`), `${file} ${key}`);
+    }
+    assert.match(html, new RegExp(`<meta property="og:image" content="https://jehlp\\.net/site-theme/v2/cards/${symbol}\\.png">`), file);
+    assert.match(html, /<meta name="twitter:card" content="summary">/, file);
+    assert.equal(html.match(/property="og:url" content="([^"]+)"/)[1], html.match(/rel="canonical" href="([^"]+)"/)[1], file);
+  }
 });
