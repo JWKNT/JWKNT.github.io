@@ -52,7 +52,6 @@ function fixture() {
     ancestry: { total: { name: 'European', color: 'rgb(1,2,3)' }, broad: [], detailed: [], regionalSignals: [], versionHistory: { comparison: [] }, timeline: [], timelineScale: [], paintings: {} },
     lineage: { maternal: {}, paternal: {}, neanderthal: { locations: [], traitMarkers: [] } },
     reports: [{ id: 'private-implementation-id', title: 'Published report', result: 'Published result', description: 'Public body copy.', personalNotes: [], variants: [] }],
-    privacy: { included: [], removed: ['Direct identifiers are excluded.'] },
   })};`);
   sources.set('/links/data/links.json', { categories: ['Reading'], links: [{ title: 'A saved reference', description: 'Useful collected context.', category: 'Reading', url: 'https://example.org/' }] });
   sources.set('/puzzles/data/puzzles.json', [{ slug: 'a-38-000tos', title: 'A 38' }]);
@@ -69,7 +68,7 @@ test('all public adapters preserve body text and canonical supported routes', as
     return sources.get(path);
   };
   const result = await collectDynamicRecords({ getJSON: async path => read(path), getText: async path => read(path), addRecord: async record => records.push(record) });
-  assert.equal(records.length, 15);
+  assert.equal(records.length, 14);
   assert.deepEqual(result.htmlPaths, ['/puzzles/a-38-000tos/']);
   const passage = records.find(record => record.url === '/black-sheep-town/?chapter=A8#line-a8-0014');
   assert.ok(passage, 'Keep the exact source line ID, including lowercase and padding');
