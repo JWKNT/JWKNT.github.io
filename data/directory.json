@@ -54,6 +54,7 @@
       { "id": "puzzles", "label": "Puzzles", "href": "/puzzles/" },
       { "id": "baba-is-you", "label": "Baba Is You", "href": "/baba-is-you/" },
       { "id": "pokemon-reborn", "label": "Pokémon Reborn", "href": "/pokemon-reborn/" },
+      { "id": "omnifactory", "label": "Omnifactory", "href": "/omnifactory/" },
       { "id": "ngu-idle-dashboard", "label": "NGU Idle", "href": "/ngu-idle-dashboard/" },
       { "id": "box-puzzles", "label": "Box Logic", "href": "/box-puzzles/" },
       { "id": "better-minecraft-1-12-2", "label": "Better 1.12.2", "href": "/better-minecraft-1-12-2/" }

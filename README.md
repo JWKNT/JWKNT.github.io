@@ -59,7 +59,7 @@ and the directory. Clearing a query restores both.
 The directory is authored only: no automatic GitHub discovery or Other category.
 Add new destinations explicitly to the JSON with their intended category and name.
 
-The current eight groups hold 26 destinations. Me comes first, at the top left, and holds Profile,
+The current eight groups hold 27 destinations. Me comes first, at the top left, and holds Profile,
 Links, and Accounts. Translations holds the translated works: Albatross Koukairoku, Black Sheep
 Town, and Omniscient Reader’s Viewpoint. In Mathematics, Erdős 1016 & Graph Theory stands for the three
 tours of the Erdős site and opens their list page. Games includes the playable NDB Idle, authored Puzzles,
